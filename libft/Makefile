@@ -118,4 +118,14 @@ fclean:		clean
 
 re:			fclean all
 
+CLANG =		clang
+
+OBJS_TEST =	$(SRCS:.c=.o)
+
+.c.o:		
+			$(CLANG) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
+
+test:		$(OBJS_TEST)
+			$(AR) $(NAME) $(OBJS)
+
 .PHONY:		re all clean fclean

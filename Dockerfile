@@ -8,5 +8,6 @@ RUN	apt-get update;\
 	clang\
 	git\
 	make;
+#These isn't 'leaks' on linuxOS	apt-get install -y leaks;
 
-CMD bash	
+CMD bash

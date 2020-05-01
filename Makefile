@@ -60,4 +60,38 @@ fclean:		clean
 
 re:			fclean all
 
+CLANG =		clang
+
+OBJS_TEST =	$(SRCS:.c=.o)
+
+.c.o:		
+			$(CLANG) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
+
+libft_test:
+		make test -C libft
+
+test:		libft_test $(OBJS_TEST)
+			$(CLANG) $(CFLAGS) -o $(NAME) $(OBJS_TEST) $(LIBPATH)*.a
+
+# If the first argument is "run"...
+ifeq (run,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "run"
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+# If the first argument is "run"...
+ifeq (exec,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "run"
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  # ...and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+
+run: 
+	docker run -d -ti $(RUN_ARGS)
+
+exec:
+	docker exec -ti $(RUN_ARGS) bash
+
 .PHONY:		re all clean fclean
