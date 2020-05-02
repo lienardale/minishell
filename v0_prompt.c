@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_minishell.c                                     :+:      :+:    :+:   */
+/*   v0_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/02 08:14:41 by alienard         ###   ########.fr       */
+/*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
+/*   Updated: 2020/05/02 08:14:35 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	main(int ac, char **av, char **env)
+void	ft_prompt(int *check, int fd, char **env)
 {
-	int		check;
-	// int		i;
-	// t_sh	sh;
+	char	*line;
+	char	**args;
+	int		ret;
+	int		i;
 
-	if (ac != 1)
-		return EXIT_FAILURE;
-	(void)av;
-	// for (i = 0; env[i] != NULL; i++)
-	// 	ft_printf("%s\n", env[i]);
-	ft_prompt(&check, 0, env);
-	// system("leaks minishell");
-	return (check == 0) ? EXIT_FAILURE : EXIT_SUCCESS;
+	ret = 1;
+	while (ret && (write(1,">",1)) && (*check = get_next_line(fd, &line)) >= 0)
+	{
+		i = 0;
+		args = ft_split_line(line);
+		ft_free_ptr(line);
+		ret = ft_parse_line(args, env);
+		while (args[i])
+			ft_free_ptr(args[i++]);
+		ft_free_ptr(args);
+		if (*check == 0)
+			break ;
+	}
 }

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_minishell.c                                     :+:      :+:    :+:   */
+/*   v0_parse.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/02 08:14:41 by alienard         ###   ########.fr       */
+/*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
+/*   Updated: 2020/05/02 08:13:45 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	main(int ac, char **av, char **env)
+int		ft_parse_line(char **args, char **env)
 {
-	int		check;
-	// int		i;
-	// t_sh	sh;
-
-	if (ac != 1)
-		return EXIT_FAILURE;
-	(void)av;
-	// for (i = 0; env[i] != NULL; i++)
-	// 	ft_printf("%s\n", env[i]);
-	ft_prompt(&check, 0, env);
-	// system("leaks minishell");
-	return (check == 0) ? EXIT_FAILURE : EXIT_SUCCESS;
+	if (args[0] == NULL)
+	{
+	// An empty command was entered.
+		return (1);
+	}
+	if (ft_strcmp(args[0], "exit") == 0)
+		return (0);
+	return ft_launch(args, env);
 }

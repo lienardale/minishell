@@ -6,13 +6,17 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/04/21 18:14:46 by alienard         ###   ########.fr        #
+#    Updated: 2020/05/02 08:14:23 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = 		minishell
 
-SRCS =		v0_minishell.c
+SRCS =		v0_minishell.c \
+			v0_prompt.c \
+			v0_split.c \
+			v0_parse.c \
+			v0_process.c
 
 OBJS = 		$(SRCS:.c=.o)
 

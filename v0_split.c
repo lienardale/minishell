@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_minishell.c                                     :+:      :+:    :+:   */
+/*   v0_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/02 08:14:41 by alienard         ###   ########.fr       */
+/*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
+/*   Updated: 2020/05/02 08:13:47 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	main(int ac, char **av, char **env)
+char	**ft_split_line(char *line)
 {
-	int		check;
-	// int		i;
-	// t_sh	sh;
+	int pos;
+	char **tokens;
 
-	if (ac != 1)
-		return EXIT_FAILURE;
-	(void)av;
-	// for (i = 0; env[i] != NULL; i++)
-	// 	ft_printf("%s\n", env[i]);
-	ft_prompt(&check, 0, env);
-	// system("leaks minishell");
-	return (check == 0) ? EXIT_FAILURE : EXIT_SUCCESS;
+	pos = -1;
+	tokens = ft_split_charset(line, SPACE);
+	if (!tokens)
+	{
+		ft_dprintf(2, "minishell: allocation error\n");
+		exit(EXIT_FAILURE);
+	}
+	return (tokens);
 }
