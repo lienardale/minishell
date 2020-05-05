@@ -88,7 +88,8 @@ SRCS =		./ft_calloc.c \
 			./ft_putnbr_base_fprintf.c \
 			./ft_len_hexa_fprintf.c \
 			./get_next_line_bonus.c \
-			./get_next_line_utils_bonus.c
+			./get_next_line_utils_bonus.c \
+			./ft_free_split.c
 
 OBJS = 		$(SRCS:.c=.o)
 
