@@ -100,12 +100,19 @@ run:
 exec:
 	docker exec -ti $(RUN_ARGS) bash
 
-git_config_cdai:
+config_cdai:
 	git config --global user.email "cdai@student.42.fr";
 	git config --global user.name "Dai Clément";
+	sed 's/marvin/cdai/' 42header/vim/stdheader.vim >> ~/.vim/plugin/stdheader.vim;
+# I could do
+#	echo USER=cdai >> ~/.bashrc; 
+#	echo MAIL=cdai@student.42.fr >> ~/.bashrc;
+#	source ~/.bashrc;
+# I found this solution after.
 
-git_config_alienard:
+config_alienard:
 	git config --global user.email "alienard@student.42.fr";
 	git config --global user.name "Liènard Alexandre";
+	sed 's/marvin/alienard/' 42header/vim/stdheader.vim >> ~/.vim/plugin/stdheader.vim;
 
 .PHONY:		re all clean fclean
