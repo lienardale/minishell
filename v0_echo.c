@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_parse.c                                         :+:      :+:    :+:   */
+/*   v0_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/05 14:40:30 by alienard         ###   ########.fr       */
+/*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
+/*   Updated: 2020/05/05 14:43:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_parse_line(char **args, char **env, int (*builtin_fct[7])(char **))
+int		ft_echo(char **args)
 {
-	char	**builtins;
-	int		i;
+	int	i;
 
-	builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
-	if (args[0] == NULL)
-	{
-	// An empty command was entered.
-		return (1);
-	}
-	i = -1;
-	while (builtins[++i])
-	{
-		if (ft_strcmp(args[0], builtins[i]) == 0)
-			return (builtin_fct[i](args));
-	}
-	return ft_launch(args, env);
+	i = 0;
+	ft_printf("			-> %s passe bien par la\n", args[0]);
+	while (args[++i])
+		ft_printf("%s\n", args[i]);
+	return (1);
 }

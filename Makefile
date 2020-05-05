@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/04 14:20:38 by alienard         ###   ########.fr        #
+#    Updated: 2020/05/05 14:39:57 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRCS =		v0_minishell.c \
 			v0_prompt.c \
 			v0_split.c \
 			v0_parse.c \
-			v0_process.c
+			v0_process.c \
+			v0_echo.c \
+			v0_exit.c
 
 OBJS = 		$(SRCS:.c=.o)
 
