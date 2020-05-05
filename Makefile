@@ -100,4 +100,12 @@ run:
 exec:
 	docker exec -ti $(RUN_ARGS) bash
 
+git_config_cdai:
+	git config --global user.email "cdai@student.42.fr";
+	git config --global user.name "Dai Clément";
+
+git_config_alienard:
+	git config --global user.email "alienard@student.42.fr";
+	git config --global user.name "Liènard Alexandre";
+
 .PHONY:		re all clean fclean

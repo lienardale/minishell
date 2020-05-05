@@ -60,12 +60,16 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 	int		i;
 
 	i = 0;
-	tmp = ft_get_onlypaths(env);
-	paths = ft_split(tmp, ':');
+	if (!(tmp = ft_get_onlypaths(env)))
+		return (0);
+	else if (!(paths = ft_split(tmp, ':')))
+		return (0);
 	while (paths[i])
 	{
 		if ((result = ft_findexec(paths[i], exec)))
+		{
 			return (result);
+		}
 		i++;
 	}
 	return (result);
