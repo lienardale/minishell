@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/05 14:40:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/06 13:45:27 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int		ft_parse_line(char **args, char **env, int (*builtin_fct[7])(char **))
 	char	**builtins;
 	int		i;
 
-	builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
+	// builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
+	builtins = ft_split("echo,exit", ',');
 	if (args[0] == NULL)
 	{
 	// An empty command was entered.
