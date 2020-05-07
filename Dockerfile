@@ -19,6 +19,7 @@ RUN	apt-get update;\
 	git clone https://github.com/42Paris/norminette.git ~/.norminette;\
 	cd ~/.norminette/;\
 	bundle;\
+	touch ~/.vimrc;\
 	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;
 #	source ~/.bashrc;
 #These isn't 'leaks' on linuxOS	apt-get install -y leaks;
