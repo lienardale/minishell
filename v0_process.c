@@ -64,12 +64,17 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 		return (0);
 	else if (!(paths = ft_split(tmp, ':')))
 		return (0);
+	tmp = ft_calloc(1, 1024);
+	if ((result = ft_findexec((tmp = getcwd(tmp, ft_strlen(tmp))), exec)))
+	{
+		free(tmp);
+		return (result);
+	}
+	free(tmp);
 	while (paths[i])
 	{
 		if ((result = ft_findexec(paths[i], exec)))
-		{
 			return (result);
-		}
 		i++;
 	}
 	return (result);
