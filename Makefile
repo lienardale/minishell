@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/04 14:20:38 by alienard         ###   ########.fr        #
+#    Updated: 2020/05/07 20:46:00 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,16 +113,11 @@ kill:
 config_cdai:
 	git config --global user.email "cdai@student.42.fr";
 	git config --global user.name "Dai Clément";
-	sed 's/marvin/cdai/' 42header/vim/stdheader.vim >> ~/.vim/plugin/stdheader.vim;
-# I could do
-#	echo USER=cdai >> ~/.bashrc; 
-#	echo MAIL=cdai@student.42.fr >> ~/.bashrc;
-#	source ~/.bashrc;
-# I found this solution after.
+	sed 's/marvin/cdai/' 42header/vim/stdheader.vim | sed 's/42.fr/student.42.fr/' > ~/.vim/plugin/stdheader.vim;
 
 config_alienard:
 	git config --global user.email "alienard@student.42.fr";
 	git config --global user.name "Liènard Alexandre";
-	sed 's/marvin/alienard/' 42header/vim/stdheader.vim >> ~/.vim/plugin/stdheader.vim;
+	sed 's/marvin/alienard/' 42header/vim/stdheader.vim | sed 's/42.fr/student.42.fr/' > ~/.vim/plugin/stdheader.vim;
 
-.PHONY:		re all clean fclean
+.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard
