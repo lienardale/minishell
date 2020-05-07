@@ -82,11 +82,19 @@ test:		libft_test $(OBJS_TEST)
 
 #DOCKER CMDS
 
-# If the first argument is "config"...
-ifeq (config,$(firstword $(MAKECMDGOALS)))
-  # use the rest as arguments for "config"
+# If the first argument is "run"...
+ifeq (run,$(firstword $(MAKECMDGOALS)))
+  # use the rest as arguments for "run"
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
   # ...and turn them into do-nothing targets
+  $(eval $(RUN_ARGS):;@:)
+endif
+ifeq (exec,$(firstword $(MAKECMDGOALS)))
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  $(eval $(RUN_ARGS):;@:)
+endif
+ifeq (kill,$(firstword $(MAKECMDGOALS)))
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
   $(eval $(RUN_ARGS):;@:)
 endif
 
@@ -94,10 +102,13 @@ build:
 	docker build -t minishell_image .
 
 run:
-	docker run -d -ti --name minishell_workspace minishell_image
+	docker run -d -ti --name $(RUN_ARGS) minishell_image
 
 exec:
-	docker exec -ti minishell_workspace bash
+	docker exec -ti $(RUN_ARGS) bash
+
+kill:
+	docker kill $(RUN_ARGS)
 
 config_cdai:
 	git config --global user.email "cdai@student.42.fr";
