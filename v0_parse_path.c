@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   v0_parse_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/05 17:51:21 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/08 09:23:30 by cdai             ###   ########.fr       */
+/*   Created: 2020/05/08 08:04:03 by cdai              #+#    #+#             */
+/*   Updated: 2020/05/08 08:08:36 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "v0_minishell.h"
 
-void	*ft_free_split(char **data)
+char	*ft_parse_path(char *cwd, char *cmd)
 {
-	int	i;
+	char	*result;
 
-	i = -1;
-	if (data)
-	{
-		while (data[++i])
-		{
-			free(data[i]);
-			data[i] = 0;
-		}
-		free(data);
-		data = 0;
-	}
-	return (NULL);
+	(void)cwd;
+	(void)cmd;
+	return (result);
 }
