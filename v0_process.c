@@ -65,7 +65,7 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 	else if (!(paths = ft_split(tmp, ':')))
 		return (0);
 	tmp = ft_calloc(1, 1024);
-	if ((result = ft_findexec((tmp = getcwd(tmp, ft_strlen(tmp))), exec)))
+	if ((result = ft_findexec((tmp = getcwd(tmp, 1024)), exec)))
 	{
 		free(tmp);
 		return (result);
