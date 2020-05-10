@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/02 08:14:35 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/08 16:44:12 by Dai Cleme        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void	ft_prompt(int *check, int fd, char **env)
 		i = 0;
 		args = ft_split_line(line);
 		ft_free_ptr(line);
+while (args[i])
+{
+printf("%s\n", args[i]);
+i++;
+}
+i = 0;
 		ret = ft_parse_line(args, env);
 		while (args[i])
 			ft_free_ptr(args[i++]);
