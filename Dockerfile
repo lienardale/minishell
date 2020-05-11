@@ -19,7 +19,7 @@ RUN	apt-get update;\
 	git clone https://github.com/42Paris/norminette.git ~/.norminette;\
 	cd ~/.norminette/;\
 	bundle;\
-	echo 'set tabstop=4\nsyn off\nset colorcolumn=120\nset shiftwidth=4\nsetsofttabstop=4' > ~/.vimrc;\ 
+	echo 'set tabstop=4\nsyn off\nset colorcolumn=120\nset shiftwidth=4\nset softtabstop=4' > ~/.vimrc;\ 
 	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;
 #	source ~/.bashrc;
 #These isn't 'leaks' on linuxOS	apt-get install -y leaks;
