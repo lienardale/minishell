@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/04/22 12:33:30 by alienard         ###   ########.fr        #
+#    Updated: 2020/05/11 13:01:31 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,8 @@ SRCS =		./ft_calloc.c \
 			./ft_len_hexa_fprintf.c \
 			./get_next_line_bonus.c \
 			./get_next_line_utils_bonus.c \
-			./ft_free_split.c
+			./ft_free_split.c \
+			./ft_lstsplit.c
 
 OBJS = 		$(SRCS:.c=.o)
 
