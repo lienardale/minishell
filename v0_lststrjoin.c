@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 11:48:07 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/12 15:31:09 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/12 20:22:20 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_lststrjoin(t_list *lst, char *inter)
 	char	*temp;
 
 	result = 0;
-	while(lst)
+	while (lst)
 	{
 		if (result)
 		{
@@ -35,4 +35,3 @@ char	*ft_lststrjoin(t_list *lst, char *inter)
 	}
 	return (result);
 }
-
