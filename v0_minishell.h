@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/12 11:57:19 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/12 18:49:29 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,15 @@ void	ft_prompt(int *check, int fd, char **env);
 char	*ft_lststrjoin(t_list *lst, char *inter);
 
 char	*ft_parse_path(char *path);
+
+char	*ft_lststrjoin(t_list *lst, char *inter);
+
+int		ft_isolate_exec(char *path, char **buff);
+
+int		ft_change_dir(char **args);
+
+int		ft_env(char **env);
+
+int		ft_pwd(void);
 
 # endif

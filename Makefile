@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/12 11:54:04 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/12 18:56:48 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,13 @@ SRCS =		v0_minishell.c \
 			v0_prompt.c \
 			v0_split.c \
 			v0_parse.c \
-			v0_process.c
+			v0_process.c \
+			v0_parse_path.c \
+			v0_lststrjoin.c \
+			v0_isolate_exec.c \
+			v0_change_dir.c \
+			ft_env.c \
+			ft_pwd.c
 
 OBJS = 		$(SRCS:.c=.o)
 
@@ -119,9 +125,5 @@ config_alienard:
 	git config --global user.email "alienard@student.42.fr";
 	git config --global user.name "Lienard Alexandre";
 	sed 's/marvin/alienard/' 42header/vim/stdheader.vim | sed 's/42.fr/student.42.fr/' > ~/.vim/plugin/stdheader.vim;
-
-cdai:
-	clang v0_parse_path.c v0_lststrjoin.c libft/libft.a -I./libft/;
-	./a.out;
 
 .PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard
