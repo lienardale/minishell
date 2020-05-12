@@ -6,28 +6,11 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 09:31:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/12 15:31:50 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/12 17:18:40 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
-
-static	int	ft_isolate_exec(char *path, char **buff)
-{
-	int		path_len;
-	int		i;
-
-	path_len = ft_strlen(path);
-	i = path_len - 1;
-	while (i > -1 && path[i] != '/')
-		i--;
-	if (i > -1 && path[i] == '/')
-		*buff = ft_substr(path, i + 1, path_len - i);
-	return (i); 
-		// return last '/' position in path
-		// return -1 if '/' not found
-		// return 0 if path is absolute
-}
 
 static t_list	*ft_relative_to_abs_path(t_list *lstdest, t_list *lstsrc)
 {
@@ -88,7 +71,7 @@ free(result);
 	ft_lstclear(&path_splited, free);
 	return (result);
 }
-
+/*
 int main()
 {
 	char *buff;
@@ -123,3 +106,5 @@ int main()
 	
 	free(buff);
 }
+*/
+
