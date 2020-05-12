@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/15 20:24:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/18 15:31:46 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,9 @@ int			ft_exit(char **args);
 void		ft_free_double_array(char **str);
 void		ft_print_double_array(char **str, char *name);
 size_t		ft_double_strlen(char **str);
+
+char	*ft_lststrjoin(t_list *lst, char *inter);
+
+char	*ft_parse_path(char *path);
 
 # endif

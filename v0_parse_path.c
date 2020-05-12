@@ -6,87 +6,68 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 09:31:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/12 08:40:27 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/12 12:44:12 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-static int	ft_is_cwd(char *exec)
+static	int	ft_isolate_exec(char *path, char **buff)
 {
-	if (exec[0] == '.' && (exec[1] == '/' || exec[1] == '\0'))
-		return (1);
-	return (0);
-}
-
-static int	ft_is_parent_dir(char *exec)
-{
-	int	i;
-
-	i = 0;
-	while (exec[i] == '.')
-		i++;
-	if (i == 2 && (exec[i] == '/' || exec[i] == '\0'))
-		return (1);
-	return (0);
-}
-
-static char	*ft_lst_minishell_join(t_list *lst)
-{
-	char	*result;
-	char	*temp;
-
-	result = 0;
-	while(lst)
-	{
-		if (result)
-		{
-			temp = result;
-			result = ft_strjoin(temp, "/");
-			free(temp);
-			temp = result;
-			result = ft_strjoin(temp, (char*)lst->content);
-			free(temp);
-		}
-		else
-			result = ft_strjoin("/", (char*)lst->content);
-		lst = lst->next;
-	}
-	return (result);
-}
-
-char		*ft_parse_path(char *exec)
-{
-	t_list	*exec_splited;
-	char	*result;
-	char	*buff;
-	t_list	*buff_splited;
+	int		path_len;
 	int		i;
 
-	i = 0;
-	exec_splited = ft_lstsplit(exec, '/');
-	buff = ft_calloc(1, 1000);
-	getcwd(buff, 1000);
-	buff_splited = ft_lstsplit(buff, '/');
-result = 0;
-/*
-	while (exec[i])
-	{
-		if (ft_is_cwd(exec))
-		{
-			
-		}
-		else if (ft_is_parent_dir(exec))
-		{
+	path_len = ft_strlen(path);
+	i = path_len - 1;
+	while (i > -1 && path[i] != '/')
+		i--;
+	if (i > -1 && path[i] == '/')
+		*buff = ft_substr(path, i + 1, path_len - i);
+	return (i); 
+		// return last '/' position in path
+		// return -1 if '/' not found
+		// return 0 if path is absolute
+}
 
-		}
-		while (!(exec[i] == '/' || exec[i] == '\0'))
-			i++;
-		if (exec[i])
-			i++;
+static t_list	*ft_relative_to_abs_path(t_list *lstdest, t_list *lstsrc)
+{
+	while (lstsrc)
+	{
+		if (ft_strcmp("..", (char*)lstsrc->content) == 0)
+			ft_lstdel_last(lstdest);
+		else if (ft_strcmp(".", (char*)lstsrc->content) != 0)
+			ft_lstadd_back(&lstdest, lstsrc);
+		lstsrc = lstsrc->next;
 	}
-*/
-	result = ft_lst_minishell_join(buff_splited);
+}
+
+char		*ft_parse_path(char *path)
+{
+	t_list	*path_splited;
+	char	*result;
+t_list	*buff_splited;
+	char	*exec;
+	int		start;
+
+
+
+	start = ft_isolate_exec(path, &exec);
+path = ft_substr(path, 0, start - 1);
+path_splited = ft_lstsplit(path, '/');
+free(path);
+
+// maybe do a function for readability.
+result = ft_calloc(1, 1000);
+getcwd(result, 1000);
+buff_splited = ft_lstsplit(buff, '/');
+free(result);
+
+//	t_list *ft_relative_to_abs_path(t_list *lstdest, t_list *lstsrc);
+	ft_relative_to_abs_path(buff_splited, path_splited);
+	result = ft_lststrjoin(buff_splited, "/");
+	// join de exec
+	ft_lstclear(&buff_splited, free);
+	ft_lstclear(&path_splited, free);
 	return (result);
 }
 
@@ -96,18 +77,31 @@ int main()
 	t_list	*splited;
 	t_list	*temp_splited;
 
+//test getcwd()
 	buff = ft_calloc(1, 1000);
-	printf("from main: %s\n", (buff = getcwd(buff, 50)));
+//	printf("from main: %s\n", (buff = getcwd(buff, 50)));
+
+//test ft_lstsplit()
 	splited = ft_lstsplit(buff, '/');
 	temp_splited = splited;
 	while (temp_splited)
 	{
-		printf("lst value: %s\n", (char*)temp_splited->content);
+//		printf("lst value: %s\n", (char*)temp_splited->content);
 		temp_splited = temp_splited->next;
 	}
-	char *test = ft_lst_minishell_join(splited);
-	printf("%s\n", test);
+
+//test ft_lst_minishell_join()
+	char *test = ft_lststrjoin(splited, "/");
+//	printf("%s\n", test);
+	free(test);
+//test ft_lstclear()
 	ft_lstclear(&splited, free);
+
+//test ft_parse_path()
+	char *temp = "./test/patate"; 
+	test = ft_parse_path(temp);
+	printf("ft_parse_path(%s): %s\n", temp, test);
+	free(test);
 	
 	free(buff);
 }
