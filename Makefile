@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/12 08:22:18 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/12 11:54:04 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ config_alienard:
 	sed 's/marvin/alienard/' 42header/vim/stdheader.vim | sed 's/42.fr/student.42.fr/' > ~/.vim/plugin/stdheader.vim;
 
 cdai:
-	clang v0_parse_path.c libft/libft.a -I./libft/;
+	clang v0_parse_path.c v0_lststrjoin.c libft/libft.a -I./libft/;
 	./a.out;
 
 .PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard

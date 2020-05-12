@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/02 08:10:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/12 11:57:19 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,9 @@ int		ft_parse_line(char **args, char **env);
 char	**ft_split_line(char *line);
 
 void	ft_prompt(int *check, int fd, char **env);
+
+char	*ft_lststrjoin(t_list *lst, char *inter);
+
+char	*ft_parse_path(char *path);
 
 # endif

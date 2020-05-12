@@ -35,7 +35,8 @@ RUN	apt-get update;\
 		nnoremap <F5> <C-W>h\n\
 		nnoremap <F6> <C-W>j\n\
 		nnoremap <F7> <C-W>k\n\
-		nnoremap <F8> <C-W>l' \
+		nnoremap <F8> <C-W>l\n\
+		set shell=bash' \
 	> ~/.vimrc;\
 	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;
 #	source ~/.bashrc;
