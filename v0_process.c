@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 08:51:14 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/18 15:42:42 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-char	*ft_get_onlypaths(char **env)
+static char	*ft_get_onlypaths(char **env)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ char	*ft_get_onlypaths(char **env)
 	return (NULL);
 }
 
-char	*ft_findexec(char *path, char *exec)
+static char	*ft_findexec(char *path, char *exec)
 {
 	DIR				*dir;
 	struct dirent	*tmp;
@@ -52,7 +52,7 @@ char	*ft_findexec(char *path, char *exec)
 	return (result);
 }
 
-char	*ft_get_abspath_filename(char *exec, char **env)
+static char	*ft_get_abspath_filename(char *exec, char **env)
 {
 	char	*tmp;
 	char	**paths;
@@ -64,13 +64,6 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 		return (0);
 	else if (!(paths = ft_split(tmp, ':')))
 		return (0);
-	tmp = ft_calloc(1, 1024);
-	if ((result = ft_findexec((tmp = getcwd(tmp, 1024)), exec)))
-	{
-		free(tmp);
-		return (result);
-	}
-	free(tmp);
 	while (paths[i])
 	{
 		if ((result = ft_findexec(paths[i], exec)))
@@ -80,7 +73,27 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 	return (result);
 }
 
-int		ft_launch(char **args, char **env)
+static void	ft_search_n_execute(char **args, char **env)
+{
+	int		exec_start;
+	char	*exec;
+
+	exec = NULL;
+	if ((exec_start = ft_isolate_exec(args[0], &exec)) != -1)
+		args[0] = ft_parse_path(args[0]);
+	else
+		args[0] = (ft_get_abspath_filename(args[0], env));
+	if (exec)
+		free(exec);
+	if (execve(args[0], args, env) == -1)
+	{
+		ft_dprintf(2, "error execve\n");
+		// perror("error execve");
+		exit(EXIT_FAILURE);
+	}
+}
+
+int			ft_launch(char **args, char **env)
 {
 	pid_t	pid;
 	pid_t	wpid;
@@ -90,15 +103,7 @@ int		ft_launch(char **args, char **env)
 	if (pid == 0)
 	{
 		// Child process
-		args[0] = (ft_get_abspath_filename(args[0], env));
-		if (execve(args[0], args, env) == -1)
-		{
-			// freeing allocated memory
-			ft_free_double_array(args);
-			// perror("error execve");
-			ft_dprintf(2, "error execve\n");
-			exit(EXIT_FAILURE);
-		}
+		ft_search_n_execute(args, env);
 	}
 	else if (pid < 0)
 	{
