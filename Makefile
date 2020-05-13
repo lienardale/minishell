@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/12 18:56:48 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/13 07:58:23 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS =		v0_minishell.c \
 			v0_isolate_exec.c \
 			v0_change_dir.c \
 			ft_env.c \
-			ft_pwd.c
+			ft_pwd.c \
+			ft_export.c
 
 OBJS = 		$(SRCS:.c=.o)
 

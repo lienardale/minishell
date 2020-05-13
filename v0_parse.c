@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/12 18:48:58 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/13 08:00:24 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		ft_parse_line(char **args, char **env)
 	// An empty command was entered.
 		return (1);
 	}
+	else if (ft_strcmp(args[0], "export") == 0)
+		return (ft_export(args, env));
 	else if (ft_strcmp(args[0], "pwd") == 0)
 		return (ft_pwd());
 	else if (ft_strcmp(args[0], "cd") == 0)
