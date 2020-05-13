@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/04 12:15:00 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/06 16:06:44 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_get_onlypaths(char **env)
 	while (env[i])
 	{
 		if (!ft_strncmp(env[i], "PATH=", 5))
-			return (ft_strtrim(env[i], "PATH="));
+			return (env[i] + 5);
 		i++;
 	}
 	return (NULL);

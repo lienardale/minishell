@@ -6,15 +6,16 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 09:55:39 by alienard          #+#    #+#             */
-/*   Updated: 2020/04/22 09:58:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/13 11:15:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_ptr(void *ptr)
+void	*ft_free_ptr(void *ptr)
 {
 	if (ptr)
 		free(ptr);
 	ptr = NULL;
+	return (NULL);
 }

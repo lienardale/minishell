@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/04/22 09:58:39 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/13 11:16:18 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int				ft_isnum(char *c);
 void			*ft_calloc(size_t count, size_t size);
 void			*ft_realloc(void *ptr, size_t size);
 char			*ft_strdup(const char *s1);
-void			ft_free_ptr(void *ptr);
+void			*ft_free_ptr(void *ptr);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s1, char const *set);

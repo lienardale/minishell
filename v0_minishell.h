@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/05 14:42:26 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/13 13:55:40 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <sys/errno.h>
 #include <fcntl.h>
+#include <stdbool.h>
 #include "libft/libft.h"
 #include "libft/libftprintf.h"
 #include "libft/libftdprintf.h"
@@ -29,6 +30,12 @@
 #include "libft/get_next_line_bonus.h"
 
 # define SPACE " \t\r\n\v\f"
+
+# define TOKENS "-\"\'|;><"
+
+# define PROMPT "minishell$ "
+
+# define QPROMPT "> "
 
 # define BUILTINS &ft_echo, &ft_exit// , &ft_cd, &ft_pwd, &ft_export, &ft_unset, &ft_env
 
@@ -46,13 +53,14 @@ typedef struct	s_env
 
 int				ft_launch(char **args, char **env);
 
-int		ft_parse_line(char **args, char **env, int (*builtin_fct[7])(char **));
+int			ft_parse_line(char **args, char **env, int (*builtin_fct[7])(char **));
 
-char	**ft_split_line(char *line);
+char		**ft_split_line(char *line);
+char		**ft_split_shell(const char *s, const char *set);
 
-void	ft_prompt(int *check, int fd, char **env);
+void		ft_prompt(int *check, int fd, char **env);
 
-int		ft_echo(char **args);
-int		ft_exit(char **args);
+int			ft_echo(char **args);
+int			ft_exit(char **args);
 
 # endif
