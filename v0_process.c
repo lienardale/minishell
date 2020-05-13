@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 15:42:42 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/18 15:46:34 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,20 @@ static void	ft_search_n_execute(char **args, char **env)
 		args[0] = (ft_get_abspath_filename(args[0], env));
 	if (exec)
 		free(exec);
+	else if (!args[i])
+	{
+		ft_dprintf(2, "ft_search_n_execute error?\n");
+		// perror("have to change error");
+		exit(EXIT_FAILURE);
+	}
 	if (execve(args[0], args, env) == -1)
 	{
+		free(args[0]);
 		ft_dprintf(2, "error execve\n");
 		// perror("error execve");
 		exit(EXIT_FAILURE);
 	}
+	free(args[0]);
 }
 
 int			ft_launch(char **args, char **env)

@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 09:31:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/12 20:08:38 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/13 17:26:31 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static t_list	*ft_relative_to_abs_path(t_list *lstdest, t_list *lstsrc)
 		{
 			temp = ft_strdup((char*)lstsrc->content);
 			lst_temp = ft_lstnew(temp);
-			free(temp);
 			ft_lstadd_back(&lstdest, lst_temp);
 		}
 		lstsrc = lstsrc->next;
@@ -40,7 +39,6 @@ static char		*ft_get_cwd_lstsplited(char *path)
 	char	*result;
 
 	path_splited = ft_lstsplit(path, '/');
-	free(path);
 	result = ft_calloc(1, 1000);
 	getcwd(result, 1000);
 	buff_splited = ft_lstsplit(result, '/');
@@ -63,6 +61,7 @@ char			*ft_parse_path(char *path)
 	start = ft_isolate_exec(path, &exec);
 	path = ft_substr(path, 0, start);
 	result = ft_get_cwd_lstsplited(path);
+	free(path);
 	temp = result;
 	result = ft_strjoin(result, "/");
 	free(temp);
