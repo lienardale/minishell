@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 15:34:47 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/18 15:44:26 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ int		ft_change_dir(char **args);
 int		ft_env(char **env);
 
 int		ft_pwd(void);
+
+int		ft_export(char **args, char **env);
 
 # endif
