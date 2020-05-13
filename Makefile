@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/05 14:39:57 by alienard         ###   ########.fr        #
+#    Updated: 2020/05/13 14:02:23 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = 		minishell
 SRCS =		v0_minishell.c \
 			v0_prompt.c \
 			v0_split.c \
+			v0_split_shell.c \
 			v0_parse.c \
 			v0_process.c \
 			v0_echo.c \
@@ -36,13 +37,10 @@ LIBFT_MAKE = 	$(MAKE) -C $(LIBPATH)
 
 LIBPATH =	./libft/
 
-.c.o:		$(SRCS)
-			$(CC) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
-
 all:		libft/libft.a $(NAME)
 
 $(NAME):	$(OBJS)
-			$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBPATH)*.a
+			$(CLANG) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBPATH)*.a
 
 libmake:
 			$(LIBFT_MAKE)
