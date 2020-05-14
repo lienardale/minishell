@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 17:51:21 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/05 17:51:45 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/14 09:23:52 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	ft_free_split(char **data)
 	int	i;
 
 	i = 0;
-	while (data[i])
-	{
-		free(data[i]);
-		i++;
-	}
+	if (data)
+		while (data[i])
+		{
+			free(data[i]);
+			data[i] = 0;
+			i++;
+		}
 	free(data);
 }
