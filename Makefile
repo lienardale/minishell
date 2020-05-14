@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/13 07:58:23 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/14 10:13:07 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,5 +126,13 @@ config_alienard:
 	git config --global user.email "alienard@student.42.fr";
 	git config --global user.name "Lienard Alexandre";
 	sed 's/marvin/alienard/' 42header/vim/stdheader.vim | sed 's/42.fr/student.42.fr/' > ~/.vim/plugin/stdheader.vim;
+
+cdai:
+	clang test.c libft/libft.a -Ilibft;
+	./a.out;
+
+leaks:
+	clang -fsanitize=address test.c libft/libft.a -Ilibft;
+	./a.out;
 
 .PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard
