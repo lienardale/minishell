@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_quote.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/13 13:02:39 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/14 12:25:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_count_word_quote(char *str, char c)
 			i++;
 		while (str[i] && (str[i] != c || quote))
 		{
-			if (!quote && (str[i] == '\'' || str[i] == '\"')
+			if (!quote && (str[i] == '\'' || str[i] == '\"'))
 				quote = str[i];
 			else if (quote && str[i] == quote)
 				quote = 0;
@@ -49,7 +49,8 @@ char **ft_split_quote(char *str, char c)
 	quote = 0;
 	i = 0;
 	nb_word = ft_count_word_quote(str, c);
-	result = malloc(sizeof(char*) * (nb_word + 1));
+	if (!(result = (char **)malloc(sizeof(char*) * (nb_word + 1))))
+		return (NULL);
 	nb_word = 0;
 	while (str[i])
 	{
@@ -58,7 +59,7 @@ char **ft_split_quote(char *str, char c)
 		start = i;
 		while (str[i] && (str[i] != c || quote))
 		{
-			if (!quote && (str[i] == '\'' || str[i] == '\"')
+			if (!quote && (str[i] == '\'' || str[i] == '\"'))
 				quote = str[i];
 			else if (quote && str[i] == quote)
 				quote = 0;

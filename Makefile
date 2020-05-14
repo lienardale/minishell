@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/13 14:02:23 by alienard         ###   ########.fr        #
+#    Updated: 2020/05/13 18:54:32 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = 		minishell
 SRCS =		v0_minishell.c \
 			v0_prompt.c \
 			v0_split.c \
-			v0_split_shell.c \
+			ft_split_quote.c \
 			v0_parse.c \
 			v0_process.c \
 			v0_echo.c \
