@@ -6,32 +6,34 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/15 15:31:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 20:36:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-void	ft_check_line(char *line, int *quote)
+void	ft_check_line(char **line, int *quote)
 {
 	int		pos;
 	int		nbquote;
 
 	pos = -1;
 	nbquote = (*quote == 0) ? 0 : 1;
-	while (line[++pos])
+	while ((*line)[++pos])
 	{
-		if (line[pos] == '\'' && (*quote == '\'' || *quote == 0))
+		if ((*line)[pos] == '\'' && (*quote == '\'' || *quote == 0))
 		{
 			nbquote++;
 			*quote = '\'';
 		}
-		if (line[pos] == '\"'&& (*quote == '\"' || *quote == 0))
+		if ((*line)[pos] == '\"'&& (*quote == '\"' || *quote == 0))
 		{
 			nbquote++;
 			*quote = '\"';
 		}
 	}
+	if (*quote != 0)
+		*line = ft_strjoin(*line, "\n");
 	if (nbquote == 2)
 		*quote = 0;
 }
@@ -76,7 +78,7 @@ void	ft_prompt(int *check, int fd, char **env)
 	{
 		input[++i] = ft_strdup(line); //strdup_free
 		// input = ft_realloc(input, i);
-		ft_check_line(line, &quote); //ternaire ?
+		ft_check_line(&input[i], &quote); //ternaire ?
 		// printf("quote : |%d|\n", quote);
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
 		if (!quote)
