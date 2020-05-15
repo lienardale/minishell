@@ -6,13 +6,23 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/14 12:25:59 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 15:12:08 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	ft_count_word_quote(char *str, char c)
+static char	**ret_nul(void)
+{
+	char **tab;
+
+	if (!(tab = (char **)malloc(sizeof(char*) * 1)))
+		return (NULL);
+	tab[0] = 0;
+	return (tab);
+}
+
+static int	ft_count_word_quote(char *str, char c)
 {
 	char quote;
 	int nb_word;
@@ -35,10 +45,10 @@ int	ft_count_word_quote(char *str, char c)
 		}
 		nb_word++;
 	}
-	return nb_word;
+	return (nb_word);
 }
 
-char **ft_split_quote(char *str, char c)
+char		**ft_split_quote(char *str, char c)
 {
 	char **result;
 	char quote;
@@ -46,6 +56,8 @@ char **ft_split_quote(char *str, char c)
 	int i;
 	int start;
 
+	if (!str || str[0] == 0)
+		return (ret_nul());
 	quote = 0;
 	i = 0;
 	nb_word = ft_count_word_quote(str, c);

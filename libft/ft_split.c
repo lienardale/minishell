@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 20:23:17 by alienard          #+#    #+#             */
-/*   Updated: 2019/10/17 15:11:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 15:03:08 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_count(char const *s, char c)
+static size_t	ft_count(char const *s, char c)
 {
 	size_t count;
 	size_t i;
@@ -30,7 +30,7 @@ size_t	ft_count(char const *s, char c)
 	return (count);
 }
 
-size_t	ft_lenw(const char *s, char c)
+static size_t	ft_lenw(const char *s, char c)
 {
 	size_t		len;
 
@@ -50,7 +50,7 @@ size_t	ft_lenw(const char *s, char c)
 	return (len);
 }
 
-size_t	ft_next(const char *s, size_t x, char c)
+static size_t	ft_next(const char *s, size_t x, char c)
 {
 	if (c == '\0')
 		return (0);
@@ -59,7 +59,7 @@ size_t	ft_next(const char *s, size_t x, char c)
 	return (x);
 }
 
-char	**ret_nul(void)
+static char	**ret_nul(void)
 {
 	char **tab;
 
