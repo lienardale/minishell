@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/06 13:55:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/14 20:01:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,24 @@
 
 int		ft_echo(char **args)
 {
-	int	i;
-	int	n;
-	char *line;
+	int		i;
+	int		n;
+	char	*line;
+	int		quotes;
 
 	n = 0;
 	i = 0;
+	quotes = 0;
 	line = NULL;
 	ft_printf("			-> %s passe bien par la\n", args[0]);
 	if (!ft_strncmp(args[1], "-n", 2) && (i += 3))
 		n = 1;
-	ft_printf("%s", args[1] + i);
+	if ((args[1][i] == '\'' || args[1][i] == '\"') && args[1][i] == args[1][ft_strlen(args[1])])
+		quotes = args[1][i];
+	if (!quotes)
+		ft_printf("%s", args[1] + i);
+	else
+		write(1, args[1] + i + 1, ft_strlen(args[1] + i + 1) - 1);
 	if (!n)
 		ft_printf("\n");
 	return (1);

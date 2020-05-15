@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/14 17:49:22 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 14:18:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,13 @@ char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
 
 void		ft_prompt(int *check, int fd, char **env);
+void		ft_check_line(char *line, int *quote);
 
 int			ft_echo(char **args);
 int			ft_exit(char **args);
+
+void		ft_free_double_array(char **str);
+void		ft_print_double_array(char **str, char *name);
+size_t		ft_double_strlen(char **str);
 
 # endif

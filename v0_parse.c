@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/14 18:19:47 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 14:19:28 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 	builtins = ft_split("echo,exit", ',');
 	len = -1;
 	i = 0;
-	if (!(arg = ft_calloc(3, sizeof(char *))))
+	if (!(arg = ft_calloc(4, sizeof(char *))))
 		return (1);
 	args = ft_strtrim(args, SPACE);
 	while (args[++len])
@@ -43,7 +43,8 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 		return (1);
 	}
 	i = -1;
-	printf("commande deduite : |%s|\n", arg[0]);
+	// printf("commande deduite : |%s|\n", arg[0]);
+	ft_print_double_array(arg, "arg de commande:");
 	while (builtins[++i])
 	{
 		if (ft_strcmp(arg[0], builtins[i]) == 0)

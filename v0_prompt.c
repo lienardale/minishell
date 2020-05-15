@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/14 17:55:48 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 14:55:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,28 @@ void	ft_prompt(int *check, int fd, char **env)
 	int			quote;
 
 	quote = 0;
-	if (!(input = (char **)malloc(sizeof(char *) * 10)))
+	if (!(input = ft_calloc(10 ,sizeof(char *))))
 		return ; // liste chainee malloc de taille 10 pas satisf ?
 	ret = 1;
 	prompt = PROMPT;
 	i = -1;
 	while (ret && (write(1,prompt,ft_strlen(prompt))) && (*check = get_next_line(fd, &line)) >= 0)
 	{
-		input[++i] = ft_strdup(line);
+		input[++i] = ft_strdup(line); //strdup_free
 		// input = ft_realloc(input, i);
 		ft_check_line(line, &quote); //ternaire ?
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
 		if (!quote)
 		{
 			i = -1;
+			ft_print_double_array(input, "input");
 			args = ft_split_line(input);
-			// ft_print_double_array(args, "args");
+			ft_print_double_array(args, "args");
 			while (args[++i])
 				ret = ft_parse_line(args[i], env, builtin_fct);
 			ft_free_double_array(input);
 			ft_free_double_array(args);
-			if (!(input = (char **)malloc(sizeof(char *) * 10)))
+			if (!(input = ft_calloc(10 ,sizeof(char *))))
 				return ; // liste chainee ?
 		}
 		ft_free_ptr(line);
