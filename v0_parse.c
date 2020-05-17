@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/15 15:44:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/17 20:12:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 	if (args[++len])
 		arg[i++] = ft_strdup(&args[len]);
 	arg[i] = 0;
+	ft_free_ptr(args);
 	if (arg[0] == NULL)
 	{
 	// An empty command was entered.
@@ -48,7 +49,11 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 	while (builtins[++i])
 	{
 		if (ft_strcmp(arg[0], builtins[i]) == 0)
+		{
+			ft_free_double_array(builtins);
 			return (builtin_fct[i](arg));
+		}
 	}
+	ft_free_double_array(builtins);
 	return (ft_launch(arg, env));
 }

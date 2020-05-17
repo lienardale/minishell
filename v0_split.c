@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/15 14:18:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/15 20:53:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,6 @@ char	**ft_split_line(char **inputs)
 		}
 	}
 	tokens = ft_split_quote(tmp, ';');
-	// tokens = ft_split_quote(tmp, '|');
-	// if (!(tokens = ft_calloc(3, sizeof(char *))))
-	// 	return (NULL);
-	// while (line[++len])
-	// {
-	// 	if (ft_isspace(line[len]))
-	// 		break ;
-	// }
-	// line[len] = '\0';
-	// tokens[i++] = ft_strdup(line);
-	// if (line[++len])
-	// 	tokens[i++] = ft_strdup(&line[len]);
-	// tokens[i] = 0;
 	if (!tokens)
 	{
 		ft_dprintf(2, "minishell: allocation error\n");
