@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/17 19:46:09 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/18 16:14:34 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_echo(char **args)
+int		ft_echo(char **args, char **env)
 {
 	int		i;
 	int		n;
@@ -23,6 +23,7 @@ int		ft_echo(char **args)
 	i = 0;
 	quotes = 0;
 	line = NULL;
+(void)env;
 	// ft_printf("			-> %s passe bien par la\n", args[0]);
 	if (!ft_strncmp(args[1], "-n", 2) && (i += 3))
 		n = 1;

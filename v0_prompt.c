@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 15:40:02 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/18 17:21:18 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_prompt(int *check, int fd, char **env)
 	int			ret;
 	int			i;
 	char		*prompt;
-	static int	(*builtin_fct[])(char **) = {BUILTINS};
+	static int	(*builtin_fct[])(char **, char **) = {BUILTINS};
 	char		**input;
 	int			quote;
 

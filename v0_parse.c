@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 15:45:07 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/18 17:38:16 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
+int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **, char **))
 {
 	char	**builtins;
 	char	**arg;
@@ -32,10 +32,12 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 
 	// printf("arguments recus dans parse : |%s|\n", args);
 	// builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
-	builtins = ft_split("echo,exit", ',');
+	builtins = ft_split("echo,exit,cd,pwd,export,env", ',');
 	len = -1;
 	i = 0;
 	// 1)
+arg = ft_split_quote(args, ' ');
+	/*
 	if (!(arg = ft_calloc(4, sizeof(char *))))
 		return (1);
 	args = ft_strtrim(args, SPACE);
@@ -50,6 +52,7 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 		arg[i++] = ft_strdup(&args[len]);
 	arg[i] = 0;
 	ft_free_ptr(args);
+*/
 	if (arg[0] == NULL)
 	{
 	// An empty command was entered.
@@ -65,7 +68,7 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **))
 		{
 			ft_free_double_array(builtins);
 			// 3)
-			return (builtin_fct[i](arg));
+			return (builtin_fct[i](arg, env));
 		}
 	}
 	ft_free_double_array(builtins);
