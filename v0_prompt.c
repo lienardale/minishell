@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 11:19:59 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/18 15:38:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	ft_check_line(char **line, int *quote)
 			nbquote++;
 			*quote = '\"';
 		}
+		if (nbquote % 2 == 0)
+			*quote = 0;
 	}
 	if (*quote != 0)
 	{
@@ -58,8 +60,6 @@ void	ft_check_line(char **line, int *quote)
 		*line = ft_strjoin(tmp, "\n");
 		ft_free_ptr(tmp);
 	}
-	if (nbquote == 2)
-		*quote = 0;
 }
 
 void	ft_prompt(int *check, int fd, char **env)
