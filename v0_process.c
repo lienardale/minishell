@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 17:52:55 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/19 18:07:56 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,13 @@ static char	*ft_get_abspath_filename(char *exec, char **env)
 	while (paths[i])
 	{
 		if ((result = ft_findexec(paths[i], exec)))
+		{
+			ft_free_split(paths);
 			return (result);
+		}
 		i++;
 	}
+	ft_free_split(paths);
 	return (result);
 }
 
@@ -77,8 +81,10 @@ static void	ft_search_n_execute(char **args, char **env)
 {
 	int		exec_start;
 	char	*exec;
+	char	*temp;
 
 	exec = NULL;
+	temp = args[0];
 	if ((exec_start = ft_isolate_exec(args[0], &exec)) != -1)
 		args[0] = ft_parse_path(args[0]);
 	else
@@ -87,6 +93,7 @@ static void	ft_search_n_execute(char **args, char **env)
 		free(exec);
 	else if (!args[0])
 	{
+		args[0] = temp;
 		ft_dprintf(2, "ft_search_n_execute error?\n");
 		// perror("have to change error");
 		exit(EXIT_FAILURE);
@@ -94,11 +101,13 @@ static void	ft_search_n_execute(char **args, char **env)
 	if (execve(args[0], args, env) == -1)
 	{
 		free(args[0]);
+		args[0] = temp;
 		ft_dprintf(2, "error execve\n");
 		// perror("error execve");
 		exit(EXIT_FAILURE);
 	}
 	free(args[0]);
+	args[0] = temp;
 }
 
 int			ft_launch(char **args, char **env)
