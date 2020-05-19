@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/15 15:12:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/19 14:23:19 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ static int	ft_count_word_quote(char *str, char c)
 	while (str[i])
 	{
 		while (str[i] && str[i] == c && !quote)
+		{
+			if (str[i] == '\'' || str[i] == '\"')
+				quote = str[i];
 			i++;
+		}
 		while (str[i] && (str[i] != c || quote))
 		{
-			if (!quote && (str[i] == '\'' || str[i] == '\"'))
-				quote = str[i];
-			else if (quote && str[i] == quote)
+			if (quote && str[i] == quote)
 				quote = 0;
 			i++;
 		}
@@ -67,13 +69,15 @@ char		**ft_split_quote(char *str, char c)
 	while (str[i])
 	{
 		while (str[i] && str[i] == c && !quote)
+		{
+			if (str[i] == '\'' || str[i] == '\"')
+				quote = str[i];
 			i++;
+		}
 		start = i;
 		while (str[i] && (str[i] != c || quote))
 		{
-			if (!quote && (str[i] == '\'' || str[i] == '\"'))
-				quote = str[i];
-			else if (quote && str[i] == quote)
+			if (quote && str[i] == quote)
 				quote = 0;
 			i++;
 		}
