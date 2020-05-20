@@ -9,6 +9,7 @@ RUN	apt-get update;\
 	git\
 	make\
 	ruby\
+	valgrind \
 	ruby-bundler\
 	ruby-dev\
 	build-essential;\

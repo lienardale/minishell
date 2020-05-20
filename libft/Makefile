@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/17 20:35:09 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/19 20:19:55 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,8 +87,7 @@ SRCS =		./ft_calloc.c \
 			./ft_conv_2_fprintf.c \
 			./ft_putnbr_base_fprintf.c \
 			./ft_len_hexa_fprintf.c \
-			./get_next_line_bonus.c \
-			./get_next_line_utils_bonus.c \
+			./get_next_line.c \
 			./ft_free_split.c \
 			./ft_lstsplit.c \
 			./ft_lstdel_last.c \
@@ -128,7 +127,7 @@ CLANG =		clang
 
 OBJS_TEST =	$(SRCS:.c=.o)
 
-.c.o:		
+.c.o:
 			$(CLANG) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
 
 test:		$(OBJS_TEST)

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 17:52:01 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/20 13:57:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 #include "libft/libftprintf.h"
 #include "libft/libftdprintf.h"
 #include "libft/libftfprintf.h"
-#include "libft/get_next_line_bonus.h"
 
 # define SPACE " \t\r\n\v\f"
 

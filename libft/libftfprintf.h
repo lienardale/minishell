@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 10:06:39 by alienard          #+#    #+#             */
-/*   Updated: 2020/04/15 16:53:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/20 13:56:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdio.h>
 # include "libft.h"
-# include "get_next_line_bonus.h"
 
 typedef struct	s_fool
 {

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 17:49:13 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/20 13:57:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "get_next_line_bonus.h"
 
 typedef struct	s_list
 {
@@ -86,6 +85,6 @@ void			ft_lstdel_last(t_list *lst);
 char			**ft_strs_sort(char **strs, int strs_len);
 char			**ft_splitadd_back(char **strs, char *str);
 char			**ft_splitcpy(char **src);
-
+int				get_next_line(int fd, char **line);
 
 #endif

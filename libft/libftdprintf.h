@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 10:06:39 by alienard          #+#    #+#             */
-/*   Updated: 2020/04/15 16:42:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/05/20 13:56:53 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "libft.h"
-# include "get_next_line_bonus.h"
 
 typedef struct	s_dool
 {
