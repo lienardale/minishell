@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/19 14:10:03 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/22 15:23:18 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,33 +90,36 @@ test:		libft_test $(OBJS_TEST)
 
 #DOCKER CMDS
 
-# If the first argument is "run"...
-ifeq (run,$(firstword $(MAKECMDGOALS)))
-  # use the rest as arguments for "run"
-  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  # ...and turn them into do-nothing targets
-  $(eval $(RUN_ARGS):;@:)
-endif
-ifeq (exec,$(firstword $(MAKECMDGOALS)))
-  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  $(eval $(RUN_ARGS):;@:)
-endif
-ifeq (kill,$(firstword $(MAKECMDGOALS)))
-  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
-  $(eval $(RUN_ARGS):;@:)
-endif
-
-build:
-	docker build -t minishell_image .
-
-run:
-	docker run -d -ti --name $(RUN_ARGS) minishell_image
-
-exec:
-	docker exec -ti $(RUN_ARGS) bash
+docker:
+	if \
+		docker exec -ti work bash; \
+		then \
+			true; \
+	elif \
+		docker run -d -ti --name work minishell_image; \
+		then \
+			echo 'docker run succeeded'; \
+			docker exec -ti work bash; \
+	elif \
+		docker restart work; \
+		then \
+			echo 'docker run failed'; \
+			echo 'docker restart worked'; \
+			docker exec -ti work bash; \
+	elif \
+		docker build -t minishell_image . && \
+		docker run -d -ti --name work minishell_image; \
+		then \
+			echo 'docker run failed'; \
+			echo 'docker restart failed'; \
+			echo 'docker build then run succeeded'; \
+			docker exec -ti work bash; \
+	else \
+		echo 'Docker no installed'; \
+	fi
 
 kill:
-	docker kill $(RUN_ARGS)
+	docker kill work
 
 config_cdai:
 	git config --global user.email "cdai@student.42.fr";
