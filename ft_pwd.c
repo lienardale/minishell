@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/18 17:48:56 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/19 14:16:08 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	ft_pwd(char **args, char **env)
 	getcwd(cwd, buff_size);
 	ft_putendl_fd(cwd, 0);
 	free(cwd);
+ft_free_split(args);
 	return (1);
 }

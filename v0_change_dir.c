@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/18 17:50:20 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/19 14:15:41 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	ft_change_dir(char **args, char **env)
 		ft_putendl_fd(args[1], 0);
 		return (1);
 	}
+ft_free_split(args);
 	return (1);
 }

@@ -12,7 +12,8 @@ RUN	apt-get update;\
 	valgrind \
 	ruby-bundler\
 	ruby-dev\
-	build-essential;\
+	build-essential\
+	valgrind;\
 	cd tmp;\
 	git clone https://github.com/42Paris/42header.git;\
 	mkdir -p ~/.vim/plugin;\

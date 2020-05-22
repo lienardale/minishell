@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/05/18 17:47:44 by cdai             ###   ########.fr        #
+#    Updated: 2020/05/19 14:10:03 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,8 +132,7 @@ cdai:
 	clang test.c libft/libft.a -Ilibft;
 	./a.out;
 
-leaks:
-	clang -fsanitize=address test.c libft/libft.a -Ilibft;
-	./a.out;
+leak:
+	valgrind --leak-check=full ./minishell;
 
-.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard
+.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak
