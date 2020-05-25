@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/20 13:57:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/14 14:03:43 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ char			**ft_strs_sort(char **strs, int strs_len);
 char			**ft_splitadd_back(char **strs, char *str);
 char			**ft_splitcpy(char **src);
 int				get_next_line(int fd, char **line);
+void			ft_strsort(char **strs);
 
 #endif
