@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/14 14:02:14 by cdai             ###   ########.fr        #
+#    Updated: 2020/06/14 14:05:14 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,8 @@ SRCS =		./ft_calloc.c \
 			./ft_strs_sort.c \
 			./ft_splitadd_back.c \
 			./ft_splitcpy.c \
-			./ft_strsort.c
+			./ft_strsort.c \
+			./ft_split_to_lst.c
 
 OBJS = 		$(SRCS:.c=.o)
 

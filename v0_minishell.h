@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/20 13:57:48 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/14 14:05:35 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,19 @@ typedef struct	s_sh
 	int	check;
 }				t_sh;
 
+/*
 typedef struct	s_env
 {
 	int	fd;
 	int	check;
 }				t_env;
+*/
 
-typedef struct	s_minishell_data
+typedef struct	s_env
 {
-	char	**av;
-	char	**env;
-}				t_minishell_data;
+	char *key;
+	char *value;
+}				t_env;
 
 int				ft_launch(char **args, char **env);
 
@@ -90,5 +92,7 @@ int		ft_pwd(char **args, char **env);
 int		ft_export(char **args, char **env);
 
 char	**ft_start_minishell(char **env);
+
+t_list	*ft_split_to_lst_env(char **env);
 
 # endif
