@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_to_lst_env.c                              :+:      :+:    :+:   */
+/*   ft_sort_env_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/29 20:45:51 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/04 18:20:08 by cdai             ###   ########.fr       */
+/*   Created: 2020/06/04 14:13:53 by cdai              #+#    #+#             */
+/*   Updated: 2020/06/04 18:12:03 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-t_list			*ft_split_to_lst_env(char **env)
+void	ft_sort_env_lst(t_list *env_lst)
 {
-	t_list	*result;
-	int		i;
+	t_list	*previous;
+	t_list	*lst_temp;
 
-	i = 0;
-	result = NULL;
-	while(env[i])
+	lst_temp = env_lst;
+	while (lst_temp)
 	{
-		if (!result)
-			result = ft_lstnew(ft_separate_key_value(env[i]));
+		previous = lst_temp->next;
+		if (previous && ft_strcmp(((t_env*)previous->content)->key, ((t_env*)lst_temp->content)->key) > 0)
+		{
+			ft_swap_addr((void **)&(previous->content), (void **)&(lst_temp->content));
+			lst_temp = env_lst;
+		}
 		else
-			ft_lstadd_back(&result, ft_lstnew(ft_separate_key_value(env[i])));
-		i++;
+			lst_temp = lst_temp->next;
 	}
-	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:13:09 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/31 14:18:35 by cdai             ###   ########.fr       */
+/*   Updated: 2020/05/31 18:22:20 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ t_list	*ft_split_to_lst(char **strs)
 	int		i;
 
 	i = 0;
+	result = 0;
 	while (strs[i])
 	{
 		if (!result)
-			result = ft_lstnew(strs[i]);
+			result = ft_lstnew(ft_strdup(strs[i]));
 		else
-			ft_lstadd_back(&result, ft_lstnew(strs[i]));
+			ft_lstadd_back(&result, ft_lstnew(ft_strdup(strs[i])));
 		i++;
 	}
 	return (result);

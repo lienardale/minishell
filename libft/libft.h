@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:04:50 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:06:33 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char			**ft_split_charset(const char *s, const char *set);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void			ft_swap_int(int *a, int *b);
 void			ft_swap_double(double *a, double *b);
+void			ft_swap_addr(void **a, void **b);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
