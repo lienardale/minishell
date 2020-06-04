@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_to_lst_env.c                              :+:      :+:    :+:   */
+/*   ft_free_env_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/29 20:45:51 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/04 18:20:08 by cdai             ###   ########.fr       */
+/*   Created: 2020/05/31 15:38:40 by cdai              #+#    #+#             */
+/*   Updated: 2020/05/31 17:49:17 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-t_list			*ft_split_to_lst_env(char **env)
+void	ft_free_env_lst(void *env_lst)
 {
-	t_list	*result;
-	int		i;
+	t_env	*temp;
 
-	i = 0;
-	result = NULL;
-	while(env[i])
-	{
-		if (!result)
-			result = ft_lstnew(ft_separate_key_value(env[i]));
-		else
-			ft_lstadd_back(&result, ft_lstnew(ft_separate_key_value(env[i])));
-		i++;
-	}
-	return (result);
+	temp = env_lst;
+	if (temp->key)
+		free(temp->key);
+	if (temp->value)
+		free(temp->value);
+	free(temp);
 }
