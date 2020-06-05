@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/18 09:25:01 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/05 09:04:19 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,49 @@
 static char	*ft_increment_shlvl(char *env_shlvl)
 {
 	int		shlvl;
-	char	*temp;
+//	char	*temp;
 	char	*result;
-	int		result_len;
+//	int		result_len;
 
-	shlvl = ft_atoi(env_shlvl + 6);
+	shlvl = ft_atoi(env_shlvl);
+	/*
 temp = ft_itoa(++shlvl);
-	result_len = 7 + ft_strlen(temp);
+	result_len = 1 + ft_strlen(temp);
 result = ft_calloc(result_len, sizeof(char));
-	ft_strlcat(result, "SHLVL=", result_len);
+	ft_strlcat(result, "", result_len);
 	ft_strlcat(result, temp, result_len);
 	free(temp);
-	return (result);
+*/
+	result = ft_itoa(shlvl);
+return (result);
 }
 
-char	**ft_start_minishell(char **env)
+t_list	*ft_start_minishell(char **env)
 {
-	int		i;
-	char	*temp;
+	char	*key;
+	char	*old_value;
+	t_list	*temp;
+	t_list	*result;
 
-	i = 0;
-	if (!(env = ft_splitcpy(env)))
+	if (!(result = ft_split_to_lst_env(env)))
 		return (NULL);
-	while (env[i])
+	temp = result;
+	while (temp)
 	{
-		if (!ft_strncmp(env[i], "SHLVL=", 6))
+		key = ((t_env*)temp->content)->key;
+		if (!ft_strcmp(key, "SHLVL"))
 		{
-			temp = env[i];
-			if (!(env[i] = ft_increment_shlvl(env[i])))
-				return (ft_free_split(env));
-			free(temp);
+			old_value = ((t_env*)temp->content)->value;
+			if (!(((t_env*)temp->content)->value = ft_increment_shlvl(old_value)))
+			{
+				ft_lstclear(&result, ft_free_env_lst);
+				return (NULL);
+			}
+			free(old_value);
 		}
-printf("start_minishell/env[%d]: %s\n", i, env[i]);
-		i++;
+printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
+printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
+		temp = temp->next;
 	}
-	return (env);
+	return (result);
 }
