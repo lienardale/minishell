@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:12:24 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:13:34 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_parse_line(char *args, t_list *env, int (*builtin_fct[7])(char **, t_lis
 	// printf("arguments recus dans parse : |%s|\n", args);
 	// builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
 //	builtins = ft_split("echo,exit,cd,pwd,export,env", ',');
-	builtins = ft_split("exit,echo", ',');
+	builtins = ft_split("exit,echo,pwd,env", ',');
 	len = -1;
 	i = 0;
 	// 1)

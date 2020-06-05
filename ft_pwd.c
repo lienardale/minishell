@@ -6,13 +6,13 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/19 14:16:08 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/05 19:52:45 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	ft_pwd(char **args, char **env)
+int	ft_pwd(char **args, t_list *env)
 {
 	char	*cwd;
 	int		buff_size;
