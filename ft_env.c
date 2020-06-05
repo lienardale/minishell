@@ -6,19 +6,28 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:31:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/19 16:43:37 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/05 20:24:44 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	ft_env(char **args, char **env)
+int	ft_env(char **args, t_list *env)
 {
-	while (*env)
+	t_list	*temp;
+	t_env	*content;
+
+	temp = env;
+	while (temp)
 	{
-		if (ft_memchr(*env, '=', ft_strlen(*env)))
-			ft_putendl_fd(*env, 0);
-		env++;
+		content = (t_env*)temp->content;
+		if (content->value)
+		{
+			ft_putstr_fd(content->key, 0);
+			ft_putstr_fd("=", 0);
+			ft_putendl_fd(content->value, 0);
+		}
+		temp = temp->next;
 	}
 	ft_free_split(args);
 	return (1);
