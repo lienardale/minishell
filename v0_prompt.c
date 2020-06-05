@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 17:53:38 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/05 15:42:26 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ void	ft_check_line(char **line, int *quote)
 	}
 }
 
-void	ft_prompt(int *check, int fd, char **env)
+void	ft_prompt(int *check, int fd, t_list *env)
 {
 	char		*line;
 	char		**args;
 	int			ret;
 	int			i;
 	char		*prompt;
-	static int	(*builtin_fct[])(char **, char **) = {BUILTINS};
+	static int	(*builtin_fct[])(char **, t_list *) = {BUILTINS};
 	char		**input;
 	int			quote;
 
@@ -102,8 +102,12 @@ void	ft_prompt(int *check, int fd, char **env)
 			// ft_print_double_array(args, "args");
 			ft_free_double_array(input);
 			// then each cmd is parsed one after the other
+
 			while (args[++i])
 				ret = ft_parse_line(args[i], env, builtin_fct);
+(void)env;
+(void)builtin_fct;
+
 			ft_free_double_array(args);
 			if (!(input = ft_calloc(10 ,sizeof(char *))))
 				return ; // liste chainee ?

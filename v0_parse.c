@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 20:15:13 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/05 15:48:51 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **, char **))
+int		ft_parse_line(char *args, t_list *env, int (*builtin_fct[7])(char **, t_list *))
 {
 	char	**builtins;
 	char	**arg;
@@ -32,7 +32,8 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **, char *
 
 	// printf("arguments recus dans parse : |%s|\n", args);
 	// builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
-	builtins = ft_split("echo,exit,cd,pwd,export,env", ',');
+//	builtins = ft_split("echo,exit,cd,pwd,export,env", ',');
+	builtins = ft_split("exit,echo", ',');
 	len = -1;
 	i = 0;
 	// 1)
@@ -67,11 +68,13 @@ arg = ft_split_quote(args, ' ');
 		if (ft_strcmp(arg[0], builtins[i]) == 0)
 		{
 			ft_free_double_array(builtins);
+//printf("parse.c: %s\n", arg[0]);
 			// 3)
 			return (builtin_fct[i](arg, env));
 		}
 	}
 	ft_free_double_array(builtins);
 	// 3)
-	return (ft_launch(arg, env));
+//	return (ft_launch(arg, env));
+	return (1);
 }
