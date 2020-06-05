@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:11:02 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:12:09 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@
 
 # define QPROMPT "> "
 
-# define BUILTINS &ft_echo, &ft_exit, &ft_change_dir, &ft_pwd, &ft_export, &ft_env //&ft_unset
+# define BUILTINS &ft_exit, &ft_echo
+//&ft_change_dir, &ft_pwd, &ft_export, &ft_env, &ft_unset
 
 typedef struct	s_sh
 {
@@ -60,16 +61,16 @@ typedef struct	s_env
 
 int				ft_launch(char **args, char **env);
 
-int			ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **, char **));
+int			ft_parse_line(char *args, t_list *env, int (*builtin_fct[7])(char **, t_list *));
 
 char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
 
-void		ft_prompt(int *check, int fd, char **env);
+void		ft_prompt(int *check, int fd, t_list *env);
 void		ft_check_line(char **line, int *quote);
 
-int			ft_echo(char **args, char **env);
-int			ft_exit(char **args, char **env);
+int			ft_echo(char **args, t_list *env);
+int			ft_exit(char **args, t_list *env);
 
 void		ft_free_double_array(char **str);
 void		ft_print_double_array(char **str, char *name);
