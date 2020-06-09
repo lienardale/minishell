@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:40:26 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/09 11:28:09 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/09 15:37:05 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,15 @@ char	**ft_lst_env_to_split(t_list *lst_env)
 	while (lst)
 	{
 		content = (t_env*)lst->content;
-		len = ft_strlen(content->key) + ft_strlen(content->value) + 2;
+		len = ft_strlen(content->key) + 1;
+		len += (content->value) ? ft_strlen(content->value) + 1 : 0;
 		result[i] = ft_calloc(len, sizeof(**result));
 		ft_strlcat(result[i], content->key, len);
-		ft_strlcat(result[i], "=", len);
-		ft_strlcat(result[i], content->value, len);
+		if (content->value)
+		{
+			ft_strlcat(result[i], "=", len);
+			ft_strlcat(result[i], content->value, len);
+		}
 		i++;
 		lst = lst->next;
 	}
