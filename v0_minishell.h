@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:13:21 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:14:39 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define QPROMPT "> "
 
-# define BUILTINS &ft_exit, &ft_echo, &ft_pwd, &ft_env//&ft_change_dir, &ft_export, &ft_unset
+# define BUILTINS &ft_exit, &ft_echo, &ft_pwd, &ft_env, &ft_change_dir//, &ft_export, &ft_unset
 
 typedef struct	s_sh
 {
@@ -83,7 +83,7 @@ char	*ft_lststrjoin(t_list *lst, char *inter);
 
 int		ft_isolate_exec(char *path, char **buff);
 
-int		ft_change_dir(char **args, char **env);
+int		ft_change_dir(char **args, t_list *env);
 
 int		ft_env(char **args, t_list *env);
 
