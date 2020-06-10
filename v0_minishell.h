@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/10 10:59:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/10 17:23:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct	s_minishell_data
 
 int				ft_launch(pid_t pid, char **args, char **env);
 
-int			ft_parse_line(pid_t pid, int pfd[2], char *args, char **env, int (*builtin_fct[7])(char **, char **));
+int			ft_parse_line(pid_t pid, char *args, char **env, int (*builtin_fct[7])(char **, char **));
 int			ft_pipe(char *args, char **env, int (*builtin_fct[7])(char **, char **));
 int			ft_pipe_split(char **args, char **env, int (*builtin_fct[7])(char **, char **));
 int			ft_pipe_init(pid_t pid, int pfd[2], char *args, char **env, int (*builtin_fct[7])(char **, char **));

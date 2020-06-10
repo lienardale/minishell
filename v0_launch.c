@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/10 10:55:07 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/10 17:22:14 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,12 @@ int			ft_launch(pid_t pid, char **args, char **env)
 	// pid = fork();
 	if (pid == 0)
 	{
-		// Child process
-
+		// // Child process
+		// close(pfd[1]); /* close the unused write side */
+		// dup2(pfd[0], STDIN_FILENO); /* connect the read side with stdin */
+		// close(pfd[0]); /* close the read side */
 		ft_search_n_execute(args, env);
+		exit(1);
 	}
 	else if (pid < 0)
 	{
@@ -134,7 +137,10 @@ int			ft_launch(pid_t pid, char **args, char **env)
 	}
 	else
 	{
-		// Parent process
+		// // Parent process
+		// close(pfd[0]); /* close the unused read side */
+		// dup2(pfd[1], STDOUT_FILENO); /* connect the write side with stdout */
+		// close(pfd[1]); /* close the write side */
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);

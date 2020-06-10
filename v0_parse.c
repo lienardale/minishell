@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/10 10:58:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/10 17:23:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_parse_line(pid_t pid, int pfd[2], char *args, char **env, int (*builtin_fct[7])(char **, char **))
+int		ft_parse_line(pid_t pid, char *args, char **env, int (*builtin_fct[7])(char **, char **))
 {
 	char	**builtins;
 	char	**arg;

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/09 11:37:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/10 12:12:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	ft_prompt(int *check, int fd, char **env)
 			ret = ft_pipe_split(args, env, builtin_fct);
 			if (!(input = ft_calloc(10 ,sizeof(char *))))
 				return ; // liste chainee ?
-			i = -1;
 		}
 		ft_free_ptr(line);
 		if (*check == 0)
