@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_process.c                                       :+:      :+:    :+:   */
+/*   v0_launch.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/22 20:07:31 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/10 10:55:07 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,16 +110,17 @@ static void	ft_search_n_execute(char **args, char **env)
 	args[0] = temp;
 }
 
-int			ft_launch(char **args, char **env)
+int			ft_launch(pid_t pid, char **args, char **env)
 {
-	pid_t	pid;
+	// pid_t	pid;
 	pid_t	wpid;
 	int		status;
 
-	pid = fork();
+	// pid = fork();
 	if (pid == 0)
 	{
 		// Child process
+
 		ft_search_n_execute(args, env);
 	}
 	else if (pid < 0)

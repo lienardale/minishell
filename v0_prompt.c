@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/20 12:17:33 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/09 11:37:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ void	ft_prompt(int *check, int fd, char **env)
 		input[++i] = ft_strdup(line);
 		// we check line for quotes
 		ft_check_line(&input[i], &quote);
-		// printf("quote : |%d|\n", quote);
-
 		// if there is a quote open, we change the promt
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
 		// and do not enter the parsing fcts
@@ -95,16 +93,11 @@ void	ft_prompt(int *check, int fd, char **env)
 		{
 			// if there is no more quote, we rearrange the input
 			i = -1;
-			// ft_print_double_array(input, "input");
-
 			// split gets 1 cmd per char *
 			args = ft_split_line(input);
-			// ft_print_double_array(args, "args");
 			ft_free_double_array(input);
 			// then each cmd is parsed one after the other
-			while (args[++i])
-				ret = ft_parse_line(args[i], env, builtin_fct);
-			ft_free_double_array(args);
+			ret = ft_pipe_split(args, env, builtin_fct);
 			if (!(input = ft_calloc(10 ,sizeof(char *))))
 				return ; // liste chainee ?
 			i = -1;

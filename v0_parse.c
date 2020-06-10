@@ -6,61 +6,36 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/19 22:31:47 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/10 10:58:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **, char **))
+int		ft_parse_line(pid_t pid, int pfd[2], char *args, char **env, int (*builtin_fct[7])(char **, char **))
 {
 	char	**builtins;
 	char	**arg;
 	int		i;
-	int		len;
 
 /*
 	in this function we do 3 things :
 	1) split the char *args into a char ** that can be used by execve or the builtins fct, it is as follow
-		arg[0] = cmd
-		arg[1] = option / argument / null
-		arg[2] = argument / null
-		arg[3] = null
 	2) compare the cmd to the buitins ones
 	3) return either the corresponding builtin fct or the execve launching in ft_launch
 */
 
-	// printf("arguments recus dans parse : |%s|\n", args);
 	// builtins = ft_split("echo,exit,cd,pwd,export,unset,env", ',');
 	builtins = ft_split("echo,exit,cd,pwd,export,env", ',');
-	len = -1;
-	i = 0;
 	// 1)
-arg = ft_split_quote(args, ' ');
-	/*
-	if (!(arg = ft_calloc(4, sizeof(char *))))
-		return (1);
-	args = ft_strtrim(args, SPACE);
-	while (args[++len])
-	{
-		if (ft_isspace(args[len]))
-			break ;
-	}
-	args[len] = '\0';
-	arg[i++] = ft_strdup(args);
-	if (args[++len])
-		arg[i++] = ft_strdup(&args[len]);
-	arg[i] = 0;
-	ft_free_ptr(args);
-*/
+	arg = ft_split_quote(args, ' ');
 	if (arg[0] == NULL)
 	{
 	// An empty command was entered.
 		return (1);
 	}
+
 	i = -1;
-	// printf("commande deduite : |%s|\n", arg[0]);
-	// ft_print_double_array(arg, "arg de commande:");
 	// 2)
 	while (builtins[++i])
 	{
@@ -73,5 +48,5 @@ arg = ft_split_quote(args, ' ');
 	}
 	ft_free_double_array(builtins);
 	// 3)
-	return (ft_launch(arg, env));
+	return (ft_launch(pid, arg, env));
 }

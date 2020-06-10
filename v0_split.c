@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 18:23:18 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/01 17:40:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	**ft_split_line(char **inputs)
 	}
 	// Spliting the outcome to get one cmd per char *
 	tokens = ft_split_quote(tmp, ';');
+	// tokens = ft_split_quote_charset(tmp, ";|");
 	// freeing tmp one last time
 	ft_free_ptr(tmp);
 	if (!tokens)
