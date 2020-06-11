@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/11 16:53:06 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 18:33:33 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ arg = ft_split_quote(args, ' ');
 	}
 	ft_free_double_array(builtins);
 	// 3)
-//	return (ft_launch(arg, env));
-	return (1);
+	return (ft_launch(arg, env));
+//	return (1);
 }

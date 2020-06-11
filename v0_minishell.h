@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/11 16:52:27 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 18:37:00 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct	s_env
 	char *value;
 }				t_env;
 
-int				ft_launch(char **args, char **env);
+int				ft_launch(char **args, t_list **env);
 
 int			ft_parse_line(char *args, t_list **env, int (*builtin_fct[7])(char **, t_list **));
 

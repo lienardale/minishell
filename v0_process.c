@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/19 18:07:56 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 19:38:09 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,17 +110,21 @@ static void	ft_search_n_execute(char **args, char **env)
 	args[0] = temp;
 }
 
-int			ft_launch(char **args, char **env)
+int			ft_launch(char **args, t_list **env)
 {
 	pid_t	pid;
 	pid_t	wpid;
 	int		status;
+	char	**split_env;
 
+	split_env = NULL;
 	pid = fork();
 	if (pid == 0)
 	{
 		// Child process
-		ft_search_n_execute(args, env);
+		split_env = ft_lst_env_to_split(*env);
+		ft_search_n_execute(args, split_env);
+		ft_free_split(split_env);
 	}
 	else if (pid < 0)
 	{
@@ -137,8 +141,8 @@ int			ft_launch(char **args, char **env)
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
+		// freeing allocated memory
+		ft_free_double_array(args);
 	}
-	// freeing allocated memory
-	ft_free_double_array(args);
 	return (1);
 }
