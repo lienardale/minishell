@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:17:42 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:22:13 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_parse_line(char *args, t_list *env, int (*builtin_fct[7])(char **, t_list *))
+int		ft_parse_line(char *args, t_list **env, int (*builtin_fct[7])(char **, t_list **))
 {
 	char	**builtins;
 	char	**arg;

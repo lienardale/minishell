@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/10 09:45:00 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 16:54:04 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 	return (env);
 }
 
-int				ft_export(char **args, t_list *env)
+int				ft_export(char **args, t_list **env)
 {
 	int		i;
 	char	**splited;
@@ -60,8 +60,8 @@ int				ft_export(char **args, t_list *env)
 	if (!args[1])
 	{
 		i = -1;
-		splited = ft_lst_env_to_split(env);
-		ft_strs_sort(splited, ft_lstsize(env));
+		splited = ft_lst_env_to_split(*env);
+		ft_strs_sort(splited, ft_lstsize(*env));
 		while (splited[++i])
 			ft_printf("%s\n", splited[i]);
 		ft_free_split(splited);
@@ -70,7 +70,7 @@ int				ft_export(char **args, t_list *env)
 	{
 		i = 0;
 		while (args[++i])
-			ft_update_env(env, args[i]);
+			ft_update_env(*env, args[i]);
 	}
 	ft_free_split(args);
 	return (1);

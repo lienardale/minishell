@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:12:45 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:22:23 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ void	ft_check_line(char **line, int *quote)
 	}
 }
 
-void	ft_prompt(int *check, int fd, t_list *env)
+void	ft_prompt(int *check, int fd, t_list **env)
 {
 	char		*line;
 	char		**args;
 	int			ret;
 	int			i;
 	char		*prompt;
-	static int	(*builtin_fct[])(char **, t_list *) = {BUILTINS};
+	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
 	char		**input;
 	int			quote;
 
@@ -105,8 +105,10 @@ void	ft_prompt(int *check, int fd, t_list *env)
 
 			while (args[++i])
 				ret = ft_parse_line(args[i], env, builtin_fct);
+/*
 (void)env;
 (void)builtin_fct;
+*/
 
 			ft_free_double_array(args);
 			if (!(input = ft_calloc(10 ,sizeof(char *))))

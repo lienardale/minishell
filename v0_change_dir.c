@@ -6,13 +6,13 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/07 14:49:14 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 16:35:53 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	ft_change_dir(char **args, t_list *env)
+int	ft_change_dir(char **args, t_list **env)
 {
 	int		chdir_value;
 
