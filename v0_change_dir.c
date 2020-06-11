@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/11 16:35:53 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 19:21:49 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,34 @@
 int	ft_change_dir(char **args, t_list **env)
 {
 	int		chdir_value;
+	t_list	*home;
 
-	chdir_value = chdir(args[1]);
+	chdir_value = -1;
+// faire . et .. ?
+	if (!args[1] || (!ft_strcmp(args[1], "~") && !args[2]))
+	{
+		home = ft_search_env(*env, "HOME");
+// if (home)
+		chdir_value = chdir(((t_env*)home->content)->value);
+	}
+	else if (args[1] && args[2])
+		chdir_value = -2;
+	else
+		chdir_value = chdir(args[1]);
+//	(void)env;
 // change pwd et oldpwd dans env
-	(void)env;
-	if (chdir_value)
+	if (chdir_value == -2)
+	{
+		ft_putstr_fd("Too much arguments\n", 0);
+ft_free_split(args);
+		return (1);
+	}
+	else if (chdir_value)
 	{
 		ft_putstr_fd("No such file or directory: ", 0);
-		ft_putendl_fd(args[1], 0);
+		ft_putstr_fd(args[1], 0);
+		ft_putchar_fd('\n', 0);
+ft_free_split(args);
 		return (1);
 	}
 ft_free_split(args);
