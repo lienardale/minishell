@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:06:33 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 14:19:15 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ char			**ft_splitcpy(char **src);
 int				get_next_line(int fd, char **line);
 void			ft_strsort(char **strs);
 t_list			*ft_split_to_lst(char **strs);
+void			ft_lstdel_between(t_list **alst, void *content, void (*del)(void*));
 
 #endif
