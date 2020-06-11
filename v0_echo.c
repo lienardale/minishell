@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/05 17:58:15 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/11 16:27:48 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_echo(char **args, t_list *env)
+int		ft_echo(char **args, t_list **env)
 {
 	int		i;
 	int		n;
@@ -32,6 +32,7 @@ int		ft_echo(char **args, t_list *env)
 		&& args[1][i] == args[1][ft_strlen(args[1]) - 1])
 		quotes = args[1][i];
 */
+// Pour echo, il faudra faire attention au quote, double quote, espace a l'interieur/l'exterieur etc. le parsing doit etre different.
 	if (n && args[2])
 	{
 		while (args[2 + i])
