@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/11 16:27:48 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/14 08:30:38 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,19 @@ int		ft_echo(char **args, t_list **env)
 		while (args[2 + i])
 		{
 			ft_printf("%s", args[2 + i]);
+			ft_printf(" ");
 			i++;
 		}
 	}
 	else if (!quotes && args[1])
-		ft_printf("%s", args[1]);
+	{
+		while (args[1 + i])
+		{
+			ft_printf("%s", args[1 + i]);
+			ft_printf(" ");
+			i++;
+		}
+	}
 	if (!n)
 		ft_printf("\n");
 	ft_free_double_array(args);
