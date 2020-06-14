@@ -72,6 +72,8 @@ void	ft_prompt(int *check, int fd, char **env)
 	static int	(*builtin_fct[])(char **, char **) = {BUILTINS};
 	char		**input;
 	int			quote;
+	char		**pipe;
+	int			j;
 
 	quote = 0;
 	if (!(input = ft_calloc(10 ,sizeof(char *))))
@@ -103,7 +105,15 @@ void	ft_prompt(int *check, int fd, char **env)
 			ft_free_double_array(input);
 			// then each cmd is parsed one after the other
 			while (args[++i])
-				ret = ft_parse_line(args[i], env, builtin_fct);
+			{
+				pipe = ft_split_quote(args[i], '|');
+				j = -1;
+				while (pipe[++j])
+				{
+					ret = ft_parse_line(pipe[j], env, builtin_fct);
+				}
+
+			}
 			ft_free_double_array(args);
 			if (!(input = ft_calloc(10 ,sizeof(char *))))
 				return ; // liste chainee ?

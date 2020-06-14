@@ -18,8 +18,7 @@ int		ft_fputnbr_hexa(t_fool *fl, long long unsigned int nbr, int r)
 	char					*base;
 
 	base = "0123456789abcdef";
-	a = (nbr < 0) ? -nbr : nbr;
-	(nbr < 0) ? r += fwrite("-", sizeof(char), 1, fl->file) : 0;
+	a = nbr;
 	(a > 15) ? r = ft_fputnbr_hexa(fl, (long long unsigned int)(a / 16), r) : 0;
 	r += fwrite(&(base[a % 16]), sizeof(char), 1, fl->file);
 	return (r);
@@ -31,8 +30,7 @@ int		ft_fputnbr_hexm(t_fool *fl, long long unsigned int nbr, int r)
 	char					*base;
 
 	base = "0123456789ABCDEF";
-	a = (nbr < 0) ? -nbr : nbr;
-	(nbr < 0) ? r += fwrite("-", sizeof(char), 1, fl->file) : 0;
+	a = nbr;
 	(a > 15) ? r = ft_fputnbr_hexm(fl, (long long unsigned int)(a / 16), r) : 0;
 	r += fwrite(&(base[a % 16]), sizeof(char), 1, fl->file);
 	return (r);
@@ -43,7 +41,6 @@ int		ft_fputnbr_unsigned(t_fool *fl, unsigned int n, int r)
 	char			*base;
 
 	base = "0123456789";
-	n = (n < 0) ? -n : n;
 	(n > 9) ? r = ft_fputnbr_unsigned(fl, (n / 10), r) : 0;
 	r += fwrite(&(base[n % 10]), sizeof(char), 1, fl->file);
 	return (r);

@@ -36,7 +36,7 @@ int		ft_parse_line(char *args, char **env, int (*builtin_fct[7])(char **, char *
 	len = -1;
 	i = 0;
 	// 1)
-arg = ft_split_quote(args, ' ');
+	arg = ft_split_quote(args, ' ');
 	/*
 	if (!(arg = ft_calloc(4, sizeof(char *))))
 		return (1);
