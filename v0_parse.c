@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:30:44 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/16 10:51:33 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,7 @@ int		ft_parse_line(char *args, t_list **env, int (*builtin_fct[7])(char **, t_li
 	len = -1;
 	i = 0;
 	// 1)
-arg = ft_split_quote(args, ' ');
-	/*
-	if (!(arg = ft_calloc(4, sizeof(char *))))
-		return (1);
-	args = ft_strtrim(args, SPACE);
-	while (args[++len])
-	{
-		if (ft_isspace(args[len]))
-			break ;
-	}
-	args[len] = '\0';
-	arg[i++] = ft_strdup(args);
-	if (args[++len])
-		arg[i++] = ft_strdup(&args[len]);
-	arg[i] = 0;
-	ft_free_ptr(args);
-*/
+	arg = ft_split_quote(args, ' ');
 	if (arg[0] == NULL)
 	{
 	// An empty command was entered.
@@ -67,7 +51,7 @@ arg = ft_split_quote(args, ' ');
 		if (ft_strcmp(arg[0], builtins[i]) == 0)
 		{
 			ft_free_double_array(builtins);
-//printf("parse.c: %s\n", arg[0]);
+			//printf("parse.c: %s\n", arg[0]);
 			// 3)
 			return (builtin_fct[i](arg, env));
 		}

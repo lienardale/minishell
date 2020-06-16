@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:30:55 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/16 12:49:21 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static char	*ft_findexec(char *path, char *exec)
 
 	result = NULL;
 	dir = opendir(path);
+	if (!dir)
+		return (NULL);
 	while ((tmp = readdir(dir)))
 	{
 		if (ft_strcmp(tmp->d_name, exec) == 0)
@@ -95,7 +97,6 @@ static void	ft_search_n_execute(char **args, char **env)
 	{
 		args[0] = temp;
 		ft_dprintf(2, "ft_search_n_execute error?\n");
-		// perror("have to change error");
 		exit(EXIT_FAILURE);
 	}
 	if (execve(args[0], args, env) == -1)
@@ -103,7 +104,6 @@ static void	ft_search_n_execute(char **args, char **env)
 		free(args[0]);
 		args[0] = temp;
 		ft_dprintf(2, "error execve\n");
-		// perror("error execve");
 		exit(EXIT_FAILURE);
 	}
 	free(args[0]);
@@ -130,7 +130,6 @@ int			ft_launch(char **args, t_list **env)
 	{
 		// Error forking
 		ft_dprintf(2, "error forking\n");
-		// perror("error forking");
 		// freeing allocated memory
 		ft_free_double_array(args);
 		return (0);
