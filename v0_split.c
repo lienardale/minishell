@@ -6,20 +6,49 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/18 18:23:18 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/16 16:03:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-size_t	ft_double_strlen(char **str)
+void	ft_parse_escape()
 {
-	size_t	i;
+	
+}
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+void	ft_parse_redir()
+{
+	
+}
+
+void	ft_parse_quote()
+{
+	
+}
+
+t_list	*ft_line_to_lst(char *inputs, t_list **env)
+{
+	t_list	*begin;
+	t_list	current;
+	t_cmd	content;
+	int		i;
+
+	i = -1;
+	begin = NULL;
+	while (inputs[++i])
+	{
+		ft_bzero(&current, sizeof(t_list));
+		ft_bzero(&content, sizeof(t_cmd));
+		while (inputs[i] && ft_isspace(inputs[i]))
+			i++;
+		
+		if (!begin)
+			begin = ft_lstnew(&current);
+		else
+			ft_lstadd_back(&begin, ft_lstnew(&current));
+	}
+	return (begin);
 }
 
 char	**ft_split_line(char **inputs)

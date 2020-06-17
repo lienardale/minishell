@@ -6,29 +6,35 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/16 10:43:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/16 13:59:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-void	ft_free_double_array(char **str)
+char	*ft_input_join(char **inputs)
 {
+	char	*tmp;
+	char	*tmp_2;
 	int		i;
 
 	i = -1;
-	while (str[++i])
-		(str[i]) ? ft_free_ptr(str[i]) : 0;
-	(str) ? ft_free_ptr(str) : 0;
-}
-
-void	ft_print_double_array(char **str, char *name)
-{
-	int		i;
-
-	i = -1;
-	while (str[++i])
-		ft_printf("%s[%d]:|%s|\n", name, i, str[i]);
+	tmp = NULL;
+	if (inputs && ft_double_strlen(inputs) > 0)
+	{
+		while (inputs[++i])
+		{
+			tmp_2 = tmp;
+			tmp = ft_strjoin(tmp, inputs[i]);
+			ft_free_ptr(tmp_2);
+		}
+	}
+	if (!tmp)
+	{
+		ft_dprintf(2, "minishell: allocation error\n");
+		exit(EXIT_FAILURE);
+	}
+	return (tmp);
 }
 
 void	ft_check_line(char **line, int *quote)
@@ -72,6 +78,7 @@ void	ft_prompt(int *check, int fd, t_list **env)
 	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
 	char		**input;
 	int			quote;
+	t_cmd		*begin;
 
 	quote = 0;
 	if (!(input = ft_calloc(10 ,sizeof(char *))))
@@ -98,7 +105,9 @@ void	ft_prompt(int *check, int fd, t_list **env)
 			// ft_print_double_array(input, "input");
 
 			// split gets 1 cmd per char *
-			args = ft_split_line(input);
+			// args = ft_split_line(input);
+			args = ft_input_join(input);
+			ft_line_to_lst();
 			// ft_print_double_array(args, "args");
 			ft_free_double_array(input);
 			// then each cmd is parsed one after the other

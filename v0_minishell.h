@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/14 14:30:30 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/17 14:04:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #include "libft/libftprintf.h"
 #include "libft/libftdprintf.h"
 #include "libft/libftfprintf.h"
+#include "list.h"
 
 # define SPACE " \t\r\n\v\f"
 
@@ -52,11 +53,27 @@ typedef struct	s_env
 }				t_env;
 */
 
+
 typedef struct	s_env
 {
 	char *key;
 	char *value;
 }				t_env;
+
+typedef struct	s_cmd
+{
+	int		pipe[2];
+	int		pos;
+	char	*cmd;
+	char	**arg;
+	int		before;
+	int		after;
+	int		quote;
+	t_bool	opt;
+	t_list	**env;
+	void	*next;
+	void	*prev;
+}				t_cmd;
 
 int				ft_launch(char **args, t_list **env);
 
@@ -67,6 +84,8 @@ char		**ft_split_quote(char *str, char c);
 
 void		ft_prompt(int *check, int fd, t_list **env);
 void		ft_check_line(char **line, int *quote);
+char		*ft_input_join(char **inputs);
+t_list		*ft_line_to_lst(char *inputs, t_list **env);
 
 int			ft_echo(char **args, t_list **env);
 int			ft_exit(char **args, t_list **env);

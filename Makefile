@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/10 09:55:02 by cdai             ###   ########.fr        #
+#    Updated: 2020/06/16 14:13:06 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,9 @@ SRCS =		v0_minishell.c \
 			ft_separate_key_value.c \
 			ft_lst_env_to_split.c \
 			ft_search_env.c \
-			ft_unset.c
+			ft_unset.c \
+			ft_utils.c \ 
+			ft_lst_utils.c
 
 OBJS = 		$(SRCS:.c=.o)
 
