@@ -6,134 +6,85 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/14 14:29:28 by cdai             ###   ########.fr        #
+#    Updated: 2020/06/18 15:28:26 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 		libft.a
+NAME = 			libft.a
 
-SRCS =		./ft_calloc.c \
-			./ft_realloc.c \
-			./ft_free_ptr.c \
-			./ft_swap.c \
-			./ft_isdigit.c \
-			./ft_memcmp.c \
-			./ft_strchr.c \
-			./ft_strlen.c \
-			./ft_tolower.c \
-			./ft_atoi.c \
-			./ft_atof.c \
-			./ft_isalnum.c \
-			./ft_isnum.c \
-			./ft_isprint.c \
-			./ft_memcpy.c \
-			./ft_strcmp.c \
-			./ft_strncmp.c \
-			./ft_toupper.c \
-			./ft_isalpha.c \
-			./ft_memccpy.c \
-			./ft_memmove.c \
-			./ft_strlcat.c \
-			./ft_strnstr.c \
-			./ft_bzero.c \
-			./ft_isascii.c \
-			./ft_isspace.c \
-			./ft_memchr.c \
-			./ft_memset.c \
-			./ft_strlcpy.c \
-			./ft_strrchr.c \
-			./ft_strdup.c \
-			./ft_calloc.c \
-			./ft_itoa.c \
-			./ft_substr.c \
-			./ft_strjoin.c \
-			./ft_split.c \
-			./ft_split_charset.c \
-			./ft_strtok.c \
-			./ft_strtok_r.c \
-			./ft_strtrim.c \
-			./ft_strmapi.c \
-			./ft_putchar_fd.c \
-			./ft_putstr_fd.c \
-			./ft_putendl_fd.c \
-			./ft_putnbr_fd.c \
-			./ft_lstnew_bonus.c \
-			./ft_lstadd_front_bonus.c \
-			./ft_lstsize_bonus.c \
-			./ft_lstlast_bonus.c \
-			./ft_lstadd_back_bonus.c \
-			./ft_lstdelone_bonus.c \
-			./ft_lstclear_bonus.c \
-			./ft_lstiter_bonus.c \
-			./ft_lstmap_bonus.c \
-			./ft_printf.c \
-			./ft_padding.c \
-			./ft_preci.c \
-			./ft_conv.c \
-			./ft_conv_2.c \
-			./ft_putnbr_base.c \
-			./ft_len_hexa.c \
-			./ft_dprintf.c \
-			./ft_padding_dprintf.c \
-			./ft_preci_dprintf.c \
-			./ft_conv_dprintf.c \
-			./ft_conv_2_dprintf.c \
-			./ft_putnbr_base_dprintf.c \
-			./ft_len_hexa_dprintf.c \
-			./ft_fprintf.c \
-			./ft_padding_fprintf.c \
-			./ft_preci_fprintf.c \
-			./ft_conv_fprintf.c \
-			./ft_conv_2_fprintf.c \
-			./ft_putnbr_base_fprintf.c \
-			./ft_len_hexa_fprintf.c \
-			./get_next_line.c \
-			./ft_free_split.c \
-			./ft_lstsplit.c \
-			./ft_lstdel_last.c \
-			./ft_strs_sort.c \
-			./ft_splitadd_back.c \
-			./ft_splitcpy.c \
-			./ft_strsort.c \
-			./ft_split_to_lst.c \
-			./ft_lstdel_between.c
+BILIST_DIR		= bilist
+CONVERT_DIR		= convert
+DPRINTF_DIR		= dprintf
+FPRINTF_DIR		= fprintf
+GNL_DIR			= gnl
+IS_DIR			= is
+LIST_DIR		= list
+MEM_DIR			= mem
+PRINT_DIR		= print
+PRINTF_DIR		= printf
+STR_DIR			= str
 
-OBJS = 		$(SRCS:.c=.o)
+INCLUDES_DIR	= ./headers
 
-CC =		gcc
+_BILIST 		= bilist
+_CONVERT		= convert
+_DPRINTF		= dprintf
+_FPRINTF		= fprintf
+_GNL			= gnl
+_IS				= is
+_LIST			= list
+_MEM			= mem
+_PRINT			= print
+_PRINTF			= printf
+_STR			= str
 
-RM = 		rm -f
+BILIST 			= $(addprefix $(BILIST_DIR)/, $(_BILIST))
+CONVERT			= $(addprefix $(CONVERT_DIR)/, $(_CONVERT))
+DPRINTF			= $(addprefix $(DPRINTF_DIR)/, $(_DPRINTF))
+FPRINTF			= $(addprefix $(FPRINTF_DIR)/, $(_FPRINTF))
+GNL				= $(addprefix $(GNL_DIR)/, $(_GNL))
+IS				= $(addprefix $(IS_DIR)/, $(_IS))
+LIST			= $(addprefix $(LIST_DIR)/, $(_LIST))
+MEM				= $(addprefix $(MEM_DIR)/, $(_MEM))
+PRINT			= $(addprefix $(PRINT_DIR)/, $(_PRINT))
+PRINTF			= $(addprefix $(PRINTF_DIR)/, $(_PRINTF))
+STR				= $(addprefix $(STR_DIR)/, $(_STR))
 
-AR = 		ar rc
+SRCS 			= $(BILIST) $(CONVERT) $(DPRINTF) $(FPRINTF) $(GNL) $(IS) $(LIST) $(MEM) $(PRINT) $(PRINTF) $(STR)
+OBJS			= $(SRCS:.c=.o)
+OBJS_TEST 		= $(SRCS:.c=.o)
 
-HEADER = 	./
+CFLAGS			= -Wall -Wextra -Werror -g
+CC				= gcc
+CLANG			= clang
 
-CFLAGS =	-Wall -Wextra -Werror -g
+RM				= rm -f
+AR				= ar rc
+HEADER			= ./
 
-.c.o:		$(SRCS)
-			$(CC) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
+# .c.o:		$(SRCS)
+			# $(CC) $(CFLAGS) -c $< -I $(INCLUDES_DIR) -o $(<:.c=.o)
 
-all:		$(NAME)
+.c.o:			$(SRCS)
+				$(CLANG) $(CFLAGS) -c $< -I $(INCLUDES_DIR) -o $(<:.c=.o)
 
-$(NAME):	$(OBJS)
-			$(AR) $(NAME) $(OBJS)
+all:			$(NAME)
+
+$(NAME):		$(OBJS) headers/libft.h
+				$(AR) $(NAME) $(OBJS)
 
 clean:
-			$(RM) $(OBJS) $(OBJSBONUS)
+				$(RM) $(OBJS) $(OBJSBONUS)
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean:			clean
+				$(RM) $(NAME)
 
-re:			fclean all
+norme:
+				norminette $(SRCS) headers/libft.h
 
-CLANG =		clang
+re:				fclean all
 
-OBJS_TEST =	$(SRCS:.c=.o)
+test:			$(OBJS_TEST)
+				$(AR) $(NAME) $(OBJS)
 
-.c.o:
-			$(CLANG) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
-
-test:		$(OBJS_TEST)
-			$(AR) $(NAME) $(OBJS)
-
-.PHONY:		re all clean fclean
+.PHONY:			re all clean fclean

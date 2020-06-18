@@ -6,31 +6,48 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/16 14:12:37 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/17 16:48:47 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/18 14:52:28 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-void	ft_print_dlst(t_dlist *node)
+void	ft_init_dlst(t_ref **dlst)
 {
-	while (node)
-	{
-		ft_printf("%p\n", node->data);
-		node = node->next;
-	}
+	if (!((*dlst) = ft_calloc(1, sizeof(t_ref))))
+		return (NULL);
+	(*dlst)->head = NULL;
+	(*dlst)->tail = NULL;
+	(*dlst)->size = 0;
 }
 
-size_t	ft_len_dlst(t_dlist **begin)
+void	ft_print_dlst(t_dlist *dlst, char *str)
 {
-	t_dlist	*tmp;
+	int i;
+
+	i = 0;
+	ft_printf("--- %d nodes ---\n", ft_len_dlst(dlst));
+	if (str)
+		ft_printf("| %s\n", str);
+	while (dlst)
+	{
+		ft_printf("| %d | \"%s\" (p='%s'|n='%s')\n",
+			i++, dlst->data,
+			dlst->prev ? dlst->prev->data : "",
+			dlst->next ? dlst->next->data : "");
+		dlst = dlst->next;
+	}
+	ft_printf("---------------\n\n");
+}
+
+size_t	ft_len_dlst(t_dlist *dlst)
+{
 	size_t	len;
 
 	len = 0;
-	tmp = *begin;
-	while (tmp)
+	while (dlst)
 	{
-		tmp = tmp->next;
+		dlst = dlst->next;
 		len++;
 	}
 	return (len);
@@ -52,41 +69,40 @@ void	ft_dlst_goto_end(t_dlist **last)
 		*last = (*last)->next;
 }
 
-void	ft_dslt_addfront(t_dlist **begin, void *data)
+void	ft_dslt_addfront(t_ref *ref, void *data)
 {
 	t_dlist	*new;
 
 	if (!(new = ft_dlst_new_node(data)))
 		return (NULL);
-	new->next = (*begin);
+	new->next = ref->head;
 	new->prev = NULL;
-	if ((*begin))
-		(*begin)->prev = new;
-	(*begin) = new;
+	if (ref->head)
+		ref->head->prev = new;
+	ref->head = new;
 }
 
-void	ft_dlst_addback(t_dlist **begin, void *data)
+void	ft_dlst_addback(t_ref *ref, void *data)
 {
 	t_dlist	*new;
-	t_dlist	*last;
 
-	last = *begin;
 	if (!(new = ft_dlst_new_node(data)))
 		return (NULL);
 	new->next = NULL;
-	if (!begin)
+	if (!ref->head)
 	{
 		new->prev = NULL;
 		return ;
 	}
-	ft_dlst_goto_end(&last);
-	last->next = new;
-	new->prev = last;
+	ref->tail->next = new;
+	new->prev = ref->tail;
+	ref->tail = new;
 }
 
-void	ft_dlst_addafter(t_dlist *prev, void *data)
+void	ft_dlst_addafter(t_ref *dlst, t_dlist *prev, void *data)
 {
 	t_dlist	*new;
+	t_dlist	*tmp;
 
 	if (!prev)
 		return (NULL);
@@ -97,9 +113,12 @@ void	ft_dlst_addafter(t_dlist *prev, void *data)
 	new->prev = prev;
 	if (new->next)
 		new->next->prev = new;
+	else
+		dlst->tail = new;
+	
 }
 
-void	ft_dlst_addbefore(t_dlist **begin, t_dlist *next, void *data)
+void	ft_dlst_addbefore(t_ref *dlst, t_dlist *next, void *data)
 {
 	t_dlist	*new;
 
@@ -113,20 +132,43 @@ void	ft_dlst_addbefore(t_dlist **begin, t_dlist *next, void *data)
 	if (new->prev)
 		new->prev->next = new;
 	else
-		(*begin) = new;
+		dlst->head = new;
 }
 
-void	ft_dlst_delone(t_dlist **begin, t_dlist *del)
+void	ft_dlst_delone(t_ref *dlst, t_dlist *del)
 {
-	if (*begin == NULL || !del)
+	if (dlst->head == NULL || !del)
 		return ;
-	if (*begin = del)
-		*begin = del->next;
+	if (dlst->head = del)
+		dlst->head = del->next;
 	if (del->next)
 		del->next->prev = del->prev;
 	if (del->prev)
 		del->prev->next = del->next;
+	if (del->data)
+	{
+		free(del->data);
+		del->data = NULL;
+	}
 	free(del);
+	del = NULL;
+}
+
+void	ft_dlst_del(t_ref *dlst)
+{
+	t_dlist	*tmp;
+	t_dlist	*tmp2;
+
+	if (!dlst || !dlst->head)
+		return ;
+	tmp = dlst->head;
+	tmp2 = dlst->head;
+	while (tmp)
+	{
+		tmp2 = tmp2->next;
+		ft_dlst_delone(dlst, tmp);
+		tmp = tmp2;
+	}
 }
 
 void	ft_dlst_reverse(t_dlist **begin)
