@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:45:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 15:48:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,13 @@
 
 typedef struct	s_sh
 {
-	int	fd;
-	int	check;
+	int		fd;
+	char	*line;
+	int		ret_cmd;
+	int		ret_sh;
+	int		*blt_fct;
+	t_ref	*cmds;
+	t_list	*env;
 }				t_sh;
 
 /*
@@ -62,18 +67,26 @@ typedef struct	s_env
 
 typedef struct	s_cmd
 {
-	int		pipe[2];
-	int		pos;
-	char	*cmd;
-	char	**arg;
-	int		before;
-	int		after;
-	int		quote;
-	t_bool	opt;
-	t_list	**env;
-	void	*next;
-	void	*prev;
+	int				pipe[2];
+	t_list			**env;
+	int				ac;
+	char			*av;
+	char			*cmd;
+
+	int				pos;
+	int				before;
+	int				after;
+	t_bool			opt;
+	int				quote;
+	t_dlist			*redir_in;
+	t_dlist			*redir_out;
+	struct s_cmd	*left;
+	struct s_cmd	*right;
+	void			*next;
+	void			*prev;
 }				t_cmd;
+
+
 
 int				ft_launch(char **args, t_list **env);
 
@@ -84,8 +97,8 @@ char		**ft_split_quote(char *str, char c);
 
 void		ft_prompt(int *check, int fd, t_list **env);
 void		ft_check_line(char **line, int *quote);
-char		*ft_input_join(char **inputs);
-t_list		*ft_line_to_lst(char *inputs, t_list **env);
+char		*ft_input_join(t_list **inputs);
+void		ft_line_to_lst(char *inputs, t_sh *sh);
 
 int			ft_echo(char **args, t_list **env);
 int			ft_exit(char **args, t_list **env);

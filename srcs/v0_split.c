@@ -6,50 +6,47 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 12:56:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 16:24:22 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-// void	ft_parse_escape()
-// {
-	
-// }
-
-// void	ft_parse_redir()
-// {
-	
-// }
-
-// void	ft_parse_quote()
-// {
-	
-// }
-
-t_list	*ft_line_to_lst(char *inputs, t_list **env)
+void	ft_parse_escape()
 {
-	t_list	*begin;
-	t_list	current;
+	
+}
+
+void	ft_parse_redir()
+{
+	
+}
+
+void	ft_parse_quote()
+{
+	
+}
+
+void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
+{
+	t_bool	backsl;
+
+	while (line[*i] && line[*i] != ';')
+}
+
+void	ft_line_to_lst(char *inputs, t_sh *sh)
+{
 	t_cmd	content;
+	
 	int		i;
 
 	i = -1;
-	begin = NULL;
-	(void)env;
+	ft_init_dlst(&sh->cmds);
 	while (inputs[++i])
 	{
-		ft_bzero(&current, sizeof(t_list));
-		ft_bzero(&content, sizeof(t_cmd));
-		while (inputs[i] && ft_isspace(inputs[i]))
-			i++;
-		
-		if (!begin)
-			begin = ft_lstnew(&current);
-		else
-			ft_lstadd_back(&begin, ft_lstnew(&current));
+		ft_init_cmd(&content, inputs, &i);
+		ft_dlst_addback(sh->cmds, ft_lst_new_node(&content));
 	}
-	return (begin);
 }
 
 char	**ft_split_line(char **inputs)

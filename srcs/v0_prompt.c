@@ -6,27 +6,30 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 12:56:01 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 15:36:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-char	*ft_input_join(char **inputs)
+char	*ft_input_join(t_list **inputs)
 {
 	char	*tmp;
 	char	*tmp_2;
 	int		i;
+	t_list	*current;
 
 	i = -1;
 	tmp = NULL;
-	if (inputs && ft_double_strlen(inputs) > 0)
+	current = *inputs;
+	if (current && ft_lstsize(*inputs) > 0)
 	{
-		while (inputs[++i])
+		while (current)
 		{
 			tmp_2 = tmp;
-			tmp = ft_strjoin(tmp, inputs[i]);
+			tmp = ft_strjoin(tmp, current->content);
 			ft_free_ptr(tmp_2);
+			current = current->next;
 		}
 	}
 	if (!tmp)
@@ -71,18 +74,26 @@ void	ft_check_line(char **line, int *quote)
 void	ft_prompt(int *check, int fd, t_list **env)
 {
 	char		*line;
-	char		**args;
+	// char		**args;
+	char		*args;
 	int			ret;
 	int			i;
 	char		*prompt;
 	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
-	char		**input;
+	// char		**input;
 	int			quote;
-	// t_cmd		*begin;
+	t_sh		sh;
+	t_list		*input;
+	t_list		**begin;
 
+	*begin = input;
 	quote = 0;
-	if (!(input = ft_calloc(10 ,sizeof(char *))))
-		return ; // liste chainee malloc de taille 10 pas satisf ?
+	sh = (t_sh) {
+			.fd = fd, .line = NULL, .ret_cmd = 0,
+			.ret_sh = 0, .blt_fct =  builtin_fct, 
+			.cmds = NULL, .env = env};
+	// if (!(input = ft_calloc(10 ,sizeof(char *))))
+		// return ; // liste chainee malloc de taille 10 pas satisf ?
 	ret = 1;
 	prompt = PROMPT;
 	i = -1;
@@ -90,9 +101,10 @@ void	ft_prompt(int *check, int fd, t_list **env)
 		&& (*check = get_next_line(fd, &line)) >= 0)
 	{
 		// we put line inside a char *[10] -> put it in a chained list instead ?
-		input[++i] = ft_strdup(line);
+		input->next = ft_lstnew(line);
 		// we check line for quotes
-		ft_check_line(&input[i], &quote);
+		ft_check_line(&input->next->content, &quote);
+		input = input->next;
 		// printf("quote : |%d|\n", quote);
 
 		// if there is a quote open, we change the promt
@@ -105,15 +117,16 @@ void	ft_prompt(int *check, int fd, t_list **env)
 			// ft_print_double_array(input, "input");
 
 			// split gets 1 cmd per char *
-			args = ft_split_line(input);
-			// args = ft_input_join(input);
-			// ft_line_to_lst();
+			// args = ft_split_line(input);
+			args = ft_input_join(begin);
+			ft_line_to_lst(args, &sh);
 			// ft_print_double_array(args, "args");
 			ft_free_double_array(input);
 			// then each cmd is parsed one after the other
 
-			while (args[++i])
-				ret = ft_parse_line(args[i], env, builtin_fct);
+			// while (args[++i])
+				// ret = ft_parse_line(args[i], env, builtin_fct);
+			ft_parse_cmds(&sh);
 /*
 (void)env;
 (void)builtin_fct;
