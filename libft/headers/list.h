@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 14:04:38 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/18 14:58:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 10:51:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,7 @@ void			ft_dlst_addback(t_ref *ref, void *data);
 void			ft_dlst_addafter(t_ref *dlst, t_dlist *prev, void *data);
 void			ft_dlst_addbefore(t_ref *dlst, t_dlist *next, void *data);
 void			ft_dlst_delone(t_ref *dlst, t_dlist *del);
+void			ft_dlst_del(t_ref *dlst);
+void			ft_dlst_reverse(t_dlist **begin);
 
 # endif

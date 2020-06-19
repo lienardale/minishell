@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_addbefore.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:52:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:46 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/19 11:04:26 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/19 11:29:26 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+#include "list.h"
+
+void	ft_dlst_addbefore(t_ref *dlst, t_dlist *next, void *data)
 {
-	if (0 <= c && c <= 127)
-		return (1);
+	t_dlist	*new;
+
+	if (!next)
+		return ;
+	if (!(new = ft_dlst_new_node(data)))
+		return ;
+	new->prev = next->prev;
+	next->prev = new;
+	new->next = next;
+	if (new->prev)
+		new->prev->next = new;
 	else
-		return (0);
+		dlst->head = new;
 }

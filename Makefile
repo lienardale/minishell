@@ -6,96 +6,96 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/18 15:01:53 by alienard         ###   ########.fr        #
+#    Updated: 2020/06/19 13:04:48 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = 		minishell
+NAME		= minishell
 
-SRCS =		v0_minishell.c \
-			v0_prompt.c \
-			v0_split.c \
-			ft_split_quote.c \
-			v0_parse.c \
-			v0_process.c \
-			v0_echo.c \
-			v0_exit.c \
-			v0_parse_path.c \
-			v0_lststrjoin.c \
-			v0_isolate_exec.c \
-			v0_change_dir.c \
-			ft_env.c \
-			ft_pwd.c \
-			ft_export.c \
-			ft_start_minishell.c \
-			ft_split_to_lst_env.c \
-			ft_free_env_lst.c \
-			ft_sort_env_lst.c \
-			ft_separate_key_value.c \
-			ft_lst_env_to_split.c \
-			ft_search_env.c \
-			ft_unset.c \
-			ft_utils.c \
-			ft_lst_utils.c
+SRCS_DIR	= srcs
 
-OBJS = 		$(SRCS:.c=.o)
+_SRCS		= v0_minishell.c \
+				v0_prompt.c \
+				v0_split.c \
+				ft_split_quote.c \
+				v0_parse.c \
+				v0_process.c \
+				v0_echo.c \
+				v0_exit.c \
+				v0_parse_path.c \
+				v0_lststrjoin.c \
+				v0_isolate_exec.c \
+				v0_change_dir.c \
+				ft_env.c \
+				ft_pwd.c \
+				ft_export.c \
+				ft_start_minishell.c \
+				ft_split_to_lst_env.c \
+				ft_free_env_lst.c \
+				ft_sort_env_lst.c \
+				ft_separate_key_value.c \
+				ft_lst_env_to_split.c \
+				ft_search_env.c \
+				ft_unset.c \
+				ft_utils.c
 
-CC =		gcc
+SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
+OBJS			= $(SRCS:.c=.o)
 
-RM = 		rm -f
 
-AR = 		ar rc
+RM				= rm -f
+AR				= ar rc
 
-HEADER = 	./
+CC				= gcc
+CLANG			= clang
+HEADER			= -I ./headers $(LIB_INCL)
+CFLAGS			= -Wall -Wextra -Werror -g $(HEADER)
 
-CFLAGS =	-Wall -Wextra -Werror -g
+LIB_LNK			= -L $(LIB_PATH) -lft
+LIB_PATH		= ./libft
+LIBFT_MAKE		= @$(MAKE) -C $(LIB_PATH) --no-print-directory
+LIB_INCL		= -I $(LIB_PATH) -I $(LIB_PATH)/headers
+LIB				= $(LIB_LNK)
 
-LIBFT_MAKE = 	$(MAKE) -C $(LIBPATH)
+OBJS			=	$(SRCS:.c=.o)
 
-LIBPATH =	./libft/
+all:			libmake
+				@$(MAKE) $(NAME) --no-print-directory
 
-all:		libft/libft.a $(NAME)
-
-$(NAME):	$(OBJS)
-			$(CLANG) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBPATH)*.a
+$(NAME):		$(OBJS)
+				$(CLANG) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB)
 
 libmake:
-			$(LIBFT_MAKE)
+				$(LIBFT_MAKE)
 
-libft/libft.a:
-		make -C $(LIBPATH)
+bonus:			all
 
-
-$(LIB):
-		make -C libft re
-
-bonus:
+norme:
+				$(LIB_MAKE) norme
+				norminette $(SRCS)
 
 clean:
-			$(RM) $(OBJS)
-			$(LIBFT_MAKE) fclean
+				$(RM) -r $(OBJS)
 
-fclean:		clean
-			$(RM) $(NAME)
-			$(LIBFT_MAKE) fclean
+fclean:
+				$(RM) -r $(OBJS)
+				$(RM) $(NAME)
+				$(LIBFT_MAKE) fclean
 
-re:			fclean all
-
+re:				fclean all
 
 #rule test
 
-CLANG =		clang
-
-OBJS_TEST =	$(SRCS:.c=.o)
+OBJS_TEST		= $(SRCS:.c=.o)
 
 .c.o:
-			$(CLANG) $(CFLAGS) -c $< -I $(HEADER) -o $(<:.c=.o)
+				$(CLANG) $(CFLAGS) -c $< $(HEADER) -o $(<:.c=.o)
 
 libft_test:
-		make test -C libft
+				make test -C libft
 
-test:		libft_test $(OBJS_TEST)
-			$(CLANG) $(CFLAGS) -o $(NAME) $(OBJS_TEST) $(LIBPATH)*.a
+test:			libft_test $(OBJS_TEST)
+				$(CLANG) $(CFLAGS) -o $(NAME) $(OBJS_TEST) $(LIBPATH)*.a
 
 #DOCKER CMDS
 
@@ -145,6 +145,6 @@ cdai:
 	./a.out;
 
 leak:
-	valgrind --leak-check=full ./minishell;
+	valgrind --leak-check=full --show-leak-kinds=all ./minishell;
 
 .PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak

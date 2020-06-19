@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/18 15:28:26 by alienard         ###   ########.fr        #
+#    Updated: 2020/06/19 12:02:16 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,103 @@ STR_DIR			= str
 
 INCLUDES_DIR	= ./headers
 
-_BILIST 		= bilist
-_CONVERT		= convert
-_DPRINTF		= dprintf
-_FPRINTF		= fprintf
-_GNL			= gnl
-_IS				= is
-_LIST			= list
-_MEM			= mem
-_PRINT			= print
-_PRINTF			= printf
-_STR			= str
+_BILIST 		= ft_dlst_addafter.c \
+					ft_dlst_addback.c \
+					ft_dlst_addbefore.c \
+					ft_dlst_addfront.c \
+					ft_dlst_del.c \
+					ft_dlst_delone.c \
+					ft_dlst_goto_end.c \
+					ft_dlst_new_node.c \
+					ft_dlst_reverse.c \
+					ft_init_dlst.c \
+					ft_len_dlst.c \
+					ft_print_dlst.c
+_CONVERT		= ft_atof.c \
+					ft_atoi.c \
+					ft_itoa.c \
+					ft_tolower.c \
+					ft_toupper.c
+_DPRINTF		= ft_conv_2_dprintf.c \
+					ft_conv_dprintf.c \
+					ft_dprintf.c \
+					ft_len_hexa_dprintf.c \
+					ft_padding_dprintf.c \
+					ft_preci_dprintf.c \
+					ft_putnbr_base_dprintf.c
+_FPRINTF		= ft_conv_2_fprintf.c \
+					ft_conv_fprintf.c \
+					ft_fprintf.c \
+					ft_len_hexa_fprintf.c \
+					ft_padding_fprintf.c \
+					ft_preci_fprintf.c \
+					ft_putnbr_base_fprintf.c
+_GNL			= get_next_line.c
+_IS				= ft_isalnum.c \
+					ft_isalpha.c \
+					ft_isascii.c \
+					ft_isdigit.c \
+					ft_isnum.c \
+					ft_isprint.c \
+					ft_isspace.c \
+					ft_ischarset.c 
+_LIST			= ft_lstadd_back_bonus.c \
+					ft_lstclear_bonus.c \
+					ft_lstdel_last.c \
+					ft_lstiter_bonus.c \
+					ft_lstmap_bonus.c \
+					ft_lstsize_bonus.c \
+					ft_split_to_lst.c \
+					ft_lstadd_front_bonus.c \
+					ft_lstdel_between.c \
+					ft_lstdelone_bonus.c \
+					ft_lstlast_bonus.c \
+					ft_lstnew_bonus.c \
+					ft_lstsplit.c
+_MEM			= ft_bzero.c \
+					ft_calloc.c \
+					ft_free_ptr.c \
+					ft_free_split.c \
+					ft_memccpy.c \
+					ft_memchr.c \
+					ft_memcmp.c \
+					ft_memcpy.c \
+					ft_memmove.c \
+					ft_memset.c \
+					ft_realloc.c \
+					ft_swap.c
+_PRINT			= ft_putchar_fd.c \
+					ft_putendl_fd.c \
+					ft_putnbr_fd.c \
+					ft_putstr_fd.c
+_PRINTF			= ft_conv.c \
+					ft_conv_2.c \
+					ft_len_hexa.c \
+					ft_padding.c \
+					ft_preci.c \
+					ft_printf.c \
+					ft_putnbr_base.c
+_STR			= ft_split.c \
+					ft_splitadd_back.c \
+					ft_strchr.c \
+					ft_strdup.c \
+					ft_strlcat.c \
+					ft_strlen.c \
+					ft_strncmp.c \
+					ft_strrchr.c \
+					ft_strsort.c \
+					ft_strtok_r.c \
+					ft_substr.c \
+					ft_split_charset.c \
+					ft_splitcpy.c \
+					ft_strcmp.c \
+					ft_strjoin.c \
+					ft_strlcpy.c \
+					ft_strmapi.c \
+					ft_strnstr.c \
+					ft_strs_sort.c \
+					ft_strtok.c \
+					ft_strtrim.c
 
 BILIST 			= $(addprefix $(BILIST_DIR)/, $(_BILIST))
 CONVERT			= $(addprefix $(CONVERT_DIR)/, $(_CONVERT))

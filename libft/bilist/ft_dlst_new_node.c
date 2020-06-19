@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_new_node.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:52:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:46 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/19 11:05:28 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/19 11:06:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+#include "list.h"
+
+t_dlist	*ft_dlst_new_node(void *data)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	else
-		return (0);
+	t_dlist *new;
+
+	if (!(new = ft_calloc(1, sizeof(t_dlist))))
+		return (NULL);
+	new->data = data;
+	return (new);
 }

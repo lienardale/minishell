@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/16 13:59:06 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 12:56:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_prompt(int *check, int fd, t_list **env)
 	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
 	char		**input;
 	int			quote;
-	t_cmd		*begin;
+	// t_cmd		*begin;
 
 	quote = 0;
 	if (!(input = ft_calloc(10 ,sizeof(char *))))
@@ -105,9 +105,9 @@ void	ft_prompt(int *check, int fd, t_list **env)
 			// ft_print_double_array(input, "input");
 
 			// split gets 1 cmd per char *
-			// args = ft_split_line(input);
-			args = ft_input_join(input);
-			ft_line_to_lst();
+			args = ft_split_line(input);
+			// args = ft_input_join(input);
+			// ft_line_to_lst();
 			// ft_print_double_array(args, "args");
 			ft_free_double_array(input);
 			// then each cmd is parsed one after the other

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_del.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:52:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:46 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/19 11:05:05 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/19 11:07:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+#include "list.h"
+
+void	ft_dlst_del(t_ref *dlst)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	else
-		return (0);
+	t_dlist	*tmp;
+	t_dlist	*tmp2;
+
+	if (!dlst || !dlst->head)
+		return ;
+	tmp = dlst->head;
+	tmp2 = dlst->head;
+	while (tmp)
+	{
+		tmp2 = tmp2->next;
+		ft_dlst_delone(dlst, tmp);
+		tmp = tmp2;
+	}
 }

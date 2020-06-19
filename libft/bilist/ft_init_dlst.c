@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_init_dlst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:52:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:46 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/19 11:02:35 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/19 11:30:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+#include "list.h"
+
+void	ft_init_dlst(t_ref **dlst)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	else
-		return (0);
+	if (!((*dlst) = ft_calloc(1, sizeof(t_ref))))
+		return ;
+	(*dlst)->head = NULL;
+	(*dlst)->tail = NULL;
+	(*dlst)->size = 0;
 }

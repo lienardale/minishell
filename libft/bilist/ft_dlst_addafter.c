@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_addafter.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:52:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:46 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/19 10:50:02 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/19 11:29:00 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+#include "list.h"
+
+void	ft_dlst_addafter(t_ref *dlst, t_dlist *prev, void *data)
 {
-	if (0 <= c && c <= 127)
-		return (1);
+	t_dlist	*new;
+
+	if (!prev)
+		return ;
+	if (!(new = ft_dlst_new_node(data)))
+		return ;
+	new->next = prev->next;
+	prev->next = new;
+	new->prev = prev;
+	if (new->next)
+		new->next->prev = new;
 	else
-		return (0);
+		dlst->tail = new;
+	
 }

@@ -6,26 +6,26 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/16 16:03:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 12:56:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-void	ft_parse_escape()
-{
+// void	ft_parse_escape()
+// {
 	
-}
+// }
 
-void	ft_parse_redir()
-{
+// void	ft_parse_redir()
+// {
 	
-}
+// }
 
-void	ft_parse_quote()
-{
+// void	ft_parse_quote()
+// {
 	
-}
+// }
 
 t_list	*ft_line_to_lst(char *inputs, t_list **env)
 {
@@ -36,6 +36,7 @@ t_list	*ft_line_to_lst(char *inputs, t_list **env)
 
 	i = -1;
 	begin = NULL;
+	(void)env;
 	while (inputs[++i])
 	{
 		ft_bzero(&current, sizeof(t_list));

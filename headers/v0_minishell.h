@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/17 14:04:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/19 11:45:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 #include <sys/errno.h>
 #include <fcntl.h>
 #include <stdbool.h>
-#include "libft/libft.h"
-#include "libft/libftprintf.h"
-#include "libft/libftdprintf.h"
-#include "libft/libftfprintf.h"
+#include "libft.h"
+#include "libftprintf.h"
+#include "libftdprintf.h"
+#include "libftfprintf.h"
 #include "list.h"
 
 # define SPACE " \t\r\n\v\f"

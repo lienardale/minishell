@@ -1,19 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_dlst_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:52:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:12:46 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/19 11:05:35 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/19 11:07:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+#include "list.h"
+
+void	ft_dlst_reverse(t_dlist **begin)
 {
-	if (0 <= c && c <= 127)
-		return (1);
-	else
-		return (0);
+	t_dlist	*tmp;
+	t_dlist	*current;
+
+	tmp = NULL;
+	current = *begin;
+	while (current)
+	{
+		tmp = current->prev;
+		current->prev = current->next;
+		current->next = tmp;
+		current = current->prev;
+		if (tmp)
+			*begin = tmp->prev;
+	}
 }
