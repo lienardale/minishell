@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/22 16:49:00 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/22 16:54:18 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct	s_env
 	int	check;
 }				t_env;
 */
-
 
 typedef struct	s_env
 {
