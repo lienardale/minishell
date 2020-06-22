@@ -6,32 +6,53 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 16:24:22 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/22 16:45:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-void	ft_parse_escape()
+void	ft_handle_end(char *line, t_cmd *cmd)
 {
-	
+	if (ft_ischarset(line[0], REDIR))
+		ft_parse_redir(line, cmd);
+	else if (line[0] == ';')
+		cmd->after = ';';
 }
 
-void	ft_parse_redir()
+void	ft_handle_meta_char(char *line, t_cmd *cmd)
 {
-	
-}
-
-void	ft_parse_quote()
-{
-	
+	if (line[0] == '\\' && line[1] != '\\')
+		ft_parse_escape(line, cmd);
+	else if (ft_ischarset(line[0], QUOTE))
+		ft_parse_quote(line, cmd);
+	else if (line[0] == '-')
+		ft_parse_opt(line, cmd);
+	else if (line[0] == '$')
+		ft_parse_wild(line, cmd);
 }
 
 void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 {
 	t_bool	backsl;
+	char	**args;
+	int		j;
 
-	while (line[*i] && line[*i] != ';')
+	j = -1;
+	while (line[*i])
+	{
+		while (ft_isspace(line[*i]))
+			i++;
+		if (ft_ischarset(line[*i], END_CMD))
+		{
+			ft_handle_end(&line[*i], cmd);
+			return ;
+		}
+		if (ft_ischarset(line[*i], META))
+			ft_handle_meta_char(&line[*i], cmd);
+		i++;
+	}
+	
 }
 
 void	ft_line_to_lst(char *inputs, t_sh *sh)

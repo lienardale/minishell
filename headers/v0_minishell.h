@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 15:48:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/22 16:49:00 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,14 @@
 
 # define SPACE " \t\r\n\v\f"
 
-# define TOKENS "-\"\'|;><"
+# define TOKENS "-\"\'|;><\\"
+# define META "-\"\'\\$"
+# define QUOTE "\"\'"
+# define REDIR "><|"
+# define END_CMD "><|;"
+
+# define CTRL_OP "|| & && ; ;; ( ) | \n"
+# define META_CHAR "|&;()<> 	"
 
 # define PROMPT "minishell$ "
 
@@ -77,11 +84,14 @@ typedef struct	s_cmd
 	int				before;
 	int				after;
 	t_bool			opt;
+	t_bool			bkslh;
 	int				quote;
+	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;
 	t_dlist			*redir_out;
 	struct s_cmd	*left;
 	struct s_cmd	*right;
+	// might be also repetitive with elements just above
 	void			*next;
 	void			*prev;
 }				t_cmd;
@@ -99,6 +109,14 @@ void		ft_prompt(int *check, int fd, t_list **env);
 void		ft_check_line(char **line, int *quote);
 char		*ft_input_join(t_list **inputs);
 void		ft_line_to_lst(char *inputs, t_sh *sh);
+void		ft_init_cmd(t_cmd *cmd, char *line, int *i);
+void		ft_handle_meta_char(char *line, t_cmd *cmd);
+void		ft_handle_end(char *line, t_cmd *cmd);
+void		ft_parse_escape(char *line, t_cmd *cmd);
+void		ft_parse_redir(char *line, t_cmd *cmd);
+void		ft_parse_quote(char *line, t_cmd *cmd);
+void		ft_parse_opt(char *line, t_cmd *cmd);
+void		ft_parse_wild(char *line, t_cmd *cmd);
 
 int			ft_echo(char **args, t_list **env);
 int			ft_exit(char **args, t_list **env);

@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 17:09:15 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/22 14:10:19 by alienard         ###   ########.fr       */
+/*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
+/*   Updated: 2020/06/22 16:42:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "v0_minishell.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_parse_escape(char *line, t_cmd *cmd)
 {
-	char	*us;
-	size_t	len;
+	
+}
 
-	us = (char *)s;
-	len = ft_strlen(us);
-	while (len != 0 && us[len] != c)
-		len--;
-	if (us[len] != c)
-		return (NULL);
-	return (&us[len]);
+void	ft_parse_redir(char *line, t_cmd *cmd)
+{
+	
+}
+
+void	ft_parse_quote(char *line, t_cmd *cmd)
+{
+	
+}
+
+void	ft_parse_opt(char *line, t_cmd *cmd)
+{
+	
+}
+
+void	ft_parse_wild(char *line, t_cmd *cmd)
+{
+	
 }
