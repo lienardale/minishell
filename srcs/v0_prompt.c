@@ -6,30 +6,28 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/23 15:19:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/23 16:47:31 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-char	*ft_input_join(t_list **inputs)
+char	*ft_input_join(t_list *inputs)
 {
 	char	*tmp;
 	char	*tmp_2;
 	int		i;
-	t_list	*current;
 
 	i = -1;
 	tmp = NULL;
-	current = *inputs;
-	if (current && ft_lstsize(*inputs) > 0)
+	if (inputs && ft_lstsize(inputs) > 0)
 	{
-		while (current)
+		while (inputs)
 		{
 			tmp_2 = tmp;
-			tmp = ft_strjoin(tmp, current->content);
+			tmp = ft_strjoin(tmp, inputs->content);
 			ft_free_ptr(tmp_2);
-			current = current->next;
+			inputs = inputs->next;
 		}
 	}
 	if (!tmp)
@@ -79,10 +77,10 @@ void	ft_prompt(int *check, int fd, t_list **env)
 	int			quote;
 	t_sh		sh;
 	t_list		*input;
-	t_list		**begin;
+	t_list		*begin;
 	t_dlist		*current;
 
-	begin = &input;
+	begin = NULL;
 	quote = 0;
 	sh = (t_sh) {
 			.fd = fd, .line = NULL, .ret_cmd = 1,
@@ -93,23 +91,24 @@ void	ft_prompt(int *check, int fd, t_list **env)
 		&& (*check = get_next_line(fd, &sh.line)) >= 0)
 	{
 		input = ft_lstnew(sh.line);
+		ft_lstadd_back(&begin, input);
 		ft_check_line((char**)&input->content, &quote);
-		input = input->next;
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
 		if (!quote)
 		{
 			args = ft_input_join(begin);
 			ft_line_to_lst(args, &sh);
-			ft_lstclear(begin, &free);
+			ft_lstclear(&begin, &free);
 			current = sh.cmds->head;
 			while (current)
 			{
+				printf("0\n");
 				sh.ret_cmd = ft_parse_cmds(current->data, &sh);
 				current = current->next;
 			}
 			ft_free_ptr(args);
 		}
-		ft_free_ptr(sh.line);
+		// ft_free_ptr(sh.line);
 		if (*check == 0)
 			break ;
 	}
