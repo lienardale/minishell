@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/22 16:54:18 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/23 15:06:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ typedef struct	s_sh
 	char	*line;
 	int		ret_cmd;
 	int		ret_sh;
-	int		*blt_fct;
+	int		(**blt_fct)(char **, t_list **);
 	t_ref	*cmds;
-	t_list	*env;
+	t_list	**env;
 }				t_sh;
 
 /*
@@ -73,18 +73,20 @@ typedef struct	s_env
 
 typedef struct	s_cmd
 {
-	int				pipe[2];
 	t_list			**env;
 	int				ac;
-	char			*av;
+	char			**av;
 	char			*cmd;
-
 	int				pos;
-	int				before;
 	int				after;
+
+
+	int				before;
+	int				pipe[2];
 	t_bool			opt;
 	t_bool			bkslh;
 	int				quote;
+
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;
 	t_dlist			*redir_out;
@@ -116,6 +118,8 @@ void		ft_parse_redir(char *line, t_cmd *cmd);
 void		ft_parse_quote(char *line, t_cmd *cmd);
 void		ft_parse_opt(char *line, t_cmd *cmd);
 void		ft_parse_wild(char *line, t_cmd *cmd);
+
+int			ft_parse_cmds(t_cmd *cmd, t_sh *sh);
 
 int			ft_echo(char **args, t_list **env);
 int			ft_exit(char **args, t_list **env);

@@ -6,11 +6,37 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 16:53:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/23 15:06:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
+
+int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
+{
+	char	**builtins;
+	int		i;
+
+	builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
+	i = 0;
+	// 1
+	if (cmd->cmd == NULL)
+	{
+	// An empty command was entered.
+		return (1);
+	}
+	i = -1;
+	while (builtins[++i])
+	{
+		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
+		{
+			ft_free_double_array(builtins);
+			return (sh->blt_fct[i](cmd->av, sh->env));
+		}
+	}
+	ft_free_double_array(builtins);
+	return (ft_launch(cmd->av, sh->env));
+}
 
 int		ft_parse_line(char *args, t_list **env, int (*builtin_fct[7])(char **, t_list **))
 {

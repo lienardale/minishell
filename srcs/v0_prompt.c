@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/22 16:40:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/23 15:19:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,73 +73,44 @@ void	ft_check_line(char **line, int *quote)
 
 void	ft_prompt(int *check, int fd, t_list **env)
 {
-	char		*line;
-	// char		**args;
 	char		*args;
-	int			ret;
-	int			i;
 	char		*prompt;
 	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
-	// char		**input;
 	int			quote;
 	t_sh		sh;
 	t_list		*input;
 	t_list		**begin;
+	t_dlist		*current;
 
-	*begin = input;
+	begin = &input;
 	quote = 0;
 	sh = (t_sh) {
-			.fd = fd, .line = NULL, .ret_cmd = 0,
-			.ret_sh = 0, .blt_fct =  builtin_fct, 
+			.fd = fd, .line = NULL, .ret_cmd = 1,
+			.ret_sh = 0, .blt_fct = builtin_fct, 
 			.cmds = NULL, .env = env};
-	// if (!(input = ft_calloc(10 ,sizeof(char *))))
-		// return ; // liste chainee malloc de taille 10 pas satisf ?
-	ret = 1;
 	prompt = PROMPT;
-	i = -1;
-	while (ret && (write(1,prompt,ft_strlen(prompt)))
-		&& (*check = get_next_line(fd, &line)) >= 0)
+	while (sh.ret_cmd && (write(1,prompt,ft_strlen(prompt)))
+		&& (*check = get_next_line(fd, &sh.line)) >= 0)
 	{
-		// we put line inside a char *[10] -> put it in a chained list instead ?
-		input->next = ft_lstnew(line);
-		// we check line for quotes
-		ft_check_line(&input->next->content, &quote);
+		input = ft_lstnew(sh.line);
+		ft_check_line((char**)&input->content, &quote);
 		input = input->next;
-		// printf("quote : |%d|\n", quote);
-
-		// if there is a quote open, we change the promt
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
-		// and do not enter the parsing fcts
 		if (!quote)
 		{
-			// if there is no more quote, we rearrange the input
-			i = -1;
-			// ft_print_double_array(input, "input");
-
-			// split gets 1 cmd per char *
-			// args = ft_split_line(input);
 			args = ft_input_join(begin);
 			ft_line_to_lst(args, &sh);
-			// ft_print_double_array(args, "args");
-			ft_free_double_array(input);
-			// then each cmd is parsed one after the other
-
-			// while (args[++i])
-				// ret = ft_parse_line(args[i], env, builtin_fct);
-			ft_parse_cmds(&sh);
-/*
-(void)env;
-(void)builtin_fct;
-*/
-
-			ft_free_double_array(args);
-			if (!(input = ft_calloc(10 ,sizeof(char *))))
-				return ; // liste chainee ?
-			i = -1;
+			ft_lstclear(begin, &free);
+			current = sh.cmds->head;
+			while (current)
+			{
+				sh.ret_cmd = ft_parse_cmds(current->data, &sh);
+				current = current->next;
+			}
+			ft_free_ptr(args);
 		}
-		ft_free_ptr(line);
+		ft_free_ptr(sh.line);
 		if (*check == 0)
 			break ;
 	}
-	ft_free_double_array(input);
 }
