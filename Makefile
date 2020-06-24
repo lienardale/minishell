@@ -77,7 +77,7 @@ norme:
 
 clean:
 				$(RM) -r $(OBJS)
-
+				$(LIBFT_MAKE) clean
 fclean:
 				$(RM) -r $(OBJS)
 				$(RM) $(NAME)

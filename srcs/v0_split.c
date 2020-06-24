@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/23 16:47:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/24 16:35:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	char	*tmp;
 
 	j = *i;
-	while (line[j] || ft_ischarset(END_CMD, line[j]))
+	while (line[j] && !ft_ischarset(END_CMD, line[j]))
 		j++;
 	cmd->after = line[j];
 	tmp = ft_substr(line, *i, j);
@@ -86,14 +86,21 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 	ft_init_dlst(&sh->cmds);
 	while (inputs[++i])
 	{
+		// while (ft_isspace(inputs[i]))
+			// i++;
 		content.pos = pos;
+		printf("pos		: %d\n", content.pos);
 		content.before = before;
-		content.env= sh->env;
+		printf("before		: %d\n", content.before);
+		content.env = sh->env;
 		ft_init_cmd(&content, inputs, &i);
-		ft_dlst_addback(sh->cmds, ft_dlst_new_node(&content));
+		printf("after		: %d\n", content.before);
+		ft_print_double_array(content.av, "av		:");
+		printf("ac		: %d\n", content.ac);
+		printf("cmd		: |%s|\n", content.cmd);
+		ft_dlst_addback(sh->cmds, &content);
 		before = content.after;
 		pos++;
-		printf("i:%d\n", i);
 	}
 	ft_print_dlst(sh->cmds->head, "cmds:");
 }

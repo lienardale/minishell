@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="minishell"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="minishell">
+				<Option output="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/minishell" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/headers"/>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/libft/headers"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 minishell"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="minishell/fast">
+				<Option output="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/minishell" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/headers"/>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/libft/headers"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 minishell/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="LIBFT">
+				<Option output="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/libLIBFT.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/headers"/>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/libft/headers"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 LIBFT"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="LIBFT/fast">
+				<Option output="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/libLIBFT.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/headers"/>
+					<Add directory="/Users/alienard/Documents/42_cursus/minishell/libft/headers"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 LIBFT/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/headers/v0_minishell.h">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_addafter.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_addback.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_addbefore.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_addfront.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_del.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_delone.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_goto_end.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_new_node.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_dlst_reverse.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_init_dlst.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_len_dlst.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/bilist/ft_print_dlst.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/convert/ft_atof.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/convert/ft_atoi.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/convert/ft_itoa.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/convert/ft_tolower.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/convert/ft_toupper.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_conv_2_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_conv_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_len_hexa_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_padding_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_preci_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/dprintf/ft_putnbr_base_dprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_conv_2_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_conv_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_len_hexa_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_padding_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_preci_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_putnbr_base_fprintf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/libft.h">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/libftdprintf.h">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/libftfprintf.h">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/libftprintf.h">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/list.h">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isalnum.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isalpha.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isascii.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_ischarset.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isdigit.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isnum.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isprint.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isspace.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstadd_back_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstadd_front_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstclear_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstdel_between.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstdel_last.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstdelone_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstiter_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstlast_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstmap_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstnew_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstsize_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstsplit.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/list/ft_split_to_lst.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_bzero.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_calloc.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_free_ptr.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_free_split.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memccpy.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memchr.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memcmp.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memcpy.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memmove.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memset.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_realloc.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_swap.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putchar_fd.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putendl_fd.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putnbr_fd.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putstr_fd.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_conv.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_conv_2.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_len_hexa.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_padding.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_preci.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_printf.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_putnbr_base.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_split.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_split_charset.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_splitadd_back.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_splitcpy.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strchr.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strcmp.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strdup.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strjoin.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strlcat.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strlcpy.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strlen.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strmapi.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strncmp.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strnstr.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strrchr.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strs_sort.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strsort.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strtok.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strtok_r.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strtrim.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_substr.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_env.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_export.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_free_env_lst.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_lst_env_to_split.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_parse_line.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_parse_prompt.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_pwd.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_search_env.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_separate_key_value.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_sort_env_lst.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_split_quote.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_split_to_lst_env.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_start_minishell.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_unset.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/ft_utils.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_change_dir.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_echo.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_exit.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_isolate_exec.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_lststrjoin.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_minishell.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_parse.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_parse_path.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_process.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_prompt.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/srcs/v0_split.c">
+			<Option target="minishell"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

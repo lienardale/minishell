@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/16 14:47:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/24 16:47:29 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,20 @@ int	main(int ac, char **av, char **env)
 	// int		i;
 	// t_sh	sh;
 	t_list	*env_lst;
+	int		fd;
 	//t_list	*temp;
 
-	if (ac != 1)
-		return (EXIT_FAILURE);
+	// if (ac != 1)
+		// return (EXIT_FAILURE);
 	(void)av;
 	env_lst = NULL;
 	check = 0;
 	if (!(env_lst = ft_start_minishell(env)))
 		return (EXIT_FAILURE);
-
+	if (ac != 1)
+		fd = open(av[1], O_RDONLY);
+	else 
+		fd = 0;
 	// ft_print_double_array(env, "env0");
 
 	// temp = env_lst;
@@ -42,10 +46,14 @@ int	main(int ac, char **av, char **env)
 	// 	ft_printf("%s\n", env[i]);
 	// ft_prompt(&check, 0, env);
 	
-	ft_prompt(&check, 0, &env_lst);
+	ft_prompt(&check, fd, &env_lst);
 	// system("leaks minishell");
 	// ft_free_split(env);
 	// ft_lstclear(&env_lst, ft_free_env_lst);
-	
+	if (close(fd) < 0)
+	{
+		ft_dprintf(2, "close not ok\n");
+		return (1);
+	}
 	return (check == 0) ? EXIT_FAILURE : EXIT_SUCCESS;
 }
