@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/25 16:07:32 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:30:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,46 @@ void	ft_check_line(char **line, int *quote)
 		tmp = *line;
 		*line = ft_strjoin(tmp, "\n");
 		ft_free_ptr(tmp);
+	}
+}
+
+void	ft_infile(int *check, int fd, t_list **env)
+{
+	char		*args;
+	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
+	int			quote;
+	t_sh		sh;
+	t_list		*input;
+	t_list		*begin;
+	t_dlist		*current;
+
+	begin = NULL;
+	quote = 0;
+	sh = (t_sh) {
+			.fd = fd, .line = NULL, .ret_cmd = 1,
+			.ret_sh = 0, .blt_fct = builtin_fct, 
+			.cmds = NULL, .env = env};
+	while (sh.ret_cmd && (*check = get_next_line(fd, &sh.line)) >= 0)
+	{
+		input = ft_lstnew(sh.line);
+		ft_lstadd_back(&begin, input);
+		ft_check_line((char**)&input->content, &quote);
+		if (!quote)
+		{
+			args = ft_input_join(begin);
+			ft_line_to_lst(args, &sh);
+			ft_lstclear(&begin, &free);
+			current = sh.cmds->head;
+			while (current)
+			{
+				sh.ret_cmd = ft_parse_cmds((t_cmd *)current->data, &sh);
+				current = current->next;
+			}
+			ft_free_ptr(args);
+		}
+		// ft_free_ptr(sh.line);
+		if (*check == 0)
+			break ;
 	}
 }
 

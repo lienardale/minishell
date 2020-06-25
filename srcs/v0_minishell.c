@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/24 16:47:29 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:17:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@ int	main(int ac, char **av, char **env)
 
 	// if (ac != 1)
 		// return (EXIT_FAILURE);
-	(void)av;
 	env_lst = NULL;
 	check = 0;
+	fd = 0;
 	if (!(env_lst = ft_start_minishell(env)))
 		return (EXIT_FAILURE);
 	if (ac != 1)
+	{
 		fd = open(av[1], O_RDONLY);
+		ft_infile(&check, fd, &env_lst);
+	}
 	else 
-		fd = 0;
+		ft_prompt(&check, fd, &env_lst);
 	// ft_print_double_array(env, "env0");
 
 	// temp = env_lst;
@@ -46,7 +49,6 @@ int	main(int ac, char **av, char **env)
 	// 	ft_printf("%s\n", env[i]);
 	// ft_prompt(&check, 0, env);
 	
-	ft_prompt(&check, fd, &env_lst);
 	// system("leaks minishell");
 	// ft_free_split(env);
 	// ft_lstclear(&env_lst, ft_free_env_lst);
