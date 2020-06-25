@@ -49,10 +49,22 @@ CMakeFiles/minishell.dir/srcs/v0_minishell.c.o: ../libft/headers/libftprintf.h
 CMakeFiles/minishell.dir/srcs/v0_minishell.c.o: ../libft/headers/list.h
 CMakeFiles/minishell.dir/srcs/v0_minishell.c.o: ../srcs/v0_minishell.c
 
+CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../headers/v0_minishell.h
+CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../libft/headers/libft.h
+CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../libft/headers/libftdprintf.h
+CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../libft/headers/libftfprintf.h
+CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../libft/headers/libftprintf.h
+CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../libft/headers/list.h
 CMakeFiles/minishell.dir/srcs/v0_parse.c.o: ../srcs/v0_parse.c
 
 CMakeFiles/minishell.dir/srcs/v0_parse_path.c.o: ../srcs/v0_parse_path.c
 
+CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../headers/v0_minishell.h
+CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../libft/headers/libft.h
+CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../libft/headers/libftdprintf.h
+CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../libft/headers/libftfprintf.h
+CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../libft/headers/libftprintf.h
+CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../libft/headers/list.h
 CMakeFiles/minishell.dir/srcs/v0_process.c.o: ../srcs/v0_process.c
 
 CMakeFiles/minishell.dir/srcs/v0_prompt.c.o: ../headers/v0_minishell.h

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/23 16:42:13 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:08:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,26 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 
 	builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
 	i = 0;
-	printf("1\n");
+	
 	if (cmd->cmd == NULL)
 	{
-		ft_printf("An empty command was entered.\n");
+		// ft_printf("An empty command was entered. : |%s|\n", cmd->cmd);
 	// An empty command was entered.
 		return (1);
 	}
 	i = -1;
+	// printf("is into parse cmds | cmd:|%s|\n", (char*)cmd->cmd);
 	while (builtins[++i])
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
 			ft_free_double_array(builtins);
+			// printf("goes into builtins\n");
 			return (sh->blt_fct[i](cmd->av, sh->env));
 		}
 	}
 	ft_free_double_array(builtins);
+	// printf("goes into launch\n");
 	return (ft_launch(cmd->av, sh->env));
 }
 

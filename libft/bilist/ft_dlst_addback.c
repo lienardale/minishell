@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 11:03:19 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/24 14:05:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 15:19:45 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ void	ft_dlst_addback(t_ref *ref, void *data)
 		return ;
 	new->next = NULL;
 	if (!ref->head)
-	{
-		new->prev = NULL;
-		return ;
-	}
-	ref->tail->next = new;
+		ref->head = new;
 	new->prev = ref->tail;
+	if (ref->tail)
+		ref->tail->next = new;
 	ref->tail = new;
 }

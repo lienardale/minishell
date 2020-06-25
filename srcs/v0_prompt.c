@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/24 16:49:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 16:07:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,16 @@ void	ft_prompt(int *check, int fd, t_list **env)
 		if (!quote)
 		{
 			args = ft_input_join(begin);
+			// ft_init_dlst(&sh.cmds);
 			ft_line_to_lst(args, &sh);
+			// ft_print_dlst(sh.cmds->head, "cmds-out:");
 			ft_lstclear(&begin, &free);
 			current = sh.cmds->head;
+			// ft_print_dlst(current, "curr:");
+			// printf("%s\n", sh.cmds->head->data->cmd);
 			while (current)
 			{
-				printf("0\n");
-				sh.ret_cmd = ft_parse_cmds(current->data, &sh);
+				sh.ret_cmd = ft_parse_cmds((t_cmd *)current->data, &sh);
 				current = current->next;
 			}
 			ft_free_ptr(args);

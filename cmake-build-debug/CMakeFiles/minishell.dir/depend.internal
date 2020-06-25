@@ -50,10 +50,22 @@ CMakeFiles/minishell.dir/srcs/v0_minishell.c.o
  ../libft/headers/list.h
  /Users/alienard/Documents/42_cursus/minishell/srcs/v0_minishell.c
 CMakeFiles/minishell.dir/srcs/v0_parse.c.o
+ ../headers/v0_minishell.h
+ ../libft/headers/libft.h
+ ../libft/headers/libftdprintf.h
+ ../libft/headers/libftfprintf.h
+ ../libft/headers/libftprintf.h
+ ../libft/headers/list.h
  /Users/alienard/Documents/42_cursus/minishell/srcs/v0_parse.c
 CMakeFiles/minishell.dir/srcs/v0_parse_path.c.o
  /Users/alienard/Documents/42_cursus/minishell/srcs/v0_parse_path.c
 CMakeFiles/minishell.dir/srcs/v0_process.c.o
+ ../headers/v0_minishell.h
+ ../libft/headers/libft.h
+ ../libft/headers/libftdprintf.h
+ ../libft/headers/libftfprintf.h
+ ../libft/headers/libftprintf.h
+ ../libft/headers/list.h
  /Users/alienard/Documents/42_cursus/minishell/srcs/v0_process.c
 CMakeFiles/minishell.dir/srcs/v0_prompt.c.o
  ../headers/v0_minishell.h

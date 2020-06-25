@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/22 13:59:16 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 13:24:50 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int			ft_launch(char **args, t_list **env)
 		// Error forking
 		ft_dprintf(2, "error forking\n");
 		// freeing allocated memory
-		ft_free_double_array(args);
+		// ft_free_double_array(args);
 		return (0);
 	}
 	else
@@ -141,7 +141,7 @@ int			ft_launch(char **args, t_list **env)
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
 		// freeing allocated memory
-		ft_free_double_array(args);
+		// ft_free_double_array(args);
 	}
 	return (1);
 }

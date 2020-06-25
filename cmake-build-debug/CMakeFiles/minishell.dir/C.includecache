@@ -78,11 +78,7 @@ libft.h
 
 ../libft/headers/list.h
 
-/Users/alienard/Documents/42_cursus/minishell/srcs/v0_minishell.c
-v0_minishell.h
-/Users/alienard/Documents/42_cursus/minishell/srcs/v0_minishell.h
-
-/Users/alienard/Documents/42_cursus/minishell/srcs/v0_prompt.c
+/Users/alienard/Documents/42_cursus/minishell/srcs/v0_split.c
 v0_minishell.h
 /Users/alienard/Documents/42_cursus/minishell/srcs/v0_minishell.h
 
