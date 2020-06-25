@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 18:19:23 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/04 18:20:03 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/25 15:53:05 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,21 @@ t_env	*ft_separate_key_value(char *env_str)
 	i = 0;
 	while (env_str[i] && env_str[i] != '=')
 		i++;
-	result = ft_calloc(1, sizeof(*result));
+	if (!(result = ft_calloc(1, sizeof(*result))))
+		return (NULL);
 	if (!env_str[i])
-		result->key = ft_strdup(env_str);
-	else
 	{
-		result->key = ft_substr(env_str, 0, i);
-		result->value = ft_substr(env_str, i + 1, ft_strlen(env_str) - i - 1);
+		if (!(result->key = ft_strdup(env_str)))
+		{
+			ft_free_env_lst(result);
+			return (NULL);
+		}
+	}
+	else if (!(result->key = ft_substr(env_str, 0, i)) ||
+	(!(result->value = ft_substr(env_str, i + 1, ft_strlen(env_str) - i - 1))))
+	{
+			ft_free_env_lst(result);
+			return (NULL);
 	}
 	return (result);
 }
