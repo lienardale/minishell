@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/25 16:30:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/26 00:21:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ void	ft_infile(int *check, int fd, t_list **env)
 	quote = 0;
 	sh = (t_sh) {
 			.fd = fd, .line = NULL, .ret_cmd = 1,
-			.ret_sh = 0, .blt_fct = builtin_fct, 
+			.ret_sh = 0, .blt_fct = builtin_fct,
 			.cmds = NULL, .env = env};
-	while (sh.ret_cmd && (*check = get_next_line(fd, &sh.line)) >= 0)
+	while (sh.ret_cmd && (*check = get_next_line_multi(fd, &sh.line)) >= 0)
 	{
 		input = ft_lstnew(sh.line);
 		ft_lstadd_back(&begin, input);
@@ -124,7 +124,7 @@ void	ft_prompt(int *check, int fd, t_list **env)
 	quote = 0;
 	sh = (t_sh) {
 			.fd = fd, .line = NULL, .ret_cmd = 1,
-			.ret_sh = 0, .blt_fct = builtin_fct, 
+			.ret_sh = 0, .blt_fct = builtin_fct,
 			.cmds = NULL, .env = env};
 	prompt = PROMPT;
 	while (sh.ret_cmd && (write(1,prompt,ft_strlen(prompt)))

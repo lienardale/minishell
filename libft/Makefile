@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/19 12:02:16 by alienard         ###   ########.fr        #
+#    Updated: 2020/06/26 00:25:00 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,9 @@ _FPRINTF		= ft_conv_2_fprintf.c \
 					ft_padding_fprintf.c \
 					ft_preci_fprintf.c \
 					ft_putnbr_base_fprintf.c
-_GNL			= get_next_line.c
+_GNL			= get_next_line.c \
+					get_next_line_bonus.c \
+					get_next_line_utils_bonus.c
 _IS				= ft_isalnum.c \
 					ft_isalpha.c \
 					ft_isascii.c \
@@ -65,7 +67,7 @@ _IS				= ft_isalnum.c \
 					ft_isnum.c \
 					ft_isprint.c \
 					ft_isspace.c \
-					ft_ischarset.c 
+					ft_ischarset.c
 _LIST			= ft_lstadd_back_bonus.c \
 					ft_lstclear_bonus.c \
 					ft_lstdel_last.c \

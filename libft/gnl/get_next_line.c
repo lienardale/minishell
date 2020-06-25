@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/19 20:19:38 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/20 13:55:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/26 00:12:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@ int		get_next_line(int fd, char **line)
 
 	if (!line)
 		return (-1);
-	while ((retread = read(fd, buffer, 300)) >= 0)
+	while ((retread = read(fd, buffer, 300)) > 0)
 	{
+		if (!retread)
+			break ;
 		buffer[retread] = '\0';
 		rest = ft_strjoin_free(rest, buffer);
 		if ((n = ft_strchr(rest, '\n')))
@@ -91,6 +93,6 @@ int		get_next_line(int fd, char **line)
 			return (1);
 		}
 	}
-	ft_free_ptr(rest);
+	// ft_free_ptr(rest);
 	return (retread);
 }

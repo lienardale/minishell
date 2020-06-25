@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 09:55:39 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/15 15:32:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/25 20:38:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_free_ptr(void *ptr)
 {
-	if (ptr)
+	if (ptr != NULL)
 		free(ptr);
 	ptr = NULL;
 	return (NULL);
