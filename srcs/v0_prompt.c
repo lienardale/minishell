@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/26 00:21:32 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/26 16:54:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	ft_infile(int *check, int fd, t_list **env)
 				current = current->next;
 			}
 			ft_free_ptr(args);
+			ft_dlst_del(sh.cmds);
 		}
 		// ft_free_ptr(sh.line);
 		if (*check == 0)
