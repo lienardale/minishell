@@ -18,43 +18,47 @@ coucou
 12
 
 --- TESTS LS ---
-CMakeLists.txt
+CmakeLists.txt
 Dockerfile
 Makefile
 README.md
+a.out
 cmake-build-debug
 headers
 libft
 minishell
 run.sh
 srcs
+test.sh
 tests
 valgrind.sh
-total 216
-drwxr-xr-x  18 alienard  2019_paris    612 Jun 29 15:42 .
-drwxr-xr-x  22 alienard  2019_paris    748 Jun 26 15:28 ..
-drwxr-xr-x  16 alienard  2019_paris    544 Jun 29 15:26 .git
--rw-r--r--   1 alienard  2019_paris    186 Jun 29 15:17 .gitignore
-drwxr-xr-x   8 alienard  2019_paris    272 Jun 29 15:03 .idea
-drwxr-xr-x   3 alienard  2019_paris    102 Jun 26 16:13 .vscode
--rw-r--r--   1 alienard  2019_paris   4055 Jun 29 10:28 CMakeLists.txt
--rw-r--r--   1 alienard  2019_paris   1014 Jun 26 15:25 Dockerfile
--rw-r--r--   1 alienard  2019_paris   3832 Jun 26 15:25 Makefile
--rw-r--r--   1 alienard  2019_paris     12 Jun 26 15:25 README.md
-drwxr-xr-x   9 alienard  2019_paris    306 Jun 29 13:07 cmake-build-debug
-drwxr-xr-x   3 alienard  2019_paris    102 Jun 26 15:25 headers
-drwxr-xr-x  17 alienard  2019_paris    578 Jun 29 11:29 libft
--rwxr-xr-x   1 alienard  2019_paris  79272 Jun 29 15:42 minishell
--rw-r--r--   1 alienard  2019_paris     34 Jun 29 14:31 run.sh
-drwxr-xr-x  53 alienard  2019_paris   1802 Jun 29 15:42 srcs
-drwxr-xr-x  22 alienard  2019_paris    748 Jun 29 15:42 tests
--rw-r--r--   1 alienard  2019_paris     71 Jun 26 15:25 valgrind.sh
+total 272
+drwxr-xr-x  20 alienard  staff    640 29 Jun 18:02 .
+drwxr-xr-x@ 23 alienard  staff    736 27 Jun 09:05 ..
+drwxr-xr-x  15 alienard  staff    480 29 Jun 17:55 .git
+-rw-r--r--   1 alienard  staff    186 29 Jun 17:54 .gitignore
+drwxr-xr-x   7 alienard  staff    224 24 Jun 18:38 .idea
+drwxr-xr-x   3 alienard  staff     96 26 Jun 19:33 .vscode
+-rw-r--r--   1 alienard  staff   4055 29 Jun 17:54 CmakeLists.txt
+-rw-r--r--   1 alienard  staff   1014 20 Jun 16:18 Dockerfile
+-rw-r--r--   1 alienard  staff   3832 24 Jun 18:38 Makefile
+-rw-r--r--   1 alienard  staff     12 20 Jun 16:18 README.md
+-rwxr-xr-x   1 alienard  staff  17624 26 Jun 00:13 a.out
+drwxr-xr-x   7 alienard  staff    224 29 Jun 17:54 cmake-build-debug
+drwxr-xr-x   3 alienard  staff     96 29 Jun 17:54 headers
+drwxr-xr-x  17 alienard  staff    544 29 Jun 17:55 libft
+-rwxr-xr-x   1 alienard  staff  82380 29 Jun 18:02 minishell
+-rw-r--r--   1 alienard  staff     34 29 Jun 17:54 run.sh
+drwxr-xr-x  53 alienard  staff   1696 29 Jun 18:02 srcs
+-rw-r--r--   1 alienard  staff     67 29 Jun 17:54 test.sh
+drwxr-xr-x  22 alienard  staff    704 29 Jun 18:02 tests
+-rw-r--r--   1 alienard  staff     71 20 Jun 16:18 valgrind.sh
 --- TESTS PWD ---
-/Users/alienard/Documents/42_cursus/minishell
-/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42/parsing_minishell
+/Users/alienard/Documents/42/parsing_minishell
 
-/Users/alienard/Documents/42_cursus/minishell
-/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42/parsing_minishell
+/Users/alienard/Documents/42/parsing_minishell
 
 --- TESTS CAT ---
 FROM debian:buster
@@ -153,55 +157,63 @@ $
 CMD bash$
 
 --- TESTS ; ---
-CMakeLists.txt
+CmakeLists.txt
 Dockerfile
 Makefile
 README.md
+a.out
 cmake-build-debug
 headers
 libft
 minishell
 run.sh
 srcs
+test.sh
 tests
 valgrind.sh
-CMakeLists.txt
+CmakeLists.txt
 Dockerfile
 Makefile
 README.md
+a.out
 cmake-build-debug
 headers
 libft
 minishell
 run.sh
 srcs
+test.sh
 tests
 valgrind.sh
-CMakeLists.txt
+CmakeLists.txt
 Dockerfile
 Makefile
 README.md
+a.out
 cmake-build-debug
 headers
 libft
 minishell
 run.sh
 srcs
+test.sh
 tests
 valgrind.sh
-CMakeLists.txt
+CmakeLists.txt
 Dockerfile
 Makefile
 README.md
+a.out
 cmake-build-debug
 headers
 libft
 minishell
 run.sh
 srcs
+test.sh
 tests
 valgrind.sh
-/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42/parsing_minishell
 coucou
 1
 2
@@ -215,17 +227,19 @@ coucou
 10
 11
 12
-CMakeLists.txt
+CmakeLists.txt
 Dockerfile
 Makefile
 README.md
+a.out
 cmake-build-debug
 headers
 libft
 minishell
 run.sh
 srcs
+test.sh
 tests
 valgrind.sh
-/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42/parsing_minishell
 

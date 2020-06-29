@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 17:04:36 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 18:02:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ void	ft_parse_escape(int *j, char *line, t_cmd *cmd)
 	cmd->bkslh = (cmd->bkslh == true) ? false : true;
 	if (cmd->bkslh == false)
 		return ;
-	// what to do then ? 
-
+	// what to do then ?
 	// echo "cou\"cou"
 	// \l\s
+	if (ft_ischarset(QUOTE, line[*j + 1]))
+		cmd->quote = (cmd->quote) ? 0 : line[*j + 1];
 
-	
+
 	cmd->bkslh = (cmd->bkslh == true) ? false : true;
 }
 

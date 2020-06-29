@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 16:58:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:57:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	ft_handle_end(char *line, t_cmd *cmd)
 		cmd->after = '\0';
 }
 
-void	ft_handle_meta_char(char *line, t_cmd *cmd)
-{
-	if (line[0] == '\\' && line[1] != '\\')
-		ft_parse_escape(line, cmd);
-	else if (ft_ischarset(QUOTE, line[0]))
-		ft_parse_quote(line, cmd);
-	else if (line[0] == '-')
-		ft_parse_opt(line, cmd);
-	else if (line[0] == '$')
-		ft_parse_wild(line, cmd);
-}
+// void	ft_handle_meta_char(char *line, t_cmd *cmd)
+// {
+// 	if (line[0] == '\\' && line[1] != '\\')
+// 		ft_parse_escape(line, cmd);
+// 	else if (ft_ischarset(QUOTE, line[0]))
+// 		ft_parse_quote(line, cmd);
+// 	else if (line[0] == '-')
+// 		ft_parse_opt(line, cmd);
+// 	else if (line[0] == '$')
+// 		ft_parse_wild(line, cmd);
+// }
 
 void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 {
