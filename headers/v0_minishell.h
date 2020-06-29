@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 11:23:07 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 15:51:05 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,14 @@ typedef struct	s_cmd
 	char			*cmd;
 	int				pos;
 	int				after;
-
-
 	int				before;
+
+	int				quote;
+	int				nbquote;
+	
 	int				pipe[2];
 	t_bool			opt;
 	t_bool			bkslh;
-	int				quote;
 
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;

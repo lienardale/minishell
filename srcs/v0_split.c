@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 13:31:39 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 16:38:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void	ft_handle_end(char *line, t_cmd *cmd)
 {
-	if (ft_ischarset(REDIR,line[0]))
+	if (ft_ischarset(REDIR, line[0]))
 		ft_parse_redir(line, cmd);
 	else if (line[0] == ';')
 		cmd->after = ';';
+	else
+		cmd->after = '\0';
 }
 
 void	ft_handle_meta_char(char *line, t_cmd *cmd)
@@ -44,19 +46,21 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	{
 		if (line[j] == '\'' && (cmd->quote == 0 || cmd->quote == '\''))
 		{
-			nbquote++;
+			cmd->nbquote++;
 			cmd->quote = '\'';
 		}
 		if (line[j] == '\"' && (cmd->quote == 0 || cmd->quote == '\"'))
 		{
-			nbquote++;
+			cmd->nbquote++;
 			cmd->quote = '\"';
 		}
-		if (nbquote % 2 == 0)
+		if (cmd->nbquote % 2 == 0)
 			cmd->quote = 0;
 		j++;
 	}
-	cmd->after = line[j];
+	if (ft_ischarset(END_CMD, line[j]))
+		ft_handle_end(&line[j], cmd);
+	// cmd->after = line[j];
 	tmp = ft_substr(line, *i, (j - *i));
 	if (ft_ischarset(END_CMD, line[j]))
 		j++;
@@ -71,7 +75,6 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 void	ft_line_to_lst(char *inputs, t_sh *sh)
 {
 	t_cmd	*content;
-	// t_cmd	*lst_content;
 	int		i;
 	int		pos;
 	int		before;
@@ -82,23 +85,16 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 	ft_init_dlst(&sh->cmds);
 	while (inputs[i])
 	{
-		// if (inputs[i] == '\0')
-			// break ;
 		if (!(content = ft_calloc(1, sizeof(t_cmd))))
 			return;
-		// while (ft_isspace(inputs[i]))
-			// i++;
 		content->pos = pos;
 		content->before = before;
 		content->env = sh->env;
-		content->quote = 0;
 		ft_init_cmd(content, inputs, &i);
 		ft_dlst_addback(sh->cmds, content);
 		before = content->after;
 		pos++;
-		// i++;
 	}
-	// i = 0;
 }
 
 char	**ft_split_line(char **inputs)

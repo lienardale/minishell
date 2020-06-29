@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/26 16:54:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 16:50:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	ft_prompt(int *check, int fd, t_list **env)
 			.cmds = NULL, .env = env};
 	prompt = PROMPT;
 	while (sh.ret_cmd && (write(1,prompt,ft_strlen(prompt)))
-		&& (*check = get_next_line(fd, &sh.line)) >= 0)
+		&& (*check = get_next_line_multi(fd, &sh.line)) >= 0)
 	{
 		input = ft_lstnew(sh.line);
 		ft_lstadd_back(&begin, input);
