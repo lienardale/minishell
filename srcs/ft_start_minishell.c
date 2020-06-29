@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/16 14:50:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/13 14:17:13 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,22 @@
 static char	*ft_increment_shlvl(char *env_shlvl)
 {
 	int		shlvl;
+	char	*temp;
 	char	*result;
-//	char	*temp;
-//	int		result_len;
+	int		result_len;
 
 	shlvl = ft_atoi(env_shlvl);
-//	temp = ft_itoa(++shlvl);
-//	result_len = 1 + ft_strlen(temp);
-//	result = ft_calloc(result_len, sizeof(char));
-//	ft_strlcat(result, "", result_len);
-//	ft_strlcat(result, temp, result_len);
-//	free(temp);
+	if (!(temp = ft_itoa(++shlvl)))
+		return (NULL);
+	result_len = 1 + ft_strlen(temp);
+	if (!(result = ft_calloc(result_len, sizeof(char))))
+	{
+		free(temp);
+		return (NULL);
+	}
+	ft_strlcat(result, "", result_len);
+	ft_strlcat(result, temp, result_len);
+	free(temp);
 	result = ft_itoa(shlvl);
 	return (result);
 }
