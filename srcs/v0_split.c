@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/26 16:55:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 11:58:09 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,12 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	char	*tmp;
 
 	j = *i;
-	printf("i = %d\n", *i);
 	while (line[j] && !ft_ischarset(END_CMD, line[j]))
 		j++;
 	cmd->after = line[j];
 	tmp = ft_substr(line, *i, (j - *i));
+	if (ft_ischarset(END_CMD, line[j]))
+		j++;
 	cmd->av = ft_split_quote(tmp, ' ');
 	free(tmp);
 	cmd->ac = ft_double_strlen(cmd->av);
@@ -59,16 +60,18 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 	int		pos;
 	int		before;
 
-	i = -1;
+	i = 0;
 	pos = 0;
 	before = 0;
 	ft_init_dlst(&sh->cmds);
-	while (inputs[++i])
+	while (inputs[i])
 	{
+		// if (inputs[i] == '\0')
+			// break ;
 		if (!(content = ft_calloc(1, sizeof(t_cmd))))
 			return;
-		while (ft_isspace(inputs[i]))
-			i++;
+		// while (ft_isspace(inputs[i]))
+			// i++;
 		content->pos = pos;
 		content->before = before;
 		content->env = sh->env;
@@ -76,8 +79,9 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 		ft_dlst_addback(sh->cmds, content);
 		before = content->after;
 		pos++;
+		// i++;
 	}
-	i = -1;
+	// i = 0;
 }
 
 char	**ft_split_line(char **inputs)
