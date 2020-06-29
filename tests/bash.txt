@@ -1,0 +1,221 @@
+--- TESTS ECHO ---
+coucou
+coucoucoucou
+coucoucoucou bonjour
+coucou bonjour
+coucou
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+--- TESTS LS ---
+CMakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+headers
+libft
+minishell
+srcs
+tests
+valgrind.sh
+total 208
+drwxr-xr-x  17 alienard  2019_paris    578 Jun 29 13:37 .
+drwxr-xr-x  22 alienard  2019_paris    748 Jun 26 15:28 ..
+drwxr-xr-x  16 alienard  2019_paris    544 Jun 29 12:01 .git
+-rw-r--r--   1 alienard  2019_paris    204 Jun 26 15:25 .gitignore
+drwxr-xr-x   8 alienard  2019_paris    272 Jun 29 13:24 .idea
+drwxr-xr-x   3 alienard  2019_paris    102 Jun 26 16:13 .vscode
+-rw-r--r--   1 alienard  2019_paris   4055 Jun 29 10:28 CMakeLists.txt
+-rw-r--r--   1 alienard  2019_paris   1014 Jun 26 15:25 Dockerfile
+-rw-r--r--   1 alienard  2019_paris   3832 Jun 26 15:25 Makefile
+-rw-r--r--   1 alienard  2019_paris     12 Jun 26 15:25 README.md
+drwxr-xr-x   9 alienard  2019_paris    306 Jun 29 13:07 cmake-build-debug
+drwxr-xr-x   3 alienard  2019_paris    102 Jun 26 15:25 headers
+drwxr-xr-x  17 alienard  2019_paris    578 Jun 29 11:29 libft
+-rwxr-xr-x   1 alienard  2019_paris  79272 Jun 29 13:37 minishell
+drwxr-xr-x  53 alienard  2019_paris   1802 Jun 29 13:37 srcs
+drwxr-xr-x   7 alienard  2019_paris    238 Jun 29 13:37 tests
+-rw-r--r--   1 alienard  2019_paris     71 Jun 26 15:25 valgrind.sh
+
+--- TESTS PWD ---
+/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42_cursus/minishell
+
+--- TESTS CAT ---
+FROM debian:buster
+
+ADD ./ /tmp
+
+RUN	apt-get update;\
+	apt-get install -y\
+	vim\
+	clang\
+	git\
+	make\
+	ruby\
+	valgrind \
+	ruby-bundler\
+	ruby-dev\
+	build-essential\
+	valgrind;\
+	cd tmp;\
+	git clone https://github.com/42Paris/42header.git;\
+	mkdir -p ~/.vim/plugin;\
+	cp 42header/vim/stdheader.vim ~/.vim/plugin/;\
+	git clone https://github.com/42Paris/norminette.git ~/.norminette;\
+	cd ~/.norminette/;\
+	bundle;\
+    echo '\
+		set tabstop=4\n\
+		syn off\n\
+		set colorcolumn=120\n\
+		set shiftwidth=4\n\
+		set softtabstop=4\n\
+		nnoremap m 0i//<Esc>\n\
+		nnoremap M 0xx\n\
+		vnoremap m dI/*<CR>*/<CR><Esc>kP\n\
+		vnoremap M dp2k2dd\n\
+	    nnoremap <F2> <C-W>\n\
+	    nnoremap <F3> <C-W>n\n\
+		nnoremap <F4> <C-W>v\n\
+		nnoremap <F5> <C-W>h\n\
+		nnoremap <F6> <C-W>j\n\
+		nnoremap <F7> <C-W>k\n\
+		nnoremap <F8> <C-W>l\n\
+		set shell=bash' \
+	> ~/.vimrc;\
+	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;
+#	source ~/.bashrc;
+#These isn't 'leaks' on linuxOS	apt-get install -y leaks;
+
+CMD bash
+FROM debian:buster$
+$
+ADD ./ /tmp$
+$
+RUN	apt-get update;\$
+	apt-get install -y\$
+	vim\$
+	clang\$
+	git\$
+	make\$
+	ruby\$
+	valgrind \$
+	ruby-bundler\$
+	ruby-dev\$
+	build-essential\$
+	valgrind;\$
+	cd tmp;\$
+	git clone https://github.com/42Paris/42header.git;\$
+	mkdir -p ~/.vim/plugin;\$
+	cp 42header/vim/stdheader.vim ~/.vim/plugin/;\$
+	git clone https://github.com/42Paris/norminette.git ~/.norminette;\$
+	cd ~/.norminette/;\$
+	bundle;\$
+    echo '\$
+		set tabstop=4\n\$
+		syn off\n\$
+		set colorcolumn=120\n\$
+		set shiftwidth=4\n\$
+		set softtabstop=4\n\$
+		nnoremap m 0i//<Esc>\n\$
+		nnoremap M 0xx\n\$
+		vnoremap m dI/*<CR>*/<CR><Esc>kP\n\$
+		vnoremap M dp2k2dd\n\$
+	    nnoremap <F2> <C-W>\n\$
+	    nnoremap <F3> <C-W>n\n\$
+		nnoremap <F4> <C-W>v\n\$
+		nnoremap <F5> <C-W>h\n\$
+		nnoremap <F6> <C-W>j\n\$
+		nnoremap <F7> <C-W>k\n\$
+		nnoremap <F8> <C-W>l\n\$
+		set shell=bash' \$
+	> ~/.vimrc;\$
+	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;$
+#	source ~/.bashrc;$
+#These isn't 'leaks' on linuxOS	apt-get install -y leaks;$
+$
+CMD bash$
+
+--- TESTS ; ---
+CMakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+headers
+libft
+minishell
+srcs
+tests
+valgrind.sh
+CMakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+headers
+libft
+minishell
+srcs
+tests
+valgrind.sh
+CMakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+headers
+libft
+minishell
+srcs
+tests
+valgrind.sh
+CMakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+headers
+libft
+minishell
+srcs
+tests
+valgrind.sh
+/Users/alienard/Documents/42_cursus/minishell
+coucou
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+CMakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+headers
+libft
+minishell
+srcs
+tests
+valgrind.sh
+/Users/alienard/Documents/42_cursus/minishell

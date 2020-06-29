@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 11:58:09 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 13:31:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,26 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 {
 	int		j;
 	char	*tmp;
+	int		nbquote;
 
 	j = *i;
-	while (line[j] && !ft_ischarset(END_CMD, line[j]))
+	nbquote = 0;
+	while (line[j] && (!ft_ischarset(END_CMD, line[j]) || cmd->quote))
+	{
+		if (line[j] == '\'' && (cmd->quote == 0 || cmd->quote == '\''))
+		{
+			nbquote++;
+			cmd->quote = '\'';
+		}
+		if (line[j] == '\"' && (cmd->quote == 0 || cmd->quote == '\"'))
+		{
+			nbquote++;
+			cmd->quote = '\"';
+		}
+		if (nbquote % 2 == 0)
+			cmd->quote = 0;
 		j++;
+	}
 	cmd->after = line[j];
 	tmp = ft_substr(line, *i, (j - *i));
 	if (ft_ischarset(END_CMD, line[j]))
@@ -75,6 +91,7 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 		content->pos = pos;
 		content->before = before;
 		content->env = sh->env;
+		content->quote = 0;
 		ft_init_cmd(content, inputs, &i);
 		ft_dlst_addback(sh->cmds, content);
 		before = content->after;
