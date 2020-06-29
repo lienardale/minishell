@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_env_to_split.c                              :+:      :+:    :+:   */
+/*   ft_lst_env_to_split_export.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/07 15:40:26 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/13 14:04:25 by cdai             ###   ########.fr       */
+/*   Created: 2020/06/29 10:46:03 by cdai              #+#    #+#             */
+/*   Updated: 2020/06/29 10:49:51 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-char	**ft_lst_env_to_split(t_list *lst_env)
+char	**ft_lst_env_to_split_export(t_list *lst_env)
 {
 	t_list	*lst;
 	t_env	*content;
@@ -28,7 +28,7 @@ char	**ft_lst_env_to_split(t_list *lst_env)
 	{
 		content = (t_env*)lst->content;
 		len = ft_strlen(content->key) + 1;
-		len += (content->value) ? ft_strlen(content->value) + 1 : 0;
+		len += (content->value) ? ft_strlen(content->value) + 3 : 0;
 		if (!(result[i] = ft_calloc(len, sizeof(**result))))
 		{
 			ft_free_split(result);
@@ -38,7 +38,9 @@ char	**ft_lst_env_to_split(t_list *lst_env)
 		if (content->value)
 		{
 			ft_strlcat(result[i], "=", len);
+			ft_strlcat(result[i], "\"", len);
 			ft_strlcat(result[i], content->value, len);
+			ft_strlcat(result[i], "\"", len);
 		}
 		i++;
 		lst = lst->next;

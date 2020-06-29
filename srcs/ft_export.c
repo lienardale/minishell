@@ -6,49 +6,58 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/11 16:54:04 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/29 11:04:09 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
+static int	ft_export_check_arg(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+// le premier character ne peut pas etre '=' ni un autre chose qu'une lettre
+		if (i == 0 && !ft_isalpha(arg[i]))
+			return (1);
+// si je trouve un character '=' apres le premier charactere, je sors de la fonction
+		else if (arg[i] == '=')
+			return (0);
+// si je trouve un charactere autre que alpha num, je sors
+		else if (!ft_isalnum(arg[i]))
+			return (1);
+		i++;
+	}
+// je retroune 0 si je valide cet argument
+	return (0);
+}
+
+// les erreurs ne sont pas encore geres
 static t_list	*ft_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
 	t_env	*env_content;
 	t_list	*temp_env;
 
-	/*
-	temp_env = env;
-	result = ft_separate_key_value(arg);
-	while (temp_env)
-	{
-		if (ft_strcmp(env_content->key, result->key) == 0)
-		{
-			if (result->value)
-			{
-				free(env_content->value);
-				env_content->value = result->value;
-			}
-			free(result->key);
-			free(result);
-			return (env);
-		}
-		temp_env = temp_env->next;
-	}
-*/
+// temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	temp_env = ft_search_env(env, arg);
 	result = ft_separate_key_value(arg);
 	if (temp_env)
 	{
 		env_content = (t_env*)temp_env->content;
+// je libere la memoire de la valeur 
 		free(env_content->value);
-		env_content->value = result->value;
+// je mets a jour la valeur
+		env_content->value = result->value;\
+// je libere la memoire de la variable temporaire sans liberer la memoire de la valeur puisque c'est ce que je voulais garder
 		free(result->key);
 		free(result);
-		return (env);
 	}
-	ft_lstadd_back(&env, ft_lstnew(result));
+// sinon je l'ajoute a la variable d'environnement donc je n'ai pas de memoire a liberer
+	else
+		ft_lstadd_back(&env, ft_lstnew(result));
 	return (env);
 }
 
@@ -56,22 +65,51 @@ int				ft_export(char **args, t_list **env)
 {
 	int		i;
 	char	**splited;
+// il faut gerer la sortie de la fonction
+// 0 si tout va bien, 1 si ca ne va pas
+	int		ret;
 
+	ret = 0;
+// je cherche a savoir si des arguments ou pas
 	if (!args[1])
 	{
 		i = -1;
-		splited = ft_lst_env_to_split(*env);
+// j'utilise une variable temporaire pour ne pas modifier des choses dans la liste chainee.
+// handle malloc error
+		if (!(splited = ft_lst_env_to_split_export(*env)))
+		{
+			ft_free_split(args);
+// return (1); // ret = 1;
+			return (1);
+		}
 		ft_strs_sort(splited, ft_lstsize(*env));
 		while (splited[++i])
-			ft_printf("%s\n", splited[i]);
+// il faut que je fasse attention a la variable d'env "_"
+			ft_printf("declare -x %s\n", splited[i]);
 		ft_free_split(splited);
 	}
+// sinon je mets a jour ma variable d'environnement
 	else
 	{
 		i = 0;
 		while (args[++i])
-			ft_update_env(*env, args[i]);
+// ici la fonction est un peu differente que pour unset alors elle est specifique
+		if (ft_export_check_arg(args[i]))
+		{
+			ret = 1;
+			ft_printf("minishell: export: `%s': not a valid identifier\n", args[i]);
+		}
+		else
+// handle malloc error
+			if (!(ft_update_env(*env, args[i])))
+			{
+				ft_free_split(args);
+// return (1); // ret = 1;
+				return (1);
+			}
 	}
 	ft_free_split(args);
+// a mettre a jour
+//	return (ret);
 	return (1);
 }
