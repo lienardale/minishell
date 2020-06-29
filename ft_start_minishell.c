@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/14 14:29:12 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/29 11:45:28 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,24 @@
 static char	*ft_increment_shlvl(char *env_shlvl)
 {
 	int		shlvl;
-//	char	*temp;
+	char	*temp;
 	char	*result;
-//	int		result_len;
+	int		result_len;
 
 	shlvl = ft_atoi(env_shlvl);
-	/*
-temp = ft_itoa(++shlvl);
+	if (!(temp = ft_itoa(++shlvl)))
+		return (NULL);
 	result_len = 1 + ft_strlen(temp);
-result = ft_calloc(result_len, sizeof(char));
+	if (!(result = ft_calloc(result_len, sizeof(char))))
+	{
+		free(temp);
+		return (NULL);
+	}
 	ft_strlcat(result, "", result_len);
 	ft_strlcat(result, temp, result_len);
 	free(temp);
-*/
 	result = ft_itoa(shlvl);
-return (result);
+	return (result);
 }
 
 t_list	*ft_start_minishell(char **env)
@@ -55,8 +58,8 @@ t_list	*ft_start_minishell(char **env)
 			}
 			free(old_value);
 		}
-printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
-printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
+//printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
+//printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
 		temp = temp->next;
 	}
 	return (result);
