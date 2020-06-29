@@ -8,9 +8,6 @@ a.out*
 *.swo
 .DS_Store
 *brouillon*
-*.txt
-*.sh
-*test*
 prog*
 sortie*
 bidule
