@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/11 16:24:49 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/29 13:50:53 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ int	ft_pwd(char **args, t_list **env)
 	if (!(cwd = ft_calloc(1, buff_size)))
 		return (0);
 	getcwd(cwd, buff_size);
-	ft_putendl_fd(cwd, 0);
+	// ft_putendl_fd(cwd, 0);
+	ft_printf("%s\n", cwd);
 	free(cwd);
-ft_free_split(args);
+	ft_free_split(args);
 	return (1);
 }

@@ -1,7 +1,0 @@
-51a52,53
-> /Users/alienard/Documents/42_cursus/minishell
-> /Users/alienard/Documents/42_cursus/minishell
-193a196
-> /Users/alienard/Documents/42_cursus/minishell
-217a221
-> /Users/alienard/Documents/42_cursus/minishell

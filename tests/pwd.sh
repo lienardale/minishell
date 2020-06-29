@@ -1,3 +1,5 @@
+echo "--- TESTS PWD ---"
+
 pwd
 pwd salut
 
