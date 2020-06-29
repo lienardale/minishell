@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 15:51:05 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/29 17:01:29 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ typedef struct	s_cmd
 	int				nbquote;
 	
 	int				pipe[2];
-	t_bool			opt;
-	t_bool			bkslh;
+	bool			opt;
+	bool			bkslh;
 
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;
@@ -117,7 +117,7 @@ void		ft_line_to_lst(char *inputs, t_sh *sh);
 void		ft_init_cmd(t_cmd *cmd, char *line, int *i);
 void		ft_handle_meta_char(char *line, t_cmd *cmd);
 void		ft_handle_end(char *line, t_cmd *cmd);
-void		ft_parse_escape(char *line, t_cmd *cmd);
+void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
 void		ft_parse_redir(char *line, t_cmd *cmd);
 void		ft_parse_quote(char *line, t_cmd *cmd);
 void		ft_parse_opt(char *line, t_cmd *cmd);
