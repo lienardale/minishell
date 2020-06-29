@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_prompt.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/13 21:13:09 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/13 21:16:38 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/29 10:29:31 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,6 @@ char *ft_parse_prompt(char *prompt, t_list **env)
 
 	(void)prompt;
 	(void)env;
+	result = NULL;
 	return (result);
 }

@@ -36,6 +36,8 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_preci_fprintf.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/fprintf/ft_preci_fprintf.c.o"
   "/Users/alienard/Documents/42_cursus/minishell/libft/fprintf/ft_putnbr_base_fprintf.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/fprintf/ft_putnbr_base_fprintf.c.o"
   "/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.o"
+  "/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o"
+  "/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_utils_bonus.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o"
   "/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isalnum.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o"
   "/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isalpha.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o"
   "/Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isascii.c" "/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o"

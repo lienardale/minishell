@@ -1000,6 +1000,60 @@ libft/gnl/get_next_line.c.s:
 	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.s
 .PHONY : libft/gnl/get_next_line.c.s
 
+libft/gnl/get_next_line_bonus.o: libft/gnl/get_next_line_bonus.c.o
+
+.PHONY : libft/gnl/get_next_line_bonus.o
+
+# target to build an object file
+libft/gnl/get_next_line_bonus.c.o:
+	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o
+.PHONY : libft/gnl/get_next_line_bonus.c.o
+
+libft/gnl/get_next_line_bonus.i: libft/gnl/get_next_line_bonus.c.i
+
+.PHONY : libft/gnl/get_next_line_bonus.i
+
+# target to preprocess a source file
+libft/gnl/get_next_line_bonus.c.i:
+	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.i
+.PHONY : libft/gnl/get_next_line_bonus.c.i
+
+libft/gnl/get_next_line_bonus.s: libft/gnl/get_next_line_bonus.c.s
+
+.PHONY : libft/gnl/get_next_line_bonus.s
+
+# target to generate assembly for a file
+libft/gnl/get_next_line_bonus.c.s:
+	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.s
+.PHONY : libft/gnl/get_next_line_bonus.c.s
+
+libft/gnl/get_next_line_utils_bonus.o: libft/gnl/get_next_line_utils_bonus.c.o
+
+.PHONY : libft/gnl/get_next_line_utils_bonus.o
+
+# target to build an object file
+libft/gnl/get_next_line_utils_bonus.c.o:
+	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o
+.PHONY : libft/gnl/get_next_line_utils_bonus.c.o
+
+libft/gnl/get_next_line_utils_bonus.i: libft/gnl/get_next_line_utils_bonus.c.i
+
+.PHONY : libft/gnl/get_next_line_utils_bonus.i
+
+# target to preprocess a source file
+libft/gnl/get_next_line_utils_bonus.c.i:
+	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.i
+.PHONY : libft/gnl/get_next_line_utils_bonus.c.i
+
+libft/gnl/get_next_line_utils_bonus.s: libft/gnl/get_next_line_utils_bonus.c.s
+
+.PHONY : libft/gnl/get_next_line_utils_bonus.s
+
+# target to generate assembly for a file
+libft/gnl/get_next_line_utils_bonus.c.s:
+	$(MAKE) -f CMakeFiles/LIBFT.dir/build.make CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.s
+.PHONY : libft/gnl/get_next_line_utils_bonus.c.s
+
 libft/is/ft_isalnum.o: libft/is/ft_isalnum.c.o
 
 .PHONY : libft/is/ft_isalnum.o
@@ -3563,6 +3617,12 @@ help:
 	@echo "... libft/gnl/get_next_line.o"
 	@echo "... libft/gnl/get_next_line.i"
 	@echo "... libft/gnl/get_next_line.s"
+	@echo "... libft/gnl/get_next_line_bonus.o"
+	@echo "... libft/gnl/get_next_line_bonus.i"
+	@echo "... libft/gnl/get_next_line_bonus.s"
+	@echo "... libft/gnl/get_next_line_utils_bonus.o"
+	@echo "... libft/gnl/get_next_line_utils_bonus.i"
+	@echo "... libft/gnl/get_next_line_utils_bonus.s"
 	@echo "... libft/is/ft_isalnum.o"
 	@echo "... libft/is/ft_isalnum.i"
 	@echo "... libft/is/ft_isalnum.s"

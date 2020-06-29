@@ -31,6 +31,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/LIBFT.dir/libft/fprintf/ft_preci_fprintf.c.o"
   "CMakeFiles/LIBFT.dir/libft/fprintf/ft_putnbr_base_fprintf.c.o"
   "CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.o"
+  "CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o"
+  "CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o"
   "CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o"
   "CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o"
   "CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o"

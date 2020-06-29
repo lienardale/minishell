@@ -473,9 +473,35 @@ CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.s"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line.c -o CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.s
 
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o: ../libft/gnl/get_next_line_bonus.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.c
+
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.c > CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.i
+
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.c -o CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.s
+
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o: ../libft/gnl/get_next_line_utils_bonus.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_utils_bonus.c
+
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.i"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_utils_bonus.c > CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.i
+
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.s"
+	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_utils_bonus.c -o CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.s
+
 CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o: ../libft/is/ft_isalnum.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isalnum.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.i: cmake_force
@@ -488,7 +514,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o: ../libft/is/ft_isalpha.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isalpha.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.i: cmake_force
@@ -501,7 +527,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o: ../libft/is/ft_isascii.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isascii.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.i: cmake_force
@@ -514,7 +540,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.o: ../libft/is/ft_ischarset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_ischarset.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.i: cmake_force
@@ -527,7 +553,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_ischarset.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.o: ../libft/is/ft_isdigit.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isdigit.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.i: cmake_force
@@ -540,7 +566,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isdigit.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.o: ../libft/is/ft_isnum.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isnum.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.i: cmake_force
@@ -553,7 +579,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isnum.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.o: ../libft/is/ft_isprint.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isprint.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.i: cmake_force
@@ -566,7 +592,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isprint.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.o: ../libft/is/ft_isspace.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/is/ft_isspace.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.i: cmake_force
@@ -579,7 +605,7 @@ CMakeFiles/LIBFT.dir/libft/is/ft_isspace.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.o: ../libft/list/ft_lstadd_back_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstadd_back_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.i: cmake_force
@@ -592,7 +618,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_back_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.o: ../libft/list/ft_lstadd_front_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstadd_front_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.i: cmake_force
@@ -605,7 +631,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstadd_front_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.o: ../libft/list/ft_lstclear_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstclear_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.i: cmake_force
@@ -618,7 +644,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstclear_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.o: ../libft/list/ft_lstdel_between.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstdel_between.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.i: cmake_force
@@ -631,7 +657,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_between.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.o: ../libft/list/ft_lstdel_last.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstdel_last.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.i: cmake_force
@@ -644,7 +670,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstdel_last.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.o: ../libft/list/ft_lstdelone_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstdelone_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.i: cmake_force
@@ -657,7 +683,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstdelone_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.o: ../libft/list/ft_lstiter_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstiter_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.i: cmake_force
@@ -670,7 +696,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstiter_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.o: ../libft/list/ft_lstlast_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstlast_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.i: cmake_force
@@ -683,7 +709,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstlast_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.o: ../libft/list/ft_lstmap_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstmap_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.i: cmake_force
@@ -696,7 +722,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstmap_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.o: ../libft/list/ft_lstnew_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstnew_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.i: cmake_force
@@ -709,7 +735,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstnew_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.o: ../libft/list/ft_lstsize_bonus.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstsize_bonus.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.i: cmake_force
@@ -722,7 +748,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstsize_bonus.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.o: ../libft/list/ft_lstsplit.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_lstsplit.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.i: cmake_force
@@ -735,7 +761,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_lstsplit.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.o: ../libft/list/ft_split_to_lst.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/list/ft_split_to_lst.c
 
 CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.i: cmake_force
@@ -748,7 +774,7 @@ CMakeFiles/LIBFT.dir/libft/list/ft_split_to_lst.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.o: ../libft/mem/ft_bzero.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_bzero.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.i: cmake_force
@@ -761,7 +787,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_bzero.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.o: ../libft/mem/ft_calloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_calloc.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.i: cmake_force
@@ -774,7 +800,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_calloc.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.o: ../libft/mem/ft_free_ptr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_free_ptr.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.i: cmake_force
@@ -787,7 +813,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_free_ptr.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.o: ../libft/mem/ft_free_split.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_free_split.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.i: cmake_force
@@ -800,7 +826,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_free_split.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.o: ../libft/mem/ft_memccpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memccpy.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.i: cmake_force
@@ -813,7 +839,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_memccpy.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.o: ../libft/mem/ft_memchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memchr.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.i: cmake_force
@@ -826,7 +852,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_memchr.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.o: ../libft/mem/ft_memcmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memcmp.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.i: cmake_force
@@ -839,7 +865,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_memcmp.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.o: ../libft/mem/ft_memcpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memcpy.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.i: cmake_force
@@ -852,7 +878,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_memcpy.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.o: ../libft/mem/ft_memmove.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memmove.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.i: cmake_force
@@ -865,7 +891,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_memmove.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.o: ../libft/mem/ft_memset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_memset.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.i: cmake_force
@@ -878,7 +904,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_memset.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.o: ../libft/mem/ft_realloc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_realloc.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.i: cmake_force
@@ -891,7 +917,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_realloc.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.o: ../libft/mem/ft_swap.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/mem/ft_swap.c
 
 CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.i: cmake_force
@@ -904,7 +930,7 @@ CMakeFiles/LIBFT.dir/libft/mem/ft_swap.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.o: ../libft/print/ft_putchar_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putchar_fd.c
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.i: cmake_force
@@ -917,7 +943,7 @@ CMakeFiles/LIBFT.dir/libft/print/ft_putchar_fd.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.o: ../libft/print/ft_putendl_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putendl_fd.c
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.i: cmake_force
@@ -930,7 +956,7 @@ CMakeFiles/LIBFT.dir/libft/print/ft_putendl_fd.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.o: ../libft/print/ft_putnbr_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putnbr_fd.c
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.i: cmake_force
@@ -943,7 +969,7 @@ CMakeFiles/LIBFT.dir/libft/print/ft_putnbr_fd.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.o: ../libft/print/ft_putstr_fd.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/print/ft_putstr_fd.c
 
 CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.i: cmake_force
@@ -956,7 +982,7 @@ CMakeFiles/LIBFT.dir/libft/print/ft_putstr_fd.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.o: ../libft/printf/ft_conv.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_conv.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.i: cmake_force
@@ -969,7 +995,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_conv.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.o: ../libft/printf/ft_conv_2.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_conv_2.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.i: cmake_force
@@ -982,7 +1008,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_conv_2.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.o: ../libft/printf/ft_len_hexa.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_len_hexa.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.i: cmake_force
@@ -995,7 +1021,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_len_hexa.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.o: ../libft/printf/ft_padding.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_padding.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.i: cmake_force
@@ -1008,7 +1034,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_padding.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.o: ../libft/printf/ft_preci.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_preci.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.i: cmake_force
@@ -1021,7 +1047,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_preci.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.o: ../libft/printf/ft_printf.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_printf.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.i: cmake_force
@@ -1034,7 +1060,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_printf.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.o: ../libft/printf/ft_putnbr_base.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/printf/ft_putnbr_base.c
 
 CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.i: cmake_force
@@ -1047,7 +1073,7 @@ CMakeFiles/LIBFT.dir/libft/printf/ft_putnbr_base.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_split.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_split.c.o: ../libft/str/ft_split.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_split.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_split.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_split.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_split.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_split.c.i: cmake_force
@@ -1060,7 +1086,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_split.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.o: ../libft/str/ft_split_charset.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_split_charset.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.i: cmake_force
@@ -1073,7 +1099,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_split_charset.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.o: ../libft/str/ft_splitadd_back.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_splitadd_back.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.i: cmake_force
@@ -1086,7 +1112,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_splitadd_back.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.o: ../libft/str/ft_splitcpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_splitcpy.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.i: cmake_force
@@ -1099,7 +1125,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_splitcpy.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.o: ../libft/str/ft_strchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strchr.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.i: cmake_force
@@ -1112,7 +1138,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strchr.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.o: ../libft/str/ft_strcmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strcmp.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.i: cmake_force
@@ -1125,7 +1151,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strcmp.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.o: ../libft/str/ft_strdup.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strdup.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.i: cmake_force
@@ -1138,7 +1164,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strdup.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.o: ../libft/str/ft_strjoin.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strjoin.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.i: cmake_force
@@ -1151,7 +1177,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strjoin.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.o: ../libft/str/ft_strlcat.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strlcat.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.i: cmake_force
@@ -1164,7 +1190,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strlcat.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.o: ../libft/str/ft_strlcpy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strlcpy.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.i: cmake_force
@@ -1177,7 +1203,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strlcpy.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.o: ../libft/str/ft_strlen.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strlen.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.i: cmake_force
@@ -1190,7 +1216,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strlen.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.o: ../libft/str/ft_strmapi.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strmapi.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.i: cmake_force
@@ -1203,7 +1229,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strmapi.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.o: ../libft/str/ft_strncmp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strncmp.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.i: cmake_force
@@ -1216,7 +1242,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strncmp.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.o: ../libft/str/ft_strnstr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strnstr.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.i: cmake_force
@@ -1229,7 +1255,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strnstr.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.o: ../libft/str/ft_strrchr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strrchr.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.i: cmake_force
@@ -1242,7 +1268,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strrchr.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.o: ../libft/str/ft_strs_sort.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strs_sort.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.i: cmake_force
@@ -1255,7 +1281,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strs_sort.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.o: ../libft/str/ft_strsort.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strsort.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.i: cmake_force
@@ -1268,7 +1294,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strsort.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.o: ../libft/str/ft_strtok.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strtok.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.i: cmake_force
@@ -1281,7 +1307,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strtok.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.o: ../libft/str/ft_strtok_r.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strtok_r.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.i: cmake_force
@@ -1294,7 +1320,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strtok_r.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.o: ../libft/str/ft_strtrim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strtrim.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.i: cmake_force
@@ -1307,7 +1333,7 @@ CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.s: cmake_force
 
 CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.o: CMakeFiles/LIBFT.dir/flags.make
 CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.o: ../libft/str/ft_substr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.o"
 	/usr/bin/clang $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.o   -c /Users/alienard/Documents/42_cursus/minishell/libft/str/ft_substr.c
 
 CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.i: cmake_force
@@ -1352,6 +1378,8 @@ LIBFT_OBJECTS = \
 "CMakeFiles/LIBFT.dir/libft/fprintf/ft_preci_fprintf.c.o" \
 "CMakeFiles/LIBFT.dir/libft/fprintf/ft_putnbr_base_fprintf.c.o" \
 "CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.o" \
+"CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o" \
+"CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o" \
 "CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o" \
 "CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o" \
 "CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o" \
@@ -1453,6 +1481,8 @@ libLIBFT.a: CMakeFiles/LIBFT.dir/libft/fprintf/ft_padding_fprintf.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/fprintf/ft_preci_fprintf.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/fprintf/ft_putnbr_base_fprintf.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.o
+libLIBFT.a: CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o
+libLIBFT.a: CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/is/ft_isascii.c.o
@@ -1520,7 +1550,7 @@ libLIBFT.a: CMakeFiles/LIBFT.dir/libft/str/ft_strtrim.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/libft/str/ft_substr.c.o
 libLIBFT.a: CMakeFiles/LIBFT.dir/build.make
 libLIBFT.a: CMakeFiles/LIBFT.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Linking C static library libLIBFT.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Linking C static library libLIBFT.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/LIBFT.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/LIBFT.dir/link.txt --verbose=$(VERBOSE)
 

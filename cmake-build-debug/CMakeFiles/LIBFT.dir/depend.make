@@ -122,6 +122,12 @@ CMakeFiles/LIBFT.dir/libft/fprintf/ft_putnbr_base_fprintf.c.o: ../libft/fprintf/
 CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.o: ../libft/headers/libft.h
 CMakeFiles/LIBFT.dir/libft/gnl/get_next_line.c.o: ../libft/gnl/get_next_line.c
 
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o: ../libft/headers/get_next_line_bonus.h
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_bonus.c.o: ../libft/gnl/get_next_line_bonus.c
+
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o: ../libft/headers/get_next_line_bonus.h
+CMakeFiles/LIBFT.dir/libft/gnl/get_next_line_utils_bonus.c.o: ../libft/gnl/get_next_line_utils_bonus.c
+
 CMakeFiles/LIBFT.dir/libft/is/ft_isalnum.c.o: ../libft/is/ft_isalnum.c
 
 CMakeFiles/LIBFT.dir/libft/is/ft_isalpha.c.o: ../libft/is/ft_isalpha.c

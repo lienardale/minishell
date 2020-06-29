@@ -229,6 +229,15 @@
 		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line.c">
 			<Option target="LIBFT"/>
 		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_utils_bonus.c">
+			<Option target="LIBFT"/>
+		</Unit>
+		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/get_next_line_bonus.h">
+			<Option target="LIBFT"/>
+		</Unit>
 		<Unit filename="/Users/alienard/Documents/42_cursus/minishell/libft/headers/libft.h">
 			<Option target="LIBFT"/>
 		</Unit>

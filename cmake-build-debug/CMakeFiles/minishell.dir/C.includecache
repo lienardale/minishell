@@ -35,8 +35,16 @@ libftdprintf.h
 ../headers/libftdprintf.h
 libftfprintf.h
 ../headers/libftfprintf.h
+get_next_line_bonus.h
+../headers/get_next_line_bonus.h
 list.h
 ../headers/list.h
+
+../libft/headers/get_next_line_bonus.h
+unistd.h
+-
+stdlib.h
+-
 
 ../libft/headers/libft.h
 unistd.h
@@ -78,7 +86,7 @@ libft.h
 
 ../libft/headers/list.h
 
-/Users/alienard/Documents/42_cursus/minishell/srcs/v0_split.c
+/Users/alienard/Documents/42_cursus/minishell/srcs/ft_parse_prompt.c
 v0_minishell.h
 /Users/alienard/Documents/42_cursus/minishell/srcs/v0_minishell.h
 

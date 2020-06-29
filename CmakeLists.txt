@@ -1,32 +1,160 @@
 cmake_minimum_required(VERSION 3.10)
-project(42)
+project(minishell)
 
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_COMPILER /usr/bin/clang)
 set(CMAKE_CXX_COMPILER /usr/bin/clang++)
 
-#if (${WFLAGS})
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Werror -std=c99 -pedantic-errors")
-#endif (${WFLAGS})
-#
-#if (${SAN})
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address")
-#endif (${SAN})
-#
-#if (${COVER})
-#    set(CMAKE_C_COMPILER /usr/bin/gcc)
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
-#endif (${COVER})
-#
-#if (${OPTI})
-#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Ofast")
-#endif (${OPTI})
+set(CMAKE_C_FLAGS "-Wall -Wextra -Werror")
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
+add_library( LIBFT
 
-#add_subdirectory(CMAKE/Libft)
-#add_subdirectory(CMAKE/GNL)
-#add_subdirectory(CMAKE/ft_printf)
-add_subdirectory(CMAKE/cub3D)
+		libft/bilist/ft_dlst_addafter.c
+		libft/bilist/ft_dlst_addback.c
+		libft/bilist/ft_dlst_addbefore.c
+		libft/bilist/ft_dlst_addfront.c
+		libft/bilist/ft_dlst_del.c
+		libft/bilist/ft_dlst_delone.c
+		libft/bilist/ft_dlst_goto_end.c
+		libft/bilist/ft_dlst_new_node.c
+		libft/bilist/ft_dlst_reverse.c
+		libft/bilist/ft_init_dlst.c
+		libft/bilist/ft_len_dlst.c
+		libft/bilist/ft_print_dlst.c
+		libft/convert/ft_atof.c
+		libft/convert/ft_atoi.c
+		libft/convert/ft_itoa.c
+		libft/convert/ft_tolower.c
+		libft/convert/ft_toupper.c
+		libft/dprintf/ft_conv_2_dprintf.c
+		libft/dprintf/ft_conv_dprintf.c
+		libft/dprintf/ft_dprintf.c
+		libft/dprintf/ft_len_hexa_dprintf.c
+		libft/dprintf/ft_padding_dprintf.c
+		libft/dprintf/ft_preci_dprintf.c
+		libft/dprintf/ft_putnbr_base_dprintf.c
+		libft/fprintf/ft_conv_2_fprintf.c
+		libft/fprintf/ft_conv_fprintf.c
+		libft/fprintf/ft_fprintf.c
+		libft/fprintf/ft_len_hexa_fprintf.c
+		libft/fprintf/ft_padding_fprintf.c
+		libft/fprintf/ft_preci_fprintf.c
+		libft/fprintf/ft_putnbr_base_fprintf.c
+		libft/gnl/get_next_line.c
+		libft/gnl/get_next_line_bonus.c
+		libft/gnl/get_next_line_utils_bonus.c
+		libft/headers/get_next_line_bonus.h
+		libft/headers/libft.h
+		libft/headers/libftdprintf.h
+		libft/headers/libftfprintf.h
+		libft/headers/libftprintf.h
+		libft/headers/list.h
+		libft/is/ft_isalnum.c
+		libft/is/ft_isalpha.c
+		libft/is/ft_isascii.c
+		libft/is/ft_ischarset.c
+		libft/is/ft_isdigit.c
+		libft/is/ft_isnum.c
+		libft/is/ft_isprint.c
+		libft/is/ft_isspace.c
+		libft/list/ft_lstadd_back_bonus.c
+		libft/list/ft_lstadd_front_bonus.c
+		libft/list/ft_lstclear_bonus.c
+		libft/list/ft_lstdel_between.c
+		libft/list/ft_lstdel_last.c
+		libft/list/ft_lstdelone_bonus.c
+		libft/list/ft_lstiter_bonus.c
+		libft/list/ft_lstlast_bonus.c
+		libft/list/ft_lstmap_bonus.c
+		libft/list/ft_lstnew_bonus.c
+		libft/list/ft_lstsize_bonus.c
+		libft/list/ft_lstsplit.c
+		libft/list/ft_split_to_lst.c
+		libft/mem/ft_bzero.c
+		libft/mem/ft_calloc.c
+		libft/mem/ft_free_ptr.c
+		libft/mem/ft_free_split.c
+		libft/mem/ft_memccpy.c
+		libft/mem/ft_memchr.c
+		libft/mem/ft_memcmp.c
+		libft/mem/ft_memcpy.c
+		libft/mem/ft_memmove.c
+		libft/mem/ft_memset.c
+		libft/mem/ft_realloc.c
+		libft/mem/ft_swap.c
+		libft/print/ft_putchar_fd.c
+		libft/print/ft_putendl_fd.c
+		libft/print/ft_putnbr_fd.c
+		libft/print/ft_putstr_fd.c
+		libft/printf/ft_conv.c
+		libft/printf/ft_conv_2.c
+		libft/printf/ft_len_hexa.c
+		libft/printf/ft_padding.c
+		libft/printf/ft_preci.c
+		libft/printf/ft_printf.c
+		libft/printf/ft_putnbr_base.c
+		libft/str/ft_split.c
+		libft/str/ft_split_charset.c
+		libft/str/ft_splitadd_back.c
+		libft/str/ft_splitcpy.c
+		libft/str/ft_strchr.c
+		libft/str/ft_strcmp.c
+		libft/str/ft_strdup.c
+		libft/str/ft_strjoin.c
+		libft/str/ft_strlcat.c
+		libft/str/ft_strlcpy.c
+		libft/str/ft_strlen.c
+		libft/str/ft_strmapi.c
+		libft/str/ft_strncmp.c
+		libft/str/ft_strnstr.c
+		libft/str/ft_strrchr.c
+		libft/str/ft_strs_sort.c
+		libft/str/ft_strsort.c
+		libft/str/ft_strtok.c
+		libft/str/ft_strtok_r.c
+		libft/str/ft_strtrim.c
+		libft/str/ft_substr.c
 
-add_subdirectory(CMAKE/minishell)
+		)
+
+set(    SOURCE_MINISHELL
+
+		srcs/ft_env.c
+		srcs/ft_export.c
+		srcs/ft_free_env_lst.c
+		srcs/ft_lst_env_to_split.c
+		srcs/ft_parse_line.c
+		srcs/ft_parse_prompt.c
+		srcs/ft_pwd.c
+		srcs/ft_search_env.c
+		srcs/ft_separate_key_value.c
+		srcs/ft_sort_env_lst.c
+		srcs/ft_split_quote.c
+		srcs/ft_split_to_lst_env.c
+		srcs/ft_start_minishell.c
+		srcs/ft_unset.c
+		srcs/ft_utils.c
+		srcs/v0_change_dir.c
+		srcs/v0_echo.c
+		srcs/v0_exit.c
+		srcs/v0_isolate_exec.c
+		srcs/v0_lststrjoin.c
+		srcs/v0_minishell.c
+		srcs/v0_parse.c
+		srcs/v0_parse_path.c
+		srcs/v0_process.c
+		srcs/v0_prompt.c
+		srcs/v0_split.c
+		headers/v0_minishell.h
+		)
+
+add_executable(minishell
+		${SOURCE_MINISHELL}
+		)
+
+target_link_libraries(minishell LIBFT)
+
+include_directories(
+		headers
+		libft/headers
+)
