@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 17:01:29 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/30 16:48:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,10 +108,10 @@ int			ft_parse_line(char *args, t_list **env, int (*builtin_fct[7])(char **, t_l
 char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
 
-void		ft_prompt(int *check, int fd, t_list **env);
-void		ft_infile(int *check, int fd, t_list **env);
+void		ft_prompt(t_sh *sh);
+void		ft_infile(t_sh *sh);
 
-void		ft_check_line(char **line, int *quote);
+void		ft_check_line(char **line, int *quote, bool *bkslh);
 char		*ft_input_join(t_list *inputs);
 void		ft_line_to_lst(char *inputs, t_sh *sh);
 void		ft_init_cmd(t_cmd *cmd, char *line, int *i);

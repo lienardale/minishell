@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/25 13:24:50 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:10:21 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void	ft_search_n_execute(char **args, char **env)
 	else if (!args[0])
 	{
 		args[0] = temp;
-		ft_dprintf(2, "ft_search_n_execute error?\n");
+		ft_dprintf(2, "minishell: command not found: |%s|\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	if (execve(args[0], args, env) == -1)

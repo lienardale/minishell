@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 17:57:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:12:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,31 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	nbquote = 0;
 	while (line[j] && (!ft_ischarset(END_CMD, line[j]) || cmd->quote))
 	{
-		if (line[j] == '\'' && (cmd->quote == 0 || cmd->quote == '\''))
+		if (line[j] == '\\' && cmd->quote == 0)
+			ft_parse_escape(&j, line, cmd);
+		if (line[j] == '\'' && (cmd->quote == 0 || cmd->quote == '\'')
+			&& cmd->bkslh == false)
 		{
 			cmd->nbquote++;
 			cmd->quote = '\'';
 		}
-		if (line[j] == '\"' && (cmd->quote == 0 || cmd->quote == '\"'))
+		if (line[j] == '\"' && (cmd->quote == 0 || cmd->quote == '\"')
+			&& cmd->bkslh == false)
 		{
 			cmd->nbquote++;
 			cmd->quote = '\"';
 		}
 		if (cmd->nbquote % 2 == 0)
 			cmd->quote = 0;
-		if (line[j] == '\\')
-			ft_parse_escape(&j, line, cmd);
 		j++;
+		cmd->bkslh = false;
 	}
 	if (ft_ischarset(END_CMD, line[j]))
 		ft_handle_end(&line[j], cmd);
-	// cmd->after = line[j];
 	tmp = ft_substr(line, *i, (j - *i));
 	if (ft_ischarset(END_CMD, line[j]))
 		j++;
+	//split quote suppresses escaped space
 	cmd->av = ft_split_quote(tmp, ' ');
 	free(tmp);
 	cmd->ac = ft_double_strlen(cmd->av);
@@ -97,6 +100,7 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 		before = content->after;
 		pos++;
 	}
+	ft_free_ptr(inputs);
 	// ft_handle_redir(&sh->cmds);
 }
 

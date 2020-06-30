@@ -6,13 +6,27 @@
 
 #IncludeRegexTransform: 
 
+../libft/headers/get_next_line_bonus.h
+unistd.h
+-
+stdlib.h
+-
+
 ../libft/headers/libft.h
 unistd.h
 -
 stdlib.h
 -
 
-/Users/alienard/Documents/42_cursus/minishell/libft/str/ft_strjoin.c
+/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line.c
 libft.h
-/Users/alienard/Documents/42_cursus/minishell/libft/str/libft.h
+/Users/alienard/Documents/42_cursus/minishell/libft/gnl/libft.h
+
+/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.c
+get_next_line_bonus.h
+/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.h
+
+/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_utils_bonus.c
+get_next_line_bonus.h
+/Users/alienard/Documents/42_cursus/minishell/libft/gnl/get_next_line_bonus.h
 

@@ -6,4 +6,9 @@ echo \"coucou
 echo \'coucou
 echo "coucou\"bonjour"
 
+echo \-n coucou
+echo\ -n coucou
+
+
+
 echo

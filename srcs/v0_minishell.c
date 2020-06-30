@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/25 16:17:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:00:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,32 @@
 
 int	main(int ac, char **av, char **env)
 {
-	int		check;
-	// int		i;
-	// t_sh	sh;
-	t_list	*env_lst;
-	int		fd;
-	//t_list	*temp;
+	t_list			*env_lst;
+	static int		(*builtin_fct[])(char **, t_list **) = {BUILTINS};
+	int				fd;
+	t_sh			sh;
 
-	// if (ac != 1)
-		// return (EXIT_FAILURE);
 	env_lst = NULL;
-	check = 0;
 	fd = 0;
 	if (!(env_lst = ft_start_minishell(env)))
 		return (EXIT_FAILURE);
+	sh = (t_sh) {
+			.fd = fd, .line = NULL, .ret_cmd = 1,
+			.ret_sh = 1, .blt_fct = builtin_fct,
+			.cmds = NULL, .env = &env_lst};
 	if (ac != 1)
 	{
-		fd = open(av[1], O_RDONLY);
-		ft_infile(&check, fd, &env_lst);
+		sh.fd = open(av[1], O_RDONLY);
+		ft_infile(&sh);
 	}
 	else 
-		ft_prompt(&check, fd, &env_lst);
-	// ft_print_double_array(env, "env0");
-
+		ft_prompt(&sh);
 	// temp = env_lst;
 	// while (temp)
 	// {
 	// 	printf("%s=%s\n", ((t_env*)temp->content)->key, ((t_env*)temp->content)->value);
 	// 	temp = temp->next;
 	// }
-	// (void)check;
-
-	// for (i = 0; env[i] != NULL; i++)
-	// 	ft_printf("%s\n", env[i]);
-	// ft_prompt(&check, 0, env);
-	
-	// system("leaks minishell");
 	// ft_free_split(env);
 	// ft_lstclear(&env_lst, ft_free_env_lst);
 	if (close(fd) < 0)
@@ -57,5 +47,5 @@ int	main(int ac, char **av, char **env)
 		ft_dprintf(2, "close not ok\n");
 		return (1);
 	}
-	return (check == 0) ? EXIT_FAILURE : EXIT_SUCCESS;
+	return (sh.ret_sh);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 16:50:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/30 17:08:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,35 @@ char	*ft_input_join(t_list *inputs)
 	return (tmp);
 }
 
-void	ft_check_line(char **line, int *quote)
+void	ft_check_line(char **line, int *quote, bool *bkslh)
 {
 	int		pos;
 	int		nbquote;
 	char	*tmp;
+	// bool	bkslh;
 
 	pos = -1;
 	nbquote = (*quote == 0) ? 0 : 1;
+	// bkslh = false;
 	while ((*line)[++pos])
 	{
-		if ((*line)[pos] == '\'' && (*quote == '\'' || *quote == 0))
+		if ((*line)[pos] == '\\' && *quote == 0)
+			*bkslh = (*bkslh == true) ? false : true;
+		if ((*line)[pos] == '\'' && (*quote == '\'' || *quote == 0)
+			&& *bkslh == false)
 		{
 			nbquote++;
 			*quote = '\'';
 		}
-		if ((*line)[pos] == '\"'&& (*quote == '\"' || *quote == 0))
+		if ((*line)[pos] == '\"'&& (*quote == '\"' || *quote == 0)
+			&& *bkslh == false)
 		{
 			nbquote++;
 			*quote = '\"';
 		}
 		if (nbquote % 2 == 0)
 			*quote = 0;
+		*bkslh = false;
 	}
 	if (*quote != 0)
 	{
@@ -69,91 +76,73 @@ void	ft_check_line(char **line, int *quote)
 	}
 }
 
-void	ft_infile(int *check, int fd, t_list **env)
+void	ft_infile(t_sh *sh)
 {
-	char		*args;
-	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
 	int			quote;
-	t_sh		sh;
 	t_list		*input;
 	t_list		*begin;
 	t_dlist		*current;
+	bool		bkslh;
 
 	begin = NULL;
 	quote = 0;
-	sh = (t_sh) {
-			.fd = fd, .line = NULL, .ret_cmd = 1,
-			.ret_sh = 0, .blt_fct = builtin_fct,
-			.cmds = NULL, .env = env};
-	while (sh.ret_cmd && (*check = get_next_line_multi(fd, &sh.line)) >= 0)
+	bkslh = false;
+	while (sh->ret_cmd && (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-		input = ft_lstnew(sh.line);
+		input = ft_lstnew(sh->line);
 		ft_lstadd_back(&begin, input);
-		ft_check_line((char**)&input->content, &quote);
+		ft_check_line((char**)&input->content, &quote, &bkslh);
 		if (!quote)
 		{
-			args = ft_input_join(begin);
-			ft_line_to_lst(args, &sh);
+			ft_line_to_lst(ft_input_join(begin), sh);
 			ft_lstclear(&begin, &free);
-			current = sh.cmds->head;
+			current = sh->cmds->head;
 			while (current)
 			{
-				sh.ret_cmd = ft_parse_cmds((t_cmd *)current->data, &sh);
+				sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 				current = current->next;
 			}
-			ft_free_ptr(args);
-			ft_dlst_del(sh.cmds);
+			ft_dlst_del(sh->cmds);
 		}
 		// ft_free_ptr(sh.line);
-		if (*check == 0)
+		if (sh->ret_sh == 0)
 			break ;
 	}
 }
 
-void	ft_prompt(int *check, int fd, t_list **env)
+void	ft_prompt(t_sh *sh)
 {
-	char		*args;
 	char		*prompt;
-	static int	(*builtin_fct[])(char **, t_list **) = {BUILTINS};
 	int			quote;
-	t_sh		sh;
 	t_list		*input;
 	t_list		*begin;
 	t_dlist		*current;
+	bool		bkslh;
 
 	begin = NULL;
 	quote = 0;
-	sh = (t_sh) {
-			.fd = fd, .line = NULL, .ret_cmd = 1,
-			.ret_sh = 0, .blt_fct = builtin_fct,
-			.cmds = NULL, .env = env};
+	bkslh = false;
 	prompt = PROMPT;
-	while (sh.ret_cmd && (write(1,prompt,ft_strlen(prompt)))
-		&& (*check = get_next_line_multi(fd, &sh.line)) >= 0)
+	while (sh->ret_sh && (write(1,prompt,ft_strlen(prompt)))
+		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-		input = ft_lstnew(sh.line);
+		input = ft_lstnew(sh->line);
 		ft_lstadd_back(&begin, input);
-		ft_check_line((char**)&input->content, &quote);
+		ft_check_line((char**)&input->content, &quote, &bkslh);
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
 		if (!quote)
 		{
-			args = ft_input_join(begin);
-			// ft_init_dlst(&sh.cmds);
-			ft_line_to_lst(args, &sh);
-			// ft_print_dlst(sh.cmds->head, "cmds-out:");
+			ft_line_to_lst(ft_input_join(begin), sh);
 			ft_lstclear(&begin, &free);
-			current = sh.cmds->head;
-			// ft_print_dlst(current, "curr:");
-			// printf("%s\n", sh.cmds->head->data->cmd);
+			current = sh->cmds->head;
 			while (current)
 			{
-				sh.ret_cmd = ft_parse_cmds((t_cmd *)current->data, &sh);
+				sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 				current = current->next;
 			}
-			ft_free_ptr(args);
 		}
 		// ft_free_ptr(sh.line);
-		if (*check == 0)
+		if (sh->ret_sh == 0)
 			break ;
 	}
 }

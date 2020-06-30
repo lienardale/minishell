@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 18:02:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/06/30 15:30:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,24 @@ void	ft_parse_escape(int *j, char *line, t_cmd *cmd)
 	int	i;
 
 	i = 0;
+	char	*beg;
+	char	*end;
 	// handeling case of "\\"
 	cmd->bkslh = (cmd->bkslh == true) ? false : true;
 	if (cmd->bkslh == false)
 		return ;
+	line[*j] = '\0';
+	beg = ft_strdup(line);
+	end = ft_strdup(&line[*j + 1]);
+	free(line);
+	line = ft_strjoin(beg, end);
+	free(beg);
+	free(end);
 	// what to do then ?
 	// echo "cou\"cou"
 	// \l\s
-	if (ft_ischarset(QUOTE, line[*j + 1]))
-		cmd->quote = (cmd->quote) ? 0 : line[*j + 1];
 
-
-	cmd->bkslh = (cmd->bkslh == true) ? false : true;
+	// cmd->bkslh = (cmd->bkslh == true) ? false : true;
 }
 
 void	ft_parse_redir(char *line, t_cmd *cmd)
