@@ -1,0 +1,86 @@
+20,40d19
+< line:|echo "--- TESTS ECHO ---"|
+< line:|echo coucou|
+< line:|echo -n coucou|
+< line:|echo "coucou"|
+< line:|echo -n "coucou"|
+< line:|echo "coucou" "bonjour"|
+< line:|echo 'coucou' bonjour|
+< line:|echo "coucou
+< 1
+< 2
+< 3
+< 4
+< 5
+< 6
+< 7
+< 8
+< 9
+< 10
+< 11
+< 12"|
+< line:|echo|
+75,77d53
+< line:|echo "--- TESTS LS ---"|
+< line:|ls|
+< line:|ls -la|
+85,91d60
+< line:|echo "--- TESTS PWD ---"|
+< line:|pwd|
+< line:|pwd salut|
+< line:|echo|
+< line:|pwd|
+< line:|pwd salut|
+< line:|echo|
+188,191d156
+< line:|echo "--- TESTS CAT ---"|
+< line:|cat Dockerfile|
+< line:|cat -e Dockerfile|
+< line:|echo|
+274,319d238
+< line:|echo "--- TESTS ; ---"|
+< line:|ls ; ls ; ls|
+< line:|ls ; ls ; ls|
+< line:|ls ; ls ; ls|
+< line:|ls ; pwd|
+< line:|ls ; pwd|
+< line:|echo "coucou
+< 1
+< 2
+< 3
+< 4
+< 5
+< 6
+< 7
+< 8
+< 9
+< 10
+< 11
+< 12" ; ls ; pwd|
+< line:|echo "coucou
+< 1
+< 2
+< 3
+< 4
+< 5
+< 6
+< 7
+< 8
+< 9
+< 10
+< 11
+< 12" ; ls ; pwd|
+< line:|echo "coucou
+< 1
+< 2
+< 3
+< 4
+< 5
+< 6
+< 7
+< 8
+< 9
+< 10
+< 11
+< 12" ; ls ; pwd|
+< line:|echo|

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/01 13:15:39 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:49:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,14 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 	*i = quote ? *i + 1 : *i;
 	while (str[*i] && ((!quote && str[*i] != c) || (quote)))
 	{
-		if (str[*i] == quote)
+		if (str[*i] == quote && !ft_isescaped(&str[*i]))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = 0;
 			start = *i + 1;
 		}
 		(*i)++;
-		if (!quote && (str[*i] == '\'' || str[*i] == '\"'))
+		if (!quote && (str[*i] == '\'' || str[*i] == '\"') && !ft_isescaped(&str[*i]))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = str[*i];

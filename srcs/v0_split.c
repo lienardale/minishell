@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/01 13:35:01 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/01 18:52:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,39 +39,35 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	int		j;
 	char	*tmp;
 	int		nbquote;
+	int		k;
 
 	j = *i;
 	nbquote = 0;
+	k = -1;
 	// suppresses escapes
-	while (line[j] && (!ft_ischarset(END_CMD, line[j]) || cmd->quote))
-	{
-		if (line[j] == '\\' /*&& cmd->quote == 0*/)
-			ft_parse_escape(&j, line, cmd);
-		if (line[j] == '\'' && (cmd->quote == 0 || cmd->quote == '\'')
-			&& cmd->bkslh == false)
-		{
-			cmd->nbquote++;
-			cmd->quote = '\'';
-		}
-		if (line[j] == '\"' && (cmd->quote == 0 || cmd->quote == '\"')
-			&& cmd->bkslh == false)
-		{
-			cmd->nbquote++;
-			cmd->quote = '\"';
-		}
-		if (cmd->nbquote % 2 == 0)
-			cmd->quote = 0;
+	while (line[j] && !ft_ischarset(END_CMD, line[j]))
 		j++;
-		cmd->bkslh = false;
-	}
 	if (ft_ischarset(END_CMD, line[j]))
 		ft_handle_end(&line[j], cmd);
 	tmp = ft_substr(line, *i, (j - *i));
 	if (ft_ischarset(END_CMD, line[j]))
 		j++;
 	//split quote suppresses escaped spaces -> bc there are no more escapes
+	printf("av avant split : |%s|\n", tmp);
 	cmd->av = ft_split_quote(tmp, ' ');
 	free(tmp);
+	ft_print_double_array(cmd->av, "av avant parse esc");
+	while (cmd->av[++k])
+	{
+		*i = -1;
+		while (cmd->av[k][++*i])
+		{
+			if (cmd->av[k][*i] == '\\' && !ft_isinquotes(cmd->av[k], *i))
+				ft_parse_escape(i, cmd->av[k], cmd);
+		}
+		
+	}
+	// ft_print_double_array(cmd->av, "av apres parse esc");
 	cmd->ac = ft_double_strlen(cmd->av);
 	cmd->cmd= ft_strdup(cmd->av[0]);
 	*i = j;

@@ -17,12 +17,32 @@ coucou
 11
 12
 
+line:|echo "--- TESTS ECHO ---"|
+line:|echo coucou|
+line:|echo -n coucou|
+line:|echo "coucou"|
+line:|echo -n "coucou"|
+line:|echo "coucou" "bonjour"|
+line:|echo 'coucou' bonjour|
+line:|echo "coucou
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12"|
+line:|echo|
 --- TESTS LS ---
-CmakeLists.txt
+CMakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
 headers
 libft
@@ -32,34 +52,43 @@ srcs
 test.sh
 tests
 valgrind.sh
-total 272
-drwxr-xr-x  20 alienard  staff    640 29 Jun 18:02 .
-drwxr-xr-x@ 23 alienard  staff    736 27 Jun 09:05 ..
-drwxr-xr-x  15 alienard  staff    480 29 Jun 17:55 .git
--rw-r--r--   1 alienard  staff    186 29 Jun 17:54 .gitignore
-drwxr-xr-x   7 alienard  staff    224 24 Jun 18:38 .idea
-drwxr-xr-x   3 alienard  staff     96 26 Jun 19:33 .vscode
--rw-r--r--   1 alienard  staff   4055 29 Jun 17:54 CmakeLists.txt
--rw-r--r--   1 alienard  staff   1014 20 Jun 16:18 Dockerfile
--rw-r--r--   1 alienard  staff   3832 24 Jun 18:38 Makefile
--rw-r--r--   1 alienard  staff     12 20 Jun 16:18 README.md
--rwxr-xr-x   1 alienard  staff  17624 26 Jun 00:13 a.out
-drwxr-xr-x   7 alienard  staff    224 29 Jun 17:54 cmake-build-debug
-drwxr-xr-x   3 alienard  staff     96 29 Jun 17:54 headers
-drwxr-xr-x  17 alienard  staff    544 29 Jun 17:55 libft
--rwxr-xr-x   1 alienard  staff  82380 29 Jun 18:02 minishell
--rw-r--r--   1 alienard  staff     34 29 Jun 17:54 run.sh
-drwxr-xr-x  53 alienard  staff   1696 29 Jun 18:02 srcs
--rw-r--r--   1 alienard  staff     67 29 Jun 17:54 test.sh
-drwxr-xr-x  22 alienard  staff    704 29 Jun 18:02 tests
--rw-r--r--   1 alienard  staff     71 20 Jun 16:18 valgrind.sh
+total 224
+drwxr-xr-x  19 alienard  2019_paris    646  1 jul 16:31 .
+drwxr-xr-x  22 alienard  2019_paris    748 26 jui 15:28 ..
+drwxr-xr-x  16 alienard  2019_paris    544  1 jul 13:36 .git
+-rw-r--r--   1 alienard  2019_paris    186 29 jui 15:17 .gitignore
+drwxr-xr-x   8 alienard  2019_paris    272  1 jul 16:27 .idea
+drwxr-xr-x   3 alienard  2019_paris    102 26 jui 16:13 .vscode
+-rw-r--r--   1 alienard  2019_paris   4055 29 jui 10:28 CMakeLists.txt
+-rw-r--r--   1 alienard  2019_paris   1014 26 jui 15:25 Dockerfile
+-rw-r--r--   1 alienard  2019_paris   3832 26 jui 15:25 Makefile
+-rw-r--r--   1 alienard  2019_paris     12 26 jui 15:25 README.md
+drwxr-xr-x   9 alienard  2019_paris    306  1 jul 16:20 cmake-build-debug
+drwxr-xr-x   3 alienard  2019_paris    102 26 jui 15:25 headers
+drwxr-xr-x  17 alienard  2019_paris    578  1 jul 10:56 libft
+-rwxr-xr-x   1 alienard  2019_paris  78248  1 jul 16:31 minishell
+-rw-r--r--   1 alienard  2019_paris     34 29 jui 14:31 run.sh
+drwxr-xr-x  53 alienard  2019_paris   1802  1 jul 16:31 srcs
+-rw-r--r--   1 alienard  2019_paris     67 29 jui 16:06 test.sh
+drwxr-xr-x  22 alienard  2019_paris    748  1 jul 16:33 tests
+-rw-r--r--   1 alienard  2019_paris     71 26 jui 15:25 valgrind.sh
+line:|echo "--- TESTS LS ---"|
+line:|ls|
+line:|ls -la|
 --- TESTS PWD ---
-/Users/alienard/Documents/42/parsing_minishell
-/Users/alienard/Documents/42/parsing_minishell
+/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42_cursus/minishell
 
-/Users/alienard/Documents/42/parsing_minishell
-/Users/alienard/Documents/42/parsing_minishell
+/Users/alienard/Documents/42_cursus/minishell
+/Users/alienard/Documents/42_cursus/minishell
 
+line:|echo "--- TESTS PWD ---"|
+line:|pwd|
+line:|pwd salut|
+line:|echo|
+line:|pwd|
+line:|pwd salut|
+line:|echo|
 --- TESTS CAT ---
 FROM debian:buster
 
@@ -156,12 +185,15 @@ RUN	apt-get update;\$
 $
 CMD bash$
 
+line:|echo "--- TESTS CAT ---"|
+line:|cat Dockerfile|
+line:|cat -e Dockerfile|
+line:|echo|
 --- TESTS ; ---
-CmakeLists.txt
+CMakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
 headers
 libft
@@ -171,11 +203,10 @@ srcs
 test.sh
 tests
 valgrind.sh
-CmakeLists.txt
+CMakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
 headers
 libft
@@ -185,11 +216,10 @@ srcs
 test.sh
 tests
 valgrind.sh
-CmakeLists.txt
+CMakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
 headers
 libft
@@ -199,11 +229,10 @@ srcs
 test.sh
 tests
 valgrind.sh
-CmakeLists.txt
+CMakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
 headers
 libft
@@ -213,7 +242,7 @@ srcs
 test.sh
 tests
 valgrind.sh
-/Users/alienard/Documents/42/parsing_minishell
+/Users/alienard/Documents/42_cursus/minishell
 coucou
 1
 2
@@ -227,11 +256,10 @@ coucou
 10
 11
 12
-CmakeLists.txt
+CMakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
 headers
 libft
@@ -241,5 +269,51 @@ srcs
 test.sh
 tests
 valgrind.sh
-/Users/alienard/Documents/42/parsing_minishell
+/Users/alienard/Documents/42_cursus/minishell
 
+line:|echo "--- TESTS ; ---"|
+line:|ls ; ls ; ls|
+line:|ls ; ls ; ls|
+line:|ls ; ls ; ls|
+line:|ls ; pwd|
+line:|ls ; pwd|
+line:|echo "coucou
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12" ; ls ; pwd|
+line:|echo "coucou
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12" ; ls ; pwd|
+line:|echo "coucou
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12" ; ls ; pwd|
+line:|echo|
