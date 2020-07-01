@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/30 17:12:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/01 13:35:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,10 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 
 	j = *i;
 	nbquote = 0;
+	// suppresses escapes
 	while (line[j] && (!ft_ischarset(END_CMD, line[j]) || cmd->quote))
 	{
-		if (line[j] == '\\' && cmd->quote == 0)
+		if (line[j] == '\\' /*&& cmd->quote == 0*/)
 			ft_parse_escape(&j, line, cmd);
 		if (line[j] == '\'' && (cmd->quote == 0 || cmd->quote == '\'')
 			&& cmd->bkslh == false)
@@ -68,7 +69,7 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	tmp = ft_substr(line, *i, (j - *i));
 	if (ft_ischarset(END_CMD, line[j]))
 		j++;
-	//split quote suppresses escaped space
+	//split quote suppresses escaped spaces -> bc there are no more escapes
 	cmd->av = ft_split_quote(tmp, ' ');
 	free(tmp);
 	cmd->ac = ft_double_strlen(cmd->av);

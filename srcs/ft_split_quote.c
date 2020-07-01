@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/14 13:49:38 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/01 13:15:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	**ret_nul(void)
 {
-	char **tab;
+	char	**tab;
 
 	if (!(tab = (char **)ft_calloc(1, sizeof(char*))))
 		return (NULL);
@@ -65,16 +65,17 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 			start = *i;
 		}
 	}
-	result = (!(str[*i - 1] == '\'' || str[*i - 1] == '\"')) ? ft_split_quote_concat(result, str, start, *i) : result;
+	result = (!(str[*i - 1] == '\'' || str[*i - 1] == '\"')) ?
+		ft_split_quote_concat(result, str, start, *i) : result;
 	return (result);
 }
 
 static int	ft_count_word_quote(char *str, char c)
 {
-	char *to_free;
-	int i;
-	int start;
-	int nb_word;
+	char	*to_free;
+	int		i;
+	int		start;
+	int		nb_word;
 
 	i = 0;
 	nb_word = 0;
@@ -95,16 +96,17 @@ static int	ft_count_word_quote(char *str, char c)
 
 char		**ft_split_quote(char *str, char c)
 {
-	char **result;
-	int i;
-	int start;
-	int nb_word;
+	char	**result;
+	int		i;
+	int		start;
+	int		nb_word;
 
 	if (!str || str[0] == 0)
 		return (ret_nul());
 	i = 0;
 	nb_word = 0;
-	if (!(result = (char **)ft_calloc((ft_count_word_quote(str, c) + 1), sizeof(char*))))
+	if (!(result = (char **)ft_calloc((ft_count_word_quote(str, c) + 1),
+		sizeof(char*))))
 		return (NULL);
 	while (str[i])
 	{

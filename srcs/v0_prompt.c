@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/30 17:08:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/01 13:33:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,33 @@ char	*ft_input_join(t_list *inputs)
 	return (tmp);
 }
 
-void	ft_check_line(char **line, int *quote, bool *bkslh)
+void	ft_check_line(char **line, int *quote, int *bkslh)
 {
 	int		pos;
 	int		nbquote;
 	char	*tmp;
-	// bool	bkslh;
 
 	pos = -1;
 	nbquote = (*quote == 0) ? 0 : 1;
-	// bkslh = false;
 	while ((*line)[++pos])
 	{
-		if ((*line)[pos] == '\\' && *quote == 0)
-			*bkslh = (*bkslh == true) ? false : true;
+		if (((*line)[pos] == '\\' /*&& *quote == 0*/) || *bkslh == 1)
+			(*bkslh)++;
 		if ((*line)[pos] == '\'' && (*quote == '\'' || *quote == 0)
-			&& *bkslh == false)
+			&& *bkslh == 0)
 		{
 			nbquote++;
 			*quote = '\'';
 		}
 		if ((*line)[pos] == '\"'&& (*quote == '\"' || *quote == 0)
-			&& *bkslh == false)
+			&& *bkslh == 0)
 		{
 			nbquote++;
 			*quote = '\"';
 		}
 		if (nbquote % 2 == 0)
 			*quote = 0;
-		*bkslh = false;
+		*bkslh = (*bkslh == 2) ? 0 : *bkslh;
 	}
 	if (*quote != 0)
 	{
@@ -82,11 +80,11 @@ void	ft_infile(t_sh *sh)
 	t_list		*input;
 	t_list		*begin;
 	t_dlist		*current;
-	bool		bkslh;
+	int			bkslh;
 
 	begin = NULL;
 	quote = 0;
-	bkslh = false;
+	bkslh = 0;
 	while (sh->ret_cmd && (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		input = ft_lstnew(sh->line);
@@ -105,7 +103,7 @@ void	ft_infile(t_sh *sh)
 			ft_dlst_del(sh->cmds);
 		}
 		// ft_free_ptr(sh.line);
-		if (sh->ret_sh == 0)
+		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
 	}
 }
@@ -117,13 +115,13 @@ void	ft_prompt(t_sh *sh)
 	t_list		*input;
 	t_list		*begin;
 	t_dlist		*current;
-	bool		bkslh;
+	int			bkslh;
 
 	begin = NULL;
 	quote = 0;
-	bkslh = false;
+	bkslh = 0;
 	prompt = PROMPT;
-	while (sh->ret_sh && (write(1,prompt,ft_strlen(prompt)))
+	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		input = ft_lstnew(sh->line);
@@ -140,9 +138,9 @@ void	ft_prompt(t_sh *sh)
 				sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 				current = current->next;
 			}
+		if (sh->ret_cmd == 0 || !sh->ret_sh)
+			break ;
 		}
 		// ft_free_ptr(sh.line);
-		if (sh->ret_sh == 0)
-			break ;
 	}
 }

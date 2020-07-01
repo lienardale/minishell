@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/30 15:30:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/01 13:14:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_parse_escape(int *j, char *line, t_cmd *cmd)
 {
-	int	i;
-
-	i = 0;
+	int		i;
 	char	*beg;
 	char	*end;
+
 	// handeling case of "\\"
+	i = 0;
 	cmd->bkslh = (cmd->bkslh == true) ? false : true;
 	if (cmd->bkslh == false)
 		return ;
@@ -30,11 +30,14 @@ void	ft_parse_escape(int *j, char *line, t_cmd *cmd)
 	line = ft_strjoin(beg, end);
 	free(beg);
 	free(end);
-	// what to do then ?
-	// echo "cou\"cou"
-	// \l\s
-
 	// cmd->bkslh = (cmd->bkslh == true) ? false : true;
+}
+
+int		ft_isescaped(char *c)
+{
+	if (*(c - 1) == '\\')
+		return (1);
+	return (0);
 }
 
 void	ft_parse_redir(char *line, t_cmd *cmd)
