@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/01 18:09:29 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:37:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,49 @@
 #include "get_next_line_bonus.h"
 #include "list.h"
 
-# define SPACE " \t\r\n\v\f"
+# ifndef SPACE
+#  define SPACE " \t\r\n\v\f"
+# endif
 
-# define TOKENS "-\"\'|;><\\"
-# define META "-\"\'\\$"
-# define QUOTE "\"\'"
-# define REDIR "><|"
-# define END_CMD "><|;"
+# ifndef TOKENS
+#  define TOKENS "-\"\'|;><\\"
+# endif
 
-# define CTRL_OP "|| & && ; ;; ( ) | \n"
-# define META_CHAR "|&;()<> 	"
+# ifndef META
+#  define META "-\"\'\\$"
+# endif
 
-# define PROMPT "minishell$ "
+# ifndef QUOTE
+#  define QUOTE "\"\'"
+# endif
 
-# define QPROMPT "> "
+# ifndef REDIR
+#  define REDIR "><|"
+# endif
 
-# define BUILTINS &ft_exit, &ft_echo, &ft_pwd, &ft_env, &ft_change_dir, &ft_export, &ft_unset
+# ifndef END_CMD
+#  define END_CMD "><|;"
+# endif
+
+# ifndef CTRL_OP
+#  define CTRL_OP "|| & && ; ;; ( ) | \n"
+# endif
+
+# ifndef META_CHAR
+#  define META_CHAR "|&;()<> 	"
+# endif
+
+# ifndef PROMPT
+#  define PROMPT "minishell$ "
+# endif
+
+# ifndef QPROMPT
+#  define QPROMPT "> "
+# endif
+
+# ifndef BUILTINS
+#  define BUILTINS &ft_exit, &ft_echo, &ft_pwd, &ft_env, &ft_change_dir, &ft_export, &ft_unset
+# endif
 
 typedef struct	s_sh
 {
@@ -99,20 +126,22 @@ typedef struct	s_cmd
 	void			*prev;
 }				t_cmd;
 
-
-
-int				ft_launch(char **args, t_list **env);
+int			ft_launch(char **args, t_list **env);
 
 int			ft_parse_line(char *args, t_list **env, int (*builtin_fct[7])(char **, t_list **));
 
 char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
+char		**ft_split_arg(char *str);
 
 void		ft_prompt(t_sh *sh);
 void		ft_infile(t_sh *sh);
 
 int			ft_isescaped(char *c);
 int			ft_isinquotes(char *line, int pos);
+int			ft_isindquotes(char *line, int pos);
+int			ft_isinsquotes(char *line, int pos);
+char		*ft_trimquotes(char *line);
 
 void		ft_check_line(char **line, int *quote, int *bkslh);
 char		*ft_input_join(t_list *inputs);
@@ -135,31 +164,31 @@ void		ft_free_double_array(char **str);
 void		ft_print_double_array(char **str, char *name);
 size_t		ft_double_strlen(char **str);
 
-char	*ft_lststrjoin(t_list *lst, char *inter);
+char		*ft_lststrjoin(t_list *lst, char *inter);
 
-char	*ft_parse_path(char *path);
+char		*ft_parse_path(char *path);
 
-char	*ft_lststrjoin(t_list *lst, char *inter);
+char		*ft_lststrjoin(t_list *lst, char *inter);
 
-int		ft_isolate_exec(char *path, char **buff);
+int			ft_isolate_exec(char *path, char **buff);
 
-int		ft_change_dir(char **args, t_list **env);
+int			ft_change_dir(char **args, t_list **env);
 
-int		ft_env(char **args, t_list **env);
+int			ft_env(char **args, t_list **env);
 
-int		ft_pwd(char **args, t_list **env);
+int			ft_pwd(char **args, t_list **env);
 
-int		ft_export(char **args, t_list **env);
+int			ft_export(char **args, t_list **env);
 
-t_list	*ft_start_minishell(char **env);
+t_list		*ft_start_minishell(char **env);
 
-t_list	*ft_split_to_lst_env(char **env);
-void	ft_free_env_lst(void *env_lst);
-void	ft_sort_env_lst(t_list *env_lst);
-t_env	*ft_separate_key_value(char *env_str);
+t_list		*ft_split_to_lst_env(char **env);
+void		ft_free_env_lst(void *env_lst);
+void		ft_sort_env_lst(t_list *env_lst);
+t_env		*ft_separate_key_value(char *env_str);
 
-char	**ft_lst_env_to_split(t_list *lst_env);
-t_list	*ft_search_env(t_list *env, char *arg);
-int		ft_unset(char **args, t_list **env);
+char		**ft_lst_env_to_split(t_list *lst_env);
+t_list		*ft_search_env(t_list *env, char *arg);
+int			ft_unset(char **args, t_list **env);
 
 # endif

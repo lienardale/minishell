@@ -32,24 +32,24 @@ test.sh
 tests
 valgrind.sh
 total 224
-drwxr-xr-x  19 alienard  2019_paris    646  1 jul 16:31 .
+drwxr-xr-x  19 alienard  2019_paris    646  8 jul 15:50 .
 drwxr-xr-x  22 alienard  2019_paris    748 26 jui 15:28 ..
-drwxr-xr-x  16 alienard  2019_paris    544  1 jul 13:36 .git
+drwxr-xr-x  16 alienard  2019_paris    544  8 jul 12:35 .git
 -rw-r--r--   1 alienard  2019_paris    186 29 jui 15:17 .gitignore
-drwxr-xr-x   8 alienard  2019_paris    272  1 jul 16:27 .idea
+drwxr-xr-x   8 alienard  2019_paris    272  8 jul 15:45 .idea
 drwxr-xr-x   3 alienard  2019_paris    102 26 jui 16:13 .vscode
 -rw-r--r--   1 alienard  2019_paris   4055 29 jui 10:28 CMakeLists.txt
 -rw-r--r--   1 alienard  2019_paris   1014 26 jui 15:25 Dockerfile
 -rw-r--r--   1 alienard  2019_paris   3832 26 jui 15:25 Makefile
 -rw-r--r--   1 alienard  2019_paris     12 26 jui 15:25 README.md
-drwxr-xr-x   9 alienard  2019_paris    306  1 jul 16:20 cmake-build-debug
+drwxr-xr-x   9 alienard  2019_paris    306  8 jul 15:38 cmake-build-debug
 drwxr-xr-x   3 alienard  2019_paris    102 26 jui 15:25 headers
 drwxr-xr-x  17 alienard  2019_paris    578  1 jul 10:56 libft
--rwxr-xr-x   1 alienard  2019_paris  78248  1 jul 16:31 minishell
+-rwxr-xr-x   1 alienard  2019_paris  78328  8 jul 15:50 minishell
 -rw-r--r--   1 alienard  2019_paris     34 29 jui 14:31 run.sh
-drwxr-xr-x  53 alienard  2019_paris   1802  1 jul 16:31 srcs
+drwxr-xr-x  54 alienard  2019_paris   1836  8 jul 15:50 srcs
 -rw-r--r--   1 alienard  2019_paris     67 29 jui 16:06 test.sh
-drwxr-xr-x  22 alienard  2019_paris    748  1 jul 16:33 tests
+drwxr-xr-x  23 alienard  2019_paris    782  8 jul 15:50 tests
 -rw-r--r--   1 alienard  2019_paris     71 26 jui 15:25 valgrind.sh
 --- TESTS PWD ---
 /Users/alienard/Documents/42_cursus/minishell

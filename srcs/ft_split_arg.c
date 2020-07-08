@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_quote.c                                   :+:      :+:    :+:   */
+/*   ft_split_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/08 15:50:30 by alienard         ###   ########.fr       */
+/*   Created: 2020/07/08 11:04:50 by alienard          #+#    #+#             */
+/*   Updated: 2020/07/08 15:20:45 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 			start = *i;
 		}
 		(*i)++;
-		if ((!quote && (str[*i] == '\'' || str[*i] == '\"')) || ft_isescaped(&str[*i]))
+		if (!quote && (str[*i] == '\'' || str[*i] == '\"') && !ft_isescaped(&str[*i]))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = str[*i];
@@ -70,6 +70,7 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 		// ft_split_quote_concat(result, str, start, *i) : result;
 	result = (!(str[*i] == '\'' || str[*i] == '\"')) ?
 		ft_split_quote_concat(result, str, start, *i) : result;
+	// printf("*i:%d\n", *i);
 	return (result);
 }
 
@@ -84,7 +85,7 @@ static int	ft_count_word_quote(char *str, char c)
 	nb_word = 0;
 	while (str[i])
 	{
-		while (str[i] && str[i] == c)
+		while (str[i] && str[i] == c && !ft_isescaped(&str[i]))
 			i++;
 		start = i;
 		if (str[i])
@@ -97,7 +98,7 @@ static int	ft_count_word_quote(char *str, char c)
 	return (nb_word);
 }
 
-char		**ft_split_quote(char *str, char c)
+char		**ft_split_arg(char *str)
 {
 	char	**result;
 	int		i;
@@ -108,17 +109,17 @@ char		**ft_split_quote(char *str, char c)
 		return (ret_nul());
 	i = 0;
 	nb_word = 0;
-	if (!(result = (char **)ft_calloc((ft_count_word_quote(str, c) + 1),
+	if (!(result = (char **)ft_calloc((ft_count_word_quote(str, ' ') + 1),
 		sizeof(char*))))
 		return (NULL);
 	while (str[i])
 	{
-		while (str[i] && str[i] == c)
+		while (str[i] && str[i] == ' ' && !ft_isescaped(&str[i]))
 			i++;
 		start = i;
 		if (str[i])
 		{
-			result[nb_word] = ft_handle_quote(str, c, start, &i);
+			result[nb_word] = ft_handle_quote(str, ' ', start, &i);
 			nb_word++;
 		}
 	}
