@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/08 15:50:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:56:17 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 	result = NULL;
 	quote = (str[start] == '\'' || str[start] == '\"') ? str[start] : 0;
 	// start = quote ? start + 1 : start;
-	*i = quote ? *i + 1 : *i;
+	*i = (quote) ? *i + 1 : *i;
 	while (str[*i] && ((!quote && str[*i] != c) || (quote)))
 	{
-		if (str[*i] == quote && !ft_isescaped(&str[*i]))
+		if (str[*i] == quote && (!ft_isescaped(&str[*i]) || quote == ' '))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = 0;
@@ -58,10 +58,15 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 			start = *i;
 		}
 		(*i)++;
-		if ((!quote && (str[*i] == '\'' || str[*i] == '\"')) || ft_isescaped(&str[*i]))
+		if ((!quote && (str[*i] == '\'' || str[*i] == '\"'))
+			|| ft_isescaped(&str[*i]))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = str[*i];
+			if (ft_isescaped(&str[*i]) && str[*i] != c)
+				quote = 0;
+			if (ft_isescaped(&str[*i]) && str[*i] == c)
+				quote = ' ';
 			// (*i)++;
 			start = *i;
 		}

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/10 10:31:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 13:47:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,43 +45,22 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	nbquote = 0;
 	k = -1;
 
-	while (line[j] && !ft_ischarset(END_CMD, line[j]))
+	// printf("line:|%s|\n", line);
+	while (line[j])
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j))
+			break ;
 		j++;
+	}
 	if (ft_ischarset(END_CMD, line[j]))
 		ft_handle_end(&line[j], cmd);
 	tmp = ft_substr(line, *i, (j - *i));
 	if (ft_ischarset(END_CMD, line[j]))
 		j++;
-	//split quote suppresses escaped spaces -> bc there are no more escapes
-
-	// printf("av avant split : |%s|\n", tmp);
-
-	// what split needs to do : 
-	/*
-		split spaces but not the escaped ones
-		suppress quotes but not the escaped doubles or the quoted ones
-		suppress escapes but not the quoted ones except when these preceed a double quote inside a quote
-	*/
-	
 	cmd->av = ft_split_quote(tmp, ' ');
-	
-	// cmd->av = ft_split_arg(tmp);
 	free(tmp);
-	
-	// ft_print_double_array(cmd->av, "av avant parse esc");
-	// pb : split quote has already suppressed evey quote
 	while (cmd->av[++k])
-	{
-		*i = -1;
-	// 	while (cmd->av[k][++*i])
-	// 	{
-	// 		if (cmd->av[k][*i] == '\\' && (ft_isindquotes(cmd->av[k], *i) || !ft_isinquotes(cmd->av[k], *i)))
-	// 			ft_parse_escape(i, cmd->av[k], cmd);
-	// 	}
-		cmd->av[k] = ft_strdup_clean(cmd->av[k]);
-	}
-	// ft_print_double_array(cmd->av, "av apres parse esc");
-	
+		cmd->av[k] = ft_strdup_clean(cmd->av[k]);	
 	cmd->ac = ft_double_strlen(cmd->av);
 	cmd->cmd= ft_strdup(cmd->av[0]);
 	*i = j;

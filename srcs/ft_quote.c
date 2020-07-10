@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:46:29 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/10 11:25:06 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 13:48:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int			ft_isindquotes(char *line, int pos)
 		if (quote != 0 && i < pos)
 		{
 			j = i;
-			while (line[j++])
+			while (line[j++] && nbquote != 0)
 			{
 				if (line[j] == '\"' && quote == '\"'
 					&& !ft_isescaped(&line[j]))
@@ -67,7 +67,7 @@ int			ft_isinsquotes(char *line, int pos)
 		if (quote != 0 && i < pos)
 		{
 			j = i;
-			while (line[j++])
+			while (line[j++] && nbquote != 0)
 			{
 				if (line[j] == '\'' && quote == '\''
 					&& !ft_isescaped(&line[j]))
@@ -105,7 +105,7 @@ int			ft_isinquotes(char *line, int pos)
 		if (quote != 0 && i < pos)
 		{
 			j = i;
-			while (line[j++])
+			while (line[++j] && nbquote != 0)
 			{
 				if (line[j] == '\'' && quote == '\''
 					&& !ft_isescaped(&line[j]))

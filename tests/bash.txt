@@ -32,9 +32,9 @@ test.sh
 tests
 valgrind.sh
 total 232
-drwxr-xr-x  19 alienard  2019_paris    646 10 jul 11:15 .
+drwxr-xr-x  19 alienard  2019_paris    646 10 jul 14:55 .
 drwxr-xr-x  22 alienard  2019_paris    748 26 jui 15:28 ..
-drwxr-xr-x  16 alienard  2019_paris    544 10 jul 11:16 .git
+drwxr-xr-x  16 alienard  2019_paris    544 10 jul 11:27 .git
 -rw-r--r--   1 alienard  2019_paris    186 29 jui 15:17 .gitignore
 drwxr-xr-x   8 alienard  2019_paris    272  8 jul 18:58 .idea
 drwxr-xr-x   4 alienard  2019_paris    136 10 jul 11:10 .vscode
@@ -45,11 +45,11 @@ drwxr-xr-x   4 alienard  2019_paris    136 10 jul 11:10 .vscode
 drwxr-xr-x   9 alienard  2019_paris    306  8 jul 15:38 cmake-build-debug
 drwxr-xr-x   3 alienard  2019_paris    102 26 jui 15:25 headers
 drwxr-xr-x  17 alienard  2019_paris    578 10 jul 11:14 libft
--rwxr-xr-x   1 alienard  2019_paris  83488 10 jul 11:15 minishell
+-rwxr-xr-x   1 alienard  2019_paris  83488 10 jul 14:55 minishell
 -rw-r--r--   1 alienard  2019_paris     34 29 jui 14:31 run.sh
-drwxr-xr-x  60 alienard  2019_paris   2040 10 jul 11:15 srcs
+drwxr-xr-x  59 alienard  2019_paris   2006 10 jul 14:55 srcs
 -rw-r--r--   1 alienard  2019_paris     67 29 jui 16:06 test.sh
-drwxr-xr-x  23 alienard  2019_paris    782 10 jul 11:17 tests
+drwxr-xr-x  24 alienard  2019_paris    816 10 jul 14:56 tests
 -rw-r--r--   1 alienard  2019_paris     71 26 jui 15:25 valgrind.sh
 --- TESTS PWD ---
 /Users/alienard/Documents/42_cursus/minishell
@@ -237,13 +237,13 @@ valgrind.sh
 /Users/alienard/Documents/42_cursus/minishell
 
 --- TESTS \ ---
-coucou"bonjour
-coucou\'bonjour
-coucou\"bonjour
-coucou\bonjour
-'''''''''
-"""""""""""
-CMakeLists.txt
+1 coucou"bonjour
+2 coucou\'bonjour
+3 coucou\"bonjour
+4 coucou\bonjour
+5 '''''''''
+6 """""""""""
+7	CMakeLists.txt
 Dockerfile
 Makefile
 README.md
@@ -256,7 +256,7 @@ srcs
 test.sh
 tests
 valgrind.sh
-CMakeLists.txt
+8	CMakeLists.txt
 Dockerfile
 Makefile
 README.md
@@ -269,6 +269,7 @@ srcs
 test.sh
 tests
 valgrind.sh
-"coucou
-'coucou
-coucou
+9	10 "coucou
+11 'coucou
+12	coucou
+13	
