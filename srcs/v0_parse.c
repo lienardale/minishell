@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/01 12:09:16 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 15:17:00 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	if (cmd->cmd == NULL)
 	{
 		// ft_printf("An empty command was entered. : |%s|\n", cmd->cmd);
-	// An empty command was entered.
+		// An empty command was entered.
 		return (1);
 	}
 	i = -1;

@@ -36,14 +36,14 @@ bash tests/backslash.sh >> tests/bash.txt
 # ./minishell tests/return.sh >> tests/us.txt
 # bash tests/return.sh >> tests/bash.txt
 
-# ./minishell tests/export.sh >> tests/us.txt
-# bash tests/export.sh >> tests/bash.txt
+./minishell tests/env.sh >> tests/us.txt
+bash tests/env.sh >> tests/bash.txt
 
-# ./minishell tests/unset.sh >> tests/us.txt
-# bash tests/unset.sh >> tests/bash.txt
+./minishell tests/export.sh >> tests/us.txt
+bash tests/export.sh >> tests/bash.txt
 
-# ./minishell tests/env.sh >> tests/us.txt
-# bash tests/env.sh >> tests/bash.txt
+./minishell tests/unset.sh >> tests/us.txt
+bash tests/unset.sh >> tests/bash.txt
 
 # ./minishell tests/exit.sh >> tests/us.txt
 # bash tests/exit.sh >> tests/bash.txt

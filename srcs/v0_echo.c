@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/30 15:42:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 15:14:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ int		ft_echo(char **args, t_list **env)
 	(void)env;
 	if (args[1] && !ft_strncmp(args[1], "-n", 2))
 		n = 1;
-	/*
-	if (args[1] && (args[1][i] == '\'' || args[1][i] == '\"')
-		&& args[1][i] == args[1][ft_strlen(args[1]) - 1])
-		quotes = args[1][i];
-*/
 // Pour echo, il faudra faire attention au quote, double quote, espace a l'interieur/l'exterieur etc. le parsing doit etre different.
 	if (n && args[2])
 	{

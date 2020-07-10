@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:31:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/11 16:54:29 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/10 15:28:50 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	ft_env(char **args, t_list **env)
 		content = (t_env*)temp->content;
 		if (content->value)
 		{
-			ft_putstr_fd(content->key, 0);
-			ft_putstr_fd("=", 0);
-			ft_putendl_fd(content->value, 0);
+			ft_putstr_fd(content->key, 1);
+			ft_putstr_fd("=", 1);
+			ft_putendl_fd(content->value, 1);
 		}
 		temp = temp->next;
 	}

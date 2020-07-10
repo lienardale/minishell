@@ -32,9 +32,9 @@ test.sh
 tests
 valgrind.sh
 total 232
-drwxr-xr-x  19 alienard  2019_paris    646 10 jul 14:55 .
+drwxr-xr-x  19 alienard  2019_paris    646 10 jul 15:28 .
 drwxr-xr-x  22 alienard  2019_paris    748 26 jui 15:28 ..
-drwxr-xr-x  16 alienard  2019_paris    544 10 jul 11:27 .git
+drwxr-xr-x  16 alienard  2019_paris    544 10 jul 14:58 .git
 -rw-r--r--   1 alienard  2019_paris    186 29 jui 15:17 .gitignore
 drwxr-xr-x   8 alienard  2019_paris    272  8 jul 18:58 .idea
 drwxr-xr-x   4 alienard  2019_paris    136 10 jul 11:10 .vscode
@@ -45,11 +45,11 @@ drwxr-xr-x   4 alienard  2019_paris    136 10 jul 11:10 .vscode
 drwxr-xr-x   9 alienard  2019_paris    306  8 jul 15:38 cmake-build-debug
 drwxr-xr-x   3 alienard  2019_paris    102 26 jui 15:25 headers
 drwxr-xr-x  17 alienard  2019_paris    578 10 jul 11:14 libft
--rwxr-xr-x   1 alienard  2019_paris  83488 10 jul 14:55 minishell
+-rwxr-xr-x   1 alienard  2019_paris  83488 10 jul 15:28 minishell
 -rw-r--r--   1 alienard  2019_paris     34 29 jui 14:31 run.sh
-drwxr-xr-x  59 alienard  2019_paris   2006 10 jul 14:55 srcs
+drwxr-xr-x  59 alienard  2019_paris   2006 10 jul 15:28 srcs
 -rw-r--r--   1 alienard  2019_paris     67 29 jui 16:06 test.sh
-drwxr-xr-x  24 alienard  2019_paris    816 10 jul 14:56 tests
+drwxr-xr-x  24 alienard  2019_paris    816 10 jul 15:31 tests
 -rw-r--r--   1 alienard  2019_paris     71 26 jui 15:25 valgrind.sh
 --- TESTS PWD ---
 /Users/alienard/Documents/42_cursus/minishell
@@ -273,3 +273,102 @@ valgrind.sh
 11 'coucou
 12	coucou
 13	
+
+--- TESTS env ---
+TERM_PROGRAM=vscode
+TERM=xterm-256color
+SHELL=/bin/zsh
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
+TERM_PROGRAM_VERSION=1.43.0
+USER=alienard
+COMMAND_MODE=unix2003
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
+__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
+PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PWD=/Users/alienard/Documents/42_cursus/minishell
+LANG=fr_FR.UTF-8
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=4
+HOME=/Users/alienard
+LOGNAME=alienard
+MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
+SECURITYSESSIONID=186a9
+COLORTERM=truecolor
+_=/usr/bin/env
+
+
+--- TESTS export ---
+TERM_PROGRAM=vscode
+TERM=xterm-256color
+SHELL=/bin/zsh
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
+TERM_PROGRAM_VERSION=1.43.0
+USER=alienard
+COMMAND_MODE=unix2003
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
+__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
+PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PWD=/Users/alienard/Documents/42_cursus/minishell
+coucou=salut
+LANG=fr_FR.UTF-8
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=4
+HOME=/Users/alienard
+LOGNAME=alienard
+MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
+SECURITYSESSIONID=186a9
+COLORTERM=truecolor
+_=/usr/bin/env
+
+
+--- TESTS unset ---
+TERM_PROGRAM=vscode
+TERM=xterm-256color
+SHELL=/bin/zsh
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
+TERM_PROGRAM_VERSION=1.43.0
+USER=alienard
+COMMAND_MODE=unix2003
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
+__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
+PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PWD=/Users/alienard/Documents/42_cursus/minishell
+coucou=salut
+LANG=fr_FR.UTF-8
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=4
+HOME=/Users/alienard
+LOGNAME=alienard
+MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
+SECURITYSESSIONID=186a9
+COLORTERM=truecolor
+_=/usr/bin/env
+TERM_PROGRAM=vscode
+TERM=xterm-256color
+SHELL=/bin/zsh
+TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
+Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
+TERM_PROGRAM_VERSION=1.43.0
+USER=alienard
+COMMAND_MODE=unix2003
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
+__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
+PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PWD=/Users/alienard/Documents/42_cursus/minishell
+LANG=fr_FR.UTF-8
+XPC_FLAGS=0x0
+XPC_SERVICE_NAME=0
+SHLVL=4
+HOME=/Users/alienard
+LOGNAME=alienard
+MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
+SECURITYSESSIONID=186a9
+COLORTERM=truecolor
+_=/usr/bin/env
+

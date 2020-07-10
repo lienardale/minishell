@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/08 13:02:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 15:16:14 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,44 +74,6 @@ void	ft_check_line(char **line, int *quote, int *bkslh)
 	}
 }
 
-// void	check_line(char **line, int *quote)
-// {
-// 	int		pos;
-// 	int		nbquote;
-// 	char	*tmp;
-// 	int		bkslh;
-
-// 	pos = -1;
-// 	bkslh = 0;
-// 	nbquote = (*quote == 0) ? 0 : 1;
-// 	while ((*line)[++pos])
-// 	{
-// 		if (((*line)[pos] == '\\' /*&& *quote == 0*/) || bkslh == 1)
-// 			bkslh++;
-// 		if ((*line)[pos] == '\'' && (*quote == '\'' || *quote == 0)
-// 			/*&& bkslh == 0*/)
-// 		{
-// 			nbquote++;
-// 			*quote = '\'';
-// 		}
-// 		if ((*line)[pos] == '\"'&& (*quote == '\"' || *quote == 0)
-// 			&& bkslh == 0)
-// 		{
-// 			nbquote++;
-// 			*quote = '\"';
-// 		}
-// 		if (nbquote % 2 == 0)
-// 			*quote = 0;
-// 		bkslh = (bkslh == 2) ? 0 : bkslh;
-// 	}
-// 	if (*quote != 0)
-// 	{
-// 		tmp = *line;
-// 		*line = ft_strjoin(tmp, "\n");
-// 		ft_free_ptr(tmp);
-// 	}
-// }
-
 void	ft_infile(t_sh *sh)
 {
 	int			quote;
@@ -128,7 +90,6 @@ void	ft_infile(t_sh *sh)
 		input = ft_lstnew(sh->line);
 		ft_lstadd_back(&begin, input);
 		ft_check_line((char**)&input->content, &quote, &bkslh);
-		// check_line((char**)&input->content, &quote);
 		if (!quote)
 		{
 			ft_line_to_lst(ft_input_join(begin), sh);

@@ -1,0 +1,99 @@
+279d278
+< SHELL=/bin/zsh
+280a280
+> SHELL=/bin/zsh
+292a293
+> SHLVL=4
+294d294
+< SHLVL=3
+299c299
+< _=./minishell
+---
+> _=/usr/bin/env
+304d303
+< SHELL=/bin/zsh
+305a305
+> SHELL=/bin/zsh
+315,324d314
+< LANG=fr_FR.UTF-8
+< XPC_FLAGS=0x0
+< XPC_SERVICE_NAME=0
+< HOME=/Users/alienard
+< SHLVL=3
+< LOGNAME=alienard
+< MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
+< SECURITYSESSIONID=186a9
+< COLORTERM=truecolor
+< _=./minishell
+326,337d315
+< TERM_PROGRAM=vscode
+< SHELL=/bin/zsh
+< TERM=xterm-256color
+< TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
+< Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
+< TERM_PROGRAM_VERSION=1.43.0
+< USER=alienard
+< COMMAND_MODE=unix2003
+< SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
+< __CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
+< PATH=
+< PWD=/Users/alienard/Documents/42_cursus/minishell
+340a319
+> SHLVL=4
+342d320
+< SHLVL=3
+347,348c325
+< _=./minishell
+< coucou=salut
+---
+> _=/usr/bin/env
+353d329
+< SHELL=/bin/zsh
+355,375d330
+< TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
+< Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
+< TERM_PROGRAM_VERSION=1.43.0
+< USER=alienard
+< COMMAND_MODE=unix2003
+< SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
+< __CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
+< PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+< PWD=/Users/alienard/Documents/42_cursus/minishell
+< LANG=fr_FR.UTF-8
+< XPC_FLAGS=0x0
+< XPC_SERVICE_NAME=0
+< HOME=/Users/alienard
+< SHLVL=3
+< LOGNAME=alienard
+< MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
+< SECURITYSESSIONID=186a9
+< COLORTERM=truecolor
+< _=./minishell
+< coucou=salut
+< TERM_PROGRAM=vscode
+377d331
+< TERM=xterm-256color
+386a341
+> coucou=salut
+389a345
+> SHLVL=4
+391d346
+< SHLVL=3
+396c351
+< _=./minishell
+---
+> _=/usr/bin/env
+398d352
+< SHELL=/bin/zsh
+399a354
+> SHELL=/bin/zsh
+406a362
+> PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+410a367
+> SHLVL=4
+412d368
+< SHLVL=3
+417c373
+< _=./minishell
+---
+> _=/usr/bin/env
