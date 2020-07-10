@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/08 18:57:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/10 10:31:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,18 @@ void	ft_init_cmd(t_cmd *cmd, char *line, int *i)
 	
 	// ft_print_double_array(cmd->av, "av avant parse esc");
 	// pb : split quote has already suppressed evey quote
-	// while (cmd->av[++k])
-	// {
-	// 	*i = -1;
+	while (cmd->av[++k])
+	{
+		*i = -1;
 	// 	while (cmd->av[k][++*i])
 	// 	{
 	// 		if (cmd->av[k][*i] == '\\' && (ft_isindquotes(cmd->av[k], *i) || !ft_isinquotes(cmd->av[k], *i)))
 	// 			ft_parse_escape(i, cmd->av[k], cmd);
 	// 	}
-	// 	cmd->av[k] = ft_trimquotes(cmd->av[k]);
-	// }
+		cmd->av[k] = ft_strdup_clean(cmd->av[k]);
+	}
 	// ft_print_double_array(cmd->av, "av apres parse esc");
+	
 	cmd->ac = ft_double_strlen(cmd->av);
 	cmd->cmd= ft_strdup(cmd->av[0]);
 	*i = j;

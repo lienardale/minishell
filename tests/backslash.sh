@@ -1,5 +1,7 @@
 echo "--- TESTS \ ---"
 echo "coucou\"bonjour"
+echo "coucou\'bonjour"
+echo 'coucou\"bonjour'
 echo 'coucou\'bonjour''
 echo "'''''''''"
 echo '"""""""""""'
