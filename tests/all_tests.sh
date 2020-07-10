@@ -18,11 +18,11 @@ bash tests/cat.sh >> tests/bash.txt
 ./minishell tests/semi_colon.sh >> tests/us.txt
 bash tests/semi_colon.sh >> tests/bash.txt
 
-# ./minishell tests/quote.sh >> tests/us.txt
-# bash tests/quote.sh >> tests/bash.txt
+./minishell tests/quote.sh >> tests/us.txt
+bash tests/quote.sh >> tests/bash.txt
 
-# ./minishell tests/backslash.sh >> tests/us.txt
-# bash tests/backslash.sh >> tests/bash.txt
+./minishell tests/backslash.sh >> tests/us.txt
+bash tests/backslash.sh >> tests/bash.txt
 
 # ./minishell tests/pipe.sh >> tests/us.txt
 # bash tests/pipe.sh >> tests/bash.txt

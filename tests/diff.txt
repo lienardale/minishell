@@ -1,41 +1,14 @@
-1c1,5
-< "--- TESTS ECHO ---"
----
-> --- TESTS ECHO ---
-> coucou
-> coucoucoucou
-> coucoucoucou bonjour
-> coucou bonjour
-3,6d6
-< coucou"coucou"
-< "coucou""coucou" "bonjour"
-< 'coucou' bonjour
-< "coucou
-18c18
-< 12"
----
-> 12
-20c20
-< "--- TESTS LS ---"
----
-> --- TESTS LS ---
-54c54
-< "--- TESTS PWD ---"
----
-> --- TESTS PWD ---
-61c61
-< "--- TESTS CAT ---"
----
-> --- TESTS CAT ---
 157c157
-< "--- TESTS 
+< --- TESTS 
 ---
 > --- TESTS ; ---
-211c211
-< "coucou
+242,243c242,243
+< coucou"bonjour
+< coucou'bonjour
+---
+> coucou\"bonjour
+> coucou\bonjour
+274c274
+< -n coucou
 ---
 > coucou
-223c223
-< 12"
----
-> 12
