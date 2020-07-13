@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 08:49:05 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/10 09:29:00 by cdai             ###   ########.fr       */
+/*   Updated: 2020/06/25 15:52:48 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ t_list	*ft_search_env(t_list *env, char *arg)
 	t_list	*temp_env;
 
 	temp_env = env;
-	result = ft_separate_key_value(arg);
+	if (!(result = ft_separate_key_value(arg)))
+		return (NULL);
 	while (temp_env)
 	{
 		env_content = (t_env*)temp_env->content;

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/30 17:10:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/13 15:21:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int			ft_launch(char **args, t_list **env)
 	if (pid == 0)
 	{
 		// Child process
-		split_env = ft_lst_env_to_split(*env);
+		split_env = ft_lst_env_to_split_launch(*env);
 		ft_search_n_execute(args, split_env);
 		ft_free_split(split_env);
 	}
