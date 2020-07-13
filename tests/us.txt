@@ -18,45 +18,49 @@ coucou
 12
 
 --- TESTS LS ---
-CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-total 232
-drwxr-xr-x  19 alienard  2019_paris    646 10 jul 15:28 .
-drwxr-xr-x  22 alienard  2019_paris    748 26 jui 15:28 ..
-drwxr-xr-x  16 alienard  2019_paris    544 10 jul 14:58 .git
--rw-r--r--   1 alienard  2019_paris    186 29 jui 15:17 .gitignore
-drwxr-xr-x   8 alienard  2019_paris    272  8 jul 18:58 .idea
-drwxr-xr-x   4 alienard  2019_paris    136 10 jul 11:10 .vscode
--rw-r--r--   1 alienard  2019_paris   4055 29 jui 10:28 CMakeLists.txt
--rw-r--r--   1 alienard  2019_paris   1014 26 jui 15:25 Dockerfile
--rw-r--r--   1 alienard  2019_paris   3891 10 jul 10:35 Makefile
--rw-r--r--   1 alienard  2019_paris     12 26 jui 15:25 README.md
-drwxr-xr-x   9 alienard  2019_paris    306  8 jul 15:38 cmake-build-debug
-drwxr-xr-x   3 alienard  2019_paris    102 26 jui 15:25 headers
-drwxr-xr-x  17 alienard  2019_paris    578 10 jul 11:14 libft
--rwxr-xr-x   1 alienard  2019_paris  83488 10 jul 15:28 minishell
--rw-r--r--   1 alienard  2019_paris     34 29 jui 14:31 run.sh
-drwxr-xr-x  59 alienard  2019_paris   2006 10 jul 15:28 srcs
--rw-r--r--   1 alienard  2019_paris     67 29 jui 16:06 test.sh
-drwxr-xr-x  24 alienard  2019_paris    816 10 jul 15:31 tests
--rw-r--r--   1 alienard  2019_paris     71 26 jui 15:25 valgrind.sh
+total 108
+drwxrwxrwx 1 akira akira   4096 Jul 13 10:52 .
+drwxrwxrwx 1 akira akira   4096 Jul  3 12:21 ..
+-rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
+drwxrwxrwx 1 akira akira   4096 Jul  3 12:22 cmake-build-debug
+-rwxrwxrwx 1 akira akira   4055 Jul  3 12:22 CmakeLists.txt
+-rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
+drwxrwxrwx 1 akira akira   4096 Jul 11 14:23 .git
+-rwxrwxrwx 1 akira akira    186 Jul  3 12:22 .gitignore
+drwxrwxrwx 1 akira akira   4096 Jul 10 17:39 headers
+drwxrwxrwx 1 akira akira   4096 Jul  3 12:22 .idea
+drwxrwxrwx 1 akira akira   4096 Jul 11 15:14 libft
+-rwxrwxrwx 1 akira akira   3914 Jul 11 17:29 Makefile
+-rwxrwxrwx 1 akira akira 155496 Jul 13 10:52 minishell
+-rwxrwxrwx 1 akira akira     12 Jul  3 12:22 README.md
+-rwxrwxrwx 1 akira akira     34 Jul  3 12:22 run.sh
+drwxrwxrwx 1 akira akira   4096 Jul 13 10:52 srcs
+-rwxrwxrwx 1 akira akira   6745 Jul 11 15:30 test_pipe.c
+drwxrwxrwx 1 akira akira   4096 Jul 13 10:34 tests
+-rwxrwxrwx 1 akira akira     67 Jul  3 12:22 test.sh
+-rwxrwxrwx 1 akira akira     71 Jul  3 12:22 valgrind.sh
+drwxrwxrwx 1 akira akira   4096 Jul  3 12:22 .vscode
 --- TESTS PWD ---
-/Users/alienard/Documents/42_cursus/minishell
-/Users/alienard/Documents/42_cursus/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
 
-/Users/alienard/Documents/42_cursus/minishell
-/Users/alienard/Documents/42_cursus/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
 
 --- TESTS CAT ---
 FROM debian:buster
@@ -155,59 +159,67 @@ $
 CMD bash$
 
 --- TESTS ; ---
-CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-/Users/alienard/Documents/42_cursus/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
 coucou
 1
 2
@@ -221,20 +233,22 @@ coucou
 10
 11
 12
-CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-/Users/alienard/Documents/42_cursus/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
 
 --- TESTS \ ---
 1 coucou"bonjour
@@ -243,176 +257,37 @@ valgrind.sh
 4 coucou\bonjour
 5 '''''''''
 6 """""""""""
-7	CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+7	a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
-8	CMakeLists.txt
-Dockerfile
-Makefile
-README.md
+8	a.out
 cmake-build-debug
+CmakeLists.txt
+Dockerfile
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
+test_pipe.c
 tests
+test.sh
 valgrind.sh
 9	10 "coucou
 11 'coucou
 12	coucou
 13	
-
---- TESTS env ---
-TERM_PROGRAM=vscode
-SHELL=/bin/zsh
-TERM=xterm-256color
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
-TERM_PROGRAM_VERSION=1.43.0
-USER=alienard
-COMMAND_MODE=unix2003
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
-__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
-PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-PWD=/Users/alienard/Documents/42_cursus/minishell
-LANG=fr_FR.UTF-8
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-HOME=/Users/alienard
-SHLVL=3
-LOGNAME=alienard
-MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
-SECURITYSESSIONID=186a9
-COLORTERM=truecolor
-_=./minishell
-
-
---- TESTS export ---
-TERM_PROGRAM=vscode
-SHELL=/bin/zsh
-TERM=xterm-256color
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
-TERM_PROGRAM_VERSION=1.43.0
-USER=alienard
-COMMAND_MODE=unix2003
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
-__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
-PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-PWD=/Users/alienard/Documents/42_cursus/minishell
-LANG=fr_FR.UTF-8
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-HOME=/Users/alienard
-SHLVL=3
-LOGNAME=alienard
-MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
-SECURITYSESSIONID=186a9
-COLORTERM=truecolor
-_=./minishell
-coucou=salut
-TERM_PROGRAM=vscode
-SHELL=/bin/zsh
-TERM=xterm-256color
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
-TERM_PROGRAM_VERSION=1.43.0
-USER=alienard
-COMMAND_MODE=unix2003
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
-__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
-PATH=
-PWD=/Users/alienard/Documents/42_cursus/minishell
-LANG=fr_FR.UTF-8
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-HOME=/Users/alienard
-SHLVL=3
-LOGNAME=alienard
-MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
-SECURITYSESSIONID=186a9
-COLORTERM=truecolor
-_=./minishell
-coucou=salut
-
-
---- TESTS unset ---
-TERM_PROGRAM=vscode
-SHELL=/bin/zsh
-TERM=xterm-256color
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
-TERM_PROGRAM_VERSION=1.43.0
-USER=alienard
-COMMAND_MODE=unix2003
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
-__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
-PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-PWD=/Users/alienard/Documents/42_cursus/minishell
-LANG=fr_FR.UTF-8
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-HOME=/Users/alienard
-SHLVL=3
-LOGNAME=alienard
-MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
-SECURITYSESSIONID=186a9
-COLORTERM=truecolor
-_=./minishell
-coucou=salut
-TERM_PROGRAM=vscode
-SHELL=/bin/zsh
-TERM=xterm-256color
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
-TERM_PROGRAM_VERSION=1.43.0
-USER=alienard
-COMMAND_MODE=unix2003
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
-__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
-PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
-PWD=/Users/alienard/Documents/42_cursus/minishell
-LANG=fr_FR.UTF-8
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-HOME=/Users/alienard
-SHLVL=3
-LOGNAME=alienard
-MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
-SECURITYSESSIONID=186a9
-COLORTERM=truecolor
-_=./minishell
-TERM_PROGRAM=vscode
-SHELL=/bin/zsh
-TERM=xterm-256color
-TMPDIR=/var/folders/zz/zyxvpxvq6csfxvn_n0004gnc0013xb/T/
-Apple_PubSub_Socket_Render=/private/tmp/com.apple.launchd.D4Mbe797zv/Render
-TERM_PROGRAM_VERSION=1.43.0
-USER=alienard
-COMMAND_MODE=unix2003
-SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.jRQnzDVxHq/Listeners
-__CF_USER_TEXT_ENCODING=0x8FAB:0x0:0x1
-PWD=/Users/alienard/Documents/42_cursus/minishell
-LANG=fr_FR.UTF-8
-XPC_FLAGS=0x0
-XPC_SERVICE_NAME=0
-HOME=/Users/alienard
-SHLVL=3
-LOGNAME=alienard
-MINIKUBE_HOME=/sgoinfre/goinfre/Perso/alienard
-SECURITYSESSIONID=186a9
-COLORTERM=truecolor
-_=./minishell
-

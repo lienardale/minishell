@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/07/10 10:35:39 by alienard         ###   ########.fr        #
+#    Updated: 2020/07/11 17:29:49 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ _SRCS		= v0_minishell.c \
 				v0_prompt.c \
 				v0_split.c \
 				ft_parse_line.c \
+				ft_parse_redir.c \
 				ft_split_quote.c \
 				v0_parse.c \
 				v0_process.c \

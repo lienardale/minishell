@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/10 11:25:15 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/11 17:29:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 # endif
 
 # ifndef REDIR
-#  define REDIR "><|"
+#  define REDIR "><"
 # endif
 
 # ifndef END_CMD
@@ -116,14 +116,13 @@ typedef struct	s_cmd
 	bool			opt;
 	int				bkslh;
 
+	int				fd_in;
+	int				fd_out;
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;
 	t_dlist			*redir_out;
 	struct s_cmd	*left;
 	struct s_cmd	*right;
-	// might be also repetitive with elements just above
-	void			*next;
-	void			*prev;
 }				t_cmd;
 
 int			ft_launch(char **args, t_list **env);
@@ -146,14 +145,16 @@ char		*ft_strdup_clean(const char *s1);
 void		ft_check_line(char **line, int *quote, int *bkslh);
 char		*ft_input_join(t_list *inputs);
 void		ft_line_to_lst(char *inputs, t_sh *sh);
-void		ft_init_cmd(t_cmd *cmd, char *line, int *i);
-void		ft_handle_meta_char(char *line, t_cmd *cmd);
-void		ft_handle_end(char *line, t_cmd *cmd);
+void		ft_init_cmd(t_sh *sh, char *line, int *i);
+
+void		ft_handle_end(t_sh *sh, char *line, int *i);
 void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
-void		ft_parse_redir(char *line, t_cmd *cmd);
-void		ft_parse_quote(char *line, t_cmd *cmd);
-void		ft_parse_opt(char *line, t_cmd *cmd);
-void		ft_parse_wild(char *line, t_cmd *cmd);
+void		ft_parse_redir(t_sh *sh, char *line, int *i);
+void		ft_parse_pipe(t_sh *sh, char *line, int *i);
+
+void	ft_parse_redir_in(t_sh *sh, char *line, int *i);
+void	ft_parse_redir_out(t_sh *sh, char *line, int *i);
+void	ft_parse_append(t_sh *sh, char *line, int *i);
 
 int			ft_parse_cmds(t_cmd *cmd, t_sh *sh);
 
