@@ -33,25 +33,25 @@ test_pipe.c
 tests
 test.sh
 valgrind.sh
-total 96
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:27 .
+total 112
+drwxrwxrwx 1 akira akira   4096 Jul 13 15:27 .
 drwxrwxrwx 1 akira akira   4096 Jul  3 12:21 ..
 -rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 cmake-build-debug
 -rwxrwxrwx 1 akira akira   4055 Jul 13 11:18 CmakeLists.txt
 -rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:24 .git
+drwxrwxrwx 1 akira akira   4096 Jul 13 15:23 .git
 -rwxrwxrwx 1 akira akira    186 Jul 13 11:18 .gitignore
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 headers
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .idea
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:26 libft
--rwxrwxrwx 1 akira akira   3914 Jul 13 11:18 Makefile
--rwxrwxrwx 1 akira akira 155496 Jul 13 11:27 minishell
+drwxrwxrwx 1 akira akira   4096 Jul 13 15:25 libft
+-rwxrwxrwx 1 akira akira   3984 Jul 13 15:21 Makefile
+-rwxrwxrwx 1 akira akira 159504 Jul 13 15:27 minishell
 -rwxrwxrwx 1 akira akira     12 Jul  3 12:22 README.md
 -rwxrwxrwx 1 akira akira     34 Jul 13 11:18 run.sh
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:27 srcs
+drwxrwxrwx 1 akira akira   4096 Jul 13 15:27 srcs
 -rwxrwxrwx 1 akira akira   6745 Jul 13 11:18 test_pipe.c
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 tests
+drwxrwxrwx 1 akira akira   4096 Jul 13 11:27 tests
 -rwxrwxrwx 1 akira akira     67 Jul 13 11:18 test.sh
 -rwxrwxrwx 1 akira akira     71 Jul  3 12:22 valgrind.sh
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .vscode
