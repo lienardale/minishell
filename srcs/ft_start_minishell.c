@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/13 14:17:13 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/14 11:54:35 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ t_list		*ft_start_minishell(char **env)
 			}
 			free(old_value);
 		}
-// printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
-// printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
+//printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
+//printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
 		temp = temp->next;
 	}
 	return (result);
