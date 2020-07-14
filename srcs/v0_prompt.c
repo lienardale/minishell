@@ -109,6 +109,18 @@ void	ft_infile(t_sh *sh)
 	}
 }
 
+void	ft_ctrl_c(int sig)
+{
+	(void)sig;
+	write(0, "\n", 1);
+	write(1, PROMPT, ft_strlen(PROMPT));
+}
+
+void	ft_ctrl_backslash(int sig)
+{
+	(void)sig;
+}
+
 void	ft_prompt(t_sh *sh)
 {
 	char		*prompt;
@@ -122,6 +134,8 @@ void	ft_prompt(t_sh *sh)
 	quote = 0;
 	bkslh = 0;
 	prompt = PROMPT;
+signal(SIGQUIT, ft_ctrl_backslash);
+signal(SIGINT, ft_ctrl_c);
 	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
@@ -144,4 +158,6 @@ void	ft_prompt(t_sh *sh)
 		}
 		// ft_free_ptr(sh.line);
 	}
+if (sh->ret_sh == 0)
+	write(1, "exit\n", 5);
 }
