@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/13 15:27:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/13 17:34:46 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,9 +152,9 @@ void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
 void		ft_parse_redir(t_sh *sh, char *line, int *i);
 void		ft_parse_pipe(t_sh *sh, char *line, int *i);
 
-void	ft_parse_redir_in(t_sh *sh, char *line, int *i);
-void	ft_parse_redir_out(t_sh *sh, char *line, int *i);
-void	ft_parse_append(t_sh *sh, char *line, int *i);
+void		ft_parse_redir_in(t_sh *sh, char *line, int *i);
+void		ft_parse_redir_out(t_sh *sh, char *line, int *i);
+void		ft_parse_append(t_sh *sh, char *line, int *i);
 
 int			ft_parse_cmds(t_cmd *cmd, t_sh *sh);
 
