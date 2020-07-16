@@ -12,6 +12,9 @@ bash tests/ls.sh >> tests/bash.txt
 ./minishell tests/pwd.sh >> tests/us.txt
 bash tests/pwd.sh >> tests/bash.txt
 
+./minishell tests/cd.sh >> tests/us.txt
+bash tests/cd.sh >> tests/bash.txt
+
 ./minishell tests/cat.sh >> tests/us.txt
 bash tests/cat.sh >> tests/bash.txt
 

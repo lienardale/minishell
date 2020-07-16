@@ -40,7 +40,7 @@ drwxrwxrwx 1 akira akira   4096 Jul  3 12:21 ..
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 cmake-build-debug
 -rwxrwxrwx 1 akira akira   4055 Jul 13 11:18 CmakeLists.txt
 -rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
-drwxrwxrwx 1 akira akira   4096 Jul 13 15:23 .git
+drwxrwxrwx 1 akira akira   4096 Jul 15 09:22 .git
 -rwxrwxrwx 1 akira akira    186 Jul 13 11:18 .gitignore
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 headers
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .idea
@@ -51,7 +51,7 @@ drwxrwxrwx 1 akira akira   4096 Jul 13 15:25 libft
 -rwxrwxrwx 1 akira akira     34 Jul 13 11:18 run.sh
 drwxrwxrwx 1 akira akira   4096 Jul 13 15:27 srcs
 -rwxrwxrwx 1 akira akira   6745 Jul 13 11:18 test_pipe.c
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:27 tests
+drwxrwxrwx 1 akira akira   4096 Jul 13 15:35 tests
 -rwxrwxrwx 1 akira akira     67 Jul 13 11:18 test.sh
 -rwxrwxrwx 1 akira akira     71 Jul  3 12:22 valgrind.sh
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .vscode
@@ -62,6 +62,10 @@ drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .vscode
 /mnt/c/Users/Akira/Documents/42/minishell
 /mnt/c/Users/Akira/Documents/42/minishell
 
+--- TESTS CD ---
+/mnt/c/Users/Akira/Documents/42/minishell
+/mnt/c/Users/Akira/Documents/42/minishell/libft
+/mnt/c/Users/Akira/Documents/42/minishell
 --- TESTS CAT ---
 FROM debian:buster
 

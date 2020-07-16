@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/13 17:34:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/15 11:10:49 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ typedef struct	s_cmd
 	bool			opt;
 	int				bkslh;
 
-	int				fd_in;
-	int				fd_out;
+	t_list			**fd_in;
+	t_list			**fd_out;
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;
 	t_dlist			*redir_out;
