@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/10 15:17:00 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/16 11:55:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,14 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 {
 	char	**builtins;
 	int		i;
+	int		pipefd[2];
 
+	if (pipe(pipefd) < 0)
+	{
+		ft_dprintf(2, "Pipe failed to initialize\n");
+		return;
+	}
+	
 	builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
 	i = 0;
 	
