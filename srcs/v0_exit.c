@@ -6,16 +6,16 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/01 12:10:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/20 11:37:53 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int		ft_exit(char **args, t_list **env)
+int		ft_exit(t_cmd *cmd, t_sh *sh)
 {
 	// ft_printf("			-> %s passe bien par ici.\n", args[0]);
-	ft_free_double_array(args);
-	ft_lstclear(env, ft_free_env_lst);
+	ft_free_double_array(cmd->av);
+	ft_lstclear(sh->env, ft_free_env_lst);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/16 11:54:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/20 18:26:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	ft_search_n_execute(char **args, char **env)
 	args[0] = temp;
 }
 
-int			ft_launch(char **args, t_list **env)
+int			ft_launch(t_cmd *cmd, t_sh *sh)
 {
 	pid_t	pid;
 	pid_t	wpid;
@@ -118,17 +118,23 @@ int			ft_launch(char **args, t_list **env)
 	char	**split_env;
 
 	split_env = NULL;
+	if (pipe(cmd->pipedfd) < 0)
+	{
+		ft_dprintf(2, "Pipe could not be initialized\n");
+		return (1);
+	}
 	pid = fork();
 	if (pid == 0)
 	{
 		// Child process
-
-		// close(pipefd[0]); 
-		// dup2(pipefd[1], STDOUT_FILENO); 
-		// close(pipefd[1]); 
-		
-		split_env = ft_lst_env_to_split_launch(*env);
-		ft_search_n_execute(args, split_env);
+		if (cmd->fdout)
+		{
+			close(cmd->pipedfd[0]); 
+			dup2(cmd->pipedfd[1], STDOUT_FILENO); 
+			close(cmd->pipedfd[1]); 
+		}
+		split_env = ft_lst_env_to_split_launch(*(sh->env));
+		ft_search_n_execute(cmd->av, split_env);
 		ft_free_split(split_env);
 	}
 	else if (pid < 0)

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/30 17:00:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/20 11:38:47 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av, char **env)
 {
 	t_list			*env_lst;
-	static int		(*builtin_fct[])(char **, t_list **) = {BUILTINS};
+	static int		(*builtin_fct[])(t_cmd *, t_sh *) = {BUILTINS};
 	int				fd;
 	t_sh			sh;
 

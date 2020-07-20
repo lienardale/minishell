@@ -6,22 +6,22 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:31:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/13 15:19:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/20 11:32:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-int	ft_env(char **args, t_list **env)
+int	ft_env(t_cmd *cmd, t_sh *sh)
 {
 	t_list	*temp;
 	t_env	*content;
 
-	temp = *env;
-	if (args[1])
+	temp = *(sh->env);
+	if (cmd->av[1])
 	{
-		ft_printf("env: '%s': No such file or directory", args[1]);
-		ft_free_split(args);
+		ft_printf("env: '%s': No such file or directory", cmd->av[1]);
+		ft_free_split(cmd->av);
 // return (1);
 		return (1);
 	}
@@ -36,7 +36,7 @@ int	ft_env(char **args, t_list **env)
 		}
 		temp = temp->next;
 	}
-	ft_free_split(args);
+	ft_free_split(cmd->av);
 // return (0);
 	return (1);
 }

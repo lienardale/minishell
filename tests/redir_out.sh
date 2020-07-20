@@ -8,7 +8,7 @@ rm test.log
 echo coucou > test.log\ coucou
 ls
 cat test.log\ coucou
-rm cat test.log\ coucou
+rm test.log\ coucou
 
 echo coucou > 0test.log > 1test.log
 ls

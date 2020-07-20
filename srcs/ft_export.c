@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/29 11:04:09 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/20 11:35:05 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 	return (env);
 }
 
-int				ft_export(char **args, t_list **env)
+int				ft_export(t_cmd *cmd, t_sh *sh)
 {
 	int		i;
 	char	**splited;
@@ -71,18 +71,18 @@ int				ft_export(char **args, t_list **env)
 
 	ret = 0;
 // je cherche a savoir si des arguments ou pas
-	if (!args[1])
+	if (!cmd->av[1])
 	{
 		i = -1;
 // j'utilise une variable temporaire pour ne pas modifier des choses dans la liste chainee.
 // handle malloc error
-		if (!(splited = ft_lst_env_to_split_export(*env)))
+		if (!(splited = ft_lst_env_to_split_export(*(sh->env))))
 		{
-			ft_free_split(args);
+			ft_free_split(cmd->av);
 // return (1); // ret = 1;
 			return (1);
 		}
-		ft_strs_sort(splited, ft_lstsize(*env));
+		ft_strs_sort(splited, ft_lstsize(*(sh->env)));
 		while (splited[++i])
 // il faut que je fasse attention a la variable d'env "_"
 			ft_printf("declare -x %s\n", splited[i]);
@@ -92,23 +92,23 @@ int				ft_export(char **args, t_list **env)
 	else
 	{
 		i = 0;
-		while (args[++i])
+		while (cmd->av[++i])
 // ici la fonction est un peu differente que pour unset alors elle est specifique
-		if (ft_export_check_arg(args[i]))
+		if (ft_export_check_arg(cmd->av[i]))
 		{
 			ret = 1;
-			ft_printf("minishell: export: `%s': not a valid identifier\n", args[i]);
+			ft_printf("minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
 		}
 		else
 // handle malloc error
-			if (!(ft_update_env(*env, args[i])))
+			if (!(ft_update_env(*(sh->env), cmd->av[i])))
 			{
-				ft_free_split(args);
+				ft_free_split(cmd->av);
 // return (1); // ret = 1;
 				return (1);
 			}
 	}
-	ft_free_split(args);
+	ft_free_split(cmd->av);
 // a mettre a jour
 //	return (ret);
 	return (1);

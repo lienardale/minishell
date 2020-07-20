@@ -14,9 +14,9 @@
 
 void	ft_parse_redir_in(t_sh *sh, char *line, int *i)
 {
-	char	*tmp;
+	// char	*tmp;
 	int		j;
-	int 	fd;
+	// int 	fd;
 
 	while (ft_isspace(line[*i]))
 		(*i)++;
@@ -38,25 +38,26 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	int		j;
 	int 	fd;
 
-	while (ft_isspace(line[*i]))
+	while (line[*i] && ft_isspace(line[*i]))
 		(*i)++;
 	j = *i;
-	// while (!ft_isspace(line[j]) || ft_isescaped(&line[j]))
-	// 	j++;
-	// tmp = ft_substr(line, *i, j);
-	// if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
-	// {
-	// 	ft_dprintf(2, "Error in open.");
-	// 	return ;
-	// }
-	// ft_lstadd_back(((t_cmd*)(sh->cmds->tail->data))->fd_out, ft_lstnew(&fd));
-	while (line[j])
-	{
-		if (ft_ischarset("|;", line[j]) && !ft_isinquotes(line, j))
-			break ;
+	while (line[j] && (!ft_isspace(line[j]) || ft_isescaped(&line[j])))
 		j++;
+	tmp = ft_substr(line, *i, j - *i);
+	printf("\nfile:|%s|\n", tmp);
+	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
+	{
+		ft_dprintf(2, "Error in open.");
+		return ;
 	}
-	((t_cmd*)(sh->cmds->tail->data))->redir = ft_substr(line, *i, j);
+	// ft_lstadd_back(((t_cmd*)(sh->cmds->tail->data))->fd_out, ft_lstnew(&fd));
+	while (line[j] && (!ft_ischarset(END_CMD, line[j])/* || ft_isescaped(&line[j])*/))
+		j++;
+	if (((t_cmd*)(sh->cmds->tail->data))->redir)
+		free(((t_cmd*)(sh->cmds->tail->data))->redir);
+	((t_cmd*)(sh->cmds->tail->data))->redir = tmp;
+	((t_cmd*)(sh->cmds->tail->data))->fdout = fd;
+	// ((t_cmd*)(sh->cmds->tail->data))->redir = ft_substr(line, *i, j);
 	*i = j;
 	ft_handle_end(sh, line, i);
 	// if (ft_ischarset(REDIR, line[j]))
@@ -65,7 +66,7 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 
 void	ft_parse_append(t_sh *sh, char *line, int *i)
 {
-	char	*tmp;
+	// char	*tmp;
 	int		j;
 
 	while (ft_isspace(line[*i]))

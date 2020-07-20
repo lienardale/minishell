@@ -21,3 +21,5 @@ echo
 echo -n "13	"
 echo\ -n coucou
 echo
+
+cat test.log\ coucou

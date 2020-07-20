@@ -1,297 +1,77 @@
---- TESTS ECHO ---
+--- TEST > ---
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+a.out
+cmake-build-debug
+hardcore_pwd.log
+hardcore_pwd_errors.log
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.log
+test.log\ coucou
+test.sh
+test_file1
+test_file2
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
 coucou
-coucoucoucou
-coucoucoucou bonjour
-coucou bonjour
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+a.out
+cmake-build-debug
+hardcore_pwd.log
+hardcore_pwd_errors.log
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.log coucou
+test.log\ coucou
+test.sh
+test_file1
+test_file2
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
 coucou
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-
---- TESTS LS ---
-a.out
-cmake-build-debug
+0test.log
+1test.log
+2_test_redir.c
 CmakeLists.txt
 Dockerfile
-headers
-libft
 Makefile
-minishell
 README.md
-run.sh
-srcs
-test_pipe.c
-tests
-test.sh
-valgrind.sh
-total 112
-drwxrwxrwx 1 akira akira   4096 Jul 13 15:27 .
-drwxrwxrwx 1 akira akira   4096 Jul  3 12:21 ..
--rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 cmake-build-debug
--rwxrwxrwx 1 akira akira   4055 Jul 13 11:18 CmakeLists.txt
--rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
-drwxrwxrwx 1 akira akira   4096 Jul 15 09:22 .git
--rwxrwxrwx 1 akira akira    186 Jul 13 11:18 .gitignore
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 headers
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .idea
-drwxrwxrwx 1 akira akira   4096 Jul 13 15:25 libft
--rwxrwxrwx 1 akira akira   3984 Jul 13 15:21 Makefile
--rwxrwxrwx 1 akira akira 159504 Jul 13 15:27 minishell
--rwxrwxrwx 1 akira akira     12 Jul  3 12:22 README.md
--rwxrwxrwx 1 akira akira     34 Jul 13 11:18 run.sh
-drwxrwxrwx 1 akira akira   4096 Jul 13 15:27 srcs
--rwxrwxrwx 1 akira akira   6745 Jul 13 11:18 test_pipe.c
-drwxrwxrwx 1 akira akira   4096 Jul 13 15:35 tests
--rwxrwxrwx 1 akira akira     67 Jul 13 11:18 test.sh
--rwxrwxrwx 1 akira akira     71 Jul  3 12:22 valgrind.sh
-drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .vscode
---- TESTS PWD ---
-/mnt/c/Users/Akira/Documents/42/minishell
-/mnt/c/Users/Akira/Documents/42/minishell
-
-/mnt/c/Users/Akira/Documents/42/minishell
-/mnt/c/Users/Akira/Documents/42/minishell
-
---- TESTS CD ---
-/mnt/c/Users/Akira/Documents/42/minishell
-/mnt/c/Users/Akira/Documents/42/minishell/libft
-/mnt/c/Users/Akira/Documents/42/minishell
---- TESTS CAT ---
-FROM debian:buster
-
-ADD ./ /tmp
-
-RUN	apt-get update;\
-	apt-get install -y\
-	vim\
-	clang\
-	git\
-	make\
-	ruby\
-	valgrind \
-	ruby-bundler\
-	ruby-dev\
-	build-essential\
-	valgrind;\
-	cd tmp;\
-	git clone https://github.com/42Paris/42header.git;\
-	mkdir -p ~/.vim/plugin;\
-	cp 42header/vim/stdheader.vim ~/.vim/plugin/;\
-	git clone https://github.com/42Paris/norminette.git ~/.norminette;\
-	cd ~/.norminette/;\
-	bundle;\
-    echo '\
-		set tabstop=4\n\
-		syn off\n\
-		set colorcolumn=120\n\
-		set shiftwidth=4\n\
-		set softtabstop=4\n\
-		nnoremap m 0i//<Esc>\n\
-		nnoremap M 0xx\n\
-		vnoremap m dI/*<CR>*/<CR><Esc>kP\n\
-		vnoremap M dp2k2dd\n\
-	    nnoremap <F2> <C-W>\n\
-	    nnoremap <F3> <C-W>n\n\
-		nnoremap <F4> <C-W>v\n\
-		nnoremap <F5> <C-W>h\n\
-		nnoremap <F6> <C-W>j\n\
-		nnoremap <F7> <C-W>k\n\
-		nnoremap <F8> <C-W>l\n\
-		set shell=bash' \
-	> ~/.vimrc;\
-	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;
-#	source ~/.bashrc;
-#These isn't 'leaks' on linuxOS	apt-get install -y leaks;
-
-CMD bash
-FROM debian:buster$
-$
-ADD ./ /tmp$
-$
-RUN	apt-get update;\$
-	apt-get install -y\$
-	vim\$
-	clang\$
-	git\$
-	make\$
-	ruby\$
-	valgrind \$
-	ruby-bundler\$
-	ruby-dev\$
-	build-essential\$
-	valgrind;\$
-	cd tmp;\$
-	git clone https://github.com/42Paris/42header.git;\$
-	mkdir -p ~/.vim/plugin;\$
-	cp 42header/vim/stdheader.vim ~/.vim/plugin/;\$
-	git clone https://github.com/42Paris/norminette.git ~/.norminette;\$
-	cd ~/.norminette/;\$
-	bundle;\$
-    echo '\$
-		set tabstop=4\n\$
-		syn off\n\$
-		set colorcolumn=120\n\$
-		set shiftwidth=4\n\$
-		set softtabstop=4\n\$
-		nnoremap m 0i//<Esc>\n\$
-		nnoremap M 0xx\n\$
-		vnoremap m dI/*<CR>*/<CR><Esc>kP\n\$
-		vnoremap M dp2k2dd\n\$
-	    nnoremap <F2> <C-W>\n\$
-	    nnoremap <F3> <C-W>n\n\$
-		nnoremap <F4> <C-W>v\n\$
-		nnoremap <F5> <C-W>h\n\$
-		nnoremap <F6> <C-W>j\n\$
-		nnoremap <F7> <C-W>k\n\$
-		nnoremap <F8> <C-W>l\n\$
-		set shell=bash' \$
-	> ~/.vimrc;\$
-	echo 'alias norminette="~/.norminette/norminette.rb"' >> ~/.bashrc;$
-#	source ~/.bashrc;$
-#These isn't 'leaks' on linuxOS	apt-get install -y leaks;$
-$
-CMD bash$
-
---- TESTS ; ---
 a.out
 cmake-build-debug
-CmakeLists.txt
-Dockerfile
+hardcore_pwd.log
+hardcore_pwd_errors.log
+hardcore_tests
 headers
 libft
-Makefile
 minishell
-README.md
 run.sh
 srcs
-test_pipe.c
-tests
+test.log\ coucou
 test.sh
-valgrind.sh
-a.out
-cmake-build-debug
-CmakeLists.txt
-Dockerfile
-headers
-libft
-Makefile
-minishell
-README.md
-run.sh
-srcs
+test_file1
+test_file2
 test_pipe.c
+test_redir.c
 tests
-test.sh
 valgrind.sh
-a.out
-cmake-build-debug
-CmakeLists.txt
-Dockerfile
-headers
-libft
-Makefile
-minishell
-README.md
-run.sh
-srcs
-test_pipe.c
-tests
-test.sh
-valgrind.sh
-a.out
-cmake-build-debug
-CmakeLists.txt
-Dockerfile
-headers
-libft
-Makefile
-minishell
-README.md
-run.sh
-srcs
-test_pipe.c
-tests
-test.sh
-valgrind.sh
-/mnt/c/Users/Akira/Documents/42/minishell
 coucou
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-a.out
-cmake-build-debug
-CmakeLists.txt
-Dockerfile
-headers
-libft
-Makefile
-minishell
-README.md
-run.sh
-srcs
-test_pipe.c
-tests
-test.sh
-valgrind.sh
-/mnt/c/Users/Akira/Documents/42/minishell
-
---- TESTS \ ---
-1 coucou"bonjour
-2 coucou\'bonjour
-3 coucou\"bonjour
-4 coucou\bonjour
-5 '''''''''
-6 """""""""""
-7	a.out
-cmake-build-debug
-CmakeLists.txt
-Dockerfile
-headers
-libft
-Makefile
-minishell
-README.md
-run.sh
-srcs
-test_pipe.c
-tests
-test.sh
-valgrind.sh
-8	a.out
-cmake-build-debug
-CmakeLists.txt
-Dockerfile
-headers
-libft
-Makefile
-minishell
-README.md
-run.sh
-srcs
-test_pipe.c
-tests
-test.sh
-valgrind.sh
-9	10 "coucou
-11 'coucou
-12	coucou
-13	
