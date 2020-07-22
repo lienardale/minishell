@@ -1,48 +1,58 @@
-411,455c411
-< test.log\ coucou
-< test.sh
-< test_file2
-< test_pipe.c
-< test_redir.c
-< tests
-< valgrind.sh
+292,296c292,296
+< --- TESTS \ ---"
+< 1 coucou\"bonjour"
+< 2 coucou\'bonjour"
+< 3 coucou\"bonjour'
+< 4 coucou\'bonjour''
+---
+> --- TESTS \ ---
+> 1 coucou"bonjour
+> 2 coucou\'bonjour
+> 3 coucou\"bonjour
+> 4 coucou\bonjour
+299,304c299
+< 7	8	9	10 \"coucou
+< 11 \'coucou
+< 12	\-n coucou
+< 
+< 13	
 < 2_test_redir.c
-< CmakeLists.txt
-< Dockerfile
-< Makefile
-< README.md
-< a.out
-< cmake-build-debug
-< hardcore_pwd.log
-< hardcore_pwd_errors.log
-< hardcore_tests
-< headers
-< libft
-< minishell
-< run.sh
-< srcs
+---
+> 7	2_test_redir.c
+319d313
 < test.log\ coucou
-< test.sh
-< test_file2
-< test_pipe.c
-< test_redir.c
-< tests
-< valgrind.sh
+325c319
 < 2_test_redir.c
-< CmakeLists.txt
-< Dockerfile
-< Makefile
-< README.md
-< a.out
-< cmake-build-debug
-< hardcore_pwd.log
-< hardcore_pwd_errors.log
-< hardcore_tests
-< headers
-< libft
-< minishell
-< run.sh
-< srcs
-< test.log\ coucou
+---
+> 8	2_test_redir.c
+340d333
+< test.log\
+345a339,342
+> 9	10 "coucou
+> 11 'coucou
+> 12	coucou
+> 13	
+361c358
+< test.log\\ coucou
+---
+> test.log coucou
+382c379
+< test.log\\
+---
+> test.log\ coucou
+403c400
+< test.log\\\ coucou
 ---
 > test.log\\ coucou
+458c455
+< 0test.log\ coucou
+---
+> 0test.log coucou
+479c476
+< 0test.log\ coucou
+---
+> 0test.log coucou
+503c500
+< 1test.log\ coucou
+---
+> 1test.log coucou

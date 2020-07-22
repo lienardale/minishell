@@ -36,24 +36,22 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 {
 	char	*tmp;
 	int		j;
-	int 	fd;
+	int		fd;
 
 	while (line[*i] && ft_isspace(line[*i]))
 		(*i)++;
 	j = *i;
-	while (line[j] && (!ft_isspace(line[j]) || ft_isescaped(&line[j])))
+	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
 		j++;
 	tmp = ft_substr(line, *i, j - *i);
-	// printf("tmp avt:|%s|\n", tmp);
 	tmp = ft_strdup_clean(tmp);
-	// printf("tmp apr:|%s|\n", tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
 	{
 		ft_dprintf(2, "Error in open.\n");
 		return ;
 	}
 	close(fd);
-	while (line[j] && (!ft_ischarset(END_CMD, line[j])/* || ft_isescaped(&line[j])*/))
+	while (line[j] && (!ft_ischarset(END_CMD, line[j])/* || ft_is_escaped(&line[j])*/))
 		j++;
 	if (((t_cmd*)(sh->cmds->tail->data))->redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->redir);
@@ -70,7 +68,7 @@ void	ft_parse_append(t_sh *sh, char *line, int *i)
 	while (ft_isspace(line[*i]))
 		(*i)++;
 	j = *i;
-	// while (!ft_isspace(line[j]) || ft_isescaped(&line[j]))
+	// while (!ft_isspace(line[j]) || ft_is_escaped(&line[j]))
 	// 	j++;
 	// tmp = ft_substr(line, *i, j);
 	// if ((((t_cmd*)(sh->cmds->tail->data))->fd_out =

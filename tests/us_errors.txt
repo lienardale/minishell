@@ -1,3 +1,9 @@
-minishell: command not found: | ls|
-minishell: command not found: |echo -n|
-cat: 1test.log\ coucou: No such file or directory
+minishell: command not found: |\ls|
+minishell: command not found: |\ls|
+minishell: command not found: |\ l\s|
+minishell: command not found: |echo\ -n coucou|
+cat: coucou: No such file or directory
+rm: coucou: No such file or directory
+cat: coucou: No such file or directory
+rm: coucou: No such file or directory
+cat: 1test.log\\ coucou: No such file or directory

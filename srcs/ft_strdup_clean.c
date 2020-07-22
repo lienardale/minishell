@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 10:32:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/22 16:11:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:21:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static size_t	ft_strlen_clean(char *str)
 			len++;
 		else if (str[i] == '\\' && (ft_isinsquotes(str, i)
 			|| (ft_isindquotes(str, i) && str[i + 1] != '\"')
-			|| (ft_isescaped(&str[i]) && !ft_isescaped(&str[i - 1]))))
+			|| ft_is_escaped(str, i)))
 			len++;
 		else if (str[i] == '\"' && (ft_isinsquotes(str, i)
-			|| ft_isescaped(&str[i])))
+			|| ft_is_escaped(str, i)))
 			len++;
 		else if (str[i] == '\'' && (ft_isindquotes(str, i)
-			|| (ft_isescaped(&str[i]) && !ft_isinsquotes(str, i - 1))))
+			|| (ft_is_escaped(str, i) && !ft_isinsquotes(str, i - 1))))
 			len++;
 		i++;
 	}
@@ -63,24 +63,20 @@ static void		ft_strlcpy_clean(char *dst, char *src, size_t dstsize)
 
 	i = -1;
 	j = 0;
-
-	if (dstsize <= 0)
-		return ;
-	while (src[++i] && (j < (dstsize - 1)))
+	while (dstsize > 0 && src[++i] && (j < (dstsize - 1)))
 	{
 		if (src[i] != '\\' && src[i] != '\"' && src[i] != '\''
 			&& (dst[j] = src[i]))
 			j++;
 		else if (src[i] == '\\' && ((ft_isinsquotes(src, i))
 			|| (ft_isindquotes(src, i) && src[i + 1] != '\"')
-			|| (ft_isescaped(&src[i]) && !ft_isescaped(&src[i - 1])))
-			&& (dst[j] = src[i]))
+			|| ft_is_escaped(src, i)) && (dst[j] = src[i]))
 			j++;
 		else if (src[i] == '\"' && (ft_isinsquotes(src, i)
-			|| ft_isescaped(&src[i])) && (dst[j] = src[i]))
+			|| ft_is_escaped(src, i)) && (dst[j] = src[i]))
 			j++;
 		else if (src[i] == '\'' && (ft_isindquotes(src, i)
-			|| (ft_isescaped(&src[i]) && !ft_isinsquotes(src, i - 1)))
+			|| (ft_is_escaped(src, i) && !ft_isinsquotes(src, i - 1)))
 			&& (dst[j] = src[i]))
 			j++;
 	}

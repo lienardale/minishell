@@ -111,15 +111,14 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
 valgrind.sh
 total 800
-drwxr-xr-x  27 alienard  2019_paris     918 22 jul 16:11 .
+drwxr-xr-x  26 alienard  2019_paris     884 22 jul 17:27 .
 drwxr-xr-x  23 alienard  2019_paris     782 16 jul 07:54 ..
-drwxr-xr-x  15 alienard  2019_paris     510 20 jul 18:42 .git
+drwxr-xr-x  15 alienard  2019_paris     510 22 jul 17:12 .git
 -rw-r--r--   1 alienard  2019_paris     186 16 jul 07:54 .gitignore
 drwxr-xr-x   7 alienard  2019_paris     238 16 jul 07:54 .idea
 drwxr-xr-x   3 alienard  2019_paris     102 16 jul 07:54 .vscode
@@ -135,14 +134,13 @@ drwxr-xr-x   7 alienard  2019_paris     238 16 jul 07:54 cmake-build-debug
 drwxr-xr-x   3 alienard  2019_paris     102 20 jul 11:45 hardcore_tests
 drwxr-xr-x   3 alienard  2019_paris     102 16 jul 07:54 headers
 drwxr-xr-x  17 alienard  2019_paris     578 22 jul 12:43 libft
--rwxr-xr-x   1 alienard  2019_paris   89208 22 jul 16:11 minishell
+-rwxr-xr-x   1 alienard  2019_paris   89208 22 jul 17:27 minishell
 -rw-r--r--   1 alienard  2019_paris      34 16 jul 07:54 run.sh
-drwxr-xr-x  65 alienard  2019_paris    2210 22 jul 16:11 srcs
+drwxr-xr-x  65 alienard  2019_paris    2210 22 jul 17:27 srcs
 -rw-r--r--   1 alienard  2019_paris      67 16 jul 07:54 test.sh
--rwxr-xr-x   1 alienard  2019_paris       0 22 jul 13:10 test_file2
 -rw-r--r--   1 alienard  2019_paris    5680 16 jul 10:34 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris    2492 20 jul 15:36 test_redir.c
-drwxr-xr-x  27 alienard  2019_paris     918 22 jul 16:11 tests
+drwxr-xr-x  27 alienard  2019_paris     918 22 jul 17:27 tests
 -rw-r--r--   1 alienard  2019_paris      71 16 jul 07:54 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -191,7 +189,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -212,7 +209,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -233,7 +229,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -254,7 +249,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -289,65 +283,23 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
 valgrind.sh
 /Users/alienard/Documents/42_cursus/redir
 
---- TESTS \ ---
-1 coucou"bonjour
-2 coucou\'bonjour
-3 coucou\"bonjour
-4 coucou\bonjour
+--- TESTS \ ---"
+1 coucou\"bonjour"
+2 coucou\'bonjour"
+3 coucou\"bonjour'
+4 coucou\'bonjour''
 5 '''''''''
 6 """""""""""
-7	2_test_redir.c
-CmakeLists.txt
-Dockerfile
-Makefile
-README.md
-a.out
-cmake-build-debug
-hardcore_pwd.log
-hardcore_pwd_errors.log
-hardcore_tests
-headers
-libft
-minishell
-run.sh
-srcs
-test.sh
-test_file2
-test_pipe.c
-test_redir.c
-tests
-valgrind.sh
-8	2_test_redir.c
-CmakeLists.txt
-Dockerfile
-Makefile
-README.md
-a.out
-cmake-build-debug
-hardcore_pwd.log
-hardcore_pwd_errors.log
-hardcore_tests
-headers
-libft
-minishell
-run.sh
-srcs
-test.sh
-test_file2
-test_pipe.c
-test_redir.c
-tests
-valgrind.sh
-9	10 "coucou
-11 'coucou
-12	coucou
+7	8	9	10 \"coucou
+11 \'coucou
+12	\-n coucou
+
 13	
 2_test_redir.c
 CmakeLists.txt
@@ -364,9 +316,8 @@ libft
 minishell
 run.sh
 srcs
-test.log coucou
+test.log\ coucou
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -386,9 +337,8 @@ libft
 minishell
 run.sh
 srcs
-test.log\ coucou
+test.log\
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -408,9 +358,8 @@ libft
 minishell
 run.sh
 srcs
-test.log\ coucou
+test.log\\ coucou
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -430,9 +379,8 @@ libft
 minishell
 run.sh
 srcs
-test.log\ coucou
+test.log\\
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -452,9 +400,8 @@ libft
 minishell
 run.sh
 srcs
-test.log\ coucou
+test.log\\\ coucou
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -480,7 +427,6 @@ run.sh
 srcs
 test.log
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -502,7 +448,6 @@ run.sh
 srcs
 test.log
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -510,7 +455,7 @@ valgrind.sh
 
 4
 
-0test.log coucou
+0test.log\ coucou
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -527,12 +472,11 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-0test.log coucou
+0test.log\ coucou
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -549,7 +493,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -557,7 +500,7 @@ valgrind.sh
 
 5
 
-1test.log coucou
+1test.log\ coucou
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -574,7 +517,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -600,7 +542,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests
@@ -623,7 +564,6 @@ minishell
 run.sh
 srcs
 test.sh
-test_file2
 test_pipe.c
 test_redir.c
 tests

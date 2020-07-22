@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/10 14:56:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:27:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 	*i = (quote) ? *i + 1 : *i;
 	while (str[*i] && ((!quote && str[*i] != c) || (quote)))
 	{
-		if (str[*i] == quote && (!ft_isescaped(&str[*i]) || quote == ' '))
+		if (str[*i] == quote && (!ft_is_escaped(str, *i) || quote == ' '))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = 0;
@@ -59,13 +59,13 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 		}
 		(*i)++;
 		if ((!quote && (str[*i] == '\'' || str[*i] == '\"'))
-			|| ft_isescaped(&str[*i]))
+			|| ft_is_escaped(str, *i))
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = str[*i];
-			if (ft_isescaped(&str[*i]) && str[*i] != c)
+			if (ft_is_escaped(str, *i) && str[*i] != c)
 				quote = 0;
-			if (ft_isescaped(&str[*i]) && str[*i] == c)
+			if (ft_is_escaped(str, *i) && str[*i] == c)
 				quote = ' ';
 			// (*i)++;
 			start = *i;

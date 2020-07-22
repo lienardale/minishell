@@ -1,12 +1,15 @@
-1,2c1,8
-< minishell: command not found: | ls|
-< minishell: command not found: |echo -n|
+1,4c1,3
+< minishell: command not found: |\ls|
+< minishell: command not found: |\ls|
+< minishell: command not found: |\ l\s|
+< minishell: command not found: |echo\ -n coucou|
 ---
 > tests/backslash.sh: line 14:  ls: command not found
 > tests/backslash.sh: line 22: echo -n: command not found
 > ls: coucou: No such file or directory
-> cat: coucou: No such file or directory
-> rm: coucou: No such file or directory
+6a6
 > ls: coucou: No such file or directory
-> cat: coucou: No such file or directory
-> rm: coucou: No such file or directory
+9c9
+< cat: 1test.log\\ coucou: No such file or directory
+---
+> cat: 1test.log\ coucou: No such file or directory

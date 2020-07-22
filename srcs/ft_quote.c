@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:46:29 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/20 17:55:31 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 17:26:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int			ft_isindquotes(char *line, int pos)
 	while (line[++i])
 	{
 		if (line[i] == '\"' && (quote == '\"' || quote == 0)
-			&& !ft_isescaped(&line[i]) && (quote = '\"'))
+			&& !ft_is_escaped(line, i) && (quote = '\"'))
 			nbquote++;
 		quote = (nbquote % 2 == 0) ? 0 : quote;
 		if (quote != 0 && i < pos)
@@ -35,7 +35,7 @@ int			ft_isindquotes(char *line, int pos)
 			while (line[j++] && nbquote != 0)
 			{
 				if (line[j] == '\"' && quote == '\"'
-					&& !ft_isescaped(&line[j]))
+					&& !ft_is_escaped(line, j))
 					nbquote++;
 				if (nbquote % 2 == 0 && j > pos)
 					return (1);
@@ -61,7 +61,7 @@ int			ft_isinsquotes(char *line, int pos)
 	while (line[++i])
 	{
 		if (line[i] == '\'' && (quote == '\'' || quote == 0)
-			&& !ft_isescaped(&line[i]) && (quote = '\''))
+			&& !ft_is_escaped(line, i) && (quote = '\''))
 			nbquote++;
 		quote = (nbquote % 2 == 0) ? 0 : quote;
 		if (quote != 0 && i < pos)
@@ -70,7 +70,7 @@ int			ft_isinsquotes(char *line, int pos)
 			while (line[j++] && nbquote != 0)
 			{
 				if (line[j] == '\'' && quote == '\''
-					&& !ft_isescaped(&line[j]))
+					&& !ft_is_escaped(line, j))
 					nbquote++;
 				if (nbquote % 2 == 0 && j > pos)
 					return (1);
@@ -96,10 +96,10 @@ int			ft_isinquotes(char *line, int pos)
 	while (line[++i])
 	{
 		if (line[i] == '\'' && (quote == '\'' || quote == 0)
-			&& !ft_isescaped(&line[i]) && (quote = '\''))
+			&& !ft_is_escaped(line, i) && (quote = '\''))
 			nbquote++;
 		if (line[i] == '\"' && (quote == '\"' || quote == 0)
-			&& !ft_isescaped(&line[i]) && (quote = '\"'))
+			&& !ft_is_escaped(line, i) && (quote = '\"'))
 			nbquote++;
 		quote = (nbquote % 2 == 0) ? 0 : quote;
 		if (quote != 0 && i < pos)
@@ -108,10 +108,10 @@ int			ft_isinquotes(char *line, int pos)
 			while (line[++j] && nbquote != 0)
 			{
 				if (line[j] == '\'' && quote == '\''
-					&& !ft_isescaped(&line[j]))
+					&& !ft_is_escaped(line, j))
 					nbquote++;
 				if (line[j] == '\"' && quote == '\"'
-					&& !ft_isescaped(&line[j]))
+					&& !ft_is_escaped(line, j))
 					nbquote++;
 				if (nbquote % 2 == 0 && j > pos)
 					return (1);
