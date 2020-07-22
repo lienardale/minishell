@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/20 18:26:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 14:26:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,29 +118,35 @@ int			ft_launch(t_cmd *cmd, t_sh *sh)
 	char	**split_env;
 
 	split_env = NULL;
-	if (pipe(cmd->pipedfd) < 0)
-	{
-		ft_dprintf(2, "Pipe could not be initialized\n");
-		return (1);
-	}
+	// if (pipe(cmd->pipedfd) < 0)
+	// {
+	// 	ft_dprintf(2, "Pipe could not be initialized\n");
+	// 	return (0);
+	// }
 	pid = fork();
 	if (pid == 0)
 	{
 		// Child process
-		if (cmd->fdout)
+		if (cmd->redir)
 		{
-			close(cmd->pipedfd[0]); 
-			dup2(cmd->pipedfd[1], STDOUT_FILENO); 
-			close(cmd->pipedfd[1]); 
+			if ((cmd->fdout = open(cmd->redir, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
+			{
+				ft_dprintf(2, "Error in open.\n");
+				return (0);
+			}
+			if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) == -1)
+				ft_exit((t_cmd*)(sh->cmds->head), sh);
 		}
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
 		ft_search_n_execute(cmd->av, split_env);
 		ft_free_split(split_env);
+		if (cmd->fdout != -1)
+			(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
 	}
 	else if (pid < 0)
 	{
 		// Error forking
-		ft_dprintf(2, "error forking\n");
+		ft_dprintf(2, "Error forking\n");
 		// freeing allocated memory
 		// ft_free_double_array(args);
 		return (0);
@@ -150,7 +156,7 @@ int			ft_launch(t_cmd *cmd, t_sh *sh)
 		// Parent process
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
-			wpid = waitpid(pid, &status, WUNTRACED);
+			wpid = waitpid(pid, &status, WUNTRACED);	
 		// freeing allocated memory
 		// ft_free_double_array(args);
 	}

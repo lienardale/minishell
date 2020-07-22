@@ -1,0 +1,9 @@
+tests/backslash.sh: line 14:  ls: command not found
+tests/backslash.sh: line 22: echo -n: command not found
+ls: coucou: No such file or directory
+cat: coucou: No such file or directory
+rm: coucou: No such file or directory
+ls: coucou: No such file or directory
+cat: coucou: No such file or directory
+rm: coucou: No such file or directory
+cat: 1test.log\ coucou: No such file or directory

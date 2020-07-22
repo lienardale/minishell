@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/16 08:33:49 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:58:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	char			*tmp;
 
 	j = *i;
-	// printf("line:|%s|\n", &line[*i]);
 	if (!(cmd = ft_calloc(1, sizeof(t_cmd))))
 		return;
 	if (sh->cmds->tail && sh->cmds->tail->data)
 	{
 		cmd->pos = ((t_cmd*)(sh->cmds->tail->data))->pos + 1;
 		cmd->before = ((t_cmd*)(sh->cmds->tail->data))->after;
+		cmd->fdout = -1;
+		cmd->ret_dup = -1;
 	}
 	ft_dlst_addback(sh->cmds, cmd);
 	cmd->env = sh->env;
@@ -52,7 +53,7 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	free(tmp);
 	*i = -1;
 	while (cmd->av[++(*i)])
-		cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);	
+		cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
 	cmd->ac = ft_double_strlen(cmd->av);
 	cmd->cmd= ft_strdup(cmd->av[0]);
 	*i = j;

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/20 18:18:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 16:08:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ typedef struct	s_cmd
 	t_list			**fd_out;
 	int				fdout;
 	int				fdin;
+	int				ret_dup;
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	t_dlist			*redir_in;
 	t_dlist			*redir_out;
@@ -134,6 +135,8 @@ int			ft_launch(t_cmd *cmd, t_sh *sh);
 char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
 char		**ft_split_arg(char *str);
+
+int			ft_is_escaped(char *str, int pos);
 
 void		ft_prompt(t_sh *sh);
 void		ft_infile(t_sh *sh);

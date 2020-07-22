@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/20 11:44:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/22 15:30:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,24 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 		return (1);
 	}
 	i = -1;
-	// printf("is into parse cmds | cmd:|%s|\n", (char*)cmd->cmd);
 	while (builtins[++i])
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
+			// if (cmd->redir)
+			// {
+			// 	if ((cmd->fdout = open(cmd->redir, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
+			// 	{
+			// 		ft_dprintf(2, "Error in open.\n");
+			// 		return (0);
+			// 	}
+			// 	if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) == -1)
+			// 		ft_exit((t_cmd*)(sh->cmds->head), sh);
+			// }
 			ft_free_double_array(builtins);
-			// printf("goes into builtins\n");
 			return (sh->blt_fct[i](cmd, sh));
 		}
 	}
 	ft_free_double_array(builtins);
-	// printf("goes into launch\n");
 	return (ft_launch(cmd, sh));
 }

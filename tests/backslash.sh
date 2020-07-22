@@ -22,4 +22,22 @@ echo -n "13	"
 echo\ -n coucou
 echo
 
+ls > test.log\ coucou
 cat test.log\ coucou
+rm test.log\ coucou
+
+ls > test.log\\ coucou
+cat test.log\\ coucou
+rm test.log\\ coucou
+
+ls > test.log\\\ coucou
+cat test.log\\\ coucou
+rm test.log\\\ coucou
+
+ls > test.log\\\\ coucou
+cat test.log\\\\ coucou
+rm test.log\\\\ coucou
+
+ls > test.log\\\\\ coucou
+cat test.log\\\\\ coucou
+rm test.log\\\\\ coucou

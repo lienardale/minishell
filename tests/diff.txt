@@ -1,0 +1,48 @@
+411,455c411
+< test.log\ coucou
+< test.sh
+< test_file2
+< test_pipe.c
+< test_redir.c
+< tests
+< valgrind.sh
+< 2_test_redir.c
+< CmakeLists.txt
+< Dockerfile
+< Makefile
+< README.md
+< a.out
+< cmake-build-debug
+< hardcore_pwd.log
+< hardcore_pwd_errors.log
+< hardcore_tests
+< headers
+< libft
+< minishell
+< run.sh
+< srcs
+< test.log\ coucou
+< test.sh
+< test_file2
+< test_pipe.c
+< test_redir.c
+< tests
+< valgrind.sh
+< 2_test_redir.c
+< CmakeLists.txt
+< Dockerfile
+< Makefile
+< README.md
+< a.out
+< cmake-build-debug
+< hardcore_pwd.log
+< hardcore_pwd_errors.log
+< hardcore_tests
+< headers
+< libft
+< minishell
+< run.sh
+< srcs
+< test.log\ coucou
+---
+> test.log\\ coucou
