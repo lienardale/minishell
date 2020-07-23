@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:11:38 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/26 00:27:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:02:38 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ char			*ft_strdup_buff(char *buffer, int ret);
 void			ft_free_fd(t_gnl *current, t_gnl **begin);
 void			ft_find_fd(int fd, t_gnl **begin, t_gnl **current);
 size_t			ft_strlen_gnl(const char *str);
-char			*ft_strdup_free(char *s1);
-char			*ft_strjoin_free(char *s1, char *s2);
+char			*ft_strdup_free_gnl(char *s1);
+char			*ft_strjoin_free_gnl(char *s1, char *s2);
 int				ft_error(char **line);
 
 #endif

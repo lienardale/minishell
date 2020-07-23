@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:47:13 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/08 18:37:09 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 09:28:24 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,24 @@ int		ft_isescaped(char *c)
 	if (*(c - 1) == '\\')
 		return (1);
 	return (0);
+}
+
+int		ft_is_escaped(char *str, int pos)
+{
+	int	i;
+	int	bkslh;
+
+	i = 0;
+	bkslh = 0;
+	while (str[i])
+	{
+		if (str[i] != '\\')
+			bkslh = 0;
+		if (str[i] == '\\')
+			bkslh++;
+		i++;
+		if (i == pos)
+			return ((bkslh % 2 == 0) ? 0 : 1);
+	}
+	return ((bkslh % 2 == 0) ? 0 : 1);
 }

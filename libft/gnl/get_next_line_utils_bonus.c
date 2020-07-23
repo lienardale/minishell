@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:04:54 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 16:49:00 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:03:26 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen_gnl(const char *str)
 	return (i);
 }
 
-char	*ft_strdup_free(char *s1)
+char	*ft_strdup_free_gnl(char *s1)
 {
 	char	*tab;
 	size_t	i;
@@ -59,7 +59,7 @@ char	*ft_strdup_buff(char *buffer, int ret)
 	return (tab);
 }
 
-char	*ft_strjoin_free(char *s1, char *s2)
+char	*ft_strjoin_free_gnl(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -68,7 +68,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 
 	if (s2 == NULL)
 		return (NULL);
-	if (s1 == NULL && (tab = ft_strdup_free(s2)))
+	if (s1 == NULL && (tab = ft_strdup_free_gnl(s2)))
 		return (tab);
 	len = ft_strlen_gnl(s1) + ft_strlen_gnl(s2);
 	if (!(tab = (char *)malloc(sizeof(char) * (len + 1))))

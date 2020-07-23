@@ -27,16 +27,28 @@ cat test.log\ coucou
 rm test.log\ coucou
 
 ls > test.log\\ coucou
+cat test.log\\
 cat test.log\\ coucou
-rm test.log\\ coucou
+rm test.log\\
 
 ls > test.log\\\ coucou
 cat test.log\\\ coucou
 rm test.log\\\ coucou
 
 ls > test.log\\\\ coucou
+cat test.log\\\\
 cat test.log\\\\ coucou
-rm test.log\\\\ coucou
+rm test.log\\\\
+
+ls -la Dockerfile > test.log\\\\ coucou salut
+cat test.log\\\\
+cat test.log\\\\ coucou
+rm test.log\\\\
+
+ls -la Dockerfile > test.log\\\\ a.out minishell
+cat test.log\\\\
+cat test.log\\\\ coucou
+rm test.log\\\\
 
 ls > test.log\\\\\ coucou
 cat test.log\\\\\ coucou

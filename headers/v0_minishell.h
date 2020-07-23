@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/22 16:08:23 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 10:25:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,12 +136,12 @@ char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
 char		**ft_split_arg(char *str);
 
-int			ft_is_escaped(char *str, int pos);
 
 void		ft_prompt(t_sh *sh);
 void		ft_infile(t_sh *sh);
 
-int			ft_isescaped(char *c);
+int			ft_isescaped(char *c); //should not use this one
+int			ft_is_escaped(char *str, int pos); //but this one instead
 int			ft_isinquotes(char *line, int pos);
 int			ft_isindquotes(char *line, int pos);
 int			ft_isinsquotes(char *line, int pos);
@@ -151,6 +151,7 @@ void		ft_check_line(char **line, int *quote, int *bkslh);
 char		*ft_input_join(t_list *inputs);
 void		ft_line_to_lst(char *inputs, t_sh *sh);
 void		ft_init_cmd(t_sh *sh, char *line, int *i);
+void		ft_init_args(t_sh *sh, char *line, int *i);
 
 void		ft_handle_end(t_sh *sh, char *line, int *i);
 void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
@@ -167,6 +168,7 @@ int			ft_parse_cmds(t_cmd *cmd, t_sh *sh);
 void		ft_free_double_array(char **str);
 void		ft_print_double_array(char **str, char *name);
 size_t		ft_double_strlen(char **str);
+
 
 char		*ft_lststrjoin(t_list *lst, char *inter);
 

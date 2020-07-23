@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:11:22 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 16:50:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:05:00 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int		ft_check_ln(char **line, t_gnl *current, char *buffer, t_gnl **begin)
 
 	i = -1;
 	tmp = *line;
-	if (!(current->rest = ft_strjoin_free(current->rest, buffer)))
+	if (!(current->rest = ft_strjoin_free_gnl(current->rest, buffer)))
 		return (-1);
 	while (current->rest[++i])
 	{
@@ -112,7 +112,7 @@ int		ft_check_ln(char **line, t_gnl *current, char *buffer, t_gnl **begin)
 	}
 	if (current->ret == 0)
 	{
-		*line = ft_strdup_free(current->rest);
+		*line = ft_strdup_free_gnl(current->rest);
 		ft_free_fd(current, begin);
 		return (0);
 	}

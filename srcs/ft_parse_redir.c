@@ -29,7 +29,8 @@ void	ft_parse_redir_in(t_sh *sh, char *line, int *i)
 	}
 	((t_cmd*)(sh->cmds->tail->data))->redir = ft_substr(line, *i, j);
 	*i = j;
-	ft_handle_end(sh, line, i);
+	// ft_init_args(sh, line, i);
+	// ft_handle_end(sh, line, i);
 }
 
 void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
@@ -51,13 +52,14 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 		return ;
 	}
 	close(fd);
-	while (line[j] && (!ft_ischarset(END_CMD, line[j])/* || ft_is_escaped(&line[j])*/))
+	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
 		j++;
 	if (((t_cmd*)(sh->cmds->tail->data))->redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->redir);
 	((t_cmd*)(sh->cmds->tail->data))->redir = tmp;
 	*i = j;
-	ft_handle_end(sh, line, i);
+	ft_init_args(sh, line, i);
+	// ft_handle_end(sh, line, i);
 }
 
 void	ft_parse_append(t_sh *sh, char *line, int *i)

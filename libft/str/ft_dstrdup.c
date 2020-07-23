@@ -1,42 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_splitadd_back.c                                 :+:      :+:    :+:   */
+/*   ft_dstrdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/14 08:40:02 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/23 12:40:38 by alienard         ###   ########.fr       */
+/*   Created: 2020/07/23 11:10:45 by alienard          #+#    #+#             */
+/*   Updated: 2020/07/23 13:01:45 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_splitadd_back(char **strs, char *str)
+char	**ft_dstrdup(char **src)
 {
-	int		nb_address;
 	int		i;
 	char	**result;
 
-	nb_address = 0;
-	while (strs[nb_address])
-		nb_address++;
-	if (!(result = ft_calloc(nb_address + 2, sizeof(char*))))
-		return (NULL);
 	i = 0;
-	while (i < nb_address)
+	while (src[i])
+		i++;
+	if (!(result = ft_calloc(i + 1, sizeof(char*))))
 	{
-		if (!(result[i] = ft_strdup(strs[i])))
+		ft_free_split(result);
+		return (NULL);
+	}
+	i = 0;
+	while (src[i])
+	{
+		if (!(result[i] = ft_strdup(src[i])))
 		{
 			ft_free_split(result);
 			return (NULL);
 		}
 		i++;
 	}
-	if (!(result[i] = ft_strdup(str)))
+	return (result);
+}
+
+char	**ft_dstrdup_free(char **src)
+{
+	int		i;
+	char	**result;
+
+	i = 0;
+	while (src[i])
+		i++;
+	if (!(result = ft_calloc(i + 1, sizeof(char*))))
 	{
 		ft_free_split(result);
 		return (NULL);
 	}
+	i = 0;
+	while (src[i])
+	{
+		if (!(result[i] = ft_strdup_free(src[i])))
+		{
+			ft_free_split(result);
+			return (NULL);
+		}
+		i++;
+	}
+	ft_free_double_array(src);
 	return (result);
 }

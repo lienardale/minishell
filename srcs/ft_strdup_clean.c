@@ -6,29 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 10:32:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/22 17:21:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 09:24:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
-
-int		ft_is_escaped(char *str, int pos)
-{
-	int	i;
-	int	bkslh;
-
-	i = 0;
-	bkslh = 0;
-	while (str[i])
-	{
-		if (str[i] == '\\')
-			bkslh++;
-		if (i == pos)
-			return ((bkslh % 2 == 0) ? 0 : 1);
-		i++;
-	}
-	return ((bkslh % 2 == 0) ? 0 : 1);
-}
 
 static size_t	ft_strlen_clean(char *str)
 {

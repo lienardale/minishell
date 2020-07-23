@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/06/26 00:25:00 by alienard         ###   ########.fr        #
+#    Updated: 2020/07/23 12:05:10 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,7 @@ _LIST			= ft_lstadd_back_bonus.c \
 _MEM			= ft_bzero.c \
 					ft_calloc.c \
 					ft_free_ptr.c \
+					ft_free_double_array.c \
 					ft_free_split.c \
 					ft_memccpy.c \
 					ft_memchr.c \
@@ -96,7 +97,8 @@ _MEM			= ft_bzero.c \
 _PRINT			= ft_putchar_fd.c \
 					ft_putendl_fd.c \
 					ft_putnbr_fd.c \
-					ft_putstr_fd.c
+					ft_putstr_fd.c \
+					ft_print_double_array.c
 _PRINTF			= ft_conv.c \
 					ft_conv_2.c \
 					ft_len_hexa.c \
@@ -108,6 +110,7 @@ _STR			= ft_split.c \
 					ft_splitadd_back.c \
 					ft_strchr.c \
 					ft_strdup.c \
+					ft_dstrdup.c \
 					ft_strlcat.c \
 					ft_strlen.c \
 					ft_strncmp.c \
@@ -119,6 +122,7 @@ _STR			= ft_split.c \
 					ft_splitcpy.c \
 					ft_strcmp.c \
 					ft_strjoin.c \
+					ft_dstrjoin_free.c \
 					ft_strlcpy.c \
 					ft_strmapi.c \
 					ft_strnstr.c \

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/22 16:58:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:06:33 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,39 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 		((t_cmd*)(sh->cmds->tail->data))->after = '\0';
 }
 
-void	ft_init_cmd(t_sh *sh, char *line, int *i)
+void	ft_init_args(t_sh *sh, char *line, int *i)
 {
-	t_cmd			*cmd;
-	int				j;
-	char			*tmp;
+	int		j;
+	char	*tmp;
+	char	**tmp_av;
+	t_cmd	*cmd;
 
 	j = *i;
+	cmd = (t_cmd *)(sh->cmds->tail->data);
+	while (line[j])
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
+		j++;
+	}
+	tmp = ft_substr(line, *i, (j - *i));
+	tmp_av = ft_split_quote(tmp, ' ');
+	free(tmp);
+	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
+	*i = -1;
+	while (cmd->av[++(*i)])
+		cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
+	cmd->ac = ft_double_strlen(cmd->av);
+	cmd->cmd= ft_strdup(cmd->av[0]);
+	*i = j;
+	ft_handle_end(sh, line, i);
+}
+
+void	ft_init_cmd(t_sh *sh, char *line, int *i)
+{
+	t_cmd	*cmd;
+
 	if (!(cmd = ft_calloc(1, sizeof(t_cmd))))
 		return;
 	if (sh->cmds->tail && sh->cmds->tail->data)
@@ -42,22 +68,7 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	}
 	ft_dlst_addback(sh->cmds, cmd);
 	cmd->env = sh->env;
-	while (line[j])
-	{
-		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j))
-			break ;
-		j++;
-	}
-	tmp = ft_substr(line, *i, (j - *i));
-	cmd->av = ft_split_quote(tmp, ' ');
-	free(tmp);
-	*i = -1;
-	while (cmd->av[++(*i)])
-		cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
-	cmd->ac = ft_double_strlen(cmd->av);
-	cmd->cmd= ft_strdup(cmd->av[0]);
-	*i = j;
-	ft_handle_end(sh, line, i);
+	ft_init_args(sh, line, i);
 }
 
 void	ft_line_to_lst(char *inputs, t_sh *sh)

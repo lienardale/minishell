@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_free_double_array.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 14:39:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 10:33:37 by alienard         ###   ########.fr       */
+/*   Created: 2020/07/23 11:03:24 by alienard          #+#    #+#             */
+/*   Updated: 2020/07/23 11:04:35 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_free_double_array(char **str)
 {
-	size_t i;
+	int		i;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-size_t	ft_double_strlen(char **str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	i = -1;
+	while (str[++i])
+		(str[i]) ? ft_free_ptr(str[i]) : 0;
+	(str) ? ft_free_ptr(str) : 0;
 }

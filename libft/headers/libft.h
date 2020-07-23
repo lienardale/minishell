@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 15:38:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 13:06:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			*ft_memmove(void *dst, const void *src, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t			ft_strlen(const char *str);
+size_t			ft_double_strlen(char **str);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strchr(const char *s, int c);
@@ -54,9 +55,14 @@ int				ft_ischarset(char *set, char c);
 void			*ft_calloc(size_t count, size_t size);
 void			*ft_realloc(void *ptr, size_t size);
 char			*ft_strdup(const char *s1);
+char			*ft_strdup_free(const char *s1);
+char			**ft_dstrdup(char **s1);
+char			**ft_dstrdup_free(char **s1);
 void			*ft_free_ptr(void *ptr);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
+char			**ft_dstrjoin(char **s1, char **s2);
+char			**ft_dstrjoin_free(char **s1, char **s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strtok(char *str, const char *sep);
 char			*ft_strtok_r (char *s, const char *delim, char **save_ptr);
@@ -68,6 +74,7 @@ void			ft_swap_double(double *a, double *b);
 void			ft_swap_addr(void **a, void **b);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
+void			ft_print_double_array(char **str, char *name);
 void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_strtok(char *restrict str, const char *restrict sep);
@@ -82,6 +89,7 @@ void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*),
 		void (*del)(void *));
 char			**ft_free_split(char **data);
+void			ft_free_double_array(char **str);
 t_list			*ft_lstsplit(char *str, char c);
 void			ft_lstdel_last(t_list *lst);
 char			**ft_strs_sort(char **strs, int strs_len);
