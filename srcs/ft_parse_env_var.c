@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 14:16:34 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/20 18:28:52 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/23 17:12:46 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ static int	ft_get_env_var_length(t_sh *sh, int *i)
 	t_list	*temp_env;
 
 	res = 0;
+// juste passer le premier charactere qui doit etre un $
 	(*i)++;
 	j = *i;
-	while ((sh->line[*i]) && ft_isalnum(sh->line[*i]))
+	if (sh->line[*i] == '?')
+		return (ft_itoa_count(sh->ret_cmd));
+	while ((sh->line[*i]) && ft_isalpha(sh->line[*i]))
 		(*i)++;
 	temp = ft_substr(sh->line, j, *i - j);
 	if (temp)
@@ -62,6 +65,10 @@ static int	ft_parse_env_var_count(t_sh *sh)
 			result++;
 		}
 	}
+// je ne suis pas sur pour ca
+//	if (!is_in_simple_quote)
+//		return (result);
+//	return (0);
 	return (result);
 }
 
@@ -71,9 +78,19 @@ static int	ft_fullfill_env_var(t_sh *sh, char *result, int len, int *i)
 	char	*temp;
 	t_list	*temp_env;
 
+// juste passer le premier charactere qui doit etre un $
 	(*i)++;
 	j = *i;
-	while ((sh->line[*i]) && ft_isalnum(sh->line[*i]))
+	if (sh->line[*i] == '?')
+	{
+		(*i)++;
+// attention malloc error
+		temp = ft_itoa(sh->ret_cmd);
+		ft_strlcat(result, temp, len);
+		free(temp);
+		return (ft_itoa_count(sh->ret_cmd));
+	}
+	while ((sh->line[*i]) && ft_isalpha(sh->line[*i]))
 		(*i)++;
 	temp = ft_substr(sh->line, j, *i - j);
 	if (temp)
