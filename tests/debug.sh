@@ -1,5 +1,2 @@
-ls -la Dockerfile > test.log\\\\ coucou
-cat test.log\\\\
-cat test.log\\\\ coucou
-rm test.log\\\\
-rm test.log\\\\ coucou
+echo coucou > 0test.log
+echo bonjour > 1test.log

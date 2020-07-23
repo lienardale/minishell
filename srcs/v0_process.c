@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 11:21:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 16:30:28 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
-static char	*ft_get_onlypaths(char **env)
+char	*ft_get_onlypaths(char **env)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ static char	*ft_get_onlypaths(char **env)
 	return (NULL);
 }
 
-static char	*ft_findexec(char *path, char *exec)
+char	*ft_findexec(char *path, char *exec)
 {
 	DIR				*dir;
 	struct dirent	*tmp;
@@ -54,7 +54,7 @@ static char	*ft_findexec(char *path, char *exec)
 	return (result);
 }
 
-static char	*ft_get_abspath_filename(char *exec, char **env)
+char	*ft_get_abspath_filename(char *exec, char **env)
 {
 	char	*tmp;
 	char	**paths;
@@ -79,7 +79,7 @@ static char	*ft_get_abspath_filename(char *exec, char **env)
 	return (result);
 }
 
-static void	ft_search_n_execute(char **args, char **env)
+void	ft_search_n_execute(char **args, char **env)
 {
 	int		exec_start;
 	char	*exec;

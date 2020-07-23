@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 11:50:39 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:35:22 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,14 @@ void	ft_infile(t_sh *sh)
 				while (current)
 				{
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
+					// if (((t_cmd *)current->data)->fdout != -1)
+					// 	(close(((t_cmd *)current->data)->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
 					current = current->next;
 				}
 				ft_dlst_del(sh->cmds);
 			}
 		}
+		// printf("ret_cmd:|%d|, ret_sh:|%d|\n", sh->ret_cmd, sh->ret_sh);
 		// ft_free_ptr(sh.line);
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
@@ -129,7 +132,7 @@ void	ft_prompt(t_sh *sh)
 	quote = 0;
 	bkslh = 0;
 	prompt = PROMPT;
-	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
+	while (sh->ret_cmd && (write(1, prompt, ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		input = ft_lstnew(sh->line);
@@ -144,11 +147,15 @@ void	ft_prompt(t_sh *sh)
 			while (current)
 			{
 				sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
+				// printf("ret_cmd:|%d|, ret_sh:|%d|\n", sh->ret_cmd, sh->ret_sh);
+				// if (((t_cmd *)current->data)->fdout != -1)
+				// 		(close(((t_cmd *)current->data)->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
 				current = current->next;
 			}
+			ft_dlst_del(sh->cmds);
+		}
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
-		}
 		// ft_free_ptr(sh.line);
 	}
 }

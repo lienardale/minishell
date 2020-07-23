@@ -95,6 +95,7 @@ $
 CMD bash$
 
 --- TESTS LS ---
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -115,32 +116,33 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-total 808
-drwxr-xr-x  26 alienard  2019_paris     884 23 jul 13:07 .
+total 816
+drwxr-xr-x  27 alienard  2019_paris     918 23 jul 16:44 .
 drwxr-xr-x  23 alienard  2019_paris     782 16 jul 07:54 ..
-drwxr-xr-x  15 alienard  2019_paris     510 22 jul 17:29 .git
+drwxr-xr-x  15 alienard  2019_paris     510 23 jul 15:47 .git
 -rw-r--r--   1 alienard  2019_paris     186 16 jul 07:54 .gitignore
 drwxr-xr-x   7 alienard  2019_paris     238 16 jul 07:54 .idea
 drwxr-xr-x   3 alienard  2019_paris     102 16 jul 07:54 .vscode
+-rwxr-xr-x   1 alienard  2019_paris      35 23 jul 16:35 0test.log
 -rw-r--r--   1 alienard  2019_paris    2906 22 jul 13:10 2_test_redir.c
 -rw-r--r--   1 alienard  2019_paris    4055 16 jul 07:54 CmakeLists.txt
 -rw-r--r--   1 alienard  2019_paris    1014 16 jul 07:54 Dockerfile
--rw-r--r--   1 alienard  2019_paris    3967 23 jul 11:09 Makefile
+-rw-r--r--   1 alienard  2019_paris    3967 23 jul 15:46 Makefile
 -rw-r--r--   1 alienard  2019_paris      12 16 jul 07:54 README.md
 -rwxr-xr-x   1 alienard  2019_paris   22092 22 jul 13:10 a.out
 drwxr-xr-x   7 alienard  2019_paris     238 16 jul 07:54 cmake-build-debug
 -rw-r--r--   1 alienard  2019_paris  240935 20 jul 11:08 hardcore_pwd.log
 -rw-r--r--   1 alienard  2019_paris     108 20 jul 11:10 hardcore_pwd_errors.log
 drwxr-xr-x   3 alienard  2019_paris     102 20 jul 11:45 hardcore_tests
-drwxr-xr-x   3 alienard  2019_paris     102 16 jul 07:54 headers
-drwxr-xr-x  17 alienard  2019_paris     578 23 jul 13:07 libft
--rwxr-xr-x   1 alienard  2019_paris   90184 23 jul 13:07 minishell
+drwxr-xr-x   3 alienard  2019_paris     102 23 jul 15:46 headers
+drwxr-xr-x  17 alienard  2019_paris     578 23 jul 15:47 libft
+-rwxr-xr-x   1 alienard  2019_paris   90272 23 jul 16:44 minishell
 -rw-r--r--   1 alienard  2019_paris      34 16 jul 07:54 run.sh
-drwxr-xr-x  64 alienard  2019_paris    2176 23 jul 13:07 srcs
+drwxr-xr-x  64 alienard  2019_paris    2176 23 jul 16:44 srcs
 -rw-r--r--   1 alienard  2019_paris      67 16 jul 07:54 test.sh
 -rw-r--r--   1 alienard  2019_paris    5680 16 jul 10:34 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris    2492 20 jul 15:36 test_redir.c
-drwxr-xr-x  27 alienard  2019_paris     918 23 jul 13:07 tests
+drwxr-xr-x  27 alienard  2019_paris     918 23 jul 16:44 tests
 -rw-r--r--   1 alienard  2019_paris      71 16 jul 07:54 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -173,6 +175,7 @@ coucou
 /Users/alienard/Documents/42_cursus/redir/libft
 /Users/alienard/Documents/42_cursus/redir
 --- TESTS ; ---
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -193,6 +196,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -213,6 +217,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -233,6 +238,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -267,6 +273,7 @@ coucou
 10
 11
 12
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -296,7 +303,8 @@ valgrind.sh
 4 coucou\bonjour
 5 '''''''''
 6 """""""""""
-7	2_test_redir.c
+7	0test.log
+2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
@@ -316,7 +324,8 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-8	2_test_redir.c
+8	0test.log
+2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
@@ -340,6 +349,7 @@ valgrind.sh
 11 'coucou
 12	coucou
 13	
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -361,6 +371,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -386,10 +397,11 @@ valgrind.sh
 -rw-r--r--  1 alienard  2019_paris  1014 16 jul 07:54 Dockerfile
 -rw-r--r--  1 alienard  2019_paris   1014 16 jul 07:54 Dockerfile
 -rwxr-xr-x  1 alienard  2019_paris  22092 22 jul 13:10 a.out
--rwxr-xr-x  1 alienard  2019_paris  90184 23 jul 13:07 minishell
+-rwxr-xr-x  1 alienard  2019_paris  90272 23 jul 16:44 minishell
 -rw-r--r--  1 alienard  2019_paris   1014 16 jul 07:54 Dockerfile
 -rwxr-xr-x  1 alienard  2019_paris  22092 22 jul 13:10 a.out
--rwxr-xr-x  1 alienard  2019_paris  90184 23 jul 13:07 minishell
+-rwxr-xr-x  1 alienard  2019_paris  90272 23 jul 16:44 minishell
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -415,6 +427,7 @@ valgrind.sh
 
 3
 
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -436,6 +449,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
@@ -460,6 +474,7 @@ valgrind.sh
 
 4
 
+0test.log
 0test.log coucou
 2_test_redir.c
 CmakeLists.txt
@@ -481,6 +496,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 0test.log coucou
 2_test_redir.c
 CmakeLists.txt
@@ -505,6 +521,7 @@ valgrind.sh
 
 5
 
+0test.log
 1test.log coucou
 2_test_redir.c
 CmakeLists.txt
@@ -529,6 +546,7 @@ valgrind.sh
 
 6
 
+0test.log
 2_test_redir.c
 2test.log
 3test.log
@@ -551,6 +569,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+0test.log
 2_test_redir.c
 2test.log
 3test.log

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/22 15:30:11 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/23 18:37:15 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	char	**builtins;
 	int		i;
 	int		pipefd[2];
+	int		ret;
 
 	if (pipe(pipefd) < 0)
 	{
@@ -38,18 +39,25 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
-			// if (cmd->redir)
-			// {
-			// 	if ((cmd->fdout = open(cmd->redir, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
-			// 	{
-			// 		ft_dprintf(2, "Error in open.\n");
-			// 		return (0);
-			// 	}
-			// 	if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) == -1)
-			// 		ft_exit((t_cmd*)(sh->cmds->head), sh);
-			// }
+			printf("redir :|%s|\n", cmd->redir);
+			if (cmd->redir)
+			{
+				if ((cmd->fdout = open(cmd->redir, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
+				{
+					ft_dprintf(2, "Error in open.\n");
+					return (0);
+				}
+				if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) < 0)
+					return (ft_exit((t_cmd*)(sh->cmds->head), sh));
+			}
 			ft_free_double_array(builtins);
-			return (sh->blt_fct[i](cmd, sh));
+			ret = sh->blt_fct[i](cmd, sh);
+				// dup2(cmd->fdout, -1);
+			if (cmd->redir /*&& (printf("fdout:%d\n", cmd->fdout))*/)
+				(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
+			// cmd->fdout = -1;
+			return (ret);
+			// return (sh->blt_fct[i](cmd, sh));
 		}
 	}
 	ft_free_double_array(builtins);
