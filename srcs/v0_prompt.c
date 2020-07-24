@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/20 10:19:39 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/24 15:22:04 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ signal(SIGINT, ft_ctrl_c);
 	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-sh->line = ft_parse_env_var(sh);
+sh->line = ft_parse_env_var(sh->line, sh);
 //printf("%s\n", sh->line);
 		input = ft_lstnew(sh->line);
 		ft_lstadd_back(&begin, input);
