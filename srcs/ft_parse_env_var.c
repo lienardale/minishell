@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 14:16:34 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 12:38:02 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 12:38:39 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	ft_fullfill_env_var(char *line, char *result, int len, int *i, t_sh *
 		(*i)++;
 // attention malloc error
 		temp = ft_itoa(sh->ret_cmd);
-		ft_strlcat(result, temp, sizeof(result));
+		ft_strlcat(result, temp, len);
 		free(temp);
 		return (ft_itoa_count(sh->ret_cmd));
 	}
@@ -98,7 +98,7 @@ static int	ft_fullfill_env_var(char *line, char *result, int len, int *i, t_sh *
 		temp_env = ft_search_env(*(sh->env), temp);
 		if (temp_env)
 		{
-			ft_strlcat(result, ((t_env *)(temp_env->content))->value, sizeof(result));
+			ft_strlcat(result, ((t_env *)(temp_env->content))->value, len);
 			free(temp);
 			return (ft_strlen(((t_env *)(temp_env->content))->value));
 		}
