@@ -7,5 +7,6 @@ cat: coucou: No such file or directory
 ls: coucou: No such file or directory
 ls: salut: No such file or directory
 cat: coucou: No such file or directory
+ls: a.out: No such file or directory
 cat: coucou: No such file or directory
 cat: 1test.log\ coucou: No such file or directory

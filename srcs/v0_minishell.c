@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 16:55:07 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:02:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int ac, char **av, char **env)
 		sh.fd = open(av[1], O_RDONLY);
 		ft_infile(&sh);
 	}
-	else 
+	else
 		ft_prompt(&sh);
 	// temp = env_lst;
 	// while (temp)
@@ -42,7 +42,7 @@ int	main(int ac, char **av, char **env)
 	// }
 	// ft_free_split(env);
 	// ft_lstclear(&env_lst, ft_free_env_lst);
-	if (fd != 0 && close(fd) < 0)
+	if (fd != STDIN_FILENO && close(fd) < 0)
 	{
 		ft_dprintf(2, "Close of fd in main not ok\n");
 		return (1);

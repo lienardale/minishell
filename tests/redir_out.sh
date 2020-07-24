@@ -1,29 +1,29 @@
 echo "--- TEST > ---"
 
-# echo
-# echo 0
-# echo
-# echo coucou > test.log
-# ls
-# cat test.log
-# rm test.log
+echo
+echo 0
+echo
+echo coucou > test.log
+ls
+cat test.log
+rm test.log
 
-# echo
-# echo 1
-# echo
-# echo coucou > test.log\ coucou
-# ls
-# cat test.log\ coucou
-# rm test.log\ coucou
+echo
+echo 1
+echo
+echo coucou > test.log\ coucou
+ls
+cat test.log\ coucou
+rm test.log\ coucou
 
-# echo
-# echo 2
-# echo
-# echo coucou > 0test.log > 1test.log
-# ls
-# cat 0test.log
-# cat 1test.log
-# rm 0test.log 1test.log
+echo
+echo 2
+echo
+echo coucou > 0test.log > 1test.log
+ls
+cat 0test.log
+cat 1test.log
+rm 0test.log 1test.log
 
 echo
 echo 3
