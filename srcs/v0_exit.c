@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 21:53:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:57:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 	int	i;
 
 	i = 0;
-	while (args[i])
+	while (cmd->av[i])
 		i++;
 	// ft_printf("			-> %s passe bien par ici.\n", args[0]);
-	ft_free_double_array(args);
-	ft_lstclear(env, ft_free_env_lst);
+	ft_free_double_array(cmd->av);
+	ft_lstclear(sh->env, ft_free_env_lst);
 /*
 	if (i == 2)
 	{

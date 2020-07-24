@@ -1,6 +1,24 @@
-1,2c1,2
+1,11c1,11
 < minishell: command not found: | ls|
 < minishell: command not found: |echo -n|
+< /bin/ls: cannot access 'coucou': No such file or directory
+< /bin/cat: coucou: No such file or directory
+< /bin/ls: cannot access 'coucou': No such file or directory
+< /bin/cat: coucou: No such file or directory
+< /bin/ls: cannot access 'coucou': No such file or directory
+< /bin/ls: cannot access 'salut': No such file or directory
+< /bin/cat: coucou: No such file or directory
+< /bin/cat: coucou: No such file or directory
+< /bin/cat: '1test.log\ coucou': No such file or directory
 ---
 > tests/backslash.sh: line 14:  ls: command not found
 > tests/backslash.sh: line 22: echo -n: command not found
+> ls: cannot access 'coucou': No such file or directory
+> cat: coucou: No such file or directory
+> ls: cannot access 'coucou': No such file or directory
+> cat: coucou: No such file or directory
+> ls: cannot access 'coucou': No such file or directory
+> ls: cannot access 'salut': No such file or directory
+> cat: coucou: No such file or directory
+> cat: coucou: No such file or directory
+> cat: '1test.log\ coucou': No such file or directory

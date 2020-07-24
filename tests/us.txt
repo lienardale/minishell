@@ -96,46 +96,48 @@ CMD bash$
 
 --- TESTS LS ---
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
-total 280
-drwxr-xr-x  23 alienard  staff    736 24 Jul 15:43 .
-drwxr-xr-x@ 25 alienard  staff    800 22 Jul 19:57 ..
-drwxr-xr-x  15 alienard  staff    480 24 Jul 15:42 .git
--rw-r--r--   1 alienard  staff    186 22 Jul 19:57 .gitignore
-drwxr-xr-x   7 alienard  staff    224 22 Jul 19:57 .idea
-drwxr-xr-x   3 alienard  staff     96 22 Jul 19:57 .vscode
--rw-r--r--   1 alienard  staff   2906 22 Jul 19:57 2_test_redir.c
--rw-r--r--   1 alienard  staff   4055 22 Jul 19:57 CmakeLists.txt
--rw-r--r--   1 alienard  staff   1014 22 Jul 19:57 Dockerfile
--rw-r--r--   1 alienard  staff   3967 24 Jul 15:38 Makefile
--rw-r--r--   1 alienard  staff     12 22 Jul 19:57 README.md
-drwxr-xr-x   7 alienard  staff    224 22 Jul 19:57 cmake-build-debug
-drwxr-xr-x   3 alienard  staff     96 22 Jul 19:57 hardcore_tests
-drwxr-xr-x   3 alienard  staff     96 24 Jul 15:37 headers
-drwxr-xr-x  17 alienard  staff    544 24 Jul 09:35 libft
--rwxr-xr-x   1 alienard  staff  93988 24 Jul 15:43 minishell
--rw-r--r--   1 alienard  staff     34 22 Jul 19:57 run.sh
-drwxr-xr-x  64 alienard  staff   2048 24 Jul 15:43 srcs
--rw-r--r--   1 alienard  staff     67 22 Jul 19:57 test.sh
--rw-r--r--   1 alienard  staff   5680 22 Jul 19:57 test_pipe.c
--rw-r--r--   1 alienard  staff   2492 22 Jul 19:57 test_redir.c
-drwxr-xr-x  27 alienard  staff    864 24 Jul 15:43 tests
--rw-r--r--   1 alienard  staff     71 22 Jul 19:57 valgrind.sh
+total 60
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:57 .
+drwxrwxrwx 1 akira akira   4096 Jul  3 12:21 ..
+-rwxrwxrwx 1 akira akira   2906 Jul 24 21:51 2_test_redir.c
+-rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
+drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 cmake-build-debug
+-rwxrwxrwx 1 akira akira   4055 Jul 13 11:18 CmakeLists.txt
+-rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:54 .git
+-rwxrwxrwx 1 akira akira    186 Jul 13 11:18 .gitignore
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:51 hardcore_tests
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:51 headers
+drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .idea
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:55 libft
+-rwxrwxrwx 1 akira akira   3992 Jul 24 21:54 Makefile
+-rwxrwxrwx 1 akira akira 184736 Jul 24 21:57 minishell
+-rwxrwxrwx 1 akira akira     12 Jul  3 12:22 README.md
+-rwxrwxrwx 1 akira akira     34 Jul 13 11:18 run.sh
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:57 srcs
+-rwxrwxrwx 1 akira akira   5680 Jul 16 13:49 test_pipe.c
+-rwxrwxrwx 1 akira akira   2492 Jul 24 21:51 test_redir.c
+drwxrwxrwx 1 akira akira   4096 Jul 24 21:55 tests
+-rwxrwxrwx 1 akira akira     67 Jul 13 11:18 test.sh
+-rwxrwxrwx 1 akira akira     71 Jul  3 12:22 valgrind.sh
+drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .vscode
 --- TESTS ECHO ---
 coucou
 coucoucoucou
@@ -156,86 +158,90 @@ coucou
 12
 
 --- TESTS PWD ---
-/Users/alienard/Documents/42/redir
-/Users/alienard/Documents/42/redir
+/mnt/c/Users/Akira/Documents/42/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
 
-/Users/alienard/Documents/42/redir
-/Users/alienard/Documents/42/redir
+/mnt/c/Users/Akira/Documents/42/minishell
+/mnt/c/Users/Akira/Documents/42/minishell
 
 --- TESTS CD ---
-/Users/alienard/Documents/42/redir
-/Users/alienard/Documents/42/redir/libft
-/Users/alienard/Documents/42/redir
+/mnt/c/Users/Akira/Documents/42/minishell
+/mnt/c/Users/Akira/Documents/42/minishell/libft
+/mnt/c/Users/Akira/Documents/42/minishell
 --- TESTS ; ---
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
-/Users/alienard/Documents/42/redir
+/mnt/c/Users/Akira/Documents/42/minishell
 coucou
 1
 2
@@ -250,23 +256,24 @@ coucou
 11
 12
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
-/Users/alienard/Documents/42/redir
+/mnt/c/Users/Akira/Documents/42/minishell
 
 --- TESTS \ ---
 1 coucou"bonjour
@@ -276,146 +283,155 @@ valgrind.sh
 5 '''''''''
 6 """""""""""
 7	2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 8	2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 9	10 "coucou
 11 'coucou
 12	coucou
 13	
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log coucou
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log\ coucou
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
--rw-r--r--  1 alienard  staff  1014 22 Jul 19:57 Dockerfile
--rw-r--r--  1 alienard  staff  1014 22 Jul 19:57 Dockerfile
--rw-r--r--  1 alienard  staff   1014 22 Jul 19:57 Dockerfile
--rwxr-xr-x  1 alienard  staff  93988 24 Jul 15:43 minishell
--rw-r--r--  1 alienard  staff   1014 22 Jul 19:57 Dockerfile
--rwxr-xr-x  1 alienard  staff  93988 24 Jul 15:43 minishell
+-rwxrwxrwx 1 akira akira 1014 Jul  3 12:22 Dockerfile
+-rwxrwxrwx 1 akira akira 1014 Jul  3 12:22 Dockerfile
+-rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
+-rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
+-rwxrwxrwx 1 akira akira 184736 Jul 24 21:57 minishell
+-rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
+-rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
+-rwxrwxrwx 1 akira akira 184736 Jul 24 21:57 minishell
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log\\ coucou
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 --- TEST > ---
 
 0
 
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 coucou
 
 1
 
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log coucou
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 coucou
 
@@ -424,160 +440,168 @@ coucou
 0test.log
 1test.log
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 coucou
 
 3
 
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
 test.log
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 
 4
 
 0test.log coucou
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 0test.log coucou
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 
 5
 
 1test.log coucou
 2_test_redir.c
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
 
 6
 
-2_test_redir.c
 2test.log
+2_test_redir.c
 3test.log
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
-2_test_redir.c
 2test.log
+2_test_redir.c
 3test.log
+a.out
+cmake-build-debug
 CmakeLists.txt
 Dockerfile
-Makefile
-README.md
-cmake-build-debug
 hardcore_tests
 headers
 libft
+Makefile
 minishell
+README.md
 run.sh
 srcs
-test.sh
 test_pipe.c
 test_redir.c
 tests
+test.sh
 valgrind.sh
