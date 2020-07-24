@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/20 11:35:05 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:27:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 	if (temp_env)
 	{
 		env_content = (t_env*)temp_env->content;
-// je libere la memoire de la valeur 
+// je libere la memoire de la valeur
 		free(env_content->value);
 // je mets a jour la valeur
 		env_content->value = result->value;\

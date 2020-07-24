@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 15:12:05 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:24:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,14 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	int		pipefd[2];
 	int		ret;
 
+	ft_check_env_var(cmd, sh);
 	if (pipe(pipefd) < 0)
 	{
 		ft_dprintf(2, "Pipe failed to initialize\n");
 		return (2);
 	}
-	if (cmd->cmd == NULL)
-	{
-		// ft_printf("An empty command was entered. : |%s|\n", cmd->cmd);
-		// An empty command was entered.
+	if (cmd->cmd == NULL) // empty cmd entered
 		return (1);
-	}
 	i = -1;
 	if (ft_strcmp(cmd->cmd, "exit") == 0)
 		return (ft_exit(cmd, sh));
