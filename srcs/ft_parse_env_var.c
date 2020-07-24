@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 14:16:34 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/24 13:24:32 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/24 15:54:32 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static int	ft_parse_env_var_count(char *line, t_sh *sh)
 	return (result);
 }
 
-static int	ft_fullfill_env_var(char *line, char *result, int *i, t_sh *sh)
+static int	ft_fullfill_env_var(char *line, char *result, int len, int *i, t_sh *sh)
 {
 	int		j;
 	char	*temp;
@@ -86,7 +86,7 @@ static int	ft_fullfill_env_var(char *line, char *result, int *i, t_sh *sh)
 		(*i)++;
 // attention malloc error
 		temp = ft_itoa(sh->ret_cmd);
-		ft_strlcat(result, temp, sizeof(result));
+		ft_strlcat(result, temp, len);
 		free(temp);
 		return (ft_itoa_count(sh->ret_cmd));
 	}
@@ -98,7 +98,7 @@ static int	ft_fullfill_env_var(char *line, char *result, int *i, t_sh *sh)
 		temp_env = ft_search_env(*(sh->env), temp);
 		if (temp_env)
 		{
-			ft_strlcat(result, ((t_env *)(temp_env->content))->value, sizeof(result));
+			ft_strlcat(result, ((t_env *)(temp_env->content))->value, len);
 			free(temp);
 			return (ft_strlen(((t_env *)(temp_env->content))->value));
 		}
@@ -129,7 +129,7 @@ char		*ft_parse_env_var(char *line, t_sh *sh)
 			is_in_simple_quote = is_in_simple_quote ? 0 : 1;
 // attention au erreur de malloc
 		if (line[i] == '$' && !is_in_simple_quote)
-			j += ft_fullfill_env_var(line, result, &i, sh);
+			j += ft_fullfill_env_var(line, result, len + 1, &i, sh);
 		else
 		{
 			result[j] = line[i];
