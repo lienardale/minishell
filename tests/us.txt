@@ -113,28 +113,28 @@ test_redir.c
 tests
 valgrind.sh
 total 280
-drwxr-xr-x  23 alienard  staff    736 24 Jul 15:15 .
+drwxr-xr-x  23 alienard  staff    736 24 Jul 15:43 .
 drwxr-xr-x@ 25 alienard  staff    800 22 Jul 19:57 ..
-drwxr-xr-x  14 alienard  staff    448 24 Jul 15:14 .git
+drwxr-xr-x  15 alienard  staff    480 24 Jul 15:42 .git
 -rw-r--r--   1 alienard  staff    186 22 Jul 19:57 .gitignore
 drwxr-xr-x   7 alienard  staff    224 22 Jul 19:57 .idea
 drwxr-xr-x   3 alienard  staff     96 22 Jul 19:57 .vscode
 -rw-r--r--   1 alienard  staff   2906 22 Jul 19:57 2_test_redir.c
 -rw-r--r--   1 alienard  staff   4055 22 Jul 19:57 CmakeLists.txt
 -rw-r--r--   1 alienard  staff   1014 22 Jul 19:57 Dockerfile
--rw-r--r--   1 alienard  staff   3967 23 Jul 20:42 Makefile
+-rw-r--r--   1 alienard  staff   3967 24 Jul 15:38 Makefile
 -rw-r--r--   1 alienard  staff     12 22 Jul 19:57 README.md
 drwxr-xr-x   7 alienard  staff    224 22 Jul 19:57 cmake-build-debug
 drwxr-xr-x   3 alienard  staff     96 22 Jul 19:57 hardcore_tests
-drwxr-xr-x   3 alienard  staff     96 23 Jul 20:42 headers
+drwxr-xr-x   3 alienard  staff     96 24 Jul 15:37 headers
 drwxr-xr-x  17 alienard  staff    544 24 Jul 09:35 libft
--rwxr-xr-x   1 alienard  staff  93988 24 Jul 15:13 minishell
+-rwxr-xr-x   1 alienard  staff  93988 24 Jul 15:43 minishell
 -rw-r--r--   1 alienard  staff     34 22 Jul 19:57 run.sh
-drwxr-xr-x  64 alienard  staff   2048 24 Jul 15:13 srcs
+drwxr-xr-x  64 alienard  staff   2048 24 Jul 15:43 srcs
 -rw-r--r--   1 alienard  staff     67 22 Jul 19:57 test.sh
 -rw-r--r--   1 alienard  staff   5680 22 Jul 19:57 test_pipe.c
 -rw-r--r--   1 alienard  staff   2492 22 Jul 19:57 test_redir.c
-drwxr-xr-x  27 alienard  staff    864 24 Jul 15:15 tests
+drwxr-xr-x  27 alienard  staff    864 24 Jul 15:43 tests
 -rw-r--r--   1 alienard  staff     71 22 Jul 19:57 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -352,9 +352,9 @@ valgrind.sh
 -rw-r--r--  1 alienard  staff  1014 22 Jul 19:57 Dockerfile
 -rw-r--r--  1 alienard  staff  1014 22 Jul 19:57 Dockerfile
 -rw-r--r--  1 alienard  staff   1014 22 Jul 19:57 Dockerfile
--rwxr-xr-x  1 alienard  staff  93988 24 Jul 15:13 minishell
+-rwxr-xr-x  1 alienard  staff  93988 24 Jul 15:43 minishell
 -rw-r--r--  1 alienard  staff   1014 22 Jul 19:57 Dockerfile
--rwxr-xr-x  1 alienard  staff  93988 24 Jul 15:13 minishell
+-rwxr-xr-x  1 alienard  staff  93988 24 Jul 15:43 minishell
 2_test_redir.c
 CmakeLists.txt
 Dockerfile

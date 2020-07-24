@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 15:41:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:43:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ int			ft_exit(t_cmd *cmd, t_sh *sh);
 
 /* execve functions */
 
-int			ft_search_n_execute(char **args, char **env);
+void		ft_search_n_execute(char **args, char **env);
 char		*ft_get_abspath_filename(char *exec, char **env);
 char		*ft_findexec(char *path, char *exec);
 char		*ft_get_onlypaths(char **env);
