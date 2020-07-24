@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 15:13:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 21:53:28 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,18 @@ void	ft_infile(t_sh *sh)
 	}
 }
 
+void	ft_ctrl_c(int sig)
+{
+	(void)sig;
+	write(0, "\n", 1);
+	write(1, PROMPT, ft_strlen(PROMPT));
+}
+
+void	ft_ctrl_backslash(int sig)
+{
+	(void)sig;
+}
+
 void	ft_prompt(t_sh *sh)
 {
 	char		*prompt;
@@ -129,9 +141,13 @@ void	ft_prompt(t_sh *sh)
 	quote = 0;
 	bkslh = 0;
 	prompt = PROMPT;
-	while (sh->ret_cmd && (write(1, prompt, ft_strlen(prompt)))
+signal(SIGQUIT, ft_ctrl_backslash);
+signal(SIGINT, ft_ctrl_c);
+	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+sh->line = ft_parse_env_var(sh->line, sh);
+//printf("%s\n", sh->line);
 		input = ft_lstnew(sh->line);
 		ft_lstadd_back(&begin, input);
 		ft_check_line((char**)&input->content, &quote, &bkslh);
@@ -152,4 +168,6 @@ void	ft_prompt(t_sh *sh)
 			break ;
 		// ft_free_ptr(sh.line);
 	}
+if (sh->ret_sh == 0)
+	write(1, "exit\n", 5);
 }

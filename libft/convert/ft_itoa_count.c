@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_env_lst.c                                  :+:      :+:    :+:   */
+/*   ft_itoa_count.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/31 15:38:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/20 12:02:11 by cdai             ###   ########.fr       */
+/*   Created: 2020/07/23 12:53:17 by cdai              #+#    #+#             */
+/*   Updated: 2020/07/23 13:07:29 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "libft.h"
 
-void	ft_free_env_lst(void *env_lst)
+int	ft_itoa_count(int i)
 {
-	t_env	*temp;
+	int	result;
 
-	temp = env_lst;
-	if (temp->key)
-		free(temp->key);
-	if (temp->value)
-		free(temp->value);
-	free(temp);
+	result = i < 0 || !i ? 1 : 0;
+	while (i)
+	{
+		result++;
+		i /= 10;
+	}
+	return (result);
 }

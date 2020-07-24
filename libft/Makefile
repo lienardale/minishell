@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/07/23 12:05:10 by alienard         ###   ########.fr        #
+#    Updated: 2020/07/24 21:53:52 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ _BILIST 		= ft_dlst_addafter.c \
 _CONVERT		= ft_atof.c \
 					ft_atoi.c \
 					ft_itoa.c \
+					ft_itoa_count.c \
 					ft_tolower.c \
 					ft_toupper.c
 _DPRINTF		= ft_conv_2_dprintf.c \
