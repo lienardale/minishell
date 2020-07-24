@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 15:42:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 22:09:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 		return (ft_exit(cmd, sh));
 	if (ft_strcmp(cmd->cmd, "cd") == 0)
 		return (ft_change_dir(cmd, sh));
+	if (ft_strcmp(cmd->cmd, "export") == 0)
+		return (ft_export(cmd, sh));
+	if (ft_strcmp(cmd->cmd, "unset") == 0)
+		return (ft_unset(cmd, sh));
 	builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
 	while (builtins[++i])
 	{
