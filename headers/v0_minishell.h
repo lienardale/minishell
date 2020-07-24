@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 15:56:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/24 15:41:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct	s_cmd
 
 	int				quote;
 	int				nbquote;
-	
+
 	int				pipedfd[2];
 	bool			opt;
 	int				bkslh;
@@ -191,7 +191,7 @@ int			ft_exit(t_cmd *cmd, t_sh *sh);
 
 /* execve functions */
 
-void		ft_search_n_execute(char **args, char **env);
+int			ft_search_n_execute(char **args, char **env);
 char		*ft_get_abspath_filename(char *exec, char **env);
 char		*ft_findexec(char *path, char *exec);
 char		*ft_get_onlypaths(char **env);
