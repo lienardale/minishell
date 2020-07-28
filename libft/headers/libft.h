@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 13:06:09 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/28 14:57:53 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char			*ft_strnstr(const char *haystack, const char *needle,
 int				ft_strcmp(const char *s1, const char *s2);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
+long			ft_atoi_long(const char *str);
+int				ft_is_in_min_max_atoi_long(const char *str);
 double			ft_atof(const char *str);
 char			*ft_itoa(int n);
 int				ft_itoa_count(int i);
@@ -51,6 +53,7 @@ int				ft_isspace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_isnum(char *c);
+int				ft_str_isdigit(char *str);
 int				ft_ischarset(char *set, char c);
 void			*ft_calloc(size_t count, size_t size);
 void			*ft_realloc(void *ptr, size_t size);
