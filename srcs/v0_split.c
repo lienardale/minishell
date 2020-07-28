@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/28 19:28:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/28 19:32:40 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	ft_dlst_addback(sh->cmds, cmd);
 	cmd->env = sh->env;
 	ft_init_args(sh, line, i);
+	// ft_print_double_array(cmd->av, "args in init cmd");
 }
 
 void	ft_line_to_lst(char *inputs, t_sh *sh)

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 21:53:28 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/28 19:36:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,9 @@ signal(SIGINT, ft_ctrl_c);
 	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+		ft_printf("line0|%s|\n",sh->line);
 sh->line = ft_parse_env_var(sh->line, sh);
+ft_printf("line1|%s|\n",sh->line);
 //printf("%s\n", sh->line);
 		input = ft_lstnew(sh->line);
 		ft_lstadd_back(&begin, input);
@@ -154,6 +156,7 @@ sh->line = ft_parse_env_var(sh->line, sh);
 		prompt = (quote == 0) ? PROMPT : QPROMPT;
 		if (!quote)
 		{
+			// ft_printf("line2|%s|\n",sh->line);
 			ft_line_to_lst(ft_input_join(begin), sh);
 			ft_lstclear(&begin, &free);
 			current = sh->cmds->head;

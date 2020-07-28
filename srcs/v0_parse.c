@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/28 19:27:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/28 19:32:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*ft_strdup_env_var(int len, char *av, char *key)
 	while (av[j + k] && (j++))
 		tab[i++] = av[j + k];
 	free(av);
-	ft_printf("tab = |%s|\n", tab);
+	// ft_printf("tab = |%s|\n", tab);
 	return (tab);
 }
 
@@ -104,7 +104,7 @@ void	ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i)
 		j++;
 	len += j;
 	cmd->av[i] = ft_strdup_env_var(len, av, key);
-	ft_printf("av[i] = |%s|\n", av[i]);
+	// ft_printf("av[i] = |%s|\n", av[i]);
 }
 
 char		*ft_is_in_env(char *str, t_sh *sh)
@@ -139,7 +139,7 @@ void	ft_check_env_var(t_cmd *cmd, t_sh *sh)
 	while (av[i])
 	{
 		j = 0;
-		ft_printf("cmd->av[i] = |%s|\n", av[i]);
+		// ft_printf("cmd->av[i] = |%s|\n", av[i]);
 		while (av[i][j])
 		{
 			key = NULL;
