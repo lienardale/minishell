@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:31:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/14 11:53:09 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/28 15:53:56 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_env(char **args, t_list **env)
 	temp = *env;
 	if (args[1])
 	{
-		ft_printf("env: '%s': No such file or directory", args[1]);
+		ft_printf("env: '%s': No such file or directory\n", args[1]);
 		ft_free_split(args);
 // return (1);
 		return (1);
