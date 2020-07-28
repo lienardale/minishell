@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/07/23 12:56:44 by cdai             ###   ########.fr        #
+#    Updated: 2020/07/28 14:58:33 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ _BILIST 		= ft_dlst_addafter.c \
 					ft_print_dlst.c
 _CONVERT		= ft_atof.c \
 					ft_atoi.c \
+					ft_atoi_long.c \
+					ft_is_in_min_max_atoi_long.c \
 					ft_itoa.c \
 					ft_itoa_count.c \
 					ft_tolower.c \
@@ -68,7 +70,8 @@ _IS				= ft_isalnum.c \
 					ft_isnum.c \
 					ft_isprint.c \
 					ft_isspace.c \
-					ft_ischarset.c
+					ft_ischarset.c \
+					ft_str_isdigit.c
 _LIST			= ft_lstadd_back_bonus.c \
 					ft_lstclear_bonus.c \
 					ft_lstdel_last.c \
