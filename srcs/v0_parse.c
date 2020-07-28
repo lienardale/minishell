@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 22:09:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/28 19:27:46 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,108 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	return (1);
 }
 
+char	*ft_strdup_env_var(int len, char *av, char *key)
+{
+	char	*tab;
+	int		i;
+	int		j;
+	int 	k;
+
+	j = 0;
+	k = 0;
+	i = 0;
+	if (!(tab = ft_calloc(len, sizeof(char))))
+		return (NULL);
+	while (av[j] && (av[j] != '$' || ft_isinquotes(av, j) || ft_is_escaped(av, j)) && (j++))
+		tab[j] = av[j];
+	i = j;
+	while (av[j + k] && (av[j + k] != '$' || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k))
+		&& (!ft_isspace(av[j + k]) || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k)))
+		k++;
+	i += ft_strlcpy(&tab[j], key, ft_strlen(key));
+	// i +=  ft_strlen(key);
+	while (av[j + k] && (j++))
+		tab[i++] = av[j + k];
+	free(av);
+	ft_printf("tab = |%s|\n", tab);
+	return (tab);
+}
+
+void	ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i)
+{
+	// char	*tmp;
+	int		j;
+	int 	k;
+	int		len;
+
+	j = 0;
+	k = 0;
+	len = 0;
+	while (av[j] && (av[j] != '$' || ft_isinquotes(av, j) || ft_is_escaped(av, j)))
+		j++;
+	len = ft_strlen(key);
+	k++;
+	while (av[j + k] && (av[j + k] != '$' || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k))
+		&& (!ft_isspace(av[j + k]) || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k)))
+		k++;
+	while (av[j + k])
+		j++;
+	len += j;
+	cmd->av[i] = ft_strdup_env_var(len, av, key);
+	ft_printf("av[i] = |%s|\n", av[i]);
+}
+
+char		*ft_is_in_env(char *str, t_sh *sh)
+{
+	char	*tmp;
+	int		i;
+	t_list	*env;
+
+	i = 0;
+	env = *(sh->env);
+	while (str[i] && (!ft_isspace(str[i]) || ft_is_escaped(str, i) || ft_isinquotes(str, i)))
+		i++;
+	tmp = ft_substr(str, 0, i);
+	while (env)
+	{
+		if(ft_strncmp(((t_env*)(env->content))->key, tmp, ft_strlen(tmp)))
+			return (((t_env*)(env->content))->key);
+		env = env->next;
+	}
+	return (NULL);
+}
+
+void	ft_check_env_var(t_cmd *cmd, t_sh *sh)
+{
+	char	*key;
+	char	**av;
+	int		i;
+	int		j;
+
+	av = cmd->av;
+	i = 0;
+	while (av[i])
+	{
+		j = 0;
+		ft_printf("cmd->av[i] = |%s|\n", av[i]);
+		while (av[i][j])
+		{
+			key = NULL;
+			if (av[i][j] == '$' && !ft_isinquotes(av[i], j) && !ft_is_escaped(av[i], j))
+			{
+				key = ft_is_in_env(&av[i][j], sh);
+				ft_printf("key = |%s|\n", key);
+			}
+			if (key)
+				ft_replace_env_var(cmd->av[i], key, cmd, i);
+				// ft_is_in_env(&av[i][j], env) ? ft_replace_env_var(av[i], j, cmd, sh) : 0;
+			j++;
+		}
+		i++;
+	}
+
+}
+
 int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 {
 	char	**builtins;
@@ -63,7 +165,7 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	int		pipefd[2];
 	int		ret;
 
-	// ft_check_env_var(cmd, sh);
+	ft_check_env_var(cmd, sh);
 	if (pipe(pipefd) < 0)
 	{
 		ft_dprintf(2, "Pipe failed to initialize\n");

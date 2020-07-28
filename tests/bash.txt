@@ -113,28 +113,28 @@ test_redir.c
 tests
 test.sh
 valgrind.sh
-total 60
-drwxrwxrwx 1 akira akira   4096 Jul 24 21:57 .
+total 64
+drwxrwxrwx 1 akira akira   4096 Jul 28 19:10 .
 drwxrwxrwx 1 akira akira   4096 Jul  3 12:21 ..
 -rwxrwxrwx 1 akira akira   2906 Jul 24 21:51 2_test_redir.c
 -rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 cmake-build-debug
 -rwxrwxrwx 1 akira akira   4055 Jul 13 11:18 CmakeLists.txt
 -rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
-drwxrwxrwx 1 akira akira   4096 Jul 24 21:54 .git
+drwxrwxrwx 1 akira akira   4096 Jul 28 18:35 .git
 -rwxrwxrwx 1 akira akira    186 Jul 13 11:18 .gitignore
 drwxrwxrwx 1 akira akira   4096 Jul 24 21:51 hardcore_tests
 drwxrwxrwx 1 akira akira   4096 Jul 24 21:51 headers
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .idea
 drwxrwxrwx 1 akira akira   4096 Jul 24 21:55 libft
 -rwxrwxrwx 1 akira akira   3992 Jul 24 21:54 Makefile
--rwxrwxrwx 1 akira akira 184736 Jul 24 21:57 minishell
+-rwxrwxrwx 1 akira akira 186672 Jul 28 19:10 minishell
 -rwxrwxrwx 1 akira akira     12 Jul  3 12:22 README.md
 -rwxrwxrwx 1 akira akira     34 Jul 13 11:18 run.sh
-drwxrwxrwx 1 akira akira   4096 Jul 24 21:57 srcs
+drwxrwxrwx 1 akira akira   4096 Jul 28 19:10 srcs
 -rwxrwxrwx 1 akira akira   5680 Jul 16 13:49 test_pipe.c
 -rwxrwxrwx 1 akira akira   2492 Jul 24 21:51 test_redir.c
-drwxrwxrwx 1 akira akira   4096 Jul 24 21:55 tests
+drwxrwxrwx 1 akira akira   4096 Jul 28 19:09 tests
 -rwxrwxrwx 1 akira akira     67 Jul 13 11:18 test.sh
 -rwxrwxrwx 1 akira akira     71 Jul  3 12:22 valgrind.sh
 drwxrwxrwx 1 akira akira   4096 Jul 13 11:18 .vscode
@@ -364,10 +364,10 @@ valgrind.sh
 -rwxrwxrwx 1 akira akira 1014 Jul  3 12:22 Dockerfile
 -rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
 -rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
--rwxrwxrwx 1 akira akira 184736 Jul 24 21:57 minishell
+-rwxrwxrwx 1 akira akira 186672 Jul 28 19:10 minishell
 -rwxrwxrwx 1 akira akira  13992 Jul 11 15:24 a.out
 -rwxrwxrwx 1 akira akira   1014 Jul  3 12:22 Dockerfile
--rwxrwxrwx 1 akira akira 184736 Jul 24 21:57 minishell
+-rwxrwxrwx 1 akira akira 186672 Jul 28 19:10 minishell
 2_test_redir.c
 a.out
 cmake-build-debug
