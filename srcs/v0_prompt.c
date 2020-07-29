@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 14:08:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/29 15:49:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,9 @@ void	ft_prompt(t_sh *sh)
 	prompt = PROMPT;
 signal(SIGQUIT, ft_ctrl_backslash);
 signal(SIGINT, ft_ctrl_c);
-	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
+	if (sh->fd == 0)
+			write(1,prompt,ft_strlen(prompt));
+	while (sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		comment = 0;
@@ -172,6 +174,8 @@ signal(SIGINT, ft_ctrl_c);
 		}
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
+		if (sh->fd == 0)
+			write(1, prompt, ft_strlen(prompt));
 		// ft_free_ptr(sh.line);
 	}
 if (sh->ret_sh == 0)

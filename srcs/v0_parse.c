@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 14:22:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/29 16:09:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ int		ft_exec_redir_in(t_sh *sh, t_cmd *cmd)
 {
 	if ((cmd->fdin = open(cmd->file_redir, O_RDONLY)) == -1)
 	{
-		ft_dprintf(2, "Error in open exec_redir_in.\n");
-		return (0);
+		// ft_dprintf(2, "Error in open exec_redir_in.\n");
+		// return (1);
 	}
 	if ((cmd->ret_dup = dup2(cmd->fdin, STDIN_FILENO)) < 0
-		&& (write(1,"dup2 failed\n",ft_strlen("dup2 failed\n"))))
+		/*&& (write(1,"dup2 failed\n",ft_strlen("dup2 failed\n")))*/)
 		return (ft_exit((t_cmd*)(sh->cmds->head), sh));
 	return (1);
 }

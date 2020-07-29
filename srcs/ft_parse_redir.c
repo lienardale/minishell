@@ -27,8 +27,10 @@ void	ft_parse_redir_in(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
-		ft_dprintf(2, "Error in open parse_redir_in.\n");
-		return ;
+		ft_dprintf(2, "minishell: %s: No such file or directory\n", tmp);
+		// ft_prompt(sh);
+		// ft_exit(NULL, sh);
+		// return ;
 	}
 	close(fd);
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
