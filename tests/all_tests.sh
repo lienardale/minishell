@@ -51,8 +51,8 @@ bash tests/backslash.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 # ./minishell tests/pipe.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 # bash tests/pipe.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
-# ./minishell tests/redir_in.sh 1>> tests/us.txt 2>> tests/us_errors.txt
-# bash tests/redir_in.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+./minishell tests/redir_in.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/redir_in.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 ./minishell tests/redir_out.sh 1>> tests/us.txt  2>> tests/us_errors.txt
 bash tests/redir_out.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt

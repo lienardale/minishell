@@ -114,9 +114,9 @@ test_redir.c
 tests
 valgrind.sh
 total 336
-drwxr-xr-x  24 alienard  2019_paris    816 29 jul 15:31 .
+drwxr-xr-x  24 alienard  2019_paris    816 29 jul 15:36 .
 drwxr-xr-x  22 alienard  2019_paris    748 29 jul 09:49 ..
-drwxr-xr-x  15 alienard  2019_paris    510 29 jul 11:32 .git
+drwxr-xr-x  15 alienard  2019_paris    510 29 jul 15:32 .git
 -rw-r--r--   1 alienard  2019_paris    186 16 jul 07:54 .gitignore
 drwxr-xr-x   7 alienard  2019_paris    238 16 jul 07:54 .idea
 drwxr-xr-x   4 alienard  2019_paris    136 29 jul 11:30 .vscode
@@ -136,7 +136,7 @@ drwxr-xr-x  68 alienard  2019_paris   2312 29 jul 14:24 srcs
 -rw-r--r--   1 alienard  2019_paris     67 16 jul 07:54 test.sh
 -rw-r--r--   1 alienard  2019_paris   5680 16 jul 10:34 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris   2492 20 jul 15:36 test_redir.c
-drwxr-xr-x  28 alienard  2019_paris    952 29 jul 15:31 tests
+drwxr-xr-x  28 alienard  2019_paris    952 29 jul 15:36 tests
 -rw-r--r--   1 alienard  2019_paris     71 16 jul 07:54 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -392,6 +392,40 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+
+--- TESTS < ---
+
+phase 1 ok
+
+0test.log
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+a.out
+cmake-build-debug
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.sh
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
+
+phase 2 ok
+
+minishell
+run.sh
+test.sh
+valgrind.sh
+
+phase 3 ok
+
 --- TEST > ---
 
 0
