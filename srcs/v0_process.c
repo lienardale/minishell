@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 15:43:13 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/29 13:07:08 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	ft_search_n_execute(char **args, char **env)
 	args[0] = temp;
 }
 
-int			ft_launch(t_cmd *cmd, t_sh *sh)
+int			ft_process(t_cmd *cmd, t_sh *sh)
 {
 	pid_t	pid;
 	pid_t	wpid;
@@ -123,15 +123,7 @@ int			ft_launch(t_cmd *cmd, t_sh *sh)
 	{
 		// Child process
 		if (cmd->redir)
-		{
-			if ((cmd->fdout = open(cmd->redir, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
-			{
-				ft_dprintf(2, "Error in open.\n");
-				return (0);
-			}
-			if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) == -1)
-				ft_exit((t_cmd*)(sh->cmds->head), sh);
-		}
+			ft_exec_redir(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
 		ft_search_n_execute(cmd->av, split_env);
 		ft_free_split(split_env);

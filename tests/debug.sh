@@ -1,1 +1,3 @@
-export cou=ec ; export bon=ho ; $cou$bon salut
+echo coucou >> test.log
+ls
+cat test.log

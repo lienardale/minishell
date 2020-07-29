@@ -53,3 +53,7 @@ rm test.log\\\\
 ls > test.log\\\\\ coucou
 cat test.log\\\\\ coucou
 rm test.log\\\\\ coucou
+
+# echo test1\
+# ; echo test2
+# 

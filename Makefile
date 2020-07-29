@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/07/24 21:54:08 by alienard         ###   ########.fr        #
+#    Updated: 2020/07/29 12:18:00 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ _SRCS		= v0_minishell.c \
 				ft_quote.c \
 				ft_escape.c \
 				ft_strdup_clean.c \
+				ft_exec_env_var.c \
 				ft_parse_env_var.c
 
 SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/28 19:36:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/29 14:08:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ void	ft_prompt(t_sh *sh)
 {
 	char		*prompt;
 	int			quote;
+	int			comment;
 	t_list		*input;
 	t_list		*begin;
 	t_dlist		*current;
@@ -146,26 +147,28 @@ signal(SIGINT, ft_ctrl_c);
 	while (sh->ret_cmd && (write(1,prompt,ft_strlen(prompt)))
 		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-		ft_printf("line0|%s|\n",sh->line);
-sh->line = ft_parse_env_var(sh->line, sh);
-ft_printf("line1|%s|\n",sh->line);
-//printf("%s\n", sh->line);
-		input = ft_lstnew(sh->line);
-		ft_lstadd_back(&begin, input);
-		ft_check_line((char**)&input->content, &quote, &bkslh);
-		prompt = (quote == 0) ? PROMPT : QPROMPT;
-		if (!quote)
+		comment = 0;
+		while (sh->line[comment] && ft_isspace(sh->line[comment]))
+			comment++;
+		if (sh->line[comment] != '#') // so that we can comment lines -> /!\ need do handle "echo coucou #; ls"
 		{
-			// ft_printf("line2|%s|\n",sh->line);
-			ft_line_to_lst(ft_input_join(begin), sh);
-			ft_lstclear(&begin, &free);
-			current = sh->cmds->head;
-			while (current)
+			sh->line = ft_parse_env_var(sh->line, sh);
+			input = ft_lstnew(sh->line);
+			ft_lstadd_back(&begin, input);
+			ft_check_line((char**)&input->content, &quote, &bkslh);
+			prompt = (quote == 0) ? PROMPT : QPROMPT;
+			if (!quote)
 			{
-				sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
-				current = current->next;
+				ft_line_to_lst(ft_input_join(begin), sh);
+				ft_lstclear(&begin, &free);
+				current = sh->cmds->head;
+				while (current)
+				{
+					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
+					current = current->next;
+				}
+				ft_dlst_del(sh->cmds);
 			}
-			ft_dlst_del(sh->cmds);
 		}
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;

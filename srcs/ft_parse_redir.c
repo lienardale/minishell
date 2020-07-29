@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/11 17:19:41 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/11 17:19:41 by alienard         ###   ########.fr       */
+/*   Created: 2020/07/29 12:35:16 by alienard          #+#    #+#             */
+/*   Updated: 2020/07/29 12:35:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,30 @@
 
 void	ft_parse_redir_in(t_sh *sh, char *line, int *i)
 {
-	// char	*tmp;
+	char	*tmp;
 	int		j;
-	// int 	fd;
+	int		fd;
 
-	while (ft_isspace(line[*i]))
+	while (line[*i] && ft_isspace(line[*i]))
 		(*i)++;
 	j = *i;
-	while (line[j])
-	{
-		if (ft_ischarset("|;", line[j]) && !ft_isinquotes(line, j))
-			break ;
+	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
 		j++;
+	tmp = ft_substr(line, *i, j - *i);
+	tmp = ft_strdup_clean(tmp);
+	if ((fd = open(tmp, O_RDONLY)) == -1)
+	{
+		ft_dprintf(2, "Error in open parse_redir_in.\n");
+		return ;
 	}
-	((t_cmd*)(sh->cmds->tail->data))->redir = ft_substr(line, *i, j);
+	close(fd);
+	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+		j++;
+	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
+		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
+	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
 	*i = j;
-	// ft_init_args(sh, line, i);
-	// ft_handle_end(sh, line, i);
+	ft_init_args(sh, line, i);
 }
 
 void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
@@ -48,46 +55,43 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open.\n");
+		ft_dprintf(2, "Error in open parse_redir_out.\n");
 		return ;
 	}
 	close(fd);
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
 		j++;
-	if (((t_cmd*)(sh->cmds->tail->data))->redir)
-		free(((t_cmd*)(sh->cmds->tail->data))->redir);
-	((t_cmd*)(sh->cmds->tail->data))->redir = tmp;
+	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
+		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
+	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
 	*i = j;
 	ft_init_args(sh, line, i);
-	// ft_handle_end(sh, line, i);
 }
 
 void	ft_parse_append(t_sh *sh, char *line, int *i)
 {
-	// char	*tmp;
+	char	*tmp;
 	int		j;
+	int		fd;
 
-	while (ft_isspace(line[*i]))
+	while (line[*i] && ft_isspace(line[*i]))
 		(*i)++;
 	j = *i;
-	// while (!ft_isspace(line[j]) || ft_is_escaped(&line[j]))
-	// 	j++;
-	// tmp = ft_substr(line, *i, j);
-	// if ((((t_cmd*)(sh->cmds->tail->data))->fd_out =
-	// 	open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0777)) == -1)
-	// {
-	// 	ft_dprintf(2, "Error in open.");
-	// 	return ;
-	// }
-	while (line[j])
-	{
-		if (ft_ischarset("|;", line[j]) && !ft_isinquotes(line, j))
-			break ;
+	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
 		j++;
+	tmp = ft_substr(line, *i, j - *i);
+	tmp = ft_strdup_clean(tmp);
+	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0777)) == -1)
+	{
+		ft_dprintf(2, "Error in open parse_append.\n");
+		return ;
 	}
-	((t_cmd*)(sh->cmds->tail->data))->redir = ft_substr(line, *i, j);
+	close(fd);
+	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+		j++;
+	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
+		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
+	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
 	*i = j;
-	ft_handle_end(sh, line, i);
-	// if (ft_ischarset(REDIR, line[j]))
-	// 	ft_parse_redir(sh, line, i);
+	ft_init_args(sh, line, i);
 }
