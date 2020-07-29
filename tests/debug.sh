@@ -1,2 +1,1 @@
-echo coucou > 0test.log
-echo bonjour > 1test.log
+export cou=ec ; export bon=ho ; $cou$bon salut

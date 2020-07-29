@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/28 19:32:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/29 11:30:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,30 +62,34 @@ char	*ft_strdup_env_var(int len, char *av, char *key)
 	int		i;
 	int		j;
 	int 	k;
+	int		l;
 
-	j = 0;
-	k = 0;
+	j = -1;
+	k = 1;
 	i = 0;
+	l = 0;
 	if (!(tab = ft_calloc(len, sizeof(char))))
 		return (NULL);
-	while (av[j] && (av[j] != '$' || ft_isinquotes(av, j) || ft_is_escaped(av, j)) && (j++))
+	while (av[++j] && (av[j] != '$' || ft_isinquotes(av, j) || ft_is_escaped(av, j)))
 		tab[j] = av[j];
 	i = j;
 	while (av[j + k] && (av[j + k] != '$' || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k))
 		&& (!ft_isspace(av[j + k]) || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k)))
 		k++;
-	i += ft_strlcpy(&tab[j], key, ft_strlen(key));
-	// i +=  ft_strlen(key);
-	while (av[j + k] && (j++))
-		tab[i++] = av[j + k];
+	while (key[l])
+		tab[i++] = key[l++];
+	while (av[j + k])
+	{
+		tab[i] = av[j + k];
+		i++;
+		j++;
+	}
 	free(av);
-	// ft_printf("tab = |%s|\n", tab);
 	return (tab);
 }
 
 void	ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i)
 {
-	// char	*tmp;
 	int		j;
 	int 	k;
 	int		len;
@@ -96,7 +100,7 @@ void	ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i)
 	while (av[j] && (av[j] != '$' || ft_isinquotes(av, j) || ft_is_escaped(av, j)))
 		j++;
 	len = ft_strlen(key);
-	k++;
+	k = (av[j] == '$') ? k + 1 : k;
 	while (av[j + k] && (av[j + k] != '$' || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k))
 		&& (!ft_isspace(av[j + k]) || ft_is_escaped(av, j + k) || ft_isinquotes(av, j + k)))
 		k++;
@@ -104,7 +108,6 @@ void	ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i)
 		j++;
 	len += j;
 	cmd->av[i] = ft_strdup_env_var(len, av, key);
-	// ft_printf("av[i] = |%s|\n", av[i]);
 }
 
 char		*ft_is_in_env(char *str, t_sh *sh)
@@ -113,15 +116,16 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	int		i;
 	t_list	*env;
 
-	i = 0;
+	i = 1;
 	env = *(sh->env);
-	while (str[i] && (!ft_isspace(str[i]) || ft_is_escaped(str, i) || ft_isinquotes(str, i)))
+	while (str[i] && (str[i] != '$' || ft_is_escaped(str, i) || ft_isinquotes(str, i))
+		&& (!ft_isspace(str[i]) || ft_is_escaped(str, i) || ft_isinquotes(str, i)))
 		i++;
-	tmp = ft_substr(str, 0, i);
+	tmp = ft_substr(str, 1, i - 1);
 	while (env)
 	{
-		if(ft_strncmp(((t_env*)(env->content))->key, tmp, ft_strlen(tmp)))
-			return (((t_env*)(env->content))->key);
+		if(ft_strncmp(((t_env*)(env->content))->key, tmp, ft_strlen(tmp)) == 0)
+			return (((t_env*)(env->content))->value);
 		env = env->next;
 	}
 	return (NULL);
@@ -129,7 +133,7 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 
 void	ft_check_env_var(t_cmd *cmd, t_sh *sh)
 {
-	char	*key;
+	char	*key_val;
 	char	**av;
 	int		i;
 	int		j;
@@ -139,18 +143,18 @@ void	ft_check_env_var(t_cmd *cmd, t_sh *sh)
 	while (av[i])
 	{
 		j = 0;
-		// ft_printf("cmd->av[i] = |%s|\n", av[i]);
 		while (av[i][j])
 		{
-			key = NULL;
 			if (av[i][j] == '$' && !ft_isinquotes(av[i], j) && !ft_is_escaped(av[i], j))
 			{
-				key = ft_is_in_env(&av[i][j], sh);
-				ft_printf("key = |%s|\n", key);
+				key_val = NULL;
+				key_val = ft_is_in_env(&av[i][j], sh);
+				if (key_val)
+				{
+					ft_replace_env_var(cmd->av[i], key_val, cmd, i);
+					j = 0;
+				}
 			}
-			if (key)
-				ft_replace_env_var(cmd->av[i], key, cmd, i);
-				// ft_is_in_env(&av[i][j], env) ? ft_replace_env_var(av[i], j, cmd, sh) : 0;
 			j++;
 		}
 		i++;
