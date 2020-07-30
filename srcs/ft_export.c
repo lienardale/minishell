@@ -6,12 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/30 11:57:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 13:53:10 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
+// return 1 if error, return 0 if good
 static int	ft_export_check_arg(char *arg)
 {
 	int	i;
@@ -22,7 +23,7 @@ static int	ft_export_check_arg(char *arg)
 // le premier character ne peut pas etre '=' ni un autre chose qu'une lettre
 		if (i == 0 && !ft_isalpha(arg[i]))
 			return (1);
-// si je trouve un character '=' apres le premier charactere, je sors de la fonction
+// si je trouve un character '=' apres le premier charactere, je sors de la fonction => valide
 		else if (arg[i] == '=')
 			return (0);
 // si je trouve un charactere autre que alpha num, je sors
@@ -68,8 +69,6 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 {
 	int		i;
 	char	**splited;
-// il faut gerer la sortie de la fonction
-// 0 si tout va bien, 1 si ca ne va pas
 	int		ret;
 
 	ret = 0;
@@ -88,7 +87,8 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 		ft_strs_sort(splited, ft_lstsize(*(sh->env)));
 		while (splited[++i])
 // il faut que je fasse attention a la variable d'env "_"
-			ft_printf("declare -x %s\n", splited[i]);
+			if (ft_strncmp(splited[i], "_=", 2))
+				ft_printf("declare -x %s\n", splited[i]);
 		ft_free_split(splited);
 	}
 // sinon je mets a jour ma variable d'environnement
