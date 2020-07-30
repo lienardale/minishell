@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 13:25:10 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/30 11:23:52 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #include <sys/errno.h>
 #include <fcntl.h>
 #include <stdbool.h>
+#include <string.h>
 #include "libft.h"
 #include "libftprintf.h"
 #include "libftdprintf.h"
