@@ -1,13 +1,13 @@
 minishell: command not found: | ls|
 minishell: command not found: |echo -n|
-ls: coucou: No such file or directory
-cat: coucou: No such file or directory
-ls: coucou: No such file or directory
-cat: coucou: No such file or directory
-ls: coucou: No such file or directory
-ls: salut: No such file or directory
-cat: coucou: No such file or directory
-cat: coucou: No such file or directory
+/bin/ls: cannot access 'coucou': No such file or directory
+/bin/cat: coucou: No such file or directory
+/bin/ls: cannot access 'coucou': No such file or directory
+/bin/cat: coucou: No such file or directory
+/bin/ls: cannot access 'coucou': No such file or directory
+/bin/ls: cannot access 'salut': No such file or directory
+/bin/cat: coucou: No such file or directory
+/bin/cat: coucou: No such file or directory
 minishell: 0test.log: No such file or directory
-cat: 1test.log\ coucou: No such file or directory
-cat: 1test.log\ coucou: No such file or directory
+/bin/cat: '1test.log\ coucou': No such file or directory
+/bin/cat: '1test.log\ coucou': No such file or directory
