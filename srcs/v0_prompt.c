@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 15:49:11 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/30 11:20:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ signal(SIGINT, ft_ctrl_c);
 			comment++;
 		if (sh->line[comment] != '#') // so that we can comment lines -> /!\ need do handle "echo coucou #; ls"
 		{
-			sh->line = ft_parse_env_var(sh->line, sh);
+			// sh->line = ft_parse_env_var(sh->line, sh);
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);

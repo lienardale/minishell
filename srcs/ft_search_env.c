@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_search_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 08:49:05 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/25 15:52:48 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/30 09:40:21 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_list	*ft_search_env(t_list *env, char *arg)
 	t_list	*temp_env;
 
 	temp_env = env;
+	// printf("temp:%s\n", arg);
 	if (!(result = ft_separate_key_value(arg)))
 		return (NULL);
 	while (temp_env)

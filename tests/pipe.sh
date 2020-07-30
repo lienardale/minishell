@@ -4,8 +4,8 @@ echo
 
 ls | grep .sh
 
-ls | echo coucou
+# ls | echo coucou
 
-echo coucou | ls
+# echo coucou | ls
 
-ls | grep .sh | sort
+# ls | grep .sh | sort

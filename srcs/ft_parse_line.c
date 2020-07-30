@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 16:05:07 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/29 18:24:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	ft_parse_pipe(t_sh *sh, char *line, int *i)
 {
 	(void)line;
 	(void)i;
+	// ((t_cmd*)(sh->cmds->tail->data))
 	((t_cmd*)(sh->cmds->tail->data))->after = '|';
 }
 

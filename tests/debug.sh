@@ -1,3 +1,1 @@
-echo coucou >> test.log
-ls
-cat test.log
+export pouet='echo coucou' ; $pouet

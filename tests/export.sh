@@ -7,6 +7,16 @@ echo
 # echo
 
 export cou=ec ; export bon=ho ; $cou$bon salut
+
+$coucou salut
+
+# av[0] = |$coucou|
+# av[1] = |salut|
+
+# ->
+
+# av[0] = |salut|
+
 echo
 
 # export PATH= ;
