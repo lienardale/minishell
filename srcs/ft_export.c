@@ -6,11 +6,18 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 13:53:10 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 13:53:35 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
+
+static int	ft_export_check_underscore(char *str)
+{
+	if (!ft_strncmp(str, "_=", 2) || !ft_strncmp(str, "_", 2))
+		return (1);
+	return (0);
+}
 
 // return 1 if error, return 0 if good
 static int	ft_export_check_arg(char *arg)
@@ -18,6 +25,8 @@ static int	ft_export_check_arg(char *arg)
 	int	i;
 
 	i = 0;
+	if (ft_export_check_underscore(arg))
+		return (0);
 	while (arg[i])
 	{
 // le premier character ne peut pas etre '=' ni un autre chose qu'une lettre
@@ -43,6 +52,8 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 	t_list	*temp_env;
 
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
+	if (ft_export_check_underscore(arg))
+		return (env);
 	temp_env = ft_search_env(env, arg);
 	// printf("temp:%s\n", arg);
 	result = ft_separate_key_value(arg);
