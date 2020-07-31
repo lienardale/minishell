@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/23 16:01:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 14:05:37 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 // faire . et .. ?
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
 	{
-		home = ft_search_env(*(sh->env), "HOME");
+		if (!(home = ft_search_env(*(sh->env), "HOME")))
+		{
+			ft_printf("minishell: cd: HOME not set\n");
+ft_free_split(cmd->av);
+			return (1);
+		}
 // if (home)
 		chdir_value = chdir(((t_env*)home->content)->value);
 	}
