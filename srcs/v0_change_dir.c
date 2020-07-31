@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/11 19:21:49 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/31 09:52:42 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ int	ft_change_dir(char **args, t_list **env)
 // faire . et .. ?
 	if (!args[1] || (!ft_strcmp(args[1], "~") && !args[2]))
 	{
-		home = ft_search_env(*env, "HOME");
+		if (!(home = ft_search_env(*env, "HOME")))
+		{
+			ft_printf("minishell: cd: HOME not set\n");
+ft_free_split(args);
+			return (1);
+		}
 // if (home)
 		chdir_value = chdir(((t_env*)home->content)->value);
 	}
