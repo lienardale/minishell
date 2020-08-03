@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/03 13:37:21 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/03 15:27:12 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_change_dir(char **args, t_list **env)
 
 	chdir_value = -1;
 	if (!(oldpwd = ft_getcwd()))
-		return (NULL);
+		return (1);
 // faire . et .. ?
 	if (!args[1] || (!ft_strcmp(args[1], "~") && !args[2]))
 	{

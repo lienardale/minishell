@@ -6,11 +6,26 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/30 14:52:41 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/03 15:46:46 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
+
+static t_list	*ft_check_shlvl(t_list *result)
+{
+	t_list	*temp_lst;
+	t_env	*temp_env;
+
+	temp_lst = ft_search_env(result, "SHLVL");
+	if (!temp_lst)
+	{
+		temp_env = ft_new_env_var("SHLVL", "1");
+		temp_lst = ft_lstnew(temp_env);
+		ft_lstadd_back(&result, temp_lst);
+	}
+	return (result);
+}
 
 static char	*ft_increment_shlvl(char *env_shlvl)
 {
@@ -61,6 +76,11 @@ t_list		*ft_start_minishell(char **env)
 //printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
 //printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
 		temp = temp->next;
+	}
+	if (!ft_check_shlvl(result))
+	{
+		ft_lstclear(&result, ft_free_env_lst);
+		return (NULL);
 	}
 	return (result);
 }
