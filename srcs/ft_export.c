@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/30 14:02:02 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/03 09:43:49 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,18 @@ static int	ft_export_check_arg(char *arg)
 }
 
 // les erreurs ne sont pas encore geres
-static t_list	*ft_update_env(t_list *env, char *arg)
+static t_list	*ft_export_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
-	t_env	*env_content;
-	t_list	*temp_env;
+//	t_env	*env_content;
+//	t_list	*temp_env;
 
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	if (ft_export_check_underscore(arg))
 		return (env);
-	temp_env = ft_search_env(env, arg);
+//	temp_env = ft_search_env(env, arg);
 	result = ft_separate_key_value(arg);
+	/*
 	if (temp_env)
 	{
 		env_content = (t_env*)temp_env->content;
@@ -70,7 +71,8 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 // sinon je l'ajoute a la variable d'environnement donc je n'ai pas de memoire a liberer
 	else
 		ft_lstadd_back(&env, ft_lstnew(result));
-	return (env);
+*/
+return (ft_update_env(env, result));
 }
 
 int				ft_export(char **args, t_list **env)
@@ -112,7 +114,7 @@ int				ft_export(char **args, t_list **env)
 		}
 		else
 // handle malloc error
-			if (!(ft_update_env(*env, args[i])))
+			if (!(ft_export_update_env(*env, args[i])))
 			{
 				ft_free_split(args);
 // return (1); // ret = 1;

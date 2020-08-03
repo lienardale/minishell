@@ -6,18 +6,41 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/31 09:52:42 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/03 10:29:22 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
+static t_list	*ft_change_dir_update(t_list **env, char *oldpwd)
+{
+	t_env	*oldpwd_env;
+	t_env	*pwd_env;
+	char	*pwd;
+
+	pwd = ft_calloc(1, 1000);
+	getcwd(pwd, 1000);
+	if (!(oldpwd_env_lst = ft_new_env_var("OLDPWD", oldpwd)))
+		return (NULL);
+	else if (!(ft_update_env(*env, oldpwd_env)))
+		return (NULL);
+	if (!(pwd_env_lst = ft_new_env_var("PWD", pwd)))
+		return (NULL);
+	else if (!(ft_update_env(*env, pwd_env)))
+		return (NULL);
+	free(pwd);
+	return (*env);
+}
+
 int	ft_change_dir(char **args, t_list **env)
 {
 	int		chdir_value;
 	t_list	*home;
+	char	*oldpwd;
 
 	chdir_value = -1;
+oldpwd = ft_calloc(1, 1000);
+getcwd(oldpwd, 1000);
 // faire . et .. ?
 	if (!args[1] || (!ft_strcmp(args[1], "~") && !args[2]))
 	{
@@ -50,6 +73,8 @@ ft_free_split(args);
 ft_free_split(args);
 		return (1);
 	}
+	ft_change_dir_update(env, oldpwd);
+	free(oldpwd);
 ft_free_split(args);
 	return (1);
 }
