@@ -6,18 +6,41 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 14:05:37 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 14:10:43 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "v0_minishell.h"
 
+static t_list	*ft_change_dir_update(t_list **env, char *oldpwd)
+{
+	t_env	*oldpwd_env;
+	t_env	*pwd_env;
+	char	*pwd;
+
+	pwd = ft_calloc(1, 1000);
+	getcwd(pwd, 1000);
+	if (!(oldpwd_env_lst = ft_new_env_var("OLDPWD", oldpwd)))
+		return (NULL);
+	else if (!(ft_update_env(*env, oldpwd_env)))
+		return (NULL);
+	if (!(pwd_env_lst = ft_new_env_var("PWD", pwd)))
+		return (NULL);
+	else if (!(ft_update_env(*env, pwd_env)))
+		return (NULL);
+	free(pwd);
+	return (*env);
+}
+
 int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 {
 	int		chdir_value;
 	t_list	*home;
+	char	*oldpwd;
 
 	chdir_value = -1;
+oldpwd = ft_calloc(1, 1000);
+getcwd(oldpwd, 1000);
 // faire . et .. ?
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
 	{
@@ -51,5 +74,7 @@ ft_free_split(cmd->av);
 		return (1);
 	}
 	ft_free_split(cmd->av);
+	ft_change_dir_update(env, oldpwd);
+	free(oldpwd);
 	return (1);
 }

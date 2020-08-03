@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 14:02:48 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 14:09:25 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ static int	ft_export_check_arg(char *arg)
 }
 
 // les erreurs ne sont pas encore geres
-static t_list	*ft_update_env(t_list *env, char *arg)
+static t_list	*ft_export_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
-	t_env	*env_content;
-	t_list	*temp_env;
+//	t_env	*env_content;
+//	t_list	*temp_env;
 
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	if (ft_export_check_underscore(arg))
@@ -73,7 +73,7 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 // sinon je l'ajoute a la variable d'environnement donc je n'ai pas de memoire a liberer
 	else
 		ft_lstadd_back(&env, ft_lstnew(result));
-	return (env);
+return (ft_update_env(env, result));
 }
 
 int				ft_export(t_cmd *cmd, t_sh *sh)
