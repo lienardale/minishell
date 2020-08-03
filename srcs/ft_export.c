@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 14:09:25 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 14:22:28 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ static int	ft_export_check_arg(char *arg)
 static t_list	*ft_export_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
-//	t_env	*env_content;
-//	t_list	*temp_env;
+	t_env	*env_content;
+	t_list	*temp_env;
 
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	if (ft_export_check_underscore(arg))
