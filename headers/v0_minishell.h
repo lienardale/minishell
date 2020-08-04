@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/30 13:11:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/04 16:08:35 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,9 @@ char		*ft_strdup_env_var(int len, char *av, char *key);
 
 /* create & exec pipes */
 int		ft_create_pipe(t_sh *sh);
+int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh);
 int		ft_init_pipe(t_sh *sh, t_cmd *cmd);
+int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd);
+int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd);
 
 # endif

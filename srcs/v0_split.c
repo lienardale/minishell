@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/30 11:54:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/04 15:59:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 {
 	if (ft_ischarset(REDIR, line[*i]))
 		ft_parse_redir(sh, line, i);
-	else if (line[*i] == '|')
-		ft_parse_pipe(sh, line, i);
+	else if (line[*i] == '|' && ((*i)++))
+		((t_cmd*)(sh->cmds->tail->data))->after = '|';
 	else if (line[*i] == ';' && ((*i)++))
 		((t_cmd*)(sh->cmds->tail->data))->after = ';';
 	else

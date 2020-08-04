@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 18:24:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:58 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ void	ft_parse_redir(t_sh *sh, char *line, int *i)
 	ft_parse_redir_out(sh, line, i) : 0;
 	((t_cmd*)(sh->cmds->tail->data))->redir == '2' ?
 	ft_parse_append(sh, line, i) : 0;
-}
-
-void	ft_parse_pipe(t_sh *sh, char *line, int *i)
-{
-	(void)line;
-	(void)i;
-	// ((t_cmd*)(sh->cmds->tail->data))
-	((t_cmd*)(sh->cmds->tail->data))->after = '|';
 }
 
 void	ft_exec_redir(t_sh *sh, t_cmd *cmd)

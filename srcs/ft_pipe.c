@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/30 12:50:03 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/30 12:50:03 by alienard         ###   ########.fr       */
+/*   Created: 2020/08/04 15:23:12 by alienard          #+#    #+#             */
+/*   Updated: 2020/08/04 15:23:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,24 @@
 
 int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 {
-	((t_cmd *)(cur->data))->piped_out = ((t_cmd *)(next->data));
-	((t_cmd *)(next->data))->piped_in = ((t_cmd *)(cur->data));
+	t_cmd	*tmp;
 
-	
+	tmp = ((t_cmd *)(cur->data));
+	tmp->piped_out = ((t_cmd *)(next->data));
+	((t_cmd *)(next->data))->piped_in = tmp;
+	next->prev = cur->prev;
+	if (cur->prev)
+		cur->prev->next = next;
+	else
+		sh->cmds->head = next;
 	return (0);
 }
 
 int		ft_create_pipe(t_sh *sh)
 {
-	// t_cmd	*cmd;
 	t_dlist	*cur;
 
-	// cmd = ((t_cmd *)(sh->cmds->head));
-	cur = sh->cmds->head->next;
+	cur = sh->cmds->head;
 	while (cur)
 	{
 		if (((t_cmd *)(cur->data))->after == '|')
@@ -39,6 +43,31 @@ int		ft_create_pipe(t_sh *sh)
 
 int		ft_init_pipe(t_sh *sh, t_cmd *cmd)
 {
+	(void)sh;
+	if (pipe(cmd->pipedfd) < 0)
+	{
+		ft_dprintf(2, "Pipe failed to initialize\n");
+		return (0);
+	}
+	// cmd->pipedfd[0] = cmd->piped_in->pipedfd[1];
+	// dup2(cmd->pipedfd[0], cmd->piped_in->pipedfd[1]);
+	return (1);
+}
 
+int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
+{
+	(void)sh;
+	close(cmd->pipedfd[0]);
+	dup2(cmd->pipedfd[1], STDOUT_FILENO);
+	close(cmd->pipedfd[1]);
+	return (0);
+}
+
+int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd)
+{
+	(void)sh;
+	close(cmd->pipedfd[1]); 
+	dup2(cmd->pipedfd[0], STDIN_FILENO); 
+	close(cmd->pipedfd[0]);
 	return (0);
 }

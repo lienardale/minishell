@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 13:07:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/04 16:02:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,23 +124,21 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		// Child process
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
+		else if (cmd->piped_in)
+			ft_exec_pipe_child(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
 		ft_search_n_execute(cmd->av, split_env);
 		ft_free_split(split_env);
 		if (cmd->redir)
 			(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
 	}
-	else if (pid < 0)
-	{
-		// Error forking
-		ft_dprintf(2, "Error forking\n");
-		// freeing allocated memory
-		// ft_free_double_array(args);
+	else if (pid < 0 && ft_dprintf(2, "Error forking\n"))
 		return (0);
-	}
 	else
 	{
 		// Parent process
+		if (cmd->piped_out)
+			ft_exec_pipe_parent(sh, cmd);
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
