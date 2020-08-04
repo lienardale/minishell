@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/30 11:20:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/30 12:49:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	ft_infile(t_sh *sh)
 	t_list		*begin;
 	t_dlist		*current;
 
-
 	begin = NULL;
 	quote = 0;
 	bkslh = 0;
@@ -101,6 +100,7 @@ void	ft_infile(t_sh *sh)
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
+				// ft_create_pipe();
 				current = sh->cmds->head;
 				while (current)
 				{
@@ -163,6 +163,7 @@ signal(SIGINT, ft_ctrl_c);
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
+				// ft_create_pipe();
 				current = sh->cmds->head;
 				while (current)
 				{
