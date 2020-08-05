@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 11:03:03 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 18:41:30 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,48 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 	free(av);
 	return (tab);
 }
+
+/*
+void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
+//void		ft_replace_env_var_lst(char *av, char *key, t_cmd *cmd)
+{
+	int		j;
+	int		k;
+	int		len;
+	char	*temp;
+	char	*temp_strs;
+	t_list	*temp_lst;
+	t_list	*next;
+
+	j = 0;
+	k = 0;
+	len = 0;
+	temp = (char*)lst->content;
+	while (temp[j] && (temp[j] != '$' || ft_isinquotes(temp, j)
+		|| ft_is_escaped(temp, j)))
+		j++;
+	len = ft_strlen(key);
+	k = (temp[j] == '$') ? k + 1 : k;
+	while (temp[j + k] && (temp[j + k] != '$' || ft_is_escaped(temp, j + k)
+		|| ft_isinquotes(temp, j + k)) && (!ft_isspace(temp[j + k])
+		|| ft_is_escaped(temp, j + k) || ft_isinquotes(temp, j + k)))
+		k++;
+	while (temp[j + k])
+		j++;
+	len += j;
+	temp = ft_strdup_env_var(len, temp, key);
+	temp_strs = ft_split(temp, ' ');
+	temp_lst = ft_split_to_lst(temp_strs);
+	// ft_lst_add_betw()
+	while (temp_lst)
+	{
+		next = temp_lst->next;
+		ft_lstadd_before(&cmd->argv, temp_lst, lst);
+		temp_lst = next;
+	}
+	ft_lstdel_between(&cmd->argv, lst->content, free);
+}
+ * */
 
 void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int i)
 {
@@ -92,9 +134,33 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 	char	*key_val;
 	int		i;
 	int		j;
+	t_list	*temp;
+	char	*temp_char;
 
 	i = 0;
-	// while (cmd->av)
+	temp = cmd->av;
+	// while (temp)
+	// {
+	//		j = 0;
+	//		temp_char = (char*)temp->content;
+	//		while (temp_char[j])
+	//		{
+	//	
+//				if (temp_char[j] == '$' && !ft_isinquotes(temp_char, j)
+//					&& !ft_is_escaped(temp_char, j))
+//				{
+//					key_val = NULL;
+//					key_val = ft_is_in_env(temp_char + j, sh);
+//					if (key_val)
+//					{
+//						//ft_replace_env_var_lst(temp, key_val, cmd);
+//						j = 0;
+//					}
+//				}
+	//			j++;
+	//		}
+	//		temp = temp->next;
+	// }
 	while (cmd->av[i])
 	{
 		j = 0;
