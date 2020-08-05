@@ -71,22 +71,22 @@ int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
 			write(1, "dup2 failed\n", ft_strlen("dup2 failed\n"));
 		close(cmd->pipedfd[0]);
 	}
-	return (0);
+	return (1);
 }
 
 int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd)
 {
 	(void)sh;
-	if (cmd->pipe_next)
+	if (cmd->pipe_prev)
 	{
-		close(cmd->pipedfd[0]);
-		dup2(cmd->pipedfd[1], STDIN_FILENO);
-		close(cmd->pipedfd[1]);
+		close(cmd->pipe_prev->pipedfd[1]);
+		// dup2(cmd->pipedfd[1], STDIN_FILENO);
+		close(cmd->pipe_prev->pipedfd[0]);
 	}
 	else
 	{
 		close(cmd->pipedfd[1]);
-		dup2(cmd->pipedfd[0], STDIN_FILENO); 
+		// dup2(cmd->pipedfd[0], STDIN_FILENO); 
 		close(cmd->pipedfd[0]);
 	}
 	return (0);

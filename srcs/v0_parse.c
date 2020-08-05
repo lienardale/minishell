@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 16:56:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 17:13:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	{
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
-		else if (cmd->pipe_prev)
+		else if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_child(sh, cmd);
 		ret = fn(cmd, sh);
 		exit(ret);
