@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 12:33:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 10:55:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int i)
 		j++;
 	len += j;
 	cmd->av[i] = ft_strdup_env_var(len, av, key);
+	// ft_lst_add_betw()
 }
 
 char		*ft_is_in_env(char *str, t_sh *sh)
@@ -93,9 +94,11 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 	int		j;
 
 	i = 0;
+	// while (cmd->av)
 	while (cmd->av[i])
 	{
 		j = 0;
+		//while(cmd->av->data[i])
 		while (cmd->av[i][j])
 		{
 			if (cmd->av[i][j] == '$' && !ft_isinquotes(cmd->av[i], j)
@@ -105,12 +108,15 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 				key_val = ft_is_in_env(&cmd->av[i][j], sh);
 				if (key_val)
 				{
+					//ft_replace_env_var(cmd->av->data, key_val, cmd);
 					ft_replace_env_var(cmd->av[i], key_val, cmd, i);
 					j = 0;
 				}
 			}
+			// i++;
 			j++;
 		}
+		// cmd->av = cmd->av->next
 		i++;
 	}
 }

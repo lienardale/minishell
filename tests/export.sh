@@ -12,3 +12,5 @@ echo
 # export PATH= ;
 # env | grep -v PATH
 # echo
+
+# export test="echo coucou" ; $test
