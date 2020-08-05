@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 14:16:36 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 14:28:22 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ t_list		*ft_search_env(t_list *env, char *arg);
 // int			ft_unset(char **args, t_list **env);
 char		*ft_parse_env_var(char *line, t_sh *sh);
 t_env		*ft_new_env_var(char *key, char *value);
-t_list		*ft_update_env(t_list *env, t_sh *sh);
+t_list		*ft_update_env(t_list *env, t_env *data);
 char		*ft_getcwd(void);
 
 /* replacing $ by env var before exec */

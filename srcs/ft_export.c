@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 14:22:28 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 14:35:14 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,31 +48,31 @@ static int	ft_export_check_arg(char *arg)
 static t_list	*ft_export_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
-	t_env	*env_content;
-	t_list	*temp_env;
+//	t_env	*env_content;
+//	t_list	*temp_env;
 
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	if (ft_export_check_underscore(arg))
 		return (env);
-	temp_env = ft_search_env(env, arg);
+//	temp_env = ft_search_env(env, arg);
 	// printf("temp:%s\n", arg);
 	result = ft_separate_key_value(arg);
 	// printf("result:%s\n", result->value);
-	if (temp_env)
-	{
-		env_content = (t_env*)temp_env->content;
+//	if (temp_env)
+//	{
+//		env_content = (t_env*)temp_env->content;
 // je libere la memoire de la valeur
-		free(env_content->value);
+//		free(env_content->value);
 // je mets a jour la valeur
-		env_content->value = result->value;
+//		env_content->value = result->value;
 		// printf("env_content:%s\n", env_content->value);
 // je libere la memoire de la variable temporaire sans liberer la memoire de la valeur puisque c'est ce que je voulais garder
-		free(result->key);
-		free(result);
-	}
+//		free(result->key);
+//		free(result);
+//	}
 // sinon je l'ajoute a la variable d'environnement donc je n'ai pas de memoire a liberer
-	else
-		ft_lstadd_back(&env, ft_lstnew(result));
+//	else
+//		ft_lstadd_back(&env, ft_lstnew(result));
 return (ft_update_env(env, result));
 }
 
@@ -117,7 +117,8 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 			else
 			{
 // handle malloc error
-				if (!(ft_update_env(*(sh->env), cmd->av[i])))
+//				
+				if (!(ft_export_update_env(*(sh->env), cmd->av[i])))
 				{
 					ft_free_split(cmd->av);
 // return (1); // ret = 1;
