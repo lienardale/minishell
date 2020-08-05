@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_separate_key_value.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 18:19:23 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/25 15:53:05 by cdai             ###   ########.fr       */
+/*   Updated: 2020/07/30 11:48:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_env	*ft_separate_key_value(char *env_str)
 	int		i;
 
 	i = 0;
+	// printf("env_str:%s\n", env_str);
 	while (env_str[i] && env_str[i] != '=')
 		i++;
 	if (!(result = ft_calloc(1, sizeof(*result))))

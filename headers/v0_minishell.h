@@ -6,7 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/08/05 10:57:00 by alienard         ###   ########.fr       */
+=======
+/*   Updated: 2020/07/29 18:23:19 by alienard         ###   ########.fr       */
+>>>>>>> bf17c9ce7ec224b1fe607563b4aadc783e371828
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +119,10 @@ typedef struct	s_cmd
 	int				fdin;
 	int				ret_dup;
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
-	t_dlist			*redir_in;
-	t_dlist			*redir_out;
-	struct s_cmd	*left;
-	struct s_cmd	*right;
+	// t_dlist			*redir_in;
+	// t_dlist			*redir_out;
+	struct s_cmd	*piped_in;
+	struct s_cmd	*piped_out;
 }				t_cmd;
 
 typedef struct	s_sh

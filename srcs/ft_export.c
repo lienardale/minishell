@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/24 15:27:01 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/30 11:57:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	ft_export_check_arg(char *arg)
 		else if (arg[i] == '=')
 			return (0);
 // si je trouve un charactere autre que alpha num, je sors
-		else if (!ft_isalnum(arg[i]))
-			return (1);
+		// else if (!ft_isalnum(arg[i]) && !ft_is_escaped(arg, i) && !ft_isinquotes(arg, i))
+		// 	return (1);
 		i++;
 	}
 // je retroune 0 si je valide cet argument
@@ -43,14 +43,17 @@ static t_list	*ft_update_env(t_list *env, char *arg)
 
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	temp_env = ft_search_env(env, arg);
+	// printf("temp:%s\n", arg);
 	result = ft_separate_key_value(arg);
+	// printf("result:%s\n", result->value);
 	if (temp_env)
 	{
 		env_content = (t_env*)temp_env->content;
 // je libere la memoire de la valeur
 		free(env_content->value);
 // je mets a jour la valeur
-		env_content->value = result->value;\
+		env_content->value = result->value;
+		// printf("env_content:%s\n", env_content->value);
 // je libere la memoire de la variable temporaire sans liberer la memoire de la valeur puisque c'est ce que je voulais garder
 		free(result->key);
 		free(result);
@@ -93,20 +96,24 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 	{
 		i = 0;
 		while (cmd->av[++i])
-// ici la fonction est un peu differente que pour unset alors elle est specifique
-		if (ft_export_check_arg(cmd->av[i]))
 		{
-			ret = 1;
-			ft_printf("minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
-		}
-		else
-// handle malloc error
-			if (!(ft_update_env(*(sh->env), cmd->av[i])))
+// ici la fonction est un peu differente que pour unset alors elle est specifique
+			if (ft_export_check_arg(cmd->av[i]))
 			{
-				ft_free_split(cmd->av);
-// return (1); // ret = 1;
-				return (1);
+				ret = 1;
+				ft_printf("minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
 			}
+			else
+			{
+// handle malloc error
+				if (!(ft_update_env(*(sh->env), cmd->av[i])))
+				{
+					ft_free_split(cmd->av);
+// return (1); // ret = 1;
+					return (1);
+				}
+			}
+		}
 	}
 	ft_free_split(cmd->av);
 // a mettre a jour

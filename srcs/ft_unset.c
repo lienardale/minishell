@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 09:51:54 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/20 11:37:18 by alienard         ###   ########.fr       */
+/*   Updated: 2020/07/30 10:01:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_unset_check_arg(char *arg)
 	{
 		if (i == 0 && !ft_isalpha(arg[i]))
 			return (1);
-		else if (!ft_isalnum(arg[i]))
+		else if (!ft_isalnum(arg[i]) && !ft_is_escaped(arg, i) && !ft_isinquotes(arg, i))
 			return (1);
 		i++;
 	}
