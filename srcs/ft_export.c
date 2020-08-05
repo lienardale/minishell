@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 14:35:14 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 17:12:36 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,13 @@ static t_list	*ft_export_update_env(t_list *env, char *arg)
 	if (ft_export_check_underscore(arg))
 		return (env);
 //	temp_env = ft_search_env(env, arg);
-	// printf("temp:%s\n", arg);
 	result = ft_separate_key_value(arg);
-	// printf("result:%s\n", result->value);
-//	if (temp_env)
-//	{
-//		env_content = (t_env*)temp_env->content;
-// je libere la memoire de la valeur
-//		free(env_content->value);
+	/*
+	if (temp_env)
+	{
+		env_content = (t_env*)temp_env->content;
+// je libere la memoire de la valeur 
+		free(env_content->value);
 // je mets a jour la valeur
 //		env_content->value = result->value;
 		// printf("env_content:%s\n", env_content->value);
@@ -71,8 +70,9 @@ static t_list	*ft_export_update_env(t_list *env, char *arg)
 //		free(result);
 //	}
 // sinon je l'ajoute a la variable d'environnement donc je n'ai pas de memoire a liberer
-//	else
-//		ft_lstadd_back(&env, ft_lstnew(result));
+	else
+		ft_lstadd_back(&env, ft_lstnew(result));
+*/
 return (ft_update_env(env, result));
 }
 

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 13:59:45 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/05 17:07:39 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 	/*
 	if (!args)
 	{
-		ft_free_double_array(cmd->av);
+		ft_free_double_array(args);
 		ft_lstclear(env, ft_free_env_lst);
 		ft_printf("exit\n");
-		exit(1);
+		return (0);
 	}
 */
 	while (cmd->av[i])
