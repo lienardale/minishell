@@ -1,1 +1,1 @@
-export pouet='echo coucou' ; $pouet
+ls | grep .sh

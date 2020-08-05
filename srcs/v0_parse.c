@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/04 16:00:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 16:56:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 		return (0);
 	else if (child > 0)
 	{
-		if (cmd->piped_out)
-			ft_exec_pipe_parent(sh, cmd);
+		// if (cmd->pipe_next)
+		// 	ft_exec_pipe_parent(sh, cmd);
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
@@ -72,7 +72,7 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	{
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
-		else if (cmd->piped_in)
+		else if (cmd->pipe_prev)
 			ft_exec_pipe_child(sh, cmd);
 		ret = fn(cmd, sh);
 		exit(ret);
@@ -87,8 +87,11 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	int		i;
 	int		ret;
 
-	if (cmd->piped_out && (ft_init_pipe(sh, cmd)))
-		ft_parse_cmds(cmd->piped_out, sh);
+	// printf("cmd : %s\n", cmd->cmd);
+	if (cmd->pipe_next && (ft_init_pipe(sh, cmd)))
+	{
+		ft_parse_cmds(cmd->pipe_next, sh);
+	}
 	ft_check_env_var(cmd, sh);
 	if (cmd->cmd == NULL)
 		return (1);

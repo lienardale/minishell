@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/04 16:08:35 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 15:48:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ typedef struct	s_cmd
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	// t_dlist			*redir_in;
 	// t_dlist			*redir_out;
-	struct s_cmd	*piped_in;
-	struct s_cmd	*piped_out;
+	struct s_cmd	*pipe_prev;
+	struct s_cmd	*pipe_next;
 }				t_cmd;
 
 typedef struct	s_sh

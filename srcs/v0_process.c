@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/04 16:02:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/05 17:06:05 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		// Child process
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
-		else if (cmd->piped_in)
+		else if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_child(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
 		ft_search_n_execute(cmd->av, split_env);
@@ -137,8 +137,8 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 	else
 	{
 		// Parent process
-		if (cmd->piped_out)
-			ft_exec_pipe_parent(sh, cmd);
+		// if (cmd->pipe_next)
+			// ft_exec_pipe_parent(sh, cmd);
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);

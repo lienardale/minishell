@@ -17,8 +17,8 @@ int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 	t_cmd	*tmp;
 
 	tmp = ((t_cmd *)(cur->data));
-	tmp->piped_out = ((t_cmd *)(next->data));
-	((t_cmd *)(next->data))->piped_in = tmp;
+	tmp->pipe_prev = ((t_cmd *)(next->data));
+	((t_cmd *)(next->data))->pipe_next = tmp;
 	next->prev = cur->prev;
 	if (cur->prev)
 		cur->prev->next = next;
@@ -57,17 +57,37 @@ int		ft_init_pipe(t_sh *sh, t_cmd *cmd)
 int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
 {
 	(void)sh;
-	close(cmd->pipedfd[0]);
-	dup2(cmd->pipedfd[1], STDOUT_FILENO);
-	close(cmd->pipedfd[1]);
+	if (!(cmd->pipe_next))
+	{
+		close(cmd->pipe_prev->pipedfd[0]);
+		if ((cmd->ret_dup = dup2(cmd->pipe_prev->pipedfd[1], STDOUT_FILENO)) < 0)
+			write(1, "dup2 failed\n", ft_strlen("dup2 failed\n"));
+		close(cmd->pipe_prev->pipedfd[1]);
+	}
+	else
+	{
+		close(cmd->pipedfd[1]);
+		if ((cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO)) < 0)
+			write(1, "dup2 failed\n", ft_strlen("dup2 failed\n"));
+		close(cmd->pipedfd[0]);
+	}
 	return (0);
 }
 
 int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd)
 {
 	(void)sh;
-	close(cmd->pipedfd[1]); 
-	dup2(cmd->pipedfd[0], STDIN_FILENO); 
-	close(cmd->pipedfd[0]);
+	if (cmd->pipe_next)
+	{
+		close(cmd->pipedfd[0]);
+		dup2(cmd->pipedfd[1], STDIN_FILENO);
+		close(cmd->pipedfd[1]);
+	}
+	else
+	{
+		close(cmd->pipedfd[1]);
+		dup2(cmd->pipedfd[0], STDIN_FILENO); 
+		close(cmd->pipedfd[0]);
+	}
 	return (0);
 }

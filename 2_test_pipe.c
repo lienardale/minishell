@@ -7,6 +7,8 @@
   {
 	  (void)argc;
 	  (void)argv;
+	  pid_t	wpid;
+	int		status;
    /* create the pipe */
    int pfd[2];
    if (pipe(pfd) == -1)
@@ -14,9 +16,10 @@
        printf("pipe failed\n");
        return 1;
      }
-  char *str[2];
+  char *str[3];
   str[0] = "grep";
   str[1] = ".sh";
+  str[2] = NULL;
    /* create the child */
    int pid;
    if ((pid = fork()) < 0)
@@ -25,24 +28,10 @@
        return 2;
      }
  
-   if (pid > 0)
+   if (pid == 0)
      {
-       /* child */
-       close(pfd[1]); /* close the unused write side */
-       dup2(pfd[0], 0); /* connect the read side with stdin */
-       close(pfd[0]); /* close the read side */
-       /* execute the process (wc command) */
-       execlp("wc", "wc", (char *)0);
-	//    str[0] = "grep";
-	   (void)env;
-		// execve("/usr/bin/grep", str, env);
-       printf("wc failed\n"); /* if execlp returns, it's an error */
-       return 3;
-     }
-   else
-     {
-       /* parent */
-	   wait(NULL);
+	   /* child */
+	   printf("child goes BRAAA\n\n");
        close(pfd[0]); /* close the unused read side */
        dup2(pfd[1], 1); /* connect the write side with stdout */
        close(pfd[1]); /* close the write side */
@@ -53,6 +42,23 @@
 	//    execve("/usr/bin/ls", str, env);
        printf("ls failed"); /* if execlp returns, it's an error */
        return 4;
+     }
+   else
+     {
+      
+	    wpid = waitpid(pid, &status, WUNTRACED);
+	   printf("parent goes YIIIIII\n\n");
+       /* parent */
+       close(pfd[1]); /* close the unused write side */
+       dup2(pfd[0], 0); /* connect the read side with stdin */
+       close(pfd[0]); /* close the read side */
+       /* execute the process (wc command) */
+       execlp("grep", "grep", str[1], (char *)0);
+	//    str[0] = "grep";
+	   (void)env;
+		// execve("/usr/bin/", str, env);
+       printf("child failed\n\n"); /* if execlp returns, it's an error */
+       return 3;
      }
    return 0;
   }

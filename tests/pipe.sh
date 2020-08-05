@@ -2,7 +2,7 @@ echo
 echo "--- TESTS | ---"
 echo
 
-# echo | echo coucou
+echo | echo coucou
 
 ls | grep .sh
 
