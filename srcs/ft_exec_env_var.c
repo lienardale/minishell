@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 18:41:30 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/07 16:51:30 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,19 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 		tab[i[1]++] = key[i[3]++];
 	while (av[i[0] + i[2]])
 		tab[i[1]++] = av[i[0]++ + i[2]];
+	tab[i[1]] = '\0';
 	free(av);
 	return (tab);
 }
 
-/*
+
 void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
-//void		ft_replace_env_var_lst(char *av, char *key, t_cmd *cmd)
 {
 	int		j;
 	int		k;
 	int		len;
 	char	*temp;
-	char	*temp_strs;
+	char	**temp_strs;
 	t_list	*temp_lst;
 	t_list	*next;
 
@@ -68,10 +68,11 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	while (temp[j + k])
 		j++;
 	len += j;
-	temp = ft_strdup_env_var(len, temp, key);
+	// ft_lst_add_betw()
+	lst->content = ft_strdup_env_var(len, temp, key);
+	temp = lst->content;
 	temp_strs = ft_split(temp, ' ');
 	temp_lst = ft_split_to_lst(temp_strs);
-	// ft_lst_add_betw()
 	while (temp_lst)
 	{
 		next = temp_lst->next;
@@ -80,7 +81,6 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	}
 	ft_lstdel_between(&cmd->argv, lst->content, free);
 }
- * */
 
 void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int i)
 {
@@ -104,7 +104,6 @@ void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int i)
 		j++;
 	len += j;
 	cmd->av[i] = ft_strdup_env_var(len, av, key);
-	// ft_lst_add_betw()
 }
 
 char		*ft_is_in_env(char *str, t_sh *sh)
@@ -138,51 +137,30 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 	char	*temp_char;
 
 	i = 0;
-	temp = cmd->av;
-	// while (temp)
-	// {
-	//		j = 0;
-	//		temp_char = (char*)temp->content;
-	//		while (temp_char[j])
-	//		{
-	//	
-//				if (temp_char[j] == '$' && !ft_isinquotes(temp_char, j)
-//					&& !ft_is_escaped(temp_char, j))
-//				{
-//					key_val = NULL;
-//					key_val = ft_is_in_env(temp_char + j, sh);
-//					if (key_val)
-//					{
-//						//ft_replace_env_var_lst(temp, key_val, cmd);
-//						j = 0;
-//					}
-//				}
-	//			j++;
-	//		}
-	//		temp = temp->next;
-	// }
-	while (cmd->av[i])
+	temp = cmd->argv;
+	while (temp)
 	{
 		j = 0;
-		//while(cmd->av->data[i])
-		while (cmd->av[i][j])
+		temp_char = (char*)temp->content;
+//printf("temp_char in ft_check_env_var : %s\n", temp_char);
+		while (temp_char[j])
 		{
-			if (cmd->av[i][j] == '$' && !ft_isinquotes(cmd->av[i], j)
-				&& !ft_is_escaped(cmd->av[i], j))
+			if (temp_char[j] == '$' && !ft_isinquotes(temp_char, j)
+				&& !ft_is_escaped(temp_char, j))
 			{
 				key_val = NULL;
-				key_val = ft_is_in_env(&cmd->av[i][j], sh);
+				key_val = ft_is_in_env(temp_char + j, sh);
 				if (key_val)
 				{
-					//ft_replace_env_var(cmd->av->data, key_val, cmd);
-					ft_replace_env_var(cmd->av[i], key_val, cmd, i);
-					j = 0;
+					ft_replace_env_var_lst(temp, key_val, cmd);
+					temp = cmd->argv;
+					temp_char = (char*)temp->content;
+					j = -1;
 				}
 			}
-			// i++;
 			j++;
 		}
-		// cmd->av = cmd->av->next
-		i++;
+		temp = temp->next;
 	}
+	cmd->av = ft_lst_to_split(cmd->argv);
 }
