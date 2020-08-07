@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 16:35:06 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/07 16:46:02 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct	s_cmd
 {
 	t_list			**env;
 	int				ac;
-	t_list			**argv;
+	t_list			*argv;
 	char			**av;
 	char			*cmd;
 	int				pos;
