@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/08/05 16:34:50 by cdai             ###   ########.fr        #
+#    Updated: 2020/08/10 11:12:26 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,4 +158,12 @@ cdai:
 leak:
 	valgrind --leak-check=full --show-leak-kinds=all ./minishell;
 
-.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak
+ifeq (search,$(firstword $(MAKECMDGOALS)))
+    RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+    $(eval $(RUN_ARGS):;@:)
+endif
+
+search:
+	grep $(RUN_ARGS) srcs/*.c libft/*/*.c
+
+.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak search
