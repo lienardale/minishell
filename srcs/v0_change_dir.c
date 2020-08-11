@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 17:09:03 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/11 16:14:51 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,45 +40,37 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 
 	chdir_value = -1;
 	if (!(oldpwd = ft_getcwd()))
+// message error ?
 		return (1);
-// faire . et .. ?
+// faire . et .. ? automatique
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
 	{
 		if (!(home = ft_search_env(*(sh->env), "HOME")))
 		{
-			ft_printf("minishell: cd: HOME not set\n");
+			ft_dprintf(2, "minishell: cd: HOME not set\n");
 ft_free_split(cmd->av);
 			return (1);
 		}
 // if (home)
 		chdir_value = chdir(((t_env*)home->content)->value);
 	}
-	else if (cmd->av[1] && cmd->av[2])
-		chdir_value = -2;
 	else
 		chdir_value = chdir(cmd->av[1]);
 //	(void)env;
 // change pwd et oldpwd dans env
-	if (chdir_value == -2)
+	if (chdir_value)
 	{
-		ft_putstr_fd("Too much arguments\n", 0);
-		ft_free_split(cmd->av);
-		return (1);
-	}
-	else if (chdir_value)
-	{
-		ft_putstr_fd("No such file or directory: ", 0);
-		ft_putstr_fd(cmd->av[1], 0);
-		ft_putchar_fd('\n', 0);
+		ft_dprintf(2, "No such file or directory: %s\n", cmd->av[1]);
 		ft_free_split(cmd->av);
 		return (1);
 	}
 	if (!ft_change_dir_update(sh->env, oldpwd))
 	{
 	ft_free_split(cmd->av);
+	ft_dprintf(2, "malloc error\n");
 		return (1);
 	}
 	free(oldpwd);
 ft_free_split(cmd->av);
-	return (1);
+	return (0);
 }
