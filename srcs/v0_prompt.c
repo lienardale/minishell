@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 12:36:40 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/11 12:09:30 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,9 +146,12 @@ signal(SIGQUIT, ft_ctrl_backslash);
 signal(SIGINT, ft_ctrl_c);
 	if (sh->fd == 0)
 			write(1,prompt,ft_strlen(prompt));
-	while (sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end
-		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
+	while (//sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end && 
+		(sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+if (sh->ret_sh == 0)
+//	write(1, "exit\n", 5);
+ft_exit(NULL, sh);
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
@@ -178,6 +181,4 @@ signal(SIGINT, ft_ctrl_c);
 			write(1, prompt, ft_strlen(prompt));
 		// ft_free_ptr(sh.line);
 	}
-if (sh->ret_sh == 0)
-	write(1, "exit\n", 5);
 }
