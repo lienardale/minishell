@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/11 12:05:18 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/11 14:24:02 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 	int		i;
 	int		return_value;
 
-	i = -1;
-	while (cmd->av[++i])
-		printf("%s\n", cmd->av[i]);
 	i = 0;
 	if (!cmd)
 	{

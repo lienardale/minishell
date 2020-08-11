@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 18:48:29 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/11 18:40:45 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	pid_t	child;
 	pid_t	wpid;
 	int		status;
-	int		ret;
+//	int		ret;
 
 	child = fork();
 	if (child < 0)
@@ -67,20 +67,25 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	}
 	else if (child > 0)
 	{
+	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
-		return (1);
+	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+		return (sh->ret_cmd);
 	}
 	else
 	{
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
-		ret = fn(cmd, sh);
-		exit(ret);
-		return (ret);
+//		ret = fn(cmd, sh);
+		sh->ret_cmd = fn(cmd, sh);
+//		exit(ret);
+	printf("je suis dans l'enfant, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+		exit(sh->ret_cmd);
+		return (sh->ret_cmd);
 	}
-	return (1);
+	return (sh->ret_cmd);
 }
 
 int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
@@ -88,7 +93,7 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	char	**builtins;
 	int		i;
 	int		pipefd[2];
-	int		ret;
+//	int		ret;
 
 	ft_check_env_var(cmd, sh);
 //	// cmd->av = ft_lst_to_split(cmd->argv, free);
@@ -113,9 +118,9 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
-			ret = ft_blt_process(sh, cmd, sh->blt_fct[i]);
+			sh->ret_cmd = ft_blt_process(sh, cmd, sh->blt_fct[i]);
 			ft_free_double_array(builtins);
-			return (ret);
+			return (sh->ret_cmd);
 		}
 	}
 	ft_free_double_array(builtins);

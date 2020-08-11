@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/20 11:32:09 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/11 14:25:12 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int	ft_pwd(t_cmd *cmd, t_sh *sh)
 	ft_printf("%s\n", cwd);
 	free(cwd);
 	ft_free_split(cmd->av);
-	return (1);
+	return (0);
 }

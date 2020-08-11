@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/11 12:09:30 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/11 14:35:04 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,10 @@ ft_exit(NULL, sh);
 				ft_dlst_del(sh->cmds);
 			}
 		}
+		/*
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
+		 * */
 		if (sh->fd == 0)
 			write(1, prompt, ft_strlen(prompt));
 		// ft_free_ptr(sh.line);
