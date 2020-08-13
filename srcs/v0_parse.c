@@ -71,8 +71,10 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
+	printf("ceci est la valeur de status :%d \n", status);
 	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
-		return (sh->ret_cmd);
+// la valeur de retour de la fonction est sur le 2eme octet, donc il faut tout diviser par 256
+		return (status / 256);
 	}
 	else
 	{
@@ -105,20 +107,25 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	if (cmd->cmd == NULL) // empty cmd entered
 		return (1);
 	i = -1;
+// pour ne pas faire d'enfant (fork)
 	if (ft_strcmp(cmd->cmd, "exit") == 0)
 		return (ft_exit(cmd, sh));
+	/*
 	if (ft_strcmp(cmd->cmd, "cd") == 0)
 		return (ft_change_dir(cmd, sh));
 	if (ft_strcmp(cmd->cmd, "export") == 0)
 		return (ft_export(cmd, sh));
 	if (ft_strcmp(cmd->cmd, "unset") == 0)
 		return (ft_unset(cmd, sh));
-	builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
+*/
+builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
 	while (builtins[++i])
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
+printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 			sh->ret_cmd = ft_blt_process(sh, cmd, sh->blt_fct[i]);
+printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 			ft_free_double_array(builtins);
 			return (sh->ret_cmd);
 		}

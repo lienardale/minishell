@@ -199,7 +199,7 @@ int			ft_exit(t_cmd *cmd, t_sh *sh);
 
 /* execve functions */
 
-void		ft_search_n_execute(char **args, char **env);
+int			ft_search_n_execute(char **args, char **env);
 char		*ft_get_abspath_filename(char *exec, char **env);
 char		*ft_findexec(char *path, char *exec);
 char		*ft_get_onlypaths(char **env);
