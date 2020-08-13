@@ -79,11 +79,12 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 	return (result);
 }
 
-void	ft_search_n_execute(char **args, char **env)
+int		ft_search_n_execute(char **args, char **env)
 {
 	int		exec_start;
 	char	*exec;
 	char	*temp;
+	int		ret_cmd;
 
 	exec = NULL;
 	temp = args[0];
@@ -99,7 +100,7 @@ void	ft_search_n_execute(char **args, char **env)
 		ft_dprintf(2, "minishell: command not found: |%s|\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
-	if (execve(args[0], args, env) == -1)
+	if ((ret_cmd = execve(args[0], args, env)) == -1)
 	{
 		free(args[0]);
 		args[0] = temp;
@@ -108,6 +109,7 @@ void	ft_search_n_execute(char **args, char **env)
 	}
 	free(args[0]);
 	args[0] = temp;
+	return (ret_cmd);
 }
 
 int			ft_process(t_cmd *cmd, t_sh *sh)
@@ -125,10 +127,11 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
-		ft_search_n_execute(cmd->av, split_env);
+		status = ft_search_n_execute(cmd->av, split_env);
 		ft_free_split(split_env);
 		if (cmd->redir)
 			(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
+		return (status);
 	}
 	else if (pid < 0)
 	{
@@ -144,6 +147,7 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
+		return (status / 256);
 		// freeing allocated memory
 		// ft_free_double_array(args);
 	}

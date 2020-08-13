@@ -24,7 +24,7 @@ int	main(int ac, char **av, char **env)
 	if (!(env_lst = ft_start_minishell(env)))
 		return (EXIT_FAILURE);
 	sh = (t_sh) {
-			.fd = fd, .line = NULL, .ret_cmd = 1,
+			.fd = fd, .line = NULL, .ret_cmd = 0,
 			.ret_sh = 1, .blt_fct = builtin_fct,
 			.cmds = NULL, .env = &env_lst};
 	if (ac != 1)
