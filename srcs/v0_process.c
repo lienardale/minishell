@@ -98,7 +98,7 @@ int		ft_search_n_execute(char **args, char **env)
 	{
 		args[0] = temp;
 		ft_dprintf(2, "minishell: command not found: |%s|\n", args[0]);
-		exit(EXIT_FAILURE);
+		exit(127);
 	}
 	if ((ret_cmd = execve(args[0], args, env)) == -1)
 	{
@@ -147,7 +147,17 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
+int temp1 = WIFEXITED(status);
+int temp2 = WIFSIGNALED(status);
+//int temp3 = status;
+printf("%d, %d, %d\n", temp1, temp2, status);
+		if (WIFEXITED(status))
 		return (status / 256);
+		else if (WIFSIGNALED(status))
+		{
+			ft_dprintf(2, "Terminated: %d\n", status);
+		return (status + 128);
+		}
 		// freeing allocated memory
 		// ft_free_double_array(args);
 	}

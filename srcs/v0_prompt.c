@@ -120,7 +120,7 @@ void	ft_ctrl_c(int sig)
 {
 	(void)sig;
 	write(0, "\n", 1);
-	write(1, PROMPT, ft_strlen(PROMPT));
+//	write(1, PROMPT, ft_strlen(PROMPT));
 }
 
 void	ft_ctrl_backslash(int sig)
