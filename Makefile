@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/08/10 11:12:26 by marvin           ###   ########.fr        #
+#    Updated: 2020/08/14 14:27:34 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ _SRCS		= v0_minishell.c \
 				ft_parse_env_var.c \
 				ft_new_env_var.c \
 				ft_update_env.c \
-				ft_getcwd.c
+				ft_getcwd.c \
+				ft_signal.c
 
 SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
 OBJS			= $(SRCS:.c=.o)

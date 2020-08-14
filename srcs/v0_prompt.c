@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/11 14:35:04 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/14 16:35:55 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,18 +116,6 @@ void	ft_infile(t_sh *sh)
 	}
 }
 
-void	ft_ctrl_c(int sig)
-{
-	(void)sig;
-	write(0, "\n", 1);
-//	write(1, PROMPT, ft_strlen(PROMPT));
-}
-
-void	ft_ctrl_backslash(int sig)
-{
-	(void)sig;
-}
-
 void	ft_prompt(t_sh *sh)
 {
 	char		*prompt;
@@ -142,45 +130,53 @@ void	ft_prompt(t_sh *sh)
 	quote = 0;
 	bkslh = 0;
 	prompt = PROMPT;
-signal(SIGQUIT, ft_ctrl_backslash);
-signal(SIGINT, ft_ctrl_c);
+	ft_signal(SIGQUIT, ON);
+	ft_signal(SIGINT, ON);
 	if (sh->fd == 0)
 			write(1,prompt,ft_strlen(prompt));
 	while (//sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end && 
 		(sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-if (sh->ret_sh == 0)
+if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
 //	write(1, "exit\n", 5);
 ft_exit(NULL, sh);
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
-		if (sh->line[comment] != '#') // so that we can comment lines -> /!\ need do handle "echo coucou #; ls"
+		if (sh->line[comment] != '#'// so that we can comment lines -> /!\ need do handle "echo coucou #; ls"
+			)
 		{
 			// sh->line = ft_parse_env_var(sh->line, sh);
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			prompt = (quote == 0) ? PROMPT : QPROMPT;
-			if (!quote)
+			sh->line = NULL;
+			if (!quote && sh->ret_sh)
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
 				current = sh->cmds->head;
 				while (current)
 				{
+					ft_signal(SIGINT, OFF);
+					ft_signal(SIGQUIT, OFF);
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
 				ft_dlst_del(sh->cmds);
+				begin = NULL;
 			}
 		}
+		ft_signal(SIGQUIT, ON);
+		ft_signal(SIGINT, ON);
 		/*
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
 		 * */
-		if (sh->fd == 0)
+		if (sh->fd == 0 && sh->ret_sh > 0 && !begin)
 			write(1, prompt, ft_strlen(prompt));
+		
 		// ft_free_ptr(sh.line);
 	}
 }

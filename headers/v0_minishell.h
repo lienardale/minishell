@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/07 16:46:02 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/14 14:33:09 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,13 @@
 #  define BUILTINS &ft_exit, &ft_echo, &ft_pwd, &ft_env, &ft_change_dir, &ft_export, &ft_unset
 # endif
 
+# ifndef ON
+#  define ON 1
+# endif
+
+# ifndef OFF
+#  define OFF 0
+# endif
 
 /*
 typedef struct	s_env
@@ -230,5 +237,9 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh);
 char		*ft_is_in_env(char *str, t_sh *sh);
 void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i);
 char		*ft_strdup_env_var(int len, char *av, char *key);
+
+/* signal*/
+
+void		ft_signal(int sig, int is_on);
 
 # endif
