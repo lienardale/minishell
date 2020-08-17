@@ -103,6 +103,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -114,11 +115,11 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-total 352
-drwxr-xr-x  26 alienard  2019_paris     884 17 aoû 18:24 .
+total 360
+drwxr-xr-x  27 alienard  2019_paris     918 17 aoû 18:40 .
 drwxr-xr-x  23 alienard  2019_paris     782  4 aoû 14:03 ..
 -rw-------   1 alienard  2019_paris   12288 17 aoû 15:33 .brouillon.txt.swp
-drwxr-xr-x  13 alienard  2019_paris     442  5 aoû 17:45 .git
+drwxr-xr-x  13 alienard  2019_paris     442 17 aoû 18:33 .git
 -rw-r--r--   1 alienard  2019_paris     186  4 aoû 14:03 .gitignore
 drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 .idea
 drwxr-xr-x   4 alienard  2019_paris     136  5 aoû 14:16 .vscode
@@ -130,6 +131,7 @@ drwxr-xr-x   4 alienard  2019_paris     136  5 aoû 14:16 .vscode
 -rw-r--r--   1 alienard  2019_paris      12  4 aoû 14:03 README.md
 -rwxr-xr-x   1 alienard  2019_paris    8828  5 aoû 17:50 a.out
 drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 cmake-build-debug
+-rw-r--r--   1 alienard  2019_paris      40 17 aoû 18:35 error.txt
 drwxr-xr-x   3 alienard  2019_paris     102  4 aoû 14:03 hardcore_tests
 drwxr-xr-x   3 alienard  2019_paris     102  5 aoû 15:47 headers
 drwxr-xr-x  17 alienard  2019_paris     578  5 aoû 15:16 libft
@@ -139,7 +141,7 @@ drwxr-xr-x  69 alienard  2019_paris    2346 17 aoû 18:24 srcs
 -rw-r--r--   1 alienard  2019_paris      67  4 aoû 14:03 test.sh
 -rw-r--r--   1 alienard  2019_paris    5680  5 aoû 12:11 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris    2492  4 aoû 14:03 test_redir.c
-drwxr-xr-x  28 alienard  2019_paris     952 17 aoû 18:24 tests
+drwxr-xr-x  28 alienard  2019_paris     952 17 aoû 18:42 tests
 -rw-r--r--   1 alienard  2019_paris      71  4 aoû 14:03 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -172,6 +174,11 @@ coucou
 /Users/alienard/Documents/42_cursus/handle_pipe/libft
 /Users/alienard/Documents/42_cursus/handle_pipe
 
+--- TESTS env ---
+
+PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/goinfre/miniconda3/bin:/Users/alienard/.brew/bin:/Users/alienard/.brew/bin::/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+SHLVL=4
+
 --- TESTS export ---
 
 0 : 		salut
@@ -200,6 +207,10 @@ expected : 	salut
 
 11 : 		expected : 	 ec\ ho : command not found
 
+
+--- TESTS unset ---
+
+coucou=salut
 --- TESTS ; ---
 2_test_pipe.c
 2_test_redir.c
@@ -209,6 +220,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -228,6 +240,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -247,6 +260,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -266,6 +280,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -299,6 +314,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -347,6 +363,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -366,6 +383,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -389,6 +407,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -409,6 +428,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -437,6 +457,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -470,6 +491,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -491,6 +513,7 @@ Makefile$
 README.md$
 a.out$
 cmake-build-debug$
+error.txt$
 hardcore_tests$
 headers$
 libft$
@@ -512,6 +535,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -550,6 +574,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -598,6 +623,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -622,6 +648,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -648,6 +675,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -671,6 +699,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -691,6 +720,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -715,6 +745,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -735,6 +766,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -758,6 +790,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -782,6 +815,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -803,6 +837,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -827,6 +862,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -851,6 +887,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -877,6 +914,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -902,6 +940,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -924,6 +963,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -948,6 +988,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -969,6 +1010,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -993,6 +1035,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -1017,6 +1060,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -1039,6 +1083,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -1060,6 +1105,7 @@ Makefile
 README.md
 a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft

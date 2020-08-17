@@ -21,3 +21,8 @@ ls | ls | ls
 # export coucou=salut ;
 # env | grep coucou
 # echo
+
+# echo
+# echo 7
+# echo
+# echo coucou > 0test.log 1test.log 2test.log > 3test.log

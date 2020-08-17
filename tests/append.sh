@@ -7,7 +7,6 @@ echo
 echo coucou >> test0.log
 ls
 cat test0.log
-# rm test0.log
 
 echo
 echo 1
@@ -32,7 +31,6 @@ echo
 ls >> test0.log
 ls
 cat test0.log
-# rm test0.log
 
 echo
 echo 4

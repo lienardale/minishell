@@ -8,6 +8,7 @@
 |ec ho|: command not found
 |ec ho|: command not found
 |ec\ ho|: command not found
+|ls|: command not found
 | ls|: command not found
 |echo -n|: command not found
 ls: coucou: No such file or directory

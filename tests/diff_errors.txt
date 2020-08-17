@@ -1,4 +1,4 @@
-1,12c1,12
+1,13c1,13
 < |$cou$bon|: command not found
 < |$cou$bon|: command not found
 < |'echo'|: command not found
@@ -9,6 +9,7 @@
 < |ec ho|: command not found
 < |ec ho|: command not found
 < |ec\ ho|: command not found
+< |ls|: command not found
 < | ls|: command not found
 < |echo -n|: command not found
 ---
@@ -22,9 +23,10 @@
 > tests/export.sh: line 55: ec ho: command not found
 > tests/export.sh: line 60: ec ho: command not found
 > tests/export.sh: line 65: ec\ ho: command not found
+> tests/unset.sh: line 13: ls: No such file or directory
 > tests/backslash.sh: line 14:  ls: command not found
 > tests/backslash.sh: line 22: echo -n: command not found
-21c21
+22c22
 < minishell: 0test.log: No such file or directory
 ---
 > tests/redir_in.sh: line 33: 0test.log: No such file or directory
