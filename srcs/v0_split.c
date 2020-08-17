@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/04 15:59:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/17 15:25:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	tmp_av = ft_split_quote(tmp, ' ');
 	free(tmp);
 	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
-	*i = -1;
-	while (cmd->av[++(*i)])
-		cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
+	// *i = -1;
+	// while (cmd->av[++(*i)])
+	// 	cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
 	cmd->ac = ft_double_strlen(cmd->av);
 	cmd->cmd= ft_strdup(cmd->av[0]);
 	*i = j;

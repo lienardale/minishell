@@ -25,7 +25,7 @@
    if ((pid = fork()) < 0)
      {
        printf("fork failed\n");
-       return 2;
+       return 1;
      }
  
    if (pid == 0)
@@ -41,7 +41,7 @@
 	//     str[1] = NULL;
 	//    execve("/usr/bin/ls", str, env);
        printf("ls failed"); /* if execlp returns, it's an error */
-       return 4;
+       return 0;
      }
    else
      {
@@ -58,7 +58,7 @@
 	   (void)env;
 		// execve("/usr/bin/", str, env);
        printf("child failed\n\n"); /* if execlp returns, it's an error */
-       return 3;
+       return 0;
      }
    return 0;
   }

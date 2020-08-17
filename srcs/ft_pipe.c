@@ -57,7 +57,7 @@ int		ft_init_pipe(t_sh *sh, t_cmd *cmd)
 int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
 {
 	(void)sh;
-	if (!(cmd->pipe_next))
+	if (cmd->pipe_next == NULL)
 	{
 		close(cmd->pipe_prev->pipedfd[0]);
 		if ((cmd->ret_dup = dup2(cmd->pipe_prev->pipedfd[1], STDOUT_FILENO)) < 0)
@@ -81,13 +81,13 @@ int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd)
 	{
 		close(cmd->pipe_prev->pipedfd[1]);
 		// dup2(cmd->pipedfd[1], STDIN_FILENO);
-		close(cmd->pipe_prev->pipedfd[0]);
+		// close(cmd->pipe_prev->pipedfd[0]);
 	}
 	else
 	{
-		close(cmd->pipedfd[1]);
+		// close(cmd->pipedfd[1]);
 		// dup2(cmd->pipedfd[0], STDIN_FILENO); 
-		close(cmd->pipedfd[0]);
+		// close(cmd->pipedfd[0]);
 	}
 	return (0);
 }

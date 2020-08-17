@@ -6,17 +6,64 @@ echo
 # env | grep coucou
 # echo
 
+echo -n 0 : \	\	
 export cou=ec ; export bon=ho ; $cou$bon salut
+echo "expected : 	salut"
+echo
 
-# $coucou salut
+echo -n 1 : \	\	
+export cou=ec ; export bon=ho ; "$cou$bon" salut
+echo "expected : 	salut"
+echo
 
-# av[0] = |$coucou|
-# av[1] = |salut|
+echo -n 2 : \	\	
+export cou=ec ; export bon=ho ; '$cou$bon' salut
+echo "expected : 	 \$cou\$bon : command not found"
+echo
 
-# ->
+echo -n 3 : \	\	
+export cou=ec ; export bon=ho ; \$cou\$bon salut
+echo "expected : 	 \$cou\$bon : command not found"
+echo
 
-# av[0] = |salut|
+echo -n 4 : \	\	
+export cou=ec ; export bon=ho ; \'$cou$bon\' salut
+echo "expected : 	 'echo' : command not found"
+echo
 
+echo -n 5 : \	\	
+export cou=ec ; export bon=ho ; \"$cou$bon\" salut
+echo "expected : 	 \"echo\" : command not found"
+echo
+
+echo -n 6 : \	\	
+export cou=ec ; export bon=ho ; "\$cou\$bon" salut
+echo "expected : 	 \$cou\$bon : command not found"
+echo
+
+echo -n 7 : \	\	
+export cou=ec ; export bon=ho ; '\$cou\$bon' salut
+echo "expected : 	 \\\$cou\\\$bon : command not found"
+echo
+
+echo -n 8 : \	\	
+export cou=ec ; export bon=ho ; $cou $bon salut
+echo "expected : 	 ec : command not found"
+echo
+
+echo -n 9 : \	\	
+export cou=ec ; export bon=ho ; "$cou $bon" salut
+echo "expected : 	 ec ho : command not found"
+echo
+
+echo -n 10 : \	\	
+export cou=ec ; export bon=ho ; $cou\ $bon salut
+echo "expected : 	 ec ho : command not found"
+echo
+
+echo -n 11 : \	\	
+export cou=ec ; export bon=ho ; "$cou\ $bon" salut
+echo "expected : 	 ec\\ ho : command not found"
 echo
 
 # export PATH= ;

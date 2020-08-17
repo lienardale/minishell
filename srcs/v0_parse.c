@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 17:13:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/17 15:26:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		ft_exec_append(t_sh *sh, t_cmd *cmd)
 
 int		ft_exec_redir_in(t_sh *sh, t_cmd *cmd)
 {
-	cmd->fdin = open(cmd->file_redir, O_RDONLY) == -1;
+	cmd->fdin = open(cmd->file_redir, O_RDONLY);
 	if ((cmd->ret_dup = dup2(cmd->fdin, STDIN_FILENO)) < 0)
 		return (ft_exit((t_cmd*)(sh->cmds->head), sh));
 	return (1);
@@ -61,8 +61,8 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 		return (0);
 	else if (child > 0)
 	{
-		// if (cmd->pipe_next)
-		// 	ft_exec_pipe_parent(sh, cmd);
+		if (cmd->pipe_prev || cmd->pipe_next)
+			ft_exec_pipe_parent(sh, cmd);
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
@@ -70,10 +70,10 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	}
 	else
 	{
+		if (cmd->pipe_prev || cmd->pipe_next)
+			ft_exec_pipe_child(sh, cmd);
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
-		else if (cmd->pipe_prev || cmd->pipe_next)
-			ft_exec_pipe_child(sh, cmd);
 		ret = fn(cmd, sh);
 		exit(ret);
 		return (ret);
@@ -89,10 +89,15 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 
 	// printf("cmd : %s\n", cmd->cmd);
 	if (cmd->pipe_next && (ft_init_pipe(sh, cmd)))
-	{
 		ft_parse_cmds(cmd->pipe_next, sh);
-	}
+		
 	ft_check_env_var(cmd, sh);
+	
+	i = -1;
+	while (cmd->av[++i])
+		cmd->av[i] = ft_strdup_clean(cmd->av[i]);
+	cmd->cmd= ft_strdup(cmd->av[0]);
+	
 	if (cmd->cmd == NULL)
 		return (1);
 	i = -1;
