@@ -2,48 +2,58 @@ echo
 echo "--- TESTS | ---"
 echo
 
-echo "expected output : coucou"
+echo "0 : expected output : coucou"
 echo "coucou
 bonjour
 salut" | grep coucou
 echo
 
-echo "expected output : coucou"
+echo "1 : expected output : coucou"
 echo | echo coucou
 echo
 
-# echo "expected output : coucou$"
-# echo | echo coucou | cat -e
-# echo
+echo "2 : expected output : coucou$"
+echo | echo coucou | cat -e
+echo
 
-echo "expected output : coucou"
+echo "3 : expected output : coucou"
 ls | echo coucou
 echo
 
-echo "expected output : ls output"
+echo "4 : expected output : ls output"
 echo coucou | ls
 echo
 
-echo "expected output : ls output with $"
+echo "5 : expected output : ls output with $"
 ls | cat -e
 echo
 
-echo "expected output : ls sorted output"
+echo "6 : expected output : ls sorted output"
 ls | sort
 echo
 
-echo "expected output : .sh files"
+echo "7 : expected output : .sh files"
 ls | grep .sh
 echo
 
-echo "expected output : sorted .sh files"
+echo "10 : expected output : one ls output"
+ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls 
+echo 
+
+echo "8 : expected output : sorted .sh files"
 ls | grep .sh | sort
 echo
 
-# echo "expected output : sorted .sh files with $"
-# ls | grep .sh | sort | cat -e
-# echo
+echo "9 : expected output : sorted .sh files with $"
+ls | grep .sh | sort | cat -e
+echo
 
-# echo "expected output : one ls output"
-# ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls 
-# echo 
+echo "11 : expected output :	bonjour
+			coucou
+			salut
+			salut"
+echo "salut
+coucou
+bonjour
+salut" | sort
+echo

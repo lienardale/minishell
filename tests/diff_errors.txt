@@ -23,7 +23,7 @@
 > tests/export.sh: line 55: ec ho: command not found
 > tests/export.sh: line 60: ec ho: command not found
 > tests/export.sh: line 65: ec\ ho: command not found
-> tests/unset.sh: line 13: ls: No such file or directory
+> tests/unset.sh: line 12: ls: No such file or directory
 > tests/backslash.sh: line 14:  ls: command not found
 > tests/backslash.sh: line 22: echo -n: command not found
 22c22

@@ -115,11 +115,10 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-total 360
-drwxr-xr-x  27 alienard  2019_paris     918 17 aoû 18:40 .
+total 336
+drwxr-xr-x  26 alienard  2019_paris     884 17 aoû 18:44 .
 drwxr-xr-x  23 alienard  2019_paris     782  4 aoû 14:03 ..
--rw-------   1 alienard  2019_paris   12288 17 aoû 15:33 .brouillon.txt.swp
-drwxr-xr-x  13 alienard  2019_paris     442 17 aoû 18:33 .git
+drwxr-xr-x  15 alienard  2019_paris     510 18 aoû 09:23 .git
 -rw-r--r--   1 alienard  2019_paris     186  4 aoû 14:03 .gitignore
 drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 .idea
 drwxr-xr-x   4 alienard  2019_paris     136  5 aoû 14:16 .vscode
@@ -141,7 +140,7 @@ drwxr-xr-x  69 alienard  2019_paris    2346 17 aoû 18:24 srcs
 -rw-r--r--   1 alienard  2019_paris      67  4 aoû 14:03 test.sh
 -rw-r--r--   1 alienard  2019_paris    5680  5 aoû 12:11 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris    2492  4 aoû 14:03 test_redir.c
-drwxr-xr-x  28 alienard  2019_paris     952 17 aoû 18:42 tests
+drwxr-xr-x  28 alienard  2019_paris     952 18 aoû 09:33 tests
 -rw-r--r--   1 alienard  2019_paris      71  4 aoû 14:03 valgrind.sh
 --- TESTS ECHO ---
 coucou
