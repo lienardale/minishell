@@ -13,11 +13,6 @@
 # echo -n 2 : \	\	coucou
 # echo -n 2 : 		coucou
 
-#has to do with parsing of options
-# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
-# echo -n -n return
-
-
 #rdir pb
 # export > 0test.log
 # cat nop.txt 2> error.txt
@@ -26,6 +21,11 @@
 # echo coucou > 0test.log 1test.log 2test.log > 3test.log
 # echo coucou > ../tests/test.log
 # echo lol > srcs
+
+
+#has to do with parsing of options -> ok in cdai
+# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
+# echo -n -n return
 
 # is ok I guess ?
 # export PATH= ;
@@ -56,3 +56,5 @@
 # echo '
 
 # cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+
+# /!\ prompt must be in STDERR

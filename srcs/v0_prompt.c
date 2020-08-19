@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/17 11:59:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 17:52:35 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	ft_infile(t_sh *sh)
 	while (sh->ret_cmd && (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		comment = 0;
+		sh->nbline++;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
 		if (sh->line[comment] != '#') // so that we can comment lines

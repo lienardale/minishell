@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/18 09:45:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 18:09:58 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ typedef struct	s_cmd
 typedef struct	s_sh
 {
 	int		fd;
+	char	*file;
+	int		nbline;
 	char	*line;
 	int		ret_cmd;
 	int		ret_sh;
@@ -197,8 +199,8 @@ int			ft_exit(t_cmd *cmd, t_sh *sh);
 
 /* execve functions */
 
-void		ft_search_n_execute(char **args, char **env);
-char		*ft_get_abspath_filename(char *exec, char **env);
+void	ft_search_n_execute(char **args, char **env, t_sh *sh);
+char		*ft_get_abspath_filename(char *exec, char **env, t_sh *sh);
 char		*ft_findexec(char *path, char *exec);
 char		*ft_get_onlypaths(char **env);
 int			ft_process(t_cmd *cmd, t_sh *sh);

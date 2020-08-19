@@ -80,12 +80,12 @@ echo test | wc
 cat run.sh | grep echo | wc
 cat run.sh | grep ehbghbeg
 cat run.sh | grep
-exit | echo test
 
 # exits instead of not exiting
 # 
 # echo test | exit
-# cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+# exit | echo test
+cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
 
 # pb
 # echo \
