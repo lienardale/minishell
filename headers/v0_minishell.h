@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 11:04:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:47:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ typedef struct	s_cmd
 	// either redir or right/left but not both, still not sure which is more suitable for our needs
 	// t_dlist			*redir_in;
 	// t_dlist			*redir_out;
-	struct s_cmd	*piped_in;
-	struct s_cmd	*piped_out;
+	struct s_cmd	*pipe_prev;
+	struct s_cmd	*pipe_next;
 }				t_cmd;
 
 typedef struct	s_sh
@@ -226,5 +226,12 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh);
 char		*ft_is_in_env(char *str, t_sh *sh);
 void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i);
 char		*ft_strdup_env_var(int len, char *av, char *key);
+
+/* create & exec pipes */
+int		ft_create_pipe(t_sh *sh);
+int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh);
+int		ft_init_pipe(t_sh *sh, t_cmd *cmd);
+int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd);
+int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd);
 
 # endif

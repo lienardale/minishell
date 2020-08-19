@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/30 11:20:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/17 11:59:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	ft_infile(t_sh *sh)
 	t_list		*begin;
 	t_dlist		*current;
 
-
 	begin = NULL;
 	quote = 0;
 	bkslh = 0;
@@ -101,6 +100,7 @@ void	ft_infile(t_sh *sh)
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
+				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
 				{
@@ -154,7 +154,6 @@ signal(SIGINT, ft_ctrl_c);
 			comment++;
 		if (sh->line[comment] != '#') // so that we can comment lines -> /!\ need do handle "echo coucou #; ls"
 		{
-			// sh->line = ft_parse_env_var(sh->line, sh);
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
@@ -163,6 +162,7 @@ signal(SIGINT, ft_ctrl_c);
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
+				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
 				{

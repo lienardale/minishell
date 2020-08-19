@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/29 13:07:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 15:35:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_findexec(char *path, char *exec)
 			return (result);
 		}
 	}
+	// if (!result)
+	// ft_dprintf(2, "|%s|: Not a directory\n", path);
 	closedir(dir);
 	return (result);
 }
@@ -96,18 +98,20 @@ void	ft_search_n_execute(char **args, char **env)
 	else if (!args[0])
 	{
 		args[0] = temp;
-		ft_dprintf(2, "minishell: command not found: |%s|\n", args[0]);
+		ft_dprintf(2, "minishell: %s: command not found\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	if (execve(args[0], args, env) == -1)
 	{
 		free(args[0]);
 		args[0] = temp;
-		ft_dprintf(2, "error execve\n");
+		ft_dprintf(2, "minishell: %s: No such file or directory\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	free(args[0]);
 	args[0] = temp;
+	// if (!result)
+	// 	ft_dprintf(2, "|%s|: Not a directory\n", result);
 }
 
 int			ft_process(t_cmd *cmd, t_sh *sh)
@@ -122,6 +126,8 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 	if (pid == 0)
 	{
 		// Child process
+		if (cmd->pipe_prev || cmd->pipe_next)
+			cmd->ret_dup = ft_exec_pipe_child(sh, cmd);
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
@@ -129,21 +135,25 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		ft_free_split(split_env);
 		if (cmd->redir)
 			(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
+		// if (cmd->ret_dup)
+		// {
+		// 	(close(cmd->pipedfd[0]) < 0 ) ? ft_dprintf(2, "Close of pipedfd[0] not ok\n") : 0;
+		// 	(close(cmd->pipedfd[1]) < 0 ) ? ft_dprintf(2, "Close of pipedfd[1] not ok\n") : 0;
+		// 	exit(1);
+		// 	return(1);
+		// }
 	}
-	else if (pid < 0)
-	{
-		// Error forking
-		ft_dprintf(2, "Error forking\n");
-		// freeing allocated memory
-		// ft_free_double_array(args);
+	else if (pid < 0 && ft_dprintf(2, "Error forking\n"))
 		return (0);
-	}
 	else
 	{
 		// Parent process
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
+		if (cmd->pipe_prev || cmd->pipe_next)
+			ft_exec_pipe_parent(sh, cmd);
+		// return (1);
 		// freeing allocated memory
 		// ft_free_double_array(args);
 	}

@@ -1,12 +1,15 @@
 
 echo
 echo "--- TESTS unset ---"
+echo
 
 export coucou=salut
-env
+env | grep coucou
 unset coucou
-env
+env | grep coucou
+
 unset PATH
-env
+ls
+exit
 
 echo
