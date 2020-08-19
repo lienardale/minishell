@@ -52,7 +52,7 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open parse_redir_out.\n");
+		// ft_dprintf(2, "Error in open parse_redir_out.\n");
 		return ;
 	}
 	close(fd);
@@ -80,7 +80,7 @@ void	ft_parse_append(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open parse_append.\n");
+		// ft_dprintf(2, "Error in open parse_append.\n");
 		return ;
 	}
 	close(fd);

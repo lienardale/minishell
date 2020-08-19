@@ -2,9 +2,10 @@ echo
 echo "--- TESTS export ---"
 echo
 
-# export coucou=salut ;
-# env | grep coucou
-# echo
+export coucou=salut ;
+env | grep coucou
+unset coucou
+echo
 
 echo -n 0 : \	\	
 export cou=ec ; export bon=ho ; $cou$bon salut

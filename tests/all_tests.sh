@@ -72,6 +72,11 @@ bash tests/append.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 # ./minishell tests/signal.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 # bash tests/signal.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
+
+./minishell tests/roalvare.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/roalvare.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+
+
 diff tests/us.txt tests/bash.txt
 diff tests/us.txt tests/bash.txt > tests/diff.txt
 

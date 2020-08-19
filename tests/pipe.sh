@@ -57,3 +57,9 @@ coucou
 bonjour
 salut" | sort
 echo
+
+echo "12 : expected output : 
+coucou
+pwd output"
+ls | grep j | cat -e | echo coucou ; pwd ; env | grep coucou
+echo

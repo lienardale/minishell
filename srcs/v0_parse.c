@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/18 12:03:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 15:37:27 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_exec_redir_out(t_sh *sh, t_cmd *cmd)
 	if ((cmd->fdout = open(cmd->file_redir, O_WRONLY | O_CREAT
 		| O_TRUNC, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open exec_redir_out.\n");
+		// ft_dprintf(2, "Error in open exec_redir_out.\n");
 		return (0);
 	}
 	if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) < 0
@@ -31,7 +31,7 @@ int		ft_exec_append(t_sh *sh, t_cmd *cmd)
 	if ((cmd->fdout = open(cmd->file_redir, O_WRONLY | O_CREAT
 		| O_APPEND, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open exec_append.\n");
+		// ft_dprintf(2, "Error in open exec_append.\n");
 		return (0);
 	}
 	if ((cmd->ret_dup = dup2(cmd->fdout, STDOUT_FILENO)) < 0

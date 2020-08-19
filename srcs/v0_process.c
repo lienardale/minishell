@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/18 12:56:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 15:35:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ char	*ft_findexec(char *path, char *exec)
 			return (result);
 		}
 	}
+	// if (!result)
+	// ft_dprintf(2, "|%s|: Not a directory\n", path);
 	closedir(dir);
 	return (result);
 }
@@ -96,18 +98,20 @@ void	ft_search_n_execute(char **args, char **env)
 	else if (!args[0])
 	{
 		args[0] = temp;
-		ft_dprintf(2, "|%s|: command not found\n", args[0]);
+		ft_dprintf(2, "minishell: %s: command not found\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	if (execve(args[0], args, env) == -1)
 	{
 		free(args[0]);
 		args[0] = temp;
-		ft_dprintf(2, "error execve\n");
+		ft_dprintf(2, "minishell: %s: No such file or directory\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	free(args[0]);
 	args[0] = temp;
+	// if (!result)
+	// 	ft_dprintf(2, "|%s|: Not a directory\n", result);
 }
 
 int			ft_process(t_cmd *cmd, t_sh *sh)
