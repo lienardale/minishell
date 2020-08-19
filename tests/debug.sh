@@ -9,6 +9,14 @@
 # |
 #  
 
+#rdir pb
+# export > 0test.log
+# cat nop.txt 2> error.txt
+# cat Dockerfile 1> 0test.log
+# echo coucou > ../tests/test.log
+# echo coucou > 0test.log 1test.log 2test.log > 3test.log
+# echo coucou > ../tests/test.log
+
 # ours doesnt trim the isspaces
 # echo -n 2 : \	\	coucou
 # echo -n 2 : 		coucou
@@ -20,11 +28,6 @@
 
 # echo $RIP
 
-# echo
-# echo 7
-# echo
-# echo coucou > 0test.log 1test.log 2test.log > 3test.log
-# echo coucou > ../tests/test.log
 
 # wrong error msg
 # /bin/ls/lol
