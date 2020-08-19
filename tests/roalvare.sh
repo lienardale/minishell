@@ -83,6 +83,7 @@ cat run.sh | grep
 exit | echo test
 
 # exits instead of not exiting
+# 
 # echo test | exit
 # cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
 

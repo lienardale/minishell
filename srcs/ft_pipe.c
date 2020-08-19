@@ -30,7 +30,6 @@ int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 int		ft_create_pipe(t_sh *sh)
 {
 	t_dlist	*cur;
-	// t_cmd	*cmd;
 
 	cur = sh->cmds->head;
 	while (cur)
@@ -39,23 +38,6 @@ int		ft_create_pipe(t_sh *sh)
 			ft_add_pipe(cur, cur->next, sh);
 		cur = cur->next;
 	}
-	// cur = sh->cmds->head;
-	// while (cur)
-	// {
-	// 	if (((t_cmd *)(cur->data))->pipe_next)
-	// 	{
-	// 		cmd = ((t_cmd *)(cur->data));
-	// 		while (cmd->pipe_next)
-	// 			cmd = cmd->pipe_next;
-	// 		while (cmd)
-	// 		{
-	// 			ft_init_pipe(sh, cmd);
-	// 			ft_exec_pipe_child(sh, cmd);
-	// 			cmd = cmd->pipe_prev;
-	// 		}
-	// 	}
-	// 	cur = cur->next;
-	// }
 	return (0);
 }
 

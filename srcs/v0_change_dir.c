@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/19 15:34:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/19 16:17:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 	}
 	else if (chdir_value)
 	{
-		ft_dprintf(2, "minisehll: cd: %s: No such file or directory\n", cmd->av[1]);
+		ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd->av[1]);
 		// ft_putstr_fd(cmd->av[1], 2);
 		// ft_putstr_fd("No such file or directory: ", 2);
 		// ft_putchar_fd('\n', 2);

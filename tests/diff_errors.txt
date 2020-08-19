@@ -31,7 +31,7 @@
 ---
 > tests/redir_in.sh: line 33: 0test.log: No such file or directory
 25c25
-< minisehll: cd: rgjnrjn: No such file or directory
+< minishell: cd: rgjnrjn: No such file or directory
 ---
 > tests/roalvare.sh: line 32: cd: rgjnrjn: No such file or directory
 28,34c28,34

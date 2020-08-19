@@ -9,6 +9,15 @@
 # |
 #  
 
+# ours doesnt trim the isspaces
+# echo -n 2 : \	\	coucou
+# echo -n 2 : 		coucou
+
+#has to do with parsing of options
+# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
+# echo -n -n return
+
+
 #rdir pb
 # export > 0test.log
 # cat nop.txt 2> error.txt
@@ -16,16 +25,14 @@
 # echo coucou > ../tests/test.log
 # echo coucou > 0test.log 1test.log 2test.log > 3test.log
 # echo coucou > ../tests/test.log
-
-# ours doesnt trim the isspaces
-# echo -n 2 : \	\	coucou
-# echo -n 2 : 		coucou
+# echo lol > srcs
 
 # is ok I guess ?
 # export PATH= ;
 # ls
 # echo
 
+# export pouet="echo coucou" ; $pouet
 # echo $RIP
 
 
@@ -33,20 +40,19 @@
 # /bin/ls/lol
 # ./srcs
 # README.md
-# echo lol > output
 
-#has to do with parsing of options
-# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
-# echo -n -n return
 
 #one too many \ at the end
 # echo '\\please\\' "\"fail\\"
 
 # exits instead of not exiting
 # echo test | exit
-# cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+# is ok
+# exit | echo test
 
 # pb
 # echo \
 # echo "
 # echo '
+
+# cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
