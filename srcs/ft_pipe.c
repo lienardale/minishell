@@ -75,35 +75,24 @@ int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
 	(void)sh;
 	if (cmd->pipe_prev == NULL && cmd->pipe_next != NULL)
 	{
-		ft_dprintf(2, "\nB -> cmd:|%s|\n", cmd->cmd);
 		close(cmd->pipedfd[1]);
 		if ((cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO)) < 0)
 			write(2, "dup2 B failed\n", ft_strlen("dup2 B failed\n"));
 		close(cmd->pipedfd[0]);
 	}
-	// else if (cmd->pipe_next == NULL && cmd->pipe_prev != NULL)
 	else
 	{
-		printf("\nA -> cmd:|%s|\n", cmd->cmd);
 		close(cmd->pipe_prev->pipedfd[0]);
 		if ((cmd->ret_dup = dup2(cmd->pipe_prev->pipedfd[1], STDOUT_FILENO)) < 0)
 			write(1, "dup2 A failed\n", ft_strlen("dup2 A failed\n"));
 		close(cmd->pipe_prev->pipedfd[1]);
-		// close(cmd->pipedfd[0]);
-		// if ((cmd->ret_dup = dup2(cmd->pipedfd[1], STDOUT_FILENO)) < 0)
-		// 	write(2, "dup2 A failed\n", ft_strlen("dup2 A failed\n"));
-		// close(cmd->pipedfd[1]);
+
+		close(cmd->pipedfd[1]);
+		// if ((cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO)) < 0)
+		// 	write(2, "dup2 B failed\n", ft_strlen("dup2 B failed\n"));
+		cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO);
+		close(cmd->pipedfd[0]);
 	}
-	// else
-	// {
-	// 	printf("\nC -> cmd:|%s|\n", cmd->cmd);
-	// 	close(cmd->pipedfd[1]);
-	// 	if ((cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO)) < 0)
-	// 		write(1, "dup2 C failed\n", ft_strlen("dup2 C failed\n"));
-	// 	close(cmd->pipedfd[0]);
-	// 	// close(cmd->pipedfd[0]);
-	// }
-	
 	return (1);
 }
 
@@ -111,14 +100,8 @@ int		ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd)
 {
 	(void)sh;
 	if (cmd->pipe_prev == NULL && cmd->pipe_next != NULL)
-	{
 		close(cmd->pipedfd[1]);
-		// close(cmd->pipedfd[0]);
-	}
 	else
-	{
 		close(cmd->pipe_prev->pipedfd[1]);
-		// close(cmd->pipe_prev->pipedfd[0]);
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/18 12:05:48 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/18 12:56:44 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,11 +144,11 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 	else
 	{
 		// Parent process
-		if (cmd->pipe_prev || cmd->pipe_next)
-			ft_exec_pipe_parent(sh, cmd);
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
+		if (cmd->pipe_prev || cmd->pipe_next)
+			ft_exec_pipe_parent(sh, cmd);
 		// return (1);
 		// freeing allocated memory
 		// ft_free_double_array(args);

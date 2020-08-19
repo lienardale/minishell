@@ -1,25 +1,3 @@
-# ls | ls | ls | cat -e
-
-echo "11 : expected output :	bonjour
-			coucou
-			salut
-			salut"
-echo "salut
-coucou
-bonjour
-salut" | sort
-echo
-
-echo "8 : expected output : sorted .sh files"
-ls | grep .sh | sort
-echo
-
-# echo "expected output : coucou$"
-# echo | echo coucou | cat -e
-# echo
-
-
-
 
 # echo test1\
 # ; echo test2

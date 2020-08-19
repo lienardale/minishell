@@ -36,10 +36,6 @@ echo "7 : expected output : .sh files"
 ls | grep .sh
 echo
 
-echo "10 : expected output : one ls output"
-ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls 
-echo 
-
 echo "8 : expected output : sorted .sh files"
 ls | grep .sh | sort
 echo
@@ -47,6 +43,10 @@ echo
 echo "9 : expected output : sorted .sh files with $"
 ls | grep .sh | sort | cat -e
 echo
+
+echo "10 : expected output : one ls output"
+ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls 
+echo 
 
 echo "11 : expected output :	bonjour
 			coucou

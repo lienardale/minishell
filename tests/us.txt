@@ -116,9 +116,9 @@ test_redir.c
 tests
 valgrind.sh
 total 336
-drwxr-xr-x  26 alienard  2019_paris     884 17 aoû 18:44 .
+drwxr-xr-x  26 alienard  2019_paris     884 19 aoû 11:42 .
 drwxr-xr-x  23 alienard  2019_paris     782  4 aoû 14:03 ..
-drwxr-xr-x  15 alienard  2019_paris     510 18 aoû 09:23 .git
+drwxr-xr-x  15 alienard  2019_paris     510 18 aoû 12:32 .git
 -rw-r--r--   1 alienard  2019_paris     186  4 aoû 14:03 .gitignore
 drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 .idea
 drwxr-xr-x   4 alienard  2019_paris     136  5 aoû 14:16 .vscode
@@ -134,13 +134,13 @@ drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 cmake-build-debug
 drwxr-xr-x   3 alienard  2019_paris     102  4 aoû 14:03 hardcore_tests
 drwxr-xr-x   3 alienard  2019_paris     102  5 aoû 15:47 headers
 drwxr-xr-x  17 alienard  2019_paris     578  5 aoû 15:16 libft
--rwxr-xr-x   1 alienard  2019_paris  102368 17 aoû 18:24 minishell
+-rwxr-xr-x   1 alienard  2019_paris  102368 19 aoû 11:42 minishell
 -rw-r--r--   1 alienard  2019_paris      34  4 aoû 14:03 run.sh
-drwxr-xr-x  69 alienard  2019_paris    2346 17 aoû 18:24 srcs
+drwxr-xr-x  69 alienard  2019_paris    2346 19 aoû 11:42 srcs
 -rw-r--r--   1 alienard  2019_paris      67  4 aoû 14:03 test.sh
 -rw-r--r--   1 alienard  2019_paris    5680  5 aoû 12:11 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris    2492  4 aoû 14:03 test_redir.c
-drwxr-xr-x  28 alienard  2019_paris     952 18 aoû 09:33 tests
+drwxr-xr-x  28 alienard  2019_paris     952 19 aoû 11:42 tests
 -rw-r--r--   1 alienard  2019_paris      71  4 aoû 14:03 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -444,10 +444,10 @@ valgrind.sh
 -rw-r--r--  1 alienard  2019_paris  1014  4 aoû 14:03 Dockerfile
 -rw-r--r--  1 alienard  2019_paris    1014  4 aoû 14:03 Dockerfile
 -rwxr-xr-x  1 alienard  2019_paris    8828  5 aoû 17:50 a.out
--rwxr-xr-x  1 alienard  2019_paris  102368 17 aoû 18:24 minishell
+-rwxr-xr-x  1 alienard  2019_paris  102368 19 aoû 11:42 minishell
 -rw-r--r--  1 alienard  2019_paris    1014  4 aoû 14:03 Dockerfile
 -rwxr-xr-x  1 alienard  2019_paris    8828  5 aoû 17:50 a.out
--rwxr-xr-x  1 alienard  2019_paris  102368 17 aoû 18:24 minishell
+-rwxr-xr-x  1 alienard  2019_paris  102368 19 aoû 11:42 minishell
 2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
@@ -472,16 +472,19 @@ valgrind.sh
 
 --- TESTS | ---
 
-expected output : coucou
+0 : expected output : coucou
 coucou
 
-expected output : coucou
+1 : expected output : coucou
 coucou
 
-expected output : coucou
+2 : expected output : coucou$
+coucou$
+
+3 : expected output : coucou
 coucou
 
-expected output : ls output
+4 : expected output : ls output
 2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
@@ -503,7 +506,7 @@ test_redir.c
 tests
 valgrind.sh
 
-expected output : ls output with $
+5 : expected output : ls output with $
 2_test_pipe.c$
 2_test_redir.c$
 CmakeLists.txt$
@@ -525,7 +528,7 @@ test_redir.c$
 tests$
 valgrind.sh$
 
-expected output : ls sorted output
+6 : expected output : ls sorted output
 2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
@@ -547,17 +550,54 @@ test_redir.c
 tests
 valgrind.sh
 
-expected output : .sh files
+7 : expected output : .sh files
 minishell
 run.sh
 test.sh
 valgrind.sh
 
-expected output : sorted .sh files
+10 : expected output : one ls output
+2_test_pipe.c
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+a.out
+cmake-build-debug
+error.txt
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.sh
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
+
+11 : expected output :	bonjour
+			coucou
+			salut
+			salut
+bonjour
+coucou
+salut
+salut
+
+8 : expected output : sorted .sh files
 minishell
 run.sh
 test.sh
 valgrind.sh
+
+9 : expected output : sorted .sh files with $
+minishell$
+run.sh$
+test.sh$
+valgrind.sh$
 
 
 --- TESTS < ---
