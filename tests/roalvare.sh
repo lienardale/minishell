@@ -45,12 +45,12 @@ cat lauch.sh
 ls
 /bin/ls
 /bin/lol
+./srcs
+README.md
 
 # wrong error msg
-# /bin/ls/lol
-# ./srcs
-# README.md
-# echo lol > output
+/bin/ls/lol
+# echo lol > srcs
 
 reckt
 files
@@ -58,7 +58,6 @@ test
 hmmmmmmmmmm
 cat < run.sh
 cat < Reckkt
-# cat < files/input/monolog > files/output/tmp/monolog
 cat < tests
 echo one; echo two; echo three
 echo 
@@ -71,6 +70,8 @@ echo a; echo b; echo c; echo d; echo e; echo f; echo g; echo h; echo i; echo j; 
 # |
 #  
 
+# to tests with our own files/dir
+# cat < files/input/monolog > files/output/tmp/monolog
 # echo test > files/output/tmp/test
 # echo lol >> files/output/tmp/lol
 # echo bonjour >> files/output/tmp/bonjour; echo je suis gentil > files/output/tmp/bonjour

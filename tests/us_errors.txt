@@ -26,12 +26,15 @@ tests/roalvare.sh: line 32: cd: rgjnrjn: No such file or directory
 Python 2.7.10
 cat: lauch.sh: No such file or directory
 tests/roalvare.sh: line 47: /bin/lol: No such file or directory
+tests/roalvare.sh: line 50: /bin/ls/lol: No such file or directory
+tests/roalvare.sh: line 51: ./srcs: No such file or directory
+tests/roalvare.sh: line 52: README.md: command not found
 tests/roalvare.sh: line 55: reckt: command not found
 tests/roalvare.sh: line 56: files: command not found
 tests/roalvare.sh: line 58: hmmmmmmmmmm: command not found
 tests/roalvare.sh: line 59: run.sh: No such file or directory
 tests/roalvare.sh: line 60: Reckkt: No such file or directory
-tests/roalvare.sh: line 62: tests: No such file or directory
+tests/roalvare.sh: line 61: tests: No such file or directory
 cat: run.sh: No such file or directory
 cat: run.sh: No such file or directory
 cat: run.sh: No such file or directory

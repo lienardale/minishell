@@ -116,9 +116,9 @@ test_redir.c
 tests
 valgrind.sh
 total 336
-drwxr-xr-x  26 alienard  2019_paris     884 19 aoû 18:11 .
+drwxr-xr-x  26 alienard  2019_paris     884 19 aoû 18:18 .
 drwxr-xr-x  25 alienard  2019_paris     850 19 aoû 12:50 ..
-drwxr-xr-x  15 alienard  2019_paris     510 19 aoû 17:18 .git
+drwxr-xr-x  15 alienard  2019_paris     510 19 aoû 18:13 .git
 -rw-r--r--   1 alienard  2019_paris     186  4 aoû 14:03 .gitignore
 drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 .idea
 drwxr-xr-x   4 alienard  2019_paris     136  5 aoû 14:16 .vscode
@@ -134,13 +134,13 @@ drwxr-xr-x   7 alienard  2019_paris     238  4 aoû 14:03 cmake-build-debug
 drwxr-xr-x   4 alienard  2019_paris     136 19 aoû 12:18 hardcore_tests
 drwxr-xr-x   3 alienard  2019_paris     102  5 aoû 15:47 headers
 drwxr-xr-x  17 alienard  2019_paris     578 19 aoû 17:56 libft
--rwxr-xr-x   1 alienard  2019_paris  102088 19 aoû 18:11 minishell
+-rwxr-xr-x   1 alienard  2019_paris  102088 19 aoû 18:18 minishell
 -rw-r--r--   1 alienard  2019_paris      34  4 aoû 14:03 run.sh
-drwxr-xr-x  69 alienard  2019_paris    2346 19 aoû 18:11 srcs
+drwxr-xr-x  69 alienard  2019_paris    2346 19 aoû 18:18 srcs
 -rw-r--r--   1 alienard  2019_paris     492 19 aoû 17:31 test.sh
 -rw-r--r--   1 alienard  2019_paris    5680  5 aoû 12:11 test_pipe.c
 -rw-r--r--   1 alienard  2019_paris    2492  4 aoû 14:03 test_redir.c
-drwxr-xr-x  29 alienard  2019_paris     986 19 aoû 18:11 tests
+drwxr-xr-x  29 alienard  2019_paris     986 19 aoû 18:19 tests
 -rw-r--r--   1 alienard  2019_paris      71  4 aoû 14:03 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -446,10 +446,10 @@ valgrind.sh
 -rw-r--r--  1 alienard  2019_paris  1014  4 aoû 14:03 Dockerfile
 -rw-r--r--  1 alienard  2019_paris    1014  4 aoû 14:03 Dockerfile
 -rwxr-xr-x  1 alienard  2019_paris    8828  5 aoû 17:50 a.out
--rwxr-xr-x  1 alienard  2019_paris  102088 19 aoû 18:11 minishell
+-rwxr-xr-x  1 alienard  2019_paris  102088 19 aoû 18:18 minishell
 -rw-r--r--  1 alienard  2019_paris    1014  4 aoû 14:03 Dockerfile
 -rwxr-xr-x  1 alienard  2019_paris    8828  5 aoû 17:50 a.out
--rwxr-xr-x  1 alienard  2019_paris  102088 19 aoû 18:11 minishell
+-rwxr-xr-x  1 alienard  2019_paris  102088 19 aoû 18:18 minishell
 2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
