@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/14 16:35:55 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/25 09:09:45 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ void	ft_infile(t_sh *sh)
 	begin = NULL;
 	quote = 0;
 	bkslh = 0;
-	while (sh->ret_cmd && (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
+	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+//printf("ici\n");
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
@@ -111,7 +112,7 @@ void	ft_infile(t_sh *sh)
 			}
 		}
 		// ft_free_ptr(sh.line);
-		if (sh->ret_cmd == 0 || !sh->ret_sh)
+		if (!sh->ret_sh)
 			break ;
 	}
 }

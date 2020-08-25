@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/11 18:40:45 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/25 08:53:25 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	}
 	else if (child > 0)
 	{
-	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+//	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
-	printf("ceci est la valeur de status :%d \n", status);
-	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+//	printf("ceci est la valeur de status :%d \n", status);
+//	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 // la valeur de retour de la fonction est sur le 2eme octet, donc il faut tout diviser par 256
 		return (status / 256);
 	}
@@ -83,7 +83,7 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 //		ret = fn(cmd, sh);
 		sh->ret_cmd = fn(cmd, sh);
 //		exit(ret);
-	printf("je suis dans l'enfant, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+//	printf("je suis dans l'enfant, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 		exit(sh->ret_cmd);
 		return (sh->ret_cmd);
 	}
@@ -110,22 +110,20 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 // pour ne pas faire d'enfant (fork)
 	if (ft_strcmp(cmd->cmd, "exit") == 0)
 		return (ft_exit(cmd, sh));
-	/*
 	if (ft_strcmp(cmd->cmd, "cd") == 0)
 		return (ft_change_dir(cmd, sh));
 	if (ft_strcmp(cmd->cmd, "export") == 0)
 		return (ft_export(cmd, sh));
 	if (ft_strcmp(cmd->cmd, "unset") == 0)
 		return (ft_unset(cmd, sh));
-*/
 builtins = ft_split("exit,echo,pwd,env,cd,export,unset", ',');
 	while (builtins[++i])
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
-printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+//printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 			sh->ret_cmd = ft_blt_process(sh, cmd, sh->blt_fct[i]);
-printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+//printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 			ft_free_double_array(builtins);
 			return (sh->ret_cmd);
 		}

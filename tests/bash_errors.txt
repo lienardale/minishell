@@ -1,13 +1,14 @@
 tests/backslash.sh: line 14:  ls: command not found
 tests/backslash.sh: line 22: echo -n: command not found
-ls: coucou: No such file or directory
+ls: cannot access 'coucou': No such file or directory
 cat: coucou: No such file or directory
-ls: coucou: No such file or directory
+ls: cannot access 'coucou': No such file or directory
 cat: coucou: No such file or directory
-ls: coucou: No such file or directory
-ls: salut: No such file or directory
+ls: cannot access 'coucou': No such file or directory
+ls: cannot access 'salut': No such file or directory
 cat: coucou: No such file or directory
+ls: cannot access 'a.out': No such file or directory
 cat: coucou: No such file or directory
 tests/redir_in.sh: line 33: 0test.log: No such file or directory
-cat: 1test.log\ coucou: No such file or directory
-cat: 1test.log\ coucou: No such file or directory
+cat: '1test.log\ coucou': No such file or directory
+cat: '1test.log\ coucou': No such file or directory

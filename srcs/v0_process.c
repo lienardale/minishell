@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 17:06:12 by cdai             ###   ########.fr       */
+/*   Updated: 2020/08/25 08:58:24 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,15 +147,15 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
-int temp1 = WIFEXITED(status);
-int temp2 = WIFSIGNALED(status);
+//int temp1 = WIFEXITED(status);
+//int temp2 = WIFSIGNALED(status);
 //int temp3 = status;
-printf("%d, %d, %d\n", temp1, temp2, status);
+//printf("%d, %d, %d\n", temp1, temp2, status);
 		if (WIFEXITED(status))
 		return (status / 256);
 		else if (WIFSIGNALED(status))
 		{
-			ft_dprintf(2, "Terminated: %d\n", status);
+//			ft_dprintf(2, "Terminated: %d\n", status);
 		return (status + 128);
 		}
 		// freeing allocated memory
