@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/17 15:25:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/28 14:56:29 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 
 	j = *i;
 	cmd = (t_cmd *)(sh->cmds->tail->data);
+	// ft_printf("line:|%s|\n", &line[j]);
 	while (line[j])
 	{
 		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
@@ -41,9 +42,21 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 		j++;
 	}
 	tmp = ft_substr(line, *i, (j - *i));
+	if (!tmp)
+	{
+		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
+		*i = j + 1;
+		return ;
+	}
 	tmp_av = ft_split_quote(tmp, ' ');
 	free(tmp);
 	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
+	if (!(cmd->av) || !(cmd->av[0]))
+	{
+		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
+		*i = j + 1;
+		return ;
+	}
 	// *i = -1;
 	// while (cmd->av[++(*i)])
 	// 	cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
@@ -77,6 +90,7 @@ void	ft_line_to_lst(char *inputs, t_sh *sh)
 	int		i;
 
 	i = 0;
+	ft_check_args(inputs, sh);
 	ft_init_dlst(&sh->cmds);
 	while (inputs[i])
 		ft_init_cmd(sh, inputs, &i);

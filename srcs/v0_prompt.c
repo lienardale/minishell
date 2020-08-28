@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/19 17:52:35 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/28 12:39:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ft_infile(t_sh *sh)
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
-			if (!quote)
+			if (!quote && sh->line[ft_strlen(sh->line) - 1] != '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1))
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
@@ -110,6 +110,8 @@ void	ft_infile(t_sh *sh)
 				}
 				ft_dlst_del(sh->cmds);
 			}
+			if ((sh->line[ft_strlen(sh->line) - 1] == '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1)))
+				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		// ft_free_ptr(sh.line);
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
@@ -159,7 +161,10 @@ signal(SIGINT, ft_ctrl_c);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			prompt = (quote == 0) ? PROMPT : QPROMPT;
-			if (!quote)
+			// printf("|%s|\n", &sh->line[ft_strlen(sh->line) - 1]);
+			if (quote == 1 || (sh->line[ft_strlen(sh->line) - 1] == '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1)))
+				prompt = QPROMPT;
+			if (!quote && sh->line[ft_strlen(sh->line) - 1] != '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1))
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
@@ -172,6 +177,8 @@ signal(SIGINT, ft_ctrl_c);
 				}
 				ft_dlst_del(sh->cmds);
 			}
+			if ((sh->line[ft_strlen(sh->line) - 1] == '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1)))
+				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;

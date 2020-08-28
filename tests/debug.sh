@@ -1,13 +1,40 @@
 
 
 # ours segfaults
-# echo test1\
-# ; echo test2
-# echo ;;;;
-# echo test | | wc; echo lol
+# expected : 
+# "test1
+# test2"
+echo test1\
+; echo test2
+
+# expected :
+# stdin_mode : "bash: syntax error near unexpected token `;;'"
+# in_file_mode : 
+# "tests/debug.sh: line 6: syntax error near unexpected token `;;'
+# tests/debug.sh: line 6: `echo ;;;;'" 
+# ->doesn't read the .sh further
+echo ;;;;
+
+# expected :
+# stdin_mode : "bash: syntax error near unexpected token `;'"
+# in_file_mode : 
+# "tests/debug.sh: line 6: syntax error near unexpected token `;'
+# tests/debug.sh: line 6: `echo ; ; ; ;'" 
+# ->doesn't read the .sh further
+echo ; ; ; ;
+
+# expected :
+# stdin_mode : "bash: syntax error near unexpected token `|'"
+# in_file_mode : 
+# "tests/debug.sh: line 7: syntax error near unexpected token `|'
+# tests/debug.sh: line 7: `echo test | | wc; echo lol'" 
+# ->doesn't read the .sh further
+echo test | | wc; echo lol
+
+
 # echo lol; echo test | | wc 
-# |
-#  
+|
+ 
 
 # ours doesnt trim the isspaces
 # echo -n 2 : \	\	coucou
