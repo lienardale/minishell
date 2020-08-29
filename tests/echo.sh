@@ -19,3 +19,8 @@ echo "coucou
 11
 12"
 echo
+
+
+# bash trims the spaces when they are not escaped
+# echo -n 2 : \	\	coucou
+# echo -n 2 : 		coucou

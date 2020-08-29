@@ -27,10 +27,10 @@ void	ft_parse_redir_in(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_RDONLY)) == -1)
 	{
-		ft_dprintf(2, "minishell: %s: No such file or directory\n", tmp);
-		// ft_prompt(sh);
-		// ft_exit(NULL, sh);
-		// return ;
+		if (sh->nbline)
+			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n", sh->file, sh->nbline, tmp);
+		else
+			ft_dprintf(2, "minishell: %s: No such file or directory\n", tmp);
 	}
 	close(fd);
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
@@ -57,7 +57,7 @@ void	ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open parse_redir_out.\n");
+		// ft_dprintf(2, "Error in open parse_redir_out.\n");
 		return ;
 	}
 	close(fd);
@@ -85,7 +85,7 @@ void	ft_parse_append(t_sh *sh, char *line, int *i)
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0777)) == -1)
 	{
-		ft_dprintf(2, "Error in open parse_append.\n");
+		// ft_dprintf(2, "Error in open parse_append.\n");
 		return ;
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 15:02:23 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/28 14:10:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ int	main(int ac, char **av, char **env)
 	if (!(env_lst = ft_start_minishell(env)))
 		return (EXIT_FAILURE);
 	sh = (t_sh) {
-			.fd = fd, .line = NULL, .ret_cmd = 1,
+			.fd = fd, .nbline = 0, .file = NULL, .line = NULL, .ret_cmd = 1,
 			.ret_sh = 1, .blt_fct = builtin_fct,
 			.cmds = NULL, .env = &env_lst};
 	if (ac != 1)
 	{
+		sh.file = av[1];
 		sh.fd = open(av[1], O_RDONLY);
 		ft_infile(&sh);
 	}

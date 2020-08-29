@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/24 21:52:59 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 14:59:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# ifndef EXT_ALPHA
+#  define EXT_ALPHA "ÄÅÇÉÑÖÜáàâäãåçéèêëíìîïñóòôöõúùûüÆçæøâêôûƒéàèùÃÕŒœÿŸﬁﬂÂÊÁËÈÍÎÏÌÓÔÒÚÛÙ"
+# endif
 
 typedef struct	s_list
 {

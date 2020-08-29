@@ -8,7 +8,7 @@ echo 5 "'''''''''"
 echo 6 '"""""""""""'
 echo -n "7	"
 \l\s
-echo -n "8	" 
+echo -n "8	"
  \l\s
 echo -n "9	"
 \ \l\s
@@ -56,4 +56,4 @@ rm test.log\\\\\ coucou
 
 # echo test1\
 # ; echo test2
-# 
+#

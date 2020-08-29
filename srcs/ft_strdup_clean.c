@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 10:32:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 09:24:59 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/17 18:19:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static size_t	ft_strlen_clean(char *str)
 		if (str[i] != '\\' && str[i] != '\"' && str[i] != '\'')
 			len++;
 		else if (str[i] == '\\' && (ft_isinsquotes(str, i)
-			|| (ft_isindquotes(str, i) && str[i + 1] != '\"')
+			|| (ft_isindquotes(str, i) && str[i + 1] != '\"'
+			&& str[i + 1] != '$')
 			|| ft_is_escaped(str, i)))
 			len++;
 		else if (str[i] == '\"' && (ft_isinsquotes(str, i)
@@ -51,8 +52,9 @@ static void		ft_strlcpy_clean(char *dst, char *src, size_t dstsize)
 			&& (dst[j] = src[i]))
 			j++;
 		else if (src[i] == '\\' && ((ft_isinsquotes(src, i))
-			|| (ft_isindquotes(src, i) && src[i + 1] != '\"')
-			|| ft_is_escaped(src, i)) && (dst[j] = src[i]))
+			|| (ft_isindquotes(src, i) && src[i + 1] != '\"'
+			&& src[i + 1] != '$') || ft_is_escaped(src, i))
+			&& (dst[j] = src[i]))
 			j++;
 		else if (src[i] == '\"' && (ft_isinsquotes(src, i)
 			|| ft_is_escaped(src, i)) && (dst[j] = src[i]))

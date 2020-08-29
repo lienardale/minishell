@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/07/29 12:18:00 by alienard         ###   ########.fr        #
+#    Updated: 2020/08/04 14:05:02 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ _SRCS		= v0_minishell.c \
 				ft_unset.c \
 				ft_quote.c \
 				ft_escape.c \
+				ft_pipe.c \
 				ft_strdup_clean.c \
 				ft_exec_env_var.c \
 				ft_parse_env_var.c

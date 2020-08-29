@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/30 11:20:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 16:06:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ void	ft_infile(t_sh *sh)
 	t_list		*begin;
 	t_dlist		*current;
 
-
 	begin = NULL;
 	quote = 0;
 	bkslh = 0;
 	while (sh->ret_cmd && (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		comment = 0;
+		sh->nbline++;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
 		if (sh->line[comment] != '#') // so that we can comment lines
@@ -97,10 +97,12 @@ void	ft_infile(t_sh *sh)
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
-			if (!quote)
+			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
-				ft_line_to_lst(ft_input_join(begin), sh);
+				if (!ft_line_to_lst(ft_input_join(begin), sh))
+					break ;
 				ft_lstclear(&begin, &free);
+				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
 				{
@@ -109,6 +111,8 @@ void	ft_infile(t_sh *sh)
 				}
 				ft_dlst_del(sh->cmds);
 			}
+			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
+				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		// ft_free_ptr(sh.line);
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
@@ -154,15 +158,20 @@ signal(SIGINT, ft_ctrl_c);
 			comment++;
 		if (sh->line[comment] != '#') // so that we can comment lines -> /!\ need do handle "echo coucou #; ls"
 		{
-			// sh->line = ft_parse_env_var(sh->line, sh);
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			prompt = (quote == 0) ? PROMPT : QPROMPT;
-			if (!quote)
+			// printf("|%s|\n", &sh->line[ft_strlen(sh->line) - 1]);
+			if (quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
+				prompt = QPROMPT;
+			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
-				ft_line_to_lst(ft_input_join(begin), sh);
+				if (!ft_line_to_lst(ft_input_join(begin), sh))
+					return (ft_prompt(sh));
+				// ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
+				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
 				{
@@ -171,6 +180,8 @@ signal(SIGINT, ft_ctrl_c);
 				}
 				ft_dlst_del(sh->cmds);
 			}
+			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
+				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;

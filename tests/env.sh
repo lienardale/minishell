@@ -1,5 +1,6 @@
 echo
 echo "--- TESTS env ---"
-
-env
 echo
+
+env | grep PATH
+env | grep SHLVL

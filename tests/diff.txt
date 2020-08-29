@@ -1,8 +1,4 @@
-262c262
-< 12 
+177c177
+< SHLVL=4
 ---
-> 12
-308c308
-< 8	 2_test_redir.c
----
-> 8	2_test_redir.c
+> SHLVL=3

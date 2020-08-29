@@ -95,13 +95,14 @@ $
 CMD bash$
 
 --- TESTS LS ---
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -113,31 +114,32 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-total 336
-drwxr-xr-x  24 alienard  2019_paris    816  5 aoû 11:04 .
-drwxr-xr-x  23 alienard  2019_paris    782  4 aoû 14:03 ..
-drwxr-xr-x  15 alienard  2019_paris    510  5 aoû 11:04 .git
--rw-r--r--   1 alienard  2019_paris    186 16 jul 07:54 .gitignore
-drwxr-xr-x   7 alienard  2019_paris    238 16 jul 07:54 .idea
-drwxr-xr-x   4 alienard  2019_paris    136 29 jul 11:30 .vscode
--rw-r--r--   1 alienard  2019_paris   2906 22 jul 13:10 2_test_redir.c
--rw-r--r--   1 alienard  2019_paris   4055 16 jul 07:54 CmakeLists.txt
--rw-r--r--   1 alienard  2019_paris   1014 16 jul 07:54 Dockerfile
--rw-r--r--   1 alienard  2019_paris   4016 29 jul 12:18 Makefile
--rw-r--r--   1 alienard  2019_paris     12 16 jul 07:54 README.md
--rwxr-xr-x   1 alienard  2019_paris  22092 22 jul 13:10 a.out
-drwxr-xr-x   7 alienard  2019_paris    238 16 jul 07:54 cmake-build-debug
-drwxr-xr-x   3 alienard  2019_paris    102 20 jul 11:45 hardcore_tests
-drwxr-xr-x   3 alienard  2019_paris    102  5 aoû 11:01 headers
-drwxr-xr-x  17 alienard  2019_paris    578  5 aoû 10:58 libft
--rwxr-xr-x   1 alienard  2019_paris  96984  5 aoû 11:04 minishell
--rw-r--r--   1 alienard  2019_paris     34 16 jul 07:54 run.sh
-drwxr-xr-x  68 alienard  2019_paris   2312  5 aoû 11:04 srcs
--rw-r--r--   1 alienard  2019_paris     67 16 jul 07:54 test.sh
--rw-r--r--   1 alienard  2019_paris   5680 16 jul 10:34 test_pipe.c
--rw-r--r--   1 alienard  2019_paris   2492 20 jul 15:36 test_redir.c
-drwxr-xr-x  28 alienard  2019_paris    952  5 aoû 11:04 tests
--rw-r--r--   1 alienard  2019_paris     71 16 jul 07:54 valgrind.sh
+total 320
+drwxr-xr-x  25 alienard  staff     800 29 Aug 16:21 .
+drwxr-xr-x@ 26 alienard  staff     832 18 Aug 15:09 ..
+drwxr-xr-x  15 alienard  staff     480 29 Aug 16:21 .git
+-rw-r--r--   1 alienard  staff     186 18 Aug 15:09 .gitignore
+drwxr-xr-x   7 alienard  staff     224 18 Aug 15:09 .idea
+drwxr-xr-x   3 alienard  staff      96 18 Aug 15:09 .vscode
+-rw-r--r--   1 alienard  staff    1613 18 Aug 15:09 2_test_pipe.c
+-rw-r--r--   1 alienard  staff    2906 18 Aug 15:09 2_test_redir.c
+-rw-r--r--   1 alienard  staff    4055 18 Aug 15:09 CmakeLists.txt
+-rw-r--r--   1 alienard  staff    1014 18 Aug 15:09 Dockerfile
+-rw-r--r--   1 alienard  staff    4032 18 Aug 15:09 Makefile
+-rw-r--r--   1 alienard  staff      12 18 Aug 15:09 README.md
+drwxr-xr-x   7 alienard  staff     224 18 Aug 15:09 cmake-build-debug
+-rw-r--r--   1 alienard  staff      40 18 Aug 15:09 error.txt
+drwxr-xr-x   4 alienard  staff     128 20 Aug 12:05 hardcore_tests
+drwxr-xr-x   3 alienard  staff      96 28 Aug 17:39 headers
+drwxr-xr-x  17 alienard  staff     544 29 Aug 14:59 libft
+-rwxr-xr-x   1 alienard  staff  105772 29 Aug 16:21 minishell
+-rw-r--r--   1 alienard  staff      34 18 Aug 15:09 run.sh
+drwxr-xr-x  69 alienard  staff    2208 29 Aug 16:21 srcs
+-rw-r--r--   1 alienard  staff     492 20 Aug 12:05 test.sh
+-rw-r--r--   1 alienard  staff    5680 18 Aug 15:09 test_pipe.c
+-rw-r--r--   1 alienard  staff    2492 18 Aug 15:09 test_redir.c
+drwxr-xr-x  28 alienard  staff     896 29 Aug 16:21 tests
+-rw-r--r--   1 alienard  staff      71 18 Aug 15:09 valgrind.sh
 --- TESTS ECHO ---
 coucou
 coucoucoucou
@@ -158,29 +160,65 @@ coucou
 12
 
 --- TESTS PWD ---
-/Users/alienard/Documents/42_cursus/redir
-/Users/alienard/Documents/42_cursus/redir
+/Users/alienard/Documents/42/handle_pipe
+/Users/alienard/Documents/42/handle_pipe
 
-/Users/alienard/Documents/42_cursus/redir
-/Users/alienard/Documents/42_cursus/redir
+/Users/alienard/Documents/42/handle_pipe
+/Users/alienard/Documents/42/handle_pipe
 
 --- TESTS CD ---
-/Users/alienard/Documents/42_cursus/redir
-/Users/alienard/Documents/42_cursus/redir/libft
-/Users/alienard/Documents/42_cursus/redir
+/Users/alienard/Documents/42/handle_pipe
+/Users/alienard/Documents/42/handle_pipe/libft
+/Users/alienard/Documents/42/handle_pipe
+
+--- TESTS env ---
+
+PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+SHLVL=3
 
 --- TESTS export ---
 
-salut
+coucou=salut
 
+0 : 		salut
+expected : 	salut
+
+1 : 		salut
+expected : 	salut
+
+2 : 		expected : 	 $cou$bon : command not found
+
+3 : 		expected : 	 $cou$bon : command not found
+
+4 : 		expected : 	 'echo' : command not found
+
+5 : 		expected : 	 "echo" : command not found
+
+6 : 		expected : 	 $cou$bon : command not found
+
+7 : 		expected : 	 \$cou\$bon : command not found
+
+8 : 		expected : 	 ec : command not found
+
+9 : 		expected : 	 ec ho : command not found
+
+10 : 		expected : 	 ec ho : command not found
+
+11 : 		expected : 	 ec\ ho : command not found
+
+
+--- TESTS unset ---
+
+coucou=salut
 --- TESTS ; ---
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -192,13 +230,14 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -210,13 +249,14 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -228,13 +268,14 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -246,7 +287,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-/Users/alienard/Documents/42_cursus/redir
+/Users/alienard/Documents/42/handle_pipe
 coucou
 1
 2
@@ -260,13 +301,14 @@ coucou
 10
 11
 12
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -278,8 +320,28 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-/Users/alienard/Documents/42_cursus/redir
+/Users/alienard/Documents/42/handle_pipe
 
+
+--- TESTS " ---
+
+coucou
+coucou"
+coucou salut
+coucou
+salut
+$
+$
+
+--- TESTS ' ---
+
+coucou
+coucou\
+coucou salut
+coucou
+salut
+\$
+$
 --- TESTS \ ---
 1 coucou"bonjour
 2 coucou\'bonjour
@@ -287,13 +349,14 @@ valgrind.sh
 4 coucou\bonjour
 5 '''''''''
 6 """""""""""
-7	2_test_redir.c
+7	2_test_pipe.c
+2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -305,13 +368,14 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
-8	2_test_redir.c
+8	2_test_pipe.c
+2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -326,14 +390,15 @@ valgrind.sh
 9	10 "coucou
 11 'coucou
 12	coucou
-13	
+13
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -346,13 +411,14 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -365,21 +431,20 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
--rw-r--r--  1 alienard  2019_paris  1014 16 jul 07:54 Dockerfile
--rw-r--r--  1 alienard  2019_paris  1014 16 jul 07:54 Dockerfile
--rw-r--r--  1 alienard  2019_paris   1014 16 jul 07:54 Dockerfile
--rwxr-xr-x  1 alienard  2019_paris  22092 22 jul 13:10 a.out
--rwxr-xr-x  1 alienard  2019_paris  96984  5 aoû 11:04 minishell
--rw-r--r--  1 alienard  2019_paris   1014 16 jul 07:54 Dockerfile
--rwxr-xr-x  1 alienard  2019_paris  22092 22 jul 13:10 a.out
--rwxr-xr-x  1 alienard  2019_paris  96984  5 aoû 11:04 minishell
+-rw-r--r--  1 alienard  staff  1014 18 Aug 15:09 Dockerfile
+-rw-r--r--  1 alienard  staff  1014 18 Aug 15:09 Dockerfile
+-rw-r--r--  1 alienard  staff    1014 18 Aug 15:09 Dockerfile
+-rwxr-xr-x  1 alienard  staff  105772 29 Aug 16:21 minishell
+-rw-r--r--  1 alienard  staff    1014 18 Aug 15:09 Dockerfile
+-rwxr-xr-x  1 alienard  staff  105772 29 Aug 16:21 minishell
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -393,18 +458,151 @@ test_redir.c
 tests
 valgrind.sh
 
---- TESTS < ---
+--- TESTS | ---
 
-phase 1 ok
+0 : expected output : coucou
+coucou
 
-0test.log
+1 : expected output : coucou
+coucou
+
+2 : expected output : coucou$
+coucou$
+
+3 : expected output : coucou
+coucou
+
+4 : expected output : ls output
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.sh
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
+
+5 : expected output : ls output with $
+2_test_pipe.c$
+2_test_redir.c$
+CmakeLists.txt$
+Dockerfile$
+Makefile$
+README.md$
+cmake-build-debug$
+error.txt$
+hardcore_tests$
+headers$
+libft$
+minishell$
+run.sh$
+srcs$
+test.sh$
+test_pipe.c$
+test_redir.c$
+tests$
+valgrind.sh$
+
+6 : expected output : ls sorted output
+2_test_pipe.c
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+error.txt
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.sh
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
+
+7 : expected output : .sh files
+minishell
+run.sh
+test.sh
+valgrind.sh
+
+8 : expected output : sorted .sh files
+minishell
+run.sh
+test.sh
+valgrind.sh
+
+9 : expected output : sorted .sh files with $
+minishell$
+run.sh$
+test.sh$
+valgrind.sh$
+
+10 : expected output : one ls output
+2_test_pipe.c
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+error.txt
+hardcore_tests
+headers
+libft
+minishell
+run.sh
+srcs
+test.sh
+test_pipe.c
+test_redir.c
+tests
+valgrind.sh
+
+11 : expected output :	bonjour
+			coucou
+			salut
+			salut
+bonjour
+coucou
+salut
+salut
+
+12 : expected output :
+coucou
+pwd output
+coucou
+/Users/alienard/Documents/42/handle_pipe
+
+
+--- TESTS < ---
+
+phase 1 ok
+
+0test.log
+2_test_pipe.c
+2_test_redir.c
+CmakeLists.txt
+Dockerfile
+Makefile
+README.md
+cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -445,13 +643,14 @@ phase 3 ok
 
 0
 
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -468,13 +667,14 @@ coucou
 
 1
 
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -493,13 +693,14 @@ coucou
 
 0test.log
 1test.log
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -515,13 +716,14 @@ coucou
 
 3
 
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -534,13 +736,14 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -557,13 +760,14 @@ valgrind.sh
 4
 
 0test.log coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -576,13 +780,14 @@ test_redir.c
 tests
 valgrind.sh
 0test.log coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -598,13 +803,14 @@ valgrind.sh
 5
 
 1test.log coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -619,6 +825,7 @@ valgrind.sh
 
 6
 
+2_test_pipe.c
 2_test_redir.c
 2test.log
 3test.log
@@ -626,8 +833,8 @@ CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -639,6 +846,7 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 2test.log
 3test.log
@@ -646,8 +854,8 @@ CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -664,13 +872,14 @@ valgrind.sh
 
 0
 
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -687,13 +896,14 @@ coucou
 
 1
 
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -712,13 +922,14 @@ coucou
 2
 
 0test.log
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -736,13 +947,14 @@ coucou
 
 3
 
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -757,13 +969,14 @@ tests
 valgrind.sh
 coucou
 coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -780,13 +993,14 @@ valgrind.sh
 4
 
 0test.log coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -800,13 +1014,14 @@ test_redir.c
 tests
 valgrind.sh
 0test.log coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -823,13 +1038,14 @@ valgrind.sh
 5
 
 1test.log coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -845,14 +1061,15 @@ valgrind.sh
 
 6
 
+2_test_pipe.c
 2_test_redir.c
 2test.log
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -867,13 +1084,14 @@ tests
 valgrind.sh
 coucou
 coucou
+2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -886,14 +1104,15 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+2_test_pipe.c
 2_test_redir.c
 2test.log
 CmakeLists.txt
 Dockerfile
 Makefile
 README.md
-a.out
 cmake-build-debug
+error.txt
 hardcore_tests
 headers
 libft
@@ -906,3 +1125,97 @@ test_pipe.c
 test_redir.c
 tests
 valgrind.sh
+bonjour
+bonjour
+bonjour
+/Users/alienard
+/Users/alienard
+/Users/alienard
+\
+\\\\
+$
+$
+$
+\n
+\a
+$
+$USER
+$'PWD'
+$"PWD"
+neeed more ! \\\
+/Users/alienard/Documents/42/handle_pipe
+/Users/alienard/Documents/42
+/
+
+test
+bonjour je suis gentil
+vraiment hein
+...Allez :'(
+return -n
+echo
+àáâèeéêë
+Vous savez, moi je ne crois pas qu il y ait de bonne ou de mauvaise situation. Moi, si je devais résumer ma vie aujourd hui avec vous, je dirais que c est d abord des rencontres. Des gens qui m ont tendu la main, peut-être à un moment où je ne pouvais pas, où j étais seul chez moi. Et c est assez curieux de se dire que les hasards, les rencontres forgent une destinée… Parce que quand on a le goût de la chose, quand on a le goût de la chose bien faite, le beau geste, parfois on ne trouve pas l interlocuteur en face je dirais, le miroir qui vous aide à avancer. Alors ça n est pas mon cas, comme je disais là, puisque moi au contraire, j ai pu : et je dis merci à la vie, je lui dis merci, je chante la vie, je danse la vie… je ne suis qu amour ! Et finalement, quand beaucoup de gens aujourd hui me disent « Mais comment fais-tu pour avoir cette humanité ? », et bien je leur réponds très simplement, je leur dis que c est ce goût de l amour ce goût donc qui m a poussé aujourd hui à entreprendre une construction mécanique, mais demain qui sait ? Peut-être simplement à me mettre au service de la communauté, à faire le don, le don de soi…
+Applications
+Library
+System
+Users
+Volumes
+bin
+cores
+dev
+etc
+home
+opt
+private
+sbin
+tmp
+usr
+var
+Applications
+Library
+System
+Users
+Volumes
+bin
+cores
+dev
+etc
+home
+opt
+private
+sbin
+tmp
+usr
+var
+one
+two
+three
+
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+m
+n
+o
+p
+q
+r
+s
+t
+u
+v
+w
+x
+y
+z
+       1       1       5
+       0       0       0
