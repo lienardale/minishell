@@ -1,4 +1,26 @@
-32c32
+1,2c1,2
+< tests/export.sh: line 11: hoho: command not found
+< tests/export.sh: line 16: hoho: command not found
+---
+> tests/export.sh: line 11: ho: command not found
+> tests/export.sh: line 16: ho: command not found
+5,6c5,6
+< tests/export.sh: line 31: 'hoho': command not found
+< tests/export.sh: line 36: "hoho": command not found
+---
+> tests/export.sh: line 31: 'ho': command not found
+> tests/export.sh: line 36: "ho": command not found
+9,12c9,12
+< tests/export.sh: line 51: $cou: command not found
+< tests/export.sh: line 56: ho ho: command not found
+< tests/export.sh: line 61: ho ho: command not found
+< tests/export.sh: line 66: ho\ ho: command not found
+---
+> tests/export.sh: line 51: ho: command not found
+> tests/export.sh: line 56:  ho: command not found
+> tests/export.sh: line 61:  ho: command not found
+> tests/export.sh: line 66: \ ho: command not found
+34c34
 < tests/roalvare.sh: line 52: /bin/ls/lol: No such file or directory
 ---
 > tests/roalvare.sh: line 52: /bin/ls/lol: Not a directory

@@ -2,3 +2,51 @@
 < SHLVL=4
 ---
 > SHLVL=3
+183c183
+< 0 : 	 export cou=ecexpected : 	salut
+---
+> 0 : 	export cou=ecexpected : 	salut
+185c185
+< 1 : 	 export cou=ecexpected : 	salut
+---
+> 1 : 	export cou=ecexpected : 	salut
+187c187
+< 2 : 	 export cou=ecexpected : 	 $cou$bon : command not found
+---
+> 2 : 	export cou=ecexpected : 	 $cou$bon : command not found
+189c189
+< 3 : 	 export cou=ecexpected : 	 $cou$bon : command not found
+---
+> 3 : 	export cou=ecexpected : 	 $cou$bon : command not found
+191c191
+< 4 : 	 export cou=ecexpected : 	 'echo' : command not found
+---
+> 4 : 	export cou=ecexpected : 	 'echo' : command not found
+193c193
+< 5 : 	 export cou=ecexpected : 	 "echo" : command not found
+---
+> 5 : 	export cou=ecexpected : 	 "echo" : command not found
+195c195
+< 6 : 	 export cou=ecexpected : 	 $cou$bon : command not found
+---
+> 6 : 	export cou=ecexpected : 	 $cou$bon : command not found
+197c197
+< 7 : 	 export cou=ecexpected : 	 \$cou\$bon : command not found
+---
+> 7 : 	export cou=ecexpected : 	 \$cou\$bon : command not found
+199c199
+< 8 : 	 export cou=ecexpected : 	 ec : command not found
+---
+> 8 : 	export cou=ecexpected : 	 ec : command not found
+201c201
+< 9 : 	 export cou=ecexpected : 	 ec ho : command not found
+---
+> 9 : 	export cou=ecexpected : 	 ec ho : command not found
+203c203
+< 10 : 	 export cou=ecexpected : 	 ec ho : command not found
+---
+> 10 : 	export cou=ecexpected : 	 ec ho : command not found
+205c205
+< 11 : 	 export cou=ecexpected : 	 ec\ ho : command not found
+---
+> 11 : 	export cou=ecexpected : 	 ec\ ho : command not found
