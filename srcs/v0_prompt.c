@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/28 18:46:38 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 14:26:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	ft_infile(t_sh *sh)
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
-			if (!quote && sh->line[ft_strlen(sh->line) - 1] != '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1))
+			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
 					break ;
@@ -111,7 +111,7 @@ void	ft_infile(t_sh *sh)
 				}
 				ft_dlst_del(sh->cmds);
 			}
-			if ((sh->line[ft_strlen(sh->line) - 1] == '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1)))
+			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		// ft_free_ptr(sh.line);
@@ -163,9 +163,9 @@ signal(SIGINT, ft_ctrl_c);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			prompt = (quote == 0) ? PROMPT : QPROMPT;
 			// printf("|%s|\n", &sh->line[ft_strlen(sh->line) - 1]);
-			if (quote == 1 || (sh->line[ft_strlen(sh->line) - 1] == '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1)))
+			if (quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
 				prompt = QPROMPT;
-			if (!quote && sh->line[ft_strlen(sh->line) - 1] != '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1))
+			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
 				ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
@@ -178,7 +178,7 @@ signal(SIGINT, ft_ctrl_c);
 				}
 				ft_dlst_del(sh->cmds);
 			}
-			if ((sh->line[ft_strlen(sh->line) - 1] == '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1)))
+			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		if (sh->ret_cmd == 0 || !sh->ret_sh)

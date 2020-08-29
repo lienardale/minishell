@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/28 18:45:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 14:58:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # endif
 
 # ifndef META
-#  define META "-\"\'\\$"
+#  define META "-\"\'\\$./"
 # endif
 
 # ifndef QUOTE
