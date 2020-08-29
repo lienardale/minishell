@@ -1,15 +1,13 @@
-tests/export.sh: line 11: ho: command not found
-tests/export.sh: line 16: ho: command not found
 tests/export.sh: line 21: $cou$bon: command not found
 tests/export.sh: line 26: $cou$bon: command not found
-tests/export.sh: line 31: 'ho': command not found
-tests/export.sh: line 36: "ho": command not found
+tests/export.sh: line 31: 'echo': command not found
+tests/export.sh: line 36: "echo": command not found
 tests/export.sh: line 41: $cou$bon: command not found
 tests/export.sh: line 46: \$cou\$bon: command not found
-tests/export.sh: line 51: ho: command not found
-tests/export.sh: line 56:  ho: command not found
-tests/export.sh: line 61:  ho: command not found
-tests/export.sh: line 66: \ ho: command not found
+tests/export.sh: line 51: ec: command not found
+tests/export.sh: line 56: ec ho: command not found
+tests/export.sh: line 61: ec ho: command not found
+tests/export.sh: line 66: ec\ ho: command not found
 tests/unset.sh: line 12: ls: No such file or directory
 tests/backslash.sh: line 14:  ls: command not found
 tests/backslash.sh: line 22: echo -n: command not found
