@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/20 11:32:30 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/11 16:33:12 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,34 +21,24 @@ int		ft_echo(t_cmd *cmd, t_sh *sh)
 
 	(void)sh;
 	n = 0;
-	i = 0;
+	i = 1;
 	quotes = 0;
 	line = NULL;
-	if (cmd->av[1] && !ft_strncmp(cmd->av[1], "-n", 2))
+	while (cmd->av[i] && !ft_strncmp(cmd->av[i], "-n", 2))
+	{
+		i++;
 		n = 1;
+	}
 // Pour echo, il faudra faire attention au quote, double quote, espace a l'interieur/l'exterieur etc. le parsing doit etre different.
-	if (n && cmd->av[2])
-	{
-		while (cmd->av[2 + i])
+		while (cmd->av[i])
 		{
-			ft_printf("%s", cmd->av[2 + i]);
+			ft_printf("%s", cmd->av[i]);
 			i++;
-			if (cmd->av[2 + i])
+			if (cmd->av[i])
 				ft_printf(" ");
 		}
-	}
-	else if (!quotes && cmd->av[1])
-	{
-		while (cmd->av[1 + i])
-		{
-			ft_printf("%s", cmd->av[1 + i]);
-			i++;
-			if (cmd->av[1 + i])
-				ft_printf(" ");
-		}
-	}
 	if (!n)
 		ft_printf("\n");
 	ft_free_double_array(cmd->av);
-	return (1);
+	return (0);
 }

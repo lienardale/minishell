@@ -17,9 +17,7 @@ ecjo ;;;
 # "tests/debug.sh: line 6: syntax error near unexpected token `;;'
 # tests/debug.sh: line 6: `echo ;;;;'"
 # ->doesn't read the .sh further
-echo ;;;;
-# segf in stdin
-echo coucou
+# echo ;;;;
 
 # expected :
 # stdin_mode : "bash: syntax error near unexpected token `;'"
@@ -86,8 +84,6 @@ echo coucou
 # echo \
 # echo "
 # echo '
-
-# cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
 
 # /!\ prompt must be in STDERR
 

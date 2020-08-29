@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/08/04 14:05:02 by alienard         ###   ########.fr        #
+#    Updated: 2020/08/29 16:42:59 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,11 @@ _SRCS		= v0_minishell.c \
 				ft_pipe.c \
 				ft_strdup_clean.c \
 				ft_exec_env_var.c \
-				ft_parse_env_var.c
+				ft_parse_env_var.c \
+				ft_new_env_var.c \
+				ft_update_env.c \
+				ft_getcwd.c \
+				ft_signal.c
 
 SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
 OBJS			= $(SRCS:.c=.o)
@@ -156,4 +160,12 @@ cdai:
 leak:
 	valgrind --leak-check=full --show-leak-kinds=all ./minishell;
 
-.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak
+ifeq (search,$(firstword $(MAKECMDGOALS)))
+    RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+    $(eval $(RUN_ARGS):;@:)
+endif
+
+search:
+	grep $(RUN_ARGS) srcs/*.c libft/*/*.c
+
+.PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak search

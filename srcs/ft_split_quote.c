@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 11:05:49 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/07 14:23:49 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 				quote = ' ';
 			// (*i)++;
 			start = *i;
+			*i = (quote == '\'' || quote == '\"') ? *i + 1 : *i;
 		}
 	}
 	// result = (!(str[*i - 1] == '\'' || str[*i - 1] == '\"')) ?

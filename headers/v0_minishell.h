@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 16:22:45 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 17:44:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,22 @@
 #  define BUILTINS &ft_exit, &ft_echo, &ft_pwd, &ft_env, &ft_change_dir, &ft_export, &ft_unset
 # endif
 
+# ifndef ON
+#  define ON 1
+# endif
+
+# ifndef OFF
+#  define OFF 0
+# endif
+
+/*
+typedef struct	s_env
+{
+	int	fd;
+	int	check;
+}				t_env;
+*/
+
 typedef struct	s_env
 {
 	char *key;
@@ -84,7 +100,7 @@ typedef struct	s_cmd
 {
 	t_list			**env;
 	int				ac;
-	t_list			**argv;
+	t_list			*argv;
 	char			**av;
 	char			*cmd;
 	int				pos;
@@ -182,7 +198,7 @@ int			ft_exit(t_cmd *cmd, t_sh *sh);
 
 /* execve functions */
 
-void		ft_search_n_execute(char **args, char **env, t_sh *sh);
+int			ft_search_n_execute(char **args, char **env, t_sh *sh);
 char		*ft_get_abspath_filename(char *exec, char **env, t_sh *sh);
 char		*ft_findexec(char *path, char *exec);
 char		*ft_get_onlypaths(char **env);
@@ -200,6 +216,9 @@ char		**ft_lst_env_to_split_export(t_list *lst_env);
 t_list		*ft_search_env(t_list *env, char *arg);
 // int			ft_unset(char **args, t_list **env);
 char		*ft_parse_env_var(char *line, t_sh *sh);
+t_env		*ft_new_env_var(char *key, char *value);
+t_list		*ft_update_env(t_list *env, t_env *data);
+char		*ft_getcwd(void);
 
 /* replacing $ by env var before exec */
 
@@ -214,5 +233,8 @@ int			ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh);
 int			ft_init_pipe(t_sh *sh, t_cmd *cmd);
 int			ft_exec_pipe_child(t_sh *sh, t_cmd *cmd);
 int			ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd);
+/* signal*/
+
+void		ft_signal(int sig, int is_on);
 
 # endif

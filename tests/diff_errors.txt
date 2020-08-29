@@ -1,3 +1,17 @@
+5,6c5,6
+< tests/export.sh: line 41: $cou$bon salut: command not found
+< tests/export.sh: line 46: \$cou\$bon salut: command not found
+---
+> tests/export.sh: line 41: $cou$bon: command not found
+> tests/export.sh: line 46: \$cou\$bon: command not found
+10c10
+< tests/export.sh: line 66: ec\ ho salut: command not found
+---
+> tests/export.sh: line 66: ec\ ho: command not found
+26c26
+< No such file or directory: rgjnrjn
+---
+> tests/roalvare.sh: line 32: cd: rgjnrjn: No such file or directory
 32c32
 < tests/roalvare.sh: line 52: /bin/ls/lol: No such file or directory
 ---

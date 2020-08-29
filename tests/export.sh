@@ -67,10 +67,10 @@ export cou=ec ; export bon=ho ; "$cou\ $bon" salut
 echo "expected : 	 ec\\ ho : command not found"
 echo
 
-# echo -n 12 : \	\
-# export pouet="echo coucou" ; $pouet
-# echo "expected : 	coucou"
-# echo
+echo -n 12 : \	\	
+export pouet="echo coucou" ; $pouet
+echo "expected : 	coucou"
+echo
 
 # export PATH= ;
 # env | grep -v PATH
