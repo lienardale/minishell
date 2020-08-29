@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 14:26:23 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 16:06:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,9 @@ signal(SIGINT, ft_ctrl_c);
 				prompt = QPROMPT;
 			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
-				ft_line_to_lst(ft_input_join(begin), sh);
+				if (!ft_line_to_lst(ft_input_join(begin), sh))
+					return (ft_prompt(sh));
+				// ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;

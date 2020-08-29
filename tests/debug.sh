@@ -7,8 +7,9 @@
 echo test1\
 ; echo test2
 
-|
- ;
+# |
+
+ecjo ;;;
 
 # expected :
 # stdin_mode : "bash: syntax error near unexpected token `;;'"
@@ -16,7 +17,9 @@ echo test1\
 # "tests/debug.sh: line 6: syntax error near unexpected token `;;'
 # tests/debug.sh: line 6: `echo ;;;;'"
 # ->doesn't read the .sh further
-# echo ;;;;
+echo ;;;;
+# segf in stdin
+echo coucou
 
 # expected :
 # stdin_mode : "bash: syntax error near unexpected token `;'"
