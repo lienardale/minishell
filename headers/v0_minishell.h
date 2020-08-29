@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/28 14:18:22 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/28 18:45:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,14 +138,14 @@ char		*ft_strdup_clean(const char *s1);
 
 void		ft_check_line(char **line, int *quote, int *bkslh);
 char		*ft_input_join(t_list *inputs);
-void		ft_line_to_lst(char *inputs, t_sh *sh);
+int			ft_line_to_lst(char *inputs, t_sh *sh);
 void		ft_init_cmd(t_sh *sh, char *line, int *i);
 void		ft_init_args(t_sh *sh, char *line, int *i);
 
 void		ft_handle_end(t_sh *sh, char *line, int *i);
 void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
 void		ft_parse_pipe(t_sh *sh, char *line, int *i);
-void		ft_check_args(char *inputs, t_sh *sh);
+int			ft_check_args(char *inputs, t_sh *sh);
 
 /* parse redir */
 

@@ -1,0 +1,2 @@
+tests/debug.sh: line 8: syntax error near unexpected token'; echo test2'
+tests/debug.sh: line 8: syntax error near unexpected token'à_@–'

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/28 12:39:48 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/28 18:46:38 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ void	ft_infile(t_sh *sh)
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			if (!quote && sh->line[ft_strlen(sh->line) - 1] != '\\' && !ft_is_escaped(sh->line, ft_strlen(sh->line) - 1))
 			{
-				ft_line_to_lst(ft_input_join(begin), sh);
+				if (!ft_line_to_lst(ft_input_join(begin), sh))
+					break ;
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
