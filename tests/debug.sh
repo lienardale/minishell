@@ -35,6 +35,9 @@ echo test1\
 # echo test | | wc; echo lol
 
 
+# ALL ABOVE THIS IS OK
+
+
 # ours doesnt trim the isspaces
 # echo -n 2 : \	\	coucou
 # echo -n 2 : 		coucou
