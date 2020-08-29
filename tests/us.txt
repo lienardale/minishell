@@ -115,9 +115,9 @@ test_redir.c
 tests
 valgrind.sh
 total 320
-drwxr-xr-x  25 alienard  staff     800 29 Aug 15:06 .
+drwxr-xr-x  25 alienard  staff     800 29 Aug 15:45 .
 drwxr-xr-x@ 26 alienard  staff     832 18 Aug 15:09 ..
-drwxr-xr-x  15 alienard  staff     480 29 Aug 11:54 .git
+drwxr-xr-x  15 alienard  staff     480 29 Aug 15:07 .git
 -rw-r--r--   1 alienard  staff     186 18 Aug 15:09 .gitignore
 drwxr-xr-x   7 alienard  staff     224 18 Aug 15:09 .idea
 drwxr-xr-x   3 alienard  staff      96 18 Aug 15:09 .vscode
@@ -132,13 +132,13 @@ drwxr-xr-x   7 alienard  staff     224 18 Aug 15:09 cmake-build-debug
 drwxr-xr-x   4 alienard  staff     128 20 Aug 12:05 hardcore_tests
 drwxr-xr-x   3 alienard  staff      96 28 Aug 17:39 headers
 drwxr-xr-x  17 alienard  staff     544 29 Aug 14:59 libft
--rwxr-xr-x   1 alienard  staff  105772 29 Aug 15:06 minishell
+-rwxr-xr-x   1 alienard  staff  105772 29 Aug 15:45 minishell
 -rw-r--r--   1 alienard  staff      34 18 Aug 15:09 run.sh
-drwxr-xr-x  69 alienard  staff    2208 29 Aug 15:06 srcs
+drwxr-xr-x  69 alienard  staff    2208 29 Aug 15:45 srcs
 -rw-r--r--   1 alienard  staff     492 20 Aug 12:05 test.sh
 -rw-r--r--   1 alienard  staff    5680 18 Aug 15:09 test_pipe.c
 -rw-r--r--   1 alienard  staff    2492 18 Aug 15:09 test_redir.c
-drwxr-xr-x  28 alienard  staff     896 29 Aug 15:06 tests
+drwxr-xr-x  28 alienard  staff     896 29 Aug 15:47 tests
 -rw-r--r--   1 alienard  staff      71 18 Aug 15:09 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -175,6 +175,41 @@ coucou
 
 PATH=/Users/alienard/.brew/bin:/Users/alienard/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 SHLVL=4
+
+--- TESTS export ---
+
+coucou=salut
+
+0 : 		salut
+expected : 	salut
+
+1 : 		salut
+expected : 	salut
+
+2 : 		expected : 	 $cou$bon : command not found
+
+3 : 		expected : 	 $cou$bon : command not found
+
+4 : 		expected : 	 'echo' : command not found
+
+5 : 		expected : 	 "echo" : command not found
+
+6 : 		expected : 	 $cou$bon : command not found
+
+7 : 		expected : 	 \$cou\$bon : command not found
+
+8 : 		expected : 	 ec : command not found
+
+9 : 		expected : 	 ec ho : command not found
+
+10 : 		expected : 	 ec ho : command not found
+
+11 : 		expected : 	 ec\ ho : command not found
+
+
+--- TESTS unset ---
+
+coucou=salut
 --- TESTS ; ---
 2_test_pipe.c
 2_test_redir.c
@@ -399,9 +434,9 @@ valgrind.sh
 -rw-r--r--  1 alienard  staff  1014 18 Aug 15:09 Dockerfile
 -rw-r--r--  1 alienard  staff  1014 18 Aug 15:09 Dockerfile
 -rw-r--r--  1 alienard  staff    1014 18 Aug 15:09 Dockerfile
--rwxr-xr-x  1 alienard  staff  105772 29 Aug 15:06 minishell
+-rwxr-xr-x  1 alienard  staff  105772 29 Aug 15:45 minishell
 -rw-r--r--  1 alienard  staff    1014 18 Aug 15:09 Dockerfile
--rwxr-xr-x  1 alienard  staff  105772 29 Aug 15:06 minishell
+-rwxr-xr-x  1 alienard  staff  105772 29 Aug 15:45 minishell
 2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt

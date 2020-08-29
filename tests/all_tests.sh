@@ -27,11 +27,11 @@ bash tests/cd.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 ./minishell tests/env.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 bash tests/env.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
-# ./minishell tests/export.sh 1>> tests/us.txt 2>> tests/us_errors.txt
-# bash tests/export.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+./minishell tests/export.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/export.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
-# ./minishell tests/unset.sh 1>> tests/us.txt 2>> tests/us_errors.txt
-# bash tests/unset.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+./minishell tests/unset.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/unset.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 # ./minishell tests/exit.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 # bash tests/exit.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt

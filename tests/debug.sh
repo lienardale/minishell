@@ -34,7 +34,6 @@ echo test1\
 # ->doesn't read the .sh further
 # echo test | | wc; echo lol
 
-echo lol; echo test | | wc
 
 # ours doesnt trim the isspaces
 # echo -n 2 : \	\	coucou
@@ -85,3 +84,5 @@ echo lol; echo test | | wc
 # cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
 
 # /!\ prompt must be in STDERR
+
+echo lol; echo test | | wc

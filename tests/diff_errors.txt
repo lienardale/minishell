@@ -1,4 +1,4 @@
-21c21
+32c32
 < tests/roalvare.sh: line 52: /bin/ls/lol: No such file or directory
 ---
 > tests/roalvare.sh: line 52: /bin/ls/lol: Not a directory
