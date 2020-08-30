@@ -39,7 +39,6 @@ echo
 
 echo -n 6 : \	\	
 export cou=ec ; export bon=ho ; "\$cou\$bon" salut
-# this one
 echo "expected : 	 \$cou\$bon : command not found"
 echo
 
@@ -65,12 +64,16 @@ echo
 
 echo -n 11 : \	\	
 export cou=ec ; export bon=ho ; "$cou\ $bon" salut
-# this one
 echo "expected : 	 ec\\ ho : command not found"
 echo
 
 echo -n 12 : \	\	
 export pouet="echo coucou" ; $pouet
+echo "expected : 	coucou"
+echo
+
+echo -n 13 : \	\	
+export pouet="e""cho"' coucou' ; $pouet
 echo "expected : 	coucou"
 echo
 

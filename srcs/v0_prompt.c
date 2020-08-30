@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 18:12:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/30 17:19:17 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ void	ft_prompt(t_sh *sh)
 	ft_signal(SIGQUIT, ON);
 	ft_signal(SIGINT, ON);
 	if (sh->fd == 0)
-			write(1,prompt,ft_strlen(prompt));
+			write(2,prompt,ft_strlen(prompt));
 	while (//sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end && 
 		(sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
@@ -185,8 +185,10 @@ void	ft_prompt(t_sh *sh)
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
 		 * */
-		if (sh->fd == 0 && sh->ret_sh > 0 && !begin)
-			write(1, prompt, ft_strlen(prompt));
+
+		// pb : no prompt while in quotes -> needs fixing
+		if (sh->fd == 0 && sh->ret_sh > 0 && (!begin/* || quote*/))
+			write(2, prompt, ft_strlen(prompt));
 		
 		// ft_free_ptr(sh.line);
 	}

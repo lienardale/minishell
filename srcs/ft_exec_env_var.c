@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/30 15:40:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/30 16:26:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 	i[1] = i[0];
 	while (av[i[0] + i[2]] && (av[i[0] + i[2]] != '$'
 		|| ft_is_escaped(av, i[0] + i[2]) || ft_isinsquotes(av, i[0] + i[2]))
-		&& ft_isalnum(av[i[0] + i[2]]))
+		&& (ft_isalnum(av[i[0] + i[2]]) || av[i[0] + i[2]] == '?'))
 		i[2]++;
 	while (key[i[3]])
 		tab[i[1]++] = key[i[3]++];
@@ -111,7 +111,7 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	i = 1;
 	env = *(sh->env);
 	while (str[i] && (str[i] != '$' || ft_is_escaped(str, i)
-		|| ft_isinsquotes(str, i)) && ft_isalnum(str[i]))
+		|| ft_isinsquotes(str, i)) && (ft_isalnum(str[i]) || str[i] == '?'))
 		i++;
 	tmp = ft_substr(str, 1, i - 1);
 	if (!tmp || ft_strlen(tmp) == 0)

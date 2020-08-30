@@ -1,16 +1,15 @@
 
-# export pouet='echo coucou' ; $pouet
-# export cou=ec ; export bon=ho ; "\$cou\$bon" salut
 # ours segfaults
 # expected :
 # "test1
 # test2"
-# echo test1\
-# ; echo test2
+echo test1\
+; echo test2
 
 # |
-
+ 
 # ecjo ;;;
+
 
 # expected :
 # stdin_mode : "bash: syntax error near unexpected token `;;'"
@@ -37,12 +36,17 @@
 # echo test | | wc; echo lol
 
 
+
 # ALL ABOVE THIS IS OK
 
 
-# ours doesnt trim the isspaces
+# ours doesnt trim the isspaces -> see strdup_clean
 # echo -n 2 : \	\	coucou
 # echo -n 2 : 		coucou
+# '$' need to be cleaned
+# echo $'PWD'
+# echo $RIP
+# echo $
 
 #rdir pb
 # export > 0test.log
@@ -54,18 +58,18 @@
 # echo lol > srcs
 
 
-#has to do with parsing of options -> ok in cdai
+#has to do with parsing of options
 # echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
+# echo -n One"argument"'lo'l ; echo "n"''ee"d"more'?'''"'"
+# export pouet="e""cho"' coucou' ; $pouet
 # echo -n -n return
 
-# is ok I guess ?
+
+# malloc errors
 # export PATH= ;
+# cat Dockerfile
 # ls
 # echo
-
-# export pouet="echo coucou" ; $pouet
-# echo $RIP
-
 
 # wrong error msg
 # /bin/ls/lol
@@ -78,16 +82,22 @@
 
 # exits instead of not exiting
 # echo test | exit
-# is ok
 # exit | echo test
 
-# pb
+# pb prompt
 # echo \
 # echo "
 # echo '
 
 # /!\ prompt must be in STDERR
-# '$' need to be cleaned
-# echo $'PWD'
+
+# see how vm behaves for this one
+# exit 1 2
+# echo $?
+
+# ps -ef | grep "minishell" | grep -v 'grep' | awk '{print $2}' | xargs kill
+# ps -ef | grep ./minishell | grep -v 'grep' | awk '{print $2}' | xargs kill
+# ps -ef | grep ./minishell | grep -v 'grep' | cut -b 7,8,9,10,11 | xargs kill
 
 echo lol; echo test | | wc
+

@@ -63,8 +63,8 @@ bash tests/append.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 # ./minishell tests/redir_nb.sh 1>> tests/us.txt  2>> tests/us_errors.txt
 # bash tests/redir_nb.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
-# ./minishell tests/return.sh 1>> tests/us.txt 2>> tests/us_errors.txt
-# bash tests/return.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+./minishell tests/return.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/return.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 
 # testing signals
