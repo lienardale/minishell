@@ -1,8 +1,0 @@
-26c26
-< No such file or directory: rgjnrjn
----
-> tests/roalvare.sh: line 32: cd: rgjnrjn: No such file or directory
-32c32
-< tests/roalvare.sh: line 52: /bin/ls/lol: No such file or directory
----
-> tests/roalvare.sh: line 52: /bin/ls/lol: Not a directory
