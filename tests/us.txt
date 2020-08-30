@@ -115,9 +115,9 @@ test_redir.c
 tests
 valgrind.sh
 total 344
-drwxr-xr-x  25 alienard  staff     800 29 Aug 18:50 .
+drwxr-xr-x  25 alienard  staff     800 30 Aug 15:52 .
 drwxr-xr-x@ 26 alienard  staff     832 18 Aug 15:09 ..
-drwxr-xr-x  18 alienard  staff     576 29 Aug 17:59 .git
+drwxr-xr-x  15 alienard  staff     480 29 Aug 18:57 .git
 -rw-r--r--   1 alienard  staff     186 22 Jul 19:57 .gitignore
 drwxr-xr-x   7 alienard  staff     224 22 Jul 19:57 .idea
 drwxr-xr-x   3 alienard  staff      96 22 Jul 19:57 .vscode
@@ -131,14 +131,14 @@ drwxr-xr-x   7 alienard  staff     224 22 Jul 19:57 cmake-build-debug
 -rw-r--r--   1 alienard  staff      40 29 Aug 16:33 error.txt
 drwxr-xr-x   4 alienard  staff     128 29 Aug 16:33 hardcore_tests
 drwxr-xr-x   3 alienard  staff      96 29 Aug 16:42 headers
-drwxr-xr-x  17 alienard  staff     544 29 Aug 18:00 libft
--rwxr-xr-x   1 alienard  staff  113060 29 Aug 18:50 minishell
+drwxr-xr-x  17 alienard  staff     544 30 Aug 15:52 libft
+-rwxr-xr-x   1 alienard  staff  113060 30 Aug 15:52 minishell
 -rw-r--r--   1 alienard  staff      34 22 Jul 19:57 run.sh
-drwxr-xr-x  78 alienard  staff    2496 29 Aug 18:50 srcs
+drwxr-xr-x  78 alienard  staff    2496 30 Aug 15:52 srcs
 -rw-r--r--   1 alienard  staff     493 29 Aug 16:43 test.sh
 -rw-r--r--   1 alienard  staff    5680 22 Jul 19:57 test_pipe.c
 -rw-r--r--   1 alienard  staff    2492 22 Jul 19:57 test_redir.c
-drwxr-xr-x  28 alienard  staff     896 29 Aug 18:50 tests
+drwxr-xr-x  28 alienard  staff     896 30 Aug 15:53 tests
 -rw-r--r--   1 alienard  staff      71 22 Jul 19:57 valgrind.sh
 --- TESTS ECHO ---
 coucou
@@ -336,7 +336,7 @@ coucou salut
 coucou
 salut
 $
-/bin/zsh
+$
 
 --- TESTS ' ---
 
@@ -439,9 +439,9 @@ valgrind.sh
 -rw-r--r--  1 alienard  staff  1014 22 Jul 19:57 Dockerfile
 -rw-r--r--  1 alienard  staff  1014 22 Jul 19:57 Dockerfile
 -rw-r--r--  1 alienard  staff    1014 22 Jul 19:57 Dockerfile
--rwxr-xr-x  1 alienard  staff  113060 29 Aug 18:50 minishell
+-rwxr-xr-x  1 alienard  staff  113060 30 Aug 15:52 minishell
 -rw-r--r--  1 alienard  staff    1014 22 Jul 19:57 Dockerfile
--rwxr-xr-x  1 alienard  staff  113060 29 Aug 18:50 minishell
+-rwxr-xr-x  1 alienard  staff  113060 30 Aug 15:52 minishell
 2_test_pipe.c
 2_test_redir.c
 CmakeLists.txt
@@ -471,7 +471,7 @@ coucou
 1 : expected output : coucou
 coucou
 
-2 : expected output : coucou/bin/zsh
+2 : expected output : coucou$
 coucou$
 
 3 : expected output : coucou
@@ -498,7 +498,7 @@ test_redir.c
 tests
 valgrind.sh
 
-5 : expected output : ls output with /bin/zsh
+5 : expected output : ls output with $
 2_test_pipe.c$
 2_test_redir.c$
 CmakeLists.txt$
@@ -552,7 +552,7 @@ run.sh
 test.sh
 valgrind.sh
 
-9 : expected output : sorted .sh files with /bin/zsh
+9 : expected output : sorted .sh files with $
 minishell$
 run.sh$
 test.sh$
@@ -1138,15 +1138,15 @@ bonjour
 /Users/alienard
 \
 \\\\
-/bin/zsh
-/bin/zsh
+$
+$
 $
 \n
 \a
 $
 $USER
-/bin/zsh'PWD'
-/bin/zsh"PWD"
+$'PWD'
+$"PWD"
 neeed more ! \\\
 /Users/alienard/Documents/42/redir
 /Users/alienard/Documents/42

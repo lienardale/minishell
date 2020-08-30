@@ -1,15 +1,16 @@
 
-
+# export pouet='echo coucou' ; $pouet
+# export cou=ec ; export bon=ho ; "\$cou\$bon" salut
 # ours segfaults
 # expected :
 # "test1
 # test2"
-echo test1\
-; echo test2
+# echo test1\
+# ; echo test2
 
 # |
 
-ecjo ;;;
+# ecjo ;;;
 
 # expected :
 # stdin_mode : "bash: syntax error near unexpected token `;;'"
@@ -86,5 +87,7 @@ ecjo ;;;
 # echo '
 
 # /!\ prompt must be in STDERR
+# '$' need to be cleaned
+# echo $'PWD'
 
 echo lol; echo test | | wc

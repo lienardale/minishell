@@ -39,6 +39,7 @@ echo
 
 echo -n 6 : \	\	
 export cou=ec ; export bon=ho ; "\$cou\$bon" salut
+# this one
 echo "expected : 	 \$cou\$bon : command not found"
 echo
 
@@ -64,6 +65,7 @@ echo
 
 echo -n 11 : \	\	
 export cou=ec ; export bon=ho ; "$cou\ $bon" salut
+# this one
 echo "expected : 	 ec\\ ho : command not found"
 echo
 

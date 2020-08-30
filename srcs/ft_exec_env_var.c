@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 18:49:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/30 15:40:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 		|| ft_isinsquotes(str, i)) && ft_isalnum(str[i]))
 		i++;
 	tmp = ft_substr(str, 1, i - 1);
+	if (!tmp || ft_strlen(tmp) == 0)
+		return (NULL);
 	while (env)
 	{
 		if (!ft_strncmp("?", tmp, 1))
@@ -135,6 +137,7 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 
 	i = 0;
 	temp = cmd->argv;
+	
 	while (temp)
 	{
 		j = 0;

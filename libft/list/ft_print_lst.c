@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_dlst.c                                    :+:      :+:    :+:   */
+/*   ft_print_lst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/19 11:05:47 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/30 15:42:13 by alienard         ###   ########.fr       */
+/*   Created: 2020/08/30 15:41:41 by alienard          #+#    #+#             */
+/*   Updated: 2020/08/30 15:44:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 #include "list.h"
 #include "libftprintf.h"
 
-void	ft_print_dlst(t_dlist *dlst, char *str)
+void	ft_print_lst(t_list *lst, char *str)
 {
 	int i;
 
 	i = 0;
-	ft_printf("--- %d nodes ---\n", ft_len_dlst(dlst));
+	ft_printf("--- %d nodes ---\n", ft_lstsize(lst));
 	if (str)
 		ft_printf("| %s\n", str);
-	while (dlst)
+	while (lst)
 	{
-		ft_printf("| %d | \"%s\" (p='%s'|n='%s')\n",
-			i++, dlst->data,
-			dlst->prev ? dlst->prev->data : "",
-			dlst->next ? dlst->next->data : "");
-		dlst = dlst->next;
+		ft_printf("| %d | \"%s\" (n='%s')\n",
+			i++, lst->content,
+			lst->next ? lst->next->content : "");
+		lst = lst->next;
 	}
 	ft_printf("---------------\n\n");
 }

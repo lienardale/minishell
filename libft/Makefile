@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/08/05 18:52:06 by cdai             ###   ########.fr        #
+#    Updated: 2020/08/30 15:52:44 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,8 @@ _LIST			= ft_lstadd_back_bonus.c \
 					ft_lstnew_bonus.c \
 					ft_lstsplit.c \
 					ft_lstadd_before.c \
-					ft_lst_to_split.c
+					ft_lst_to_split.c \
+					ft_print_lst.c
 _MEM			= ft_bzero.c \
 					ft_calloc.c \
 					ft_free_ptr.c \
