@@ -38,6 +38,9 @@
 
 # ALL ABOVE THIS IS OK
 
+ls |
+ls >
+
 #rdir pb
 # export > 0test.log
 # cat nop.txt 2> error.txt
