@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/30 17:19:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 14:43:08 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ void	ft_prompt(t_sh *sh)
 					return (ft_prompt(sh));
 				// ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
+//free(sh->line);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
@@ -173,6 +174,7 @@ void	ft_prompt(t_sh *sh)
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
+ft_clear_cmds(sh->cmds);
 				ft_dlst_del(sh->cmds);
 				begin = NULL;
 			}

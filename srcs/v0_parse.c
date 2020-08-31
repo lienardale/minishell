@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 09:33:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 13:47:31 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,18 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 
 	if (cmd->pipe_next && (ft_init_pipe(sh, cmd)))
 		ft_parse_cmds(cmd->pipe_next, sh);
+//else if (cmd->pipe_next) //ft_init_pipe() fails
 	// printf("ARGS0:|%s|\n", (char*)cmd->argv->content);
 	ft_check_env_var(cmd, sh);
+	ft_lstclear(&cmd->argv, free);
 	// add suppression of $ that must be
 	i = -1;
 	while (cmd->av[++i])
 		cmd->av[i] = ft_strdup_clean(cmd->av[i]);
-	cmd->cmd= ft_strdup(cmd->av[0]);
-	if (cmd->cmd == NULL)
-		return (1);
+// already in v0_split.c line 73 
+//	cmd->cmd= ft_strdup(cmd->av[0]);
+//	if (cmd->cmd == NULL)
+//		return (1);
 	i = -1;
 // pour ne pas faire d'enfant (fork)
 	if (ft_strcmp(cmd->cmd, "exit") == 0)

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/29 17:48:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 17:00:50 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 		if (!(home = ft_search_env(*(sh->env), "HOME")))
 		{
 			ft_dprintf(2, "minishell: cd: HOME not set\n");
+free(oldpwd);
 ft_free_split(cmd->av);
 			return (1);
 		}
@@ -61,6 +62,7 @@ ft_free_split(cmd->av);
 	if (chdir_value)
 	{
 		ft_dprintf(2, "No such file or directory: %s\n", cmd->av[1]);
+		free(oldpwd);
 		ft_free_split(cmd->av);
 		return (1);
 	}
@@ -73,6 +75,7 @@ ft_free_split(cmd->av);
 		// ft_putstr_fd(cmd->av[1], 2);
 		// ft_putstr_fd("No such file or directory: ", 2);
 		// ft_putchar_fd('\n', 2);
+		free(oldpwd);
 		ft_free_split(cmd->av);
 		return (1);
 	}

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 11:19:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 12:17:38 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 		return ;
 	}
 	tmp_av = ft_split_quote(tmp, ' ');
+//if (malloc fail)
 	free(tmp);
 	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
+//if (malloc fail)
 	if (!(cmd->av) || !(cmd->av[0]))
 	{
 		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
@@ -65,9 +67,11 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	// while (cmd->av[++(*i)])
 	// 	cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
 	cmd->argv = ft_split_to_lst(cmd->av);
+//if (malloc fail)
 	// ft_printf("avlst:|%s|\n",(char*)cmd->argv->content);
 	cmd->ac = ft_double_strlen(cmd->av);
 	cmd->cmd= ft_strdup(cmd->av[0]);
+//if (malloc fail)
 	*i = j;
 	ft_handle_end(sh, line, i);
 }
@@ -77,7 +81,10 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	t_cmd	*cmd;
 
 	if (!(cmd = ft_calloc(1, sizeof(t_cmd))))
+	{
+		ft_dprintf(2, "Malloc error\n");
 		return;
+	}
 	if (sh->cmds->tail && sh->cmds->tail->data)
 	{
 		cmd->pos = ((t_cmd*)(sh->cmds->tail->data))->pos + 1;
@@ -99,8 +106,14 @@ int		ft_line_to_lst(char *inputs, t_sh *sh)
 	if (!ft_check_args(inputs, sh))
 		return (0);
 	ft_init_dlst(&sh->cmds);
+	if (!sh->cmds)
+		return (0);
 	while (inputs[i])
+	{
 		ft_init_cmd(sh, inputs, &i);
+//if (malloc fail)
+//return (0);
+	}
 	ft_free_ptr(inputs);
 	return (1);
 }

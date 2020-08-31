@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 09:33:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 14:44:24 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -219,6 +219,7 @@ char		*ft_parse_env_var(char *line, t_sh *sh);
 t_env		*ft_new_env_var(char *key, char *value);
 t_list		*ft_update_env(t_list *env, t_env *data);
 char		*ft_getcwd(void);
+void		ft_clear_cmds(t_ref *cmds);
 
 /* replacing $ by env var before exec */
 
