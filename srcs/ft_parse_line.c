@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 15:45:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 17:58:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,32 @@ int		ft_check_args(char *inputs, t_sh *sh)
 	{
 		while (inputs[i] && ft_isspace(inputs[i]))
 			i++;
-		if (inputs[i] && !ft_isalnum(inputs[i]) && !ft_ischarset(META, inputs[i])
-			&& !ft_is_escaped(inputs, i) && !ft_isinquotes(inputs, i)
-			&& ft_unexpected_token(inputs, sh, i))
+		if (inputs[i] && !ft_isalnum(inputs[i])
+			&& !ft_ischarset(META, inputs[i]) && !ft_is_escaped(inputs, i)
+			&& !ft_isinquotes(inputs, i) && ft_unexpected_token(inputs, sh, i))
 			return (0);
-		// while (inputs[i] && (ft_isalnum(inputs[i]) || ft_isspace(inputs[i]) || ft_ischarset(META, inputs[i])
-		// 	|| ft_is_escaped(inputs, i) || ft_isinquotes(inputs, i)))
-		// 	i++;
-		while (inputs[i] && (!ft_ischarset(END_CMD, inputs[i]) || ft_isinquotes(inputs, i) || ft_is_escaped(inputs, i)))
+		while (inputs[i] && (!ft_ischarset(END_CMD, inputs[i])
+			|| ft_isinquotes(inputs, i) || ft_is_escaped(inputs, i)))
 			i++;
 		if (inputs[i] && ft_ischarset(END_CMD, inputs[i]))
 			i++;
 		if (inputs[i] && inputs[i - 1] == '>' && inputs[i] == '>')
 			i++;
-		// printf("input[i]:|%s|\n", &inputs[i]);
-		// i++;
 	}
 	return (1);
+}
+
+char	*ft_strtrim_space(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isspace(str[i]) && !ft_is_escaped(str, i)
+			&& !ft_isinquotes(str, i))
+			str[i] = ' ';
+		i++;
+	}
+	return (str);
 }

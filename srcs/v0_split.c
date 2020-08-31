@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 11:19:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 18:18:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,6 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 		*i = j + 1;
 		return ;
 	}
-	// *i = -1;
-	// while (cmd->av[++(*i)])
-	// 	cmd->av[*i] = ft_strdup_clean(cmd->av[*i]);
 	cmd->argv = ft_split_to_lst(cmd->av);
 	// ft_printf("avlst:|%s|\n",(char*)cmd->argv->content);
 	cmd->ac = ft_double_strlen(cmd->av);
@@ -99,6 +96,7 @@ int		ft_line_to_lst(char *inputs, t_sh *sh)
 	if (!ft_check_args(inputs, sh))
 		return (0);
 	ft_init_dlst(&sh->cmds);
+	inputs = ft_strtrim_space(inputs);
 	while (inputs[i])
 		ft_init_cmd(sh, inputs, &i);
 	ft_free_ptr(inputs);

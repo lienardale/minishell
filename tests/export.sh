@@ -77,6 +77,12 @@ export pouet="e""cho"' coucou' ; $pouet
 echo "expected : 	coucou"
 echo
 
+export test="   a   "
+echo $test
+echo $test$test$test$test$test$test$test$test$test$test$test
+echo "$test$test$test$test$test$test$test$test$test"
+unset $test
+
 # export PATH= ;
 # env | grep -v PATH
 # echo

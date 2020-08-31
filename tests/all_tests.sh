@@ -39,6 +39,7 @@ bash tests/unset.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 # testing special characters
 
+
 ./minishell tests/semi_colon.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 bash tests/semi_colon.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
@@ -62,6 +63,9 @@ bash tests/append.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 # ./minishell tests/redir_nb.sh 1>> tests/us.txt  2>> tests/us_errors.txt
 # bash tests/redir_nb.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+
+./minishell tests/parsing.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/parsing.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 ./minishell tests/return.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 bash tests/return.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt

@@ -54,6 +54,8 @@ ls > test.log\\\\\ coucou
 cat test.log\\\\\ coucou
 rm test.log\\\\\ coucou
 
+echo '\\please\\' "\"fail\\"
+
 # echo test1\
 # ; echo test2
 #

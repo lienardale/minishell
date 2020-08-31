@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 09:33:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 17:02:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ void		ft_handle_end(t_sh *sh, char *line, int *i);
 void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
 void		ft_parse_pipe(t_sh *sh, char *line, int *i);
 int			ft_check_args(char *inputs, t_sh *sh);
+char		*ft_strtrim_space(char *str);
 
 /* parse redir */
 

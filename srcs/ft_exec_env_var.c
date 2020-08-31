@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 09:33:27 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 17:33:46 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 		|| ft_is_escaped(av, i[0] + i[2]) || ft_isinsquotes(av, i[0] + i[2]))
 		&& (ft_isalnum(av[i[0] + i[2]]) || av[i[0] + i[2]] == '?'))
 		i[2]++;
-	while (key[i[3]])
+	while (key && key[i[3]])
 		tab[i[1]++] = key[i[3]++];
 	while (av[i[0] + i[2]] && (i[0] + i[2]) < len)
 		tab[i[1]++] = av[i[0]++ + i[2]];
@@ -39,7 +39,6 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 	free(av);
 	return (tab);
 }
-
 
 void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 {
@@ -58,7 +57,8 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	while (temp[j] && (temp[j] != '$' || ft_isinsquotes(temp, j)
 		|| ft_is_escaped(temp, j)))
 		j++;
-	len = ft_strlen(key);
+	if (key)
+		len = ft_strlen(key);
 	k = (temp[j] == '$') ? k + 1 : k;
 	while (temp[j + k] && (temp[j + k] != '$' || ft_is_escaped(temp, j + k)
 		|| ft_isinsquotes(temp, j + k)) && (!ft_isalnum(temp[j + k])))
@@ -66,7 +66,6 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	while (temp[j + k])
 		j++;
 	len += j;
-	// ft_lst_add_betw()
 	lst->content = ft_strdup_env_var(len, temp, key);
 	temp = lst->content;
 	temp_strs = ft_split_quote(temp, ' ');
@@ -137,7 +136,6 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 
 	i = 0;
 	temp = cmd->argv;
-	
 	while (temp)
 	{
 		j = 0;

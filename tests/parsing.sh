@@ -1,0 +1,81 @@
+echo
+echo "--- TESTS PARSING ---"
+echo
+
+echo "----space-trimming----"
+echo \	\	coucou1
+echo \		coucou2
+echo		coucou3
+echo    coucou4	\	\    
+echo    coucou5\	\	\    
+echo     coucou6     	
+echo    coucou7	"	""    "
+echo    coucou8"	""	""    "
+echo "	""	"coucou9
+echo "	""	"coucou10
+echo    coucou11	'	''    '
+echo    coucou12'	''	''    '
+echo '	''	'coucou13
+echo '	''	'coucou14
+echo coucou\	    \	coucou15
+echo coucou\	    	coucou16
+echo coucou	    	coucou17
+echo    coucou	\	\    coucou18
+echo    coucou\	\	\    coucou19
+echo    coucou     	coucou20
+echo
+
+echo "----dollar----"
+echo "--classic--"
+echo $'PWD'
+echo $"PWD"
+echo $'RIP'
+echo $"RIP"
+echo $\""RIP"
+echo $3
+echo $324
+echo $RIP
+echo $ 
+echo
+echo "--bkslh--"
+echo \$'PWD'
+echo \$"PWD"
+echo \$'RIP'
+echo \$"RIP"
+echo \$\""RIP"
+echo \$3
+echo \$324
+echo \$RIP
+echo \$ 
+echo
+echo "--dquote--"
+echo "$'PWD'"
+echo "$'PWD'"
+echo "$'RIP'"
+echo "$'RIP'"
+echo "$\"'RIP'"
+echo "$3"
+echo "$324"
+echo "$RIP"
+echo "$ "
+echo
+echo "--squote--"
+echo '$"PWD"'
+echo '$"PWD"'
+echo '$"RIP"'
+echo '$"RIP"'
+echo '$\""RIP"'
+echo '$3'
+echo '$324'
+echo '$RIP'
+echo '$ '
+echo
+
+echo "----quotes----"
+echo "coucouc;"
+echo -n -n One"argument"'lo'l; echo n
+echo -n -n One"argument"'lo'l; echo "n"
+echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
+echo -n One"argument"'lo'l ; echo "n"''ee"d"more'?'''"'"
+echo -n -n return
+echo

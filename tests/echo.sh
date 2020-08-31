@@ -26,6 +26,8 @@ echo
 echo test1\
 ; echo test2
 
+
+
 # bash trims the spaces when they are not escaped
-# echo -n 2 : \	\	coucou
-# echo -n 2 : 		coucou
+echo -n 2 : \	\	coucou
+echo -n 2 : 		coucou

@@ -35,26 +35,8 @@
 # ->doesn't read the .sh further
 # echo test | | wc; echo lol
 
-# #has to do with parsing of options
-# echo "coucouc;"
-# echo -n -n One"argument"'lo'l; echo n
-# echo -n -n One"argument"'lo'l; echo "n"
-# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
-# echo -n One"argument"'lo'l ; echo "n"''ee"d"more'?'''"'"
-# export pouet="e""cho"' coucou' ; $pouet
-# echo -n -n return
-
 
 # ALL ABOVE THIS IS OK
-
-
-# ours doesnt trim the isspaces -> see strdup_clean
-# echo -n 2 : \	\	coucou
-# echo -n 2 : 		coucou
-# '$' need to be cleaned
-# echo $'PWD'
-# echo $RIP
-# echo $
 
 #rdir pb
 # export > 0test.log
@@ -64,7 +46,6 @@
 # echo coucou > 0test.log 1test.log 2test.log > 3test.log
 # echo coucou > ../tests/test.log
 # echo lol > srcs
-
 
 
 # malloc errors
@@ -77,10 +58,6 @@
 # /bin/ls/lol
 # ./srcs
 # README.md
-
-
-#one too many \ at the end
-# echo '\\please\\' "\"fail\\"
 
 # exits instead of not exiting
 # echo test | exit

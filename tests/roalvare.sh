@@ -3,7 +3,7 @@ echo "bonjour"
 echo 'bonjour'
 echo $HOME
 echo "$HOME"
-# echo $RIP
+echo $RIP
 echo $HOME
 echo \\
 echo '\\\\'
@@ -17,9 +17,12 @@ echo "\$USER"
 echo $\'PWD\'
 echo $\"PWD\"
 
-#has to do with parsing of options
-# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
-# echo -n -n return
+echo "coucouc;"
+echo -n -n One"argument"'lo'l; echo n
+echo -n -n One"argument"'lo'l; echo "n"
+echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
+echo -n One"argument"'lo'l ; echo "n"''ee"d"more'?'''"'"
+echo -n -n return
 
 echo \n\e\e\e\d \m\o\r\e \! \\\\\\
 
@@ -63,12 +66,6 @@ echo one; echo two; echo three
 echo
 echo a; echo b; echo c; echo d; echo e; echo f; echo g; echo h; echo i; echo j; echo k; echo l; echo m; echo n; echo o; echo p; echo q; echo r; echo s; echo t; echo u; echo v; echo w; echo x; echo y; echo z
 
-#segf
-# echo ;;;;
-# echo test | | wc; echo lol
-# echo lol; echo test | | wc
-# |
-#
 
 # to tests with our own files/dir
 # cat < files/input/monolog > files/output/tmp/monolog
@@ -87,6 +84,12 @@ cat run.sh | grep
 # echo test | exit
 # exit | echo test
 cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+
+ 
+echo ;;;;
+echo test | | wc; echo lol
+echo lol; echo test | | wc
+|
 
 # pb
 # echo \
