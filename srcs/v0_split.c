@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 09:33:48 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:19:51 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	// ft_printf("line:|%s|\n", &line[j]);
 	while (line[j])
 	{
+		// if (line[j] == ';')
+		// {
+		// 	printf("line[j]:%d	quote:%d	esc:%d\n", line[j], ft_isinquotes(line, j), ft_is_escaped(line, j));
+		// }
 		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
 			&& !ft_is_escaped(line, j))
 			break ;

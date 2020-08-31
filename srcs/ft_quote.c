@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:46:29 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/17 18:21:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:25:27 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,20 @@ int			ft_isindquotes(char *line, int pos)
 		if (quote != 0 && i < pos)
 		{
 			j = i;
-			while (line[j++] && nbquote != 0)
+			while (line[++j] && nbquote != 0)
 			{
 				if (line[j] == '\"' && quote == '\"'
 					&& !ft_is_escaped(line, j))
 					nbquote++;
 				if (nbquote % 2 == 0 && j > pos)
 					return (1);
-				if (nbquote % 2 == 0 && (nbquote = 0))
+				if (nbquote % 2 == 0)
+				{
+					nbquote = 0;
+					i = j;
+					quote = 0;
 					break ;
+				}
 			}
 		}
 	}
@@ -67,15 +72,19 @@ int			ft_isinsquotes(char *line, int pos)
 		if (quote != 0 && i < pos)
 		{
 			j = i;
-			while (line[j++] && nbquote != 0)
+			while (line[++j] && nbquote != 0)
 			{
-				if (line[j] == '\'' && quote == '\''
-					/*&& !ft_is_escaped(line, j)*/)
+				if (line[j] == '\'' && quote == '\'')
 					nbquote++;
 				if (nbquote % 2 == 0 && j > pos)
 					return (1);
-				if (nbquote % 2 == 0 && (nbquote = 0))
+				if (nbquote % 2 == 0)
+				{
+					nbquote = 0;
+					i = j;
+					quote = 0;
 					break ;
+				}
 			}
 		}
 	}
@@ -107,16 +116,20 @@ int			ft_isinquotes(char *line, int pos)
 			j = i;
 			while (line[++j] && nbquote != 0)
 			{
-				if (line[j] == '\'' && quote == '\''
-					/*&& !ft_is_escaped(line, j)*/)
+				if (line[j] == '\'' && quote == '\'')
 					nbquote++;
 				if (line[j] == '\"' && quote == '\"'
 					&& !ft_is_escaped(line, j))
 					nbquote++;
 				if (nbquote % 2 == 0 && j > pos)
 					return (1);
-				if (nbquote % 2 == 0 && (nbquote = 0))
+				if (nbquote % 2 == 0)
+				{
+					nbquote = 0;
+					quote = 0;
+					i = j;
 					break ;
+				}
 			}
 		}
 	}

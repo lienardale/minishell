@@ -21,4 +21,5 @@ sdffs
 echo $?
 
 exit 1 2
-# echo $?
+# check in VM if exits or no (exits in 3.2, does not in 5.0)
+echo $?

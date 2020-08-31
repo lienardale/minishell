@@ -3,8 +3,8 @@
 # expected :
 # "test1
 # test2"
-echo test1\
-; echo test2
+# echo test1\
+# ; echo test2
 
 # |
  
@@ -35,6 +35,14 @@ echo test1\
 # ->doesn't read the .sh further
 # echo test | | wc; echo lol
 
+# #has to do with parsing of options
+# echo "coucouc;"
+# echo -n -n One"argument"'lo'l; echo n
+# echo -n -n One"argument"'lo'l; echo "n"
+# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
+# echo -n One"argument"'lo'l ; echo "n"''ee"d"more'?'''"'"
+# export pouet="e""cho"' coucou' ; $pouet
+# echo -n -n return
 
 
 # ALL ABOVE THIS IS OK
@@ -57,12 +65,6 @@ echo test1\
 # echo coucou > ../tests/test.log
 # echo lol > srcs
 
-
-#has to do with parsing of options
-# echo -n -n One"argument"'lo'l; echo "n"''ee"d"more'?'''"'"
-# echo -n One"argument"'lo'l ; echo "n"''ee"d"more'?'''"'"
-# export pouet="e""cho"' coucou' ; $pouet
-# echo -n -n return
 
 
 # malloc errors
@@ -89,9 +91,6 @@ echo test1\
 # echo "
 # echo '
 
-<<<<<<< HEAD
-# cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
-=======
 # /!\ prompt must be in STDERR
 
 # see how vm behaves for this one
@@ -102,6 +101,5 @@ echo test1\
 # ps -ef | grep ./minishell | grep -v 'grep' | awk '{print $2}' | xargs kill
 # ps -ef | grep ./minishell | grep -v 'grep' | cut -b 7,8,9,10,11 | xargs kill
 
-echo lol; echo test | | wc
+# echo lol; echo test | | wc
 
->>>>>>> dad6fd68ec115c5a76249fbc968075dfc1ccdaee
