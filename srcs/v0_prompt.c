@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/17 11:59:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/30 17:19:17 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,11 @@ void	ft_infile(t_sh *sh)
 	begin = NULL;
 	quote = 0;
 	bkslh = 0;
-	while (sh->ret_cmd && (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
+	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+//printf("ici\n");
 		comment = 0;
+		sh->nbline++;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
 		if (sh->line[comment] != '#') // so that we can comment lines
@@ -96,9 +98,10 @@ void	ft_infile(t_sh *sh)
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
-			if (!quote)
+			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
-				ft_line_to_lst(ft_input_join(begin), sh);
+				if (!ft_line_to_lst(ft_input_join(begin), sh))
+					break ;
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
@@ -109,23 +112,13 @@ void	ft_infile(t_sh *sh)
 				}
 				ft_dlst_del(sh->cmds);
 			}
+			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
+				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		// ft_free_ptr(sh.line);
-		if (sh->ret_cmd == 0 || !sh->ret_sh)
+		if (!sh->ret_sh)
 			break ;
 	}
-}
-
-void	ft_ctrl_c(int sig)
-{
-	(void)sig;
-	write(0, "\n", 1);
-	write(1, PROMPT, ft_strlen(PROMPT));
-}
-
-void	ft_ctrl_backslash(int sig)
-{
-	(void)sig;
 }
 
 void	ft_prompt(t_sh *sh)
@@ -142,13 +135,16 @@ void	ft_prompt(t_sh *sh)
 	quote = 0;
 	bkslh = 0;
 	prompt = PROMPT;
-signal(SIGQUIT, ft_ctrl_backslash);
-signal(SIGINT, ft_ctrl_c);
+	ft_signal(SIGQUIT, ON);
+	ft_signal(SIGINT, ON);
 	if (sh->fd == 0)
-			write(1,prompt,ft_strlen(prompt));
-	while (sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end
-		&& (sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
+			write(2,prompt,ft_strlen(prompt));
+	while (//sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end && 
+		(sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
+			ft_exit(NULL, sh);
+			//	write(1, "exit\n", 5);
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
@@ -158,26 +154,42 @@ signal(SIGINT, ft_ctrl_c);
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			prompt = (quote == 0) ? PROMPT : QPROMPT;
-			if (!quote)
+			// printf("|%s|\n", &sh->line[ft_strlen(sh->line) - 1]);
+			if (quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
+				prompt = QPROMPT;
+			// sh->line = NULL;
+			if (!quote && sh->ret_sh && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
-				ft_line_to_lst(ft_input_join(begin), sh);
+				if (!ft_line_to_lst(ft_input_join(begin), sh))
+					return (ft_prompt(sh));
+				// ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
 				{
+					ft_signal(SIGINT, OFF);
+					ft_signal(SIGQUIT, OFF);
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
 				ft_dlst_del(sh->cmds);
+				begin = NULL;
 			}
+			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
+				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
+		ft_signal(SIGQUIT, ON);
+		ft_signal(SIGINT, ON);
+		/*
 		if (sh->ret_cmd == 0 || !sh->ret_sh)
 			break ;
-		if (sh->fd == 0)
-			write(1, prompt, ft_strlen(prompt));
+		 * */
+
+		// pb : no prompt while in quotes -> needs fixing
+		if (sh->fd == 0 && sh->ret_sh > 0 && (!begin/* || quote*/))
+			write(2, prompt, ft_strlen(prompt));
+		
 		// ft_free_ptr(sh.line);
 	}
-if (sh->ret_sh == 0)
-	write(1, "exit\n", 5);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/19 16:46:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/31 09:33:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	pid_t	child;
 	pid_t	wpid;
 	int		status;
-	int		ret;
+//	int		ret;
 
 	child = fork();
 	if (child < 0 && ft_dprintf(2, "Error forking\n"))
@@ -63,10 +63,14 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 	{
 		if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_parent(sh, cmd);
+//	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
-		return (1);
+//	printf("ceci est la valeur de status :%d \n", status);
+//	printf("je suis dans le parent, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+// la valeur de retour de la fonction est sur le 2eme octet, donc il faut tout diviser par 256
+		return (status / 256);
 	}
 	else
 	{
@@ -74,31 +78,35 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 			ft_exec_pipe_child(sh, cmd);
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
-		ret = fn(cmd, sh);
-		exit(ret);
-		return (ret);
+//		ret = fn(cmd, sh);
+		sh->ret_cmd = fn(cmd, sh);
+//		exit(ret);
+//	printf("je suis dans l'enfant, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+		exit(sh->ret_cmd);
+		return (sh->ret_cmd);
 	}
-	return (1);
+	return (sh->ret_cmd);
 }
 
 int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 {
 	char	**builtins;
 	int		i;
-	int		ret;
+	// int		ret;
 
 	if (cmd->pipe_next && (ft_init_pipe(sh, cmd)))
 		ft_parse_cmds(cmd->pipe_next, sh);
+	// printf("ARGS0:|%s|\n", (char*)cmd->argv->content);
 	ft_check_env_var(cmd, sh);
 	// add suppression of $ that must be
 	i = -1;
 	while (cmd->av[++i])
 		cmd->av[i] = ft_strdup_clean(cmd->av[i]);
 	cmd->cmd= ft_strdup(cmd->av[0]);
-	
 	if (cmd->cmd == NULL)
 		return (1);
 	i = -1;
+// pour ne pas faire d'enfant (fork)
 	if (ft_strcmp(cmd->cmd, "exit") == 0)
 		return (ft_exit(cmd, sh));
 	if (ft_strcmp(cmd->cmd, "cd") == 0)
@@ -112,9 +120,11 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	{
 		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
 		{
-			ret = ft_blt_process(sh, cmd, sh->blt_fct[i]);
+//printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
+			sh->ret_cmd = ft_blt_process(sh, cmd, sh->blt_fct[i]);
+//printf("je suis dans ft_parse_cmds, sh->cmd :%d %p\n", sh->ret_cmd, sh);
 			ft_free_double_array(builtins);
-			return (ret);
+			return (sh->ret_cmd);
 		}
 	}
 	ft_free_double_array(builtins);

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_str_isdigit.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:42:01 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 14:59:17 by alienard         ###   ########.fr       */
+/*   Created: 2020/07/28 10:24:53 by cdai              #+#    #+#             */
+/*   Updated: 2020/07/28 12:17:56 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-int	ft_isalnum(int c)
+int	ft_str_isdigit(char *str)
 {
-	if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')
-			|| ('0' <= c && c <= '9')
-			|| (ft_ischarset(EXT_ALPHA, c)))
-		return (1);
-	else
-		return (0);
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (i == 0 && str[i] == '-')
+			i++;
+		else if (!ft_isdigit(str[i]))
+			return (0);
+		else
+			i++;
+	}
+	return (1);
 }

@@ -45,12 +45,12 @@ cat lauch.sh
 ls
 /bin/ls
 /bin/lol
+./srcs
+README.md
 
 # wrong error msg
-# /bin/ls/lol
-# ./srcs
-# README.md
-# echo lol > output
+/bin/ls/lol
+# echo lol > srcs
 
 reckt
 files
@@ -58,19 +58,20 @@ test
 hmmmmmmmmmm
 cat < run.sh
 cat < Reckkt
-# cat < files/input/monolog > files/output/tmp/monolog
 cat < tests
 echo one; echo two; echo three
-echo 
+echo
 echo a; echo b; echo c; echo d; echo e; echo f; echo g; echo h; echo i; echo j; echo k; echo l; echo m; echo n; echo o; echo p; echo q; echo r; echo s; echo t; echo u; echo v; echo w; echo x; echo y; echo z
 
 #segf
 # echo ;;;;
 # echo test | | wc; echo lol
-# echo lol; echo test | | wc 
+# echo lol; echo test | | wc
 # |
-#  
+#
 
+# to tests with our own files/dir
+# cat < files/input/monolog > files/output/tmp/monolog
 # echo test > files/output/tmp/test
 # echo lol >> files/output/tmp/lol
 # echo bonjour >> files/output/tmp/bonjour; echo je suis gentil > files/output/tmp/bonjour
@@ -80,12 +81,12 @@ echo test | wc
 cat run.sh | grep echo | wc
 cat run.sh | grep ehbghbeg
 cat run.sh | grep
-exit | echo test
 
 # exits instead of not exiting
-# 
+#
 # echo test | exit
-# cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+# exit | echo test
+cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
 
 # pb
 # echo \

@@ -4,7 +4,7 @@ rm tests/bash.txt tests/us.txt tests/diff.txt tests/us_errors.txt tests/bash_err
 # touch tests/bash.txt tests/us.txt
 
 
-# testing execve 
+# testing execve
 
 ./minishell tests/cat.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 bash tests/cat.sh >> tests/bash.txt 2>> tests/bash_errors.txt
@@ -63,8 +63,8 @@ bash tests/append.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 # ./minishell tests/redir_nb.sh 1>> tests/us.txt  2>> tests/us_errors.txt
 # bash tests/redir_nb.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
-# ./minishell tests/return.sh 1>> tests/us.txt 2>> tests/us_errors.txt
-# bash tests/return.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
+./minishell tests/return.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+bash tests/return.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 
 # testing signals

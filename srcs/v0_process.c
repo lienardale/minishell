@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/19 15:35:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/08/29 18:18:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,11 @@ char	*ft_findexec(char *path, char *exec)
 			return (result);
 		}
 	}
-	// if (!result)
-	// ft_dprintf(2, "|%s|: Not a directory\n", path);
 	closedir(dir);
 	return (result);
 }
 
-char	*ft_get_abspath_filename(char *exec, char **env)
+char	*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 {
 	char	*tmp;
 	char	**paths;
@@ -65,7 +63,13 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 
 	i = 0;
 	if (!(tmp = ft_get_onlypaths(env)))
-		return (0);
+	{
+		if (sh->nbline)
+			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n", sh->file, sh->nbline, exec);
+		else
+			ft_dprintf(2, "minishell: %s: No such file or directory\n", exec);
+		exit(EXIT_FAILURE);
+	}
 	else if (!(paths = ft_split(tmp, ':')))
 		return (0);
 	while (paths[i])
@@ -81,37 +85,44 @@ char	*ft_get_abspath_filename(char *exec, char **env)
 	return (result);
 }
 
-void	ft_search_n_execute(char **args, char **env)
+int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 {
 	int		exec_start;
 	char	*exec;
 	char	*temp;
+	int		ret_cmd;
 
 	exec = NULL;
 	temp = args[0];
 	if ((exec_start = ft_isolate_exec(args[0], &exec)) != -1)
 		args[0] = ft_parse_path(args[0]);
 	else
-		args[0] = (ft_get_abspath_filename(args[0], env));
+		args[0] = (ft_get_abspath_filename(args[0], env, sh));
 	if (exec)
 		free(exec);
 	else if (!args[0])
 	{
 		args[0] = temp;
-		ft_dprintf(2, "minishell: %s: command not found\n", args[0]);
-		exit(EXIT_FAILURE);
+		// printf("ARGS0:|%s|\n", args[0]);
+		if (sh->nbline)
+			ft_dprintf(2, "%s: line %d: %s: command not found\n", sh->file, sh->nbline, args[0]);
+		else
+			ft_dprintf(2, "minishell: %s: command not found\n", args[0]);
+		exit(127);
 	}
-	if (execve(args[0], args, env) == -1)
+	if ((ret_cmd = execve(args[0], args, env)) == -1)
 	{
 		free(args[0]);
 		args[0] = temp;
-		ft_dprintf(2, "minishell: %s: No such file or directory\n", args[0]);
+		if (sh->nbline)
+			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n", sh->file, sh->nbline, args[0]);
+		else
+			ft_dprintf(2, "minishell: %s: No such file or directory\n", args[0]);
 		exit(EXIT_FAILURE);
 	}
 	free(args[0]);
 	args[0] = temp;
-	// if (!result)
-	// 	ft_dprintf(2, "|%s|: Not a directory\n", result);
+	return (ret_cmd);
 }
 
 int			ft_process(t_cmd *cmd, t_sh *sh)
@@ -131,17 +142,11 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		if (cmd->redir)
 			ft_exec_redir(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
-		ft_search_n_execute(cmd->av, split_env);
+		status = ft_search_n_execute(cmd->av, split_env, sh);
 		ft_free_split(split_env);
 		if (cmd->redir)
 			(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
-		// if (cmd->ret_dup)
-		// {
-		// 	(close(cmd->pipedfd[0]) < 0 ) ? ft_dprintf(2, "Close of pipedfd[0] not ok\n") : 0;
-		// 	(close(cmd->pipedfd[1]) < 0 ) ? ft_dprintf(2, "Close of pipedfd[1] not ok\n") : 0;
-		// 	exit(1);
-		// 	return(1);
-		// }
+		return (status);
 	}
 	else if (pid < 0 && ft_dprintf(2, "Error forking\n"))
 		return (0);
@@ -154,6 +159,17 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_parent(sh, cmd);
 		// return (1);
+//int temp1 = WIFEXITED(status);
+//int temp2 = WIFSIGNALED(status);
+//int temp3 = status;
+//printf("%d, %d, %d\n", temp1, temp2, status);
+		if (WIFEXITED(status))
+			return (status / 256);
+		else if (WIFSIGNALED(status))
+		{
+//			ft_dprintf(2, "Terminated: %d\n", status);
+			return (status + 128);
+		}
 		// freeing allocated memory
 		// ft_free_double_array(args);
 	}

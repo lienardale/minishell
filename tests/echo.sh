@@ -20,6 +20,11 @@ echo "coucou
 12"
 echo
 
+# expected :
+# "test1
+# test2"
+echo test1\
+; echo test2
 
 # bash trims the spaces when they are not escaped
 # echo -n 2 : \	\	coucou

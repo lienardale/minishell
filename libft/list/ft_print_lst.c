@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_print_lst.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 18:42:01 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 14:59:17 by alienard         ###   ########.fr       */
+/*   Created: 2020/08/30 15:41:41 by alienard          #+#    #+#             */
+/*   Updated: 2020/08/30 15:44:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
+#include "list.h"
+#include "libftprintf.h"
 
-int	ft_isalnum(int c)
+void	ft_print_lst(t_list *lst, char *str)
 {
-	if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')
-			|| ('0' <= c && c <= '9')
-			|| (ft_ischarset(EXT_ALPHA, c)))
-		return (1);
-	else
-		return (0);
+	int i;
+
+	i = 0;
+	ft_printf("--- %d nodes ---\n", ft_lstsize(lst));
+	if (str)
+		ft_printf("| %s\n", str);
+	while (lst)
+	{
+		ft_printf("| %d | \"%s\" (n='%s')\n",
+			i++, lst->content,
+			lst->next ? lst->next->content : "");
+		lst = lst->next;
+	}
+	ft_printf("---------------\n\n");
 }
