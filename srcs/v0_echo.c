@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/30 15:26:38 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:37:50 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_echo(t_cmd *cmd, t_sh *sh)
 		{
 			ft_printf("%s", cmd->av[i]);
 			i++;
-			if (cmd->av[i])
+			if (cmd->av[i] && ft_strlen(cmd->av[i - 1]) > 0 && ft_strlen(cmd->av[i]) > 0)
 				ft_printf(" ");
 		}
 	if (!n)

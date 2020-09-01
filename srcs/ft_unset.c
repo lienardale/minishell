@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 09:51:54 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/11 16:52:53 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/01 14:03:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			ft_unset(t_cmd *cmd, t_sh *sh)
 		if (ft_unset_check_arg(cmd->av[i]))
 		{
 			ret = 1;
-			ft_printf("minishell: unset: `%s': not a valid identifier\n",
+			ft_dprintf(2, "minishell: unset: `%s': not a valid identifier\n",
 				cmd->av[i]);
 		}
 		else

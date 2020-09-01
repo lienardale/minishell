@@ -66,7 +66,7 @@ int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
 	{
 		close(cmd->pipe_prev->pipedfd[0]);
 		if ((cmd->ret_dup = dup2(cmd->pipe_prev->pipedfd[1], STDOUT_FILENO)) < 0)
-			write(1, "dup2 A failed\n", ft_strlen("dup2 A failed\n"));
+			write(2, "dup2 A failed\n", ft_strlen("dup2 A failed\n"));
 		close(cmd->pipe_prev->pipedfd[1]);
 
 		close(cmd->pipedfd[1]);

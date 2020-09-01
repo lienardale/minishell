@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 10:32:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 18:17:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:26:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ static size_t	ft_strlen_dol(char *str, size_t i, size_t *len)
 		|| (ft_isindquotes(str, i) && !ft_isalnum(str[i + 1])))
 		(*len)++;
 	i = str[i] == '$' ? i + 1 : i;
+	// if (str[i] == '?')
+	// 	return (i);
+	// i = str[i] == '?' ? i + 1 : i;
 	if (str[i] && ft_isalnum(str[i]) && !ft_isinsquotes(str, i)
 		&& !ft_is_escaped(str, i - 1))
 	{
 		if (ft_isdigit(str[i]))
-			i++;
-		while (ft_isalpha(str[i]))
+			return (i);
+		// if (ft_isalpha(str[i]) && !ft_isalpha(str[i + 1]))
+			// return (i);
+		while (ft_isalnum(str[i]))
 			i++;
 		i--;
 		return (i);
@@ -72,13 +77,20 @@ static void		ft_strcpy_dol(char *dst, char *src, size_t *i, size_t *j)
 		(*j)++;
 	}
 	*i = src[*i] == '$' ? *i + 1 : *i;
+	// if (src[*i] == '?')
+	// 	return ;
+	// *i = src[*i] == '?' ? *i + 1 : *i;
 	if (src[*i] && ft_isalnum(src[*i]) && !ft_isinsquotes(src, *i)
 		&& !ft_is_escaped(src, *i - 1))
 	{
 		if (ft_isdigit(src[*i]))
+			return ;
+		// if (ft_isalpha(src[*i]) && !ft_isalpha(src[*i + 1]))
+		// 	return ;
+		while (ft_isalnum(src[*i]))
 			(*i)++;
-		while (ft_isalpha(src[*i]))
-			(*i)++;
+		(*i)--;
+		return ;
 	}
 	(*i)--;
 }
@@ -119,6 +131,7 @@ char			*ft_strdup_clean(const char *s1)
 	char	*tab;
 
 	us1 = (char *)s1;
+	// printf("str:%s\n", us1);
 	if (!(tab = (char *)malloc(sizeof(char) * (ft_strlen_clean(us1) + 1))))
 		return (NULL);
 	ft_strlcpy_clean(tab, us1, ft_strlen_clean(us1) + 1);

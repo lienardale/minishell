@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/11 16:57:03 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/01 14:03:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 		while (splited[++i])
 // il faut que je fasse attention a la variable d'env "_"
 			if (ft_strncmp(splited[i], "_=", 2))
-				ft_printf("declare -x %s\n", splited[i]);
+				ft_dprintf(2, "declare -x %s\n", splited[i]);
 		ft_free_split(splited);
 	}
 // sinon je mets a jour ma variable d'environnement
@@ -112,7 +112,7 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 			if (ft_export_check_arg(cmd->av[i]))
 			{
 				ret = 1;
-				ft_printf("minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
+				ft_dprintf(2, "minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
 			}
 			else
 			{

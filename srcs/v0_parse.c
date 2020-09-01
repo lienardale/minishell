@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 09:33:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:37:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,10 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	if (cmd->pipe_next && (ft_init_pipe(sh, cmd)))
 		ft_parse_cmds(cmd->pipe_next, sh);
 	// printf("ARGS0:|%s|\n", (char*)cmd->argv->content);
+	
+	// ft_print_double_array(cmd->av, "av");
 	ft_check_env_var(cmd, sh);
+	// ft_print_double_array(cmd->av, "av");
 	// add suppression of $ that must be
 	i = -1;
 	while (cmd->av[++i])

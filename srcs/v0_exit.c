@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 11:15:50 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 14:02:21 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 		return_value = sh->ret_cmd;
 		ft_lstclear(sh->env, ft_free_env_lst);
 		ft_free_minishell(sh);
-		ft_printf("exit\n");
+		ft_dprintf(2, "exit\n");
 		exit(return_value);
 	}
 	if (!cmd && sh->file)

@@ -70,6 +70,14 @@ echo '$324'
 echo '$RIP'
 echo '$ '
 echo
+echo "--more--"
+echo    $TEST lol $TEST
+echo $TEST $TEST
+echo "$?TEST"
+echo "$1TEST"
+echo "$9TEST"
+echo "$T1TEST"
+echo
 
 echo "----quotes----"
 echo "coucouc;"

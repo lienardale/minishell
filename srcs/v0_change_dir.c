@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/29 17:48:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 15:21:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,18 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 
 	chdir_value = -1;
 	if (!(oldpwd = ft_getcwd()))
-// message error ?
+	{
+		// ft_dprintf(2, "cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory\n");
 		return (1);
+	}
+// message error ?
 // faire . et .. ? automatique
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
 	{
 		if (!(home = ft_search_env(*(sh->env), "HOME")))
 		{
 			ft_dprintf(2, "minishell: cd: HOME not set\n");
-ft_free_split(cmd->av);
+			ft_free_split(cmd->av);
 			return (1);
 		}
 // if (home)
@@ -70,13 +73,10 @@ ft_free_split(cmd->av);
 			ft_dprintf(2, "%s: line %d: cd: %s: No such file or directory\n", sh->file, sh->nbline, cmd->av[1]);
 		else
 			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd->av[1]);
-		// ft_putstr_fd(cmd->av[1], 2);
-		// ft_putstr_fd("No such file or directory: ", 2);
-		// ft_putchar_fd('\n', 2);
 		ft_free_split(cmd->av);
 		return (1);
 	}
 	free(oldpwd);
-ft_free_split(cmd->av);
+	ft_free_split(cmd->av);
 	return (0);
 }
