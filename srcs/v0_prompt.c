@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/30 17:19:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 12:12:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	ft_infile(t_sh *sh)
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 //printf("ici\n");
+		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
+			ft_exit(NULL, sh);
 		comment = 0;
 		sh->nbline++;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
@@ -96,7 +98,7 @@ void	ft_infile(t_sh *sh)
 		if (sh->line[comment] != '#') // so that we can comment lines
 		{
 			input = ft_lstnew(sh->line);
-			ft_lstadd_back(&begin, input);
+			ft_lstadd_back(&begin, input);;
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
@@ -116,8 +118,8 @@ void	ft_infile(t_sh *sh)
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		// ft_free_ptr(sh.line);
-		if (!sh->ret_sh)
-			break ;
+		// if (!sh->ret_sh)
+		// 	break ;
 	}
 }
 
