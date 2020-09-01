@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 14:03:32 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 18:39:58 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	ft_export_check_arg(char *arg)
 	while (arg[i])
 	{
 // le premier character ne peut pas etre '=' ni un autre chose qu'une lettre
-		if (i == 0 && !ft_isalpha(arg[i]))
+		if (i == 0 && !ft_isalpha(arg[i]) && arg[i] != '_')
 			return (1);
 // si je trouve un character '=' apres le premier charactere, je sors de la fonction => valide
 		else if (arg[i] == '=')
