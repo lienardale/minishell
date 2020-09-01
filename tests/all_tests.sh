@@ -67,7 +67,9 @@ bash tests/append.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 ./minishell tests/parsing.sh 1>> tests/us.txt 2>> tests/us_errors.txt
 bash tests/parsing.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
+export SHELL=./minishell
 ./minishell tests/return.sh 1>> tests/us.txt 2>> tests/us_errors.txt
+export SHELL=bash
 bash tests/return.sh 1>> tests/bash.txt 2>> tests/bash_errors.txt
 
 
