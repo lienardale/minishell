@@ -57,7 +57,7 @@ ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls|ls
 
 echo test "" test "" test
 
-# echo    $TEST lol $TEST
+# echo    $TEST lol $TEST | cat -e
 # echo "$?TEST"
 # echo $TEST $TEST
 # echo "$1TEST"
@@ -72,7 +72,7 @@ export test=hello ; export test += coucou ; env | grep test
 # > lol echo test lol; cat lol
 # >lol echo > test>lol>test>>lol>test mdr >lol test >test; cat test
 
-        # exit status pb
+	# exit status pb
 # export TEST ;
 # ;; test
 # echo > <

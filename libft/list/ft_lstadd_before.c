@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_before.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 18:12:07 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 18:39:33 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 12:30:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_lstadd_before(t_list **alst, t_list *new, t_list *next)
 {
 	t_list	*temp;
 	t_list	*previous;
-	
+
 	temp = *alst;
 	previous = NULL;
 	while (temp)

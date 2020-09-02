@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 18:24:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 11:49:31 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,12 +131,10 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 {
 	char	*key_val;
-	int		i;
 	int		j;
 	t_list	*temp;
 	char	*temp_char;
 
-	i = 0;
 	temp = cmd->argv;
 	while (temp)
 	{
@@ -161,5 +159,5 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 		}
 		temp = temp->next;
 	}
-	cmd->av = ft_lst_to_split(cmd->argv);
+	// cmd->av = ft_lst_to_split(cmd->argv);
 }

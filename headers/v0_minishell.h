@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 17:02:39 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 11:08:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,7 @@ int			ft_isinquotes(char *line, int pos);
 int			ft_isindquotes(char *line, int pos);
 int			ft_isinsquotes(char *line, int pos);
 char		*ft_strdup_clean(const char *s1);
+void		ft_clean_envvar(t_cmd *cmd);
 
 void		ft_check_line(char **line, int *quote, int *bkslh);
 char		*ft_input_join(t_list *inputs);

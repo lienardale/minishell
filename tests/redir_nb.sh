@@ -31,11 +31,15 @@ rm ls
 rm lol
 # the last redir file is the one taken into account
 # the args concat themselves
-# is simple redir present for the final file it takes over append, but if it is for another file, append takes over
+# if simple redir present for the final file it takes over append, but if it is for another file, append takes over
 >lol echo > test>lol>test>>lol>test mdr >lol test >test; cat test ; cat lol
  >> lol >> lol > lol >> lol echo coucou; cat lol
 echo coucou >> lol >> lol >test >> lol ; cat lol
 rm lol test
+
+echo salut > lol >> lol > lol
+echo salut > lol >> lol >> lol
+echo salut >> lol > test >> lol
 
 
 cat Dockerfile 1> 0test.log

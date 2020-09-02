@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/30 15:44:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 11:47:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,5 +110,6 @@ void			ft_lstdel_between(t_list **alst, void *content, void (*del)(void*));
 void			ft_lstadd_before(t_list **alst, t_list *new, t_list *next);
 char			**ft_lst_to_split(t_list *lst);
 void			ft_print_lst(t_list *lst, char *str);
+void			ft_lstdelif_false(t_list **alst, size_t (fct)(const char *));
 
 #endif

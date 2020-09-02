@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel_between.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/11 08:15:50 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/11 09:07:01 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 11:44:32 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,18 @@ static void	ft_lstdel_notfirst(t_list *temp, void *content, void (*del)(void*))
 		{
 			ft_lstdelone(temp, del);
 			previous->next = next;
-			break;
+			break ;
 		}
 		previous = temp;
 		temp = temp->next;
 	}
 }
 
-void	ft_lstdel_between(t_list **alst, void *content, void (*del)(void*))
+void		ft_lstdel_between(t_list **alst, void *content, void (*del)(void*))
 {
 	t_list *temp;
 	t_list *next;
-	
+
 	if (!alst || !*alst)
 		return ;
 	temp = *alst;
