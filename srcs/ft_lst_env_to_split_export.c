@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_env_to_split_export.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:46:03 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 16:38:28 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 17:43:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 char	**ft_lst_env_to_split_export(t_list *lst_env)
 {

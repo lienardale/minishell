@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_isolate_exec.c                                  :+:      :+:    :+:   */
+/*   ft_lststrjoin.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/12 17:16:11 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/16 11:20:33 by alienard         ###   ########.fr       */
+/*   Created: 2020/05/12 11:48:07 by cdai              #+#    #+#             */
+/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
-int	ft_isolate_exec(char *path, char **buff)
+char	*ft_lststrjoin(t_list *lst, char *inter)
 {
-	int		path_len;
-	int		i;
+	char	*result;
+	char	*temp;
 
-	path_len = ft_strlen(path);
-	i = path_len - 1;
-	while (i > -1 && path[i] != '/')
-		i--;
-	if (i > -1 && path[i] == '/')
-		if (!(*buff = ft_substr(path, i + 1, path_len - i)))
-			return (-1);
-	return (i);
+	result = 0;
+	while (lst)
+	{
+		if (result)
+		{
+			temp = result;
+			result = ft_strjoin(temp, inter);
+			free(temp);
+			temp = result;
+			result = ft_strjoin(temp, (char*)lst->content);
+			free(temp);
+		}
+		else
+			result = ft_strjoin(inter, (char*)lst->content);
+		lst = lst->next;
+	}
+	return (result);
 }

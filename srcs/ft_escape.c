@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:47:13 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 09:28:24 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:32:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 void	ft_parse_escape(int *j, char *line, t_cmd *cmd)
 {
@@ -29,13 +29,6 @@ void	ft_parse_escape(int *j, char *line, t_cmd *cmd)
 	line = ft_strjoin(beg, end);
 	free(beg);
 	free(end);
-}
-
-int		ft_isescaped(char *c)
-{
-	if (*(c - 1) == '\\')
-		return (1);
-	return (0);
 }
 
 int		ft_is_escaped(char *str, int pos)

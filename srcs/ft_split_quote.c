@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/31 17:30:45 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:06:44 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static char	**ret_nul(void)
 {
@@ -46,7 +46,6 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 
 	result = NULL;
 	quote = (str[start] == '\'' || str[start] == '\"') ? str[start] : 0;
-	// start = quote ? start + 1 : start;
 	*i = (quote) ? *i + 1 : *i;
 	while (str[*i] && ((!quote && str[*i] != c) || (quote)))
 	{
@@ -54,7 +53,6 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 		{
 			result = ft_split_quote_concat(result, str, start, *i);
 			quote = 0;
-			// start = *i + 1;
 			start = *i;
 		}
 		(*i)++;
@@ -67,19 +65,12 @@ static char	*ft_handle_quote(char *str, char c, int start, int *i)
 				quote = 0;
 			if (ft_is_escaped(str, *i) && str[*i] == c)
 				quote = ' ';
-			// (*i)++;
 			start = *i;
-			// if (quote == '\'' || quote == '\"' || quote == ' ')
-				// *i = *i + 1;
-			if ((quote == '\'' || quote == '\"') && str[*i + 1] && ft_isinquotes(str, *i + 1))
+			if ((quote == '\'' || quote == '\"') && str[*i + 1]
+				&& ft_isinquotes(str, *i + 1))
 				*i = *i + 1;
-			// *i = (quote == '\'' || quote == '\"') ? *i + 1 : *i;
-			// if (!ft_isinquotes(str, *i))
-			// 	*i = *i - 1;
 		}
 	}
-	// result = (!(str[*i - 1] == '\'' || str[*i - 1] == '\"')) ?
-		// ft_split_quote_concat(result, str, start, *i) : result;
 	result = (!(str[*i] == '\'' || str[*i] == '\"')) ?
 		ft_split_quote_concat(result, str, start, *i) : result;
 	return (result);

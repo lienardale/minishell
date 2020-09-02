@@ -65,6 +65,7 @@ echo test "" test "" test
 
 export TE+S=T="" ; env | sort | grep -v SHLVL | grep -v _=
 export TEST=LOL; export TEST+=LOL ; echo $TEST ; env | sort | grep -v SHLVL | grep -v _=
+export TEST="ls       -l     - a" ; echo $TEST ; $LS ;  env | sort | grep -v SHLVL | grep -v _=
 export test=hello ; export test ; env | grep test ; unset test
 export test=hello ; export test += coucou ; env | grep test
 

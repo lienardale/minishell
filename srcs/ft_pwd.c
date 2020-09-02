@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 15:20:40 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:05:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 int	ft_pwd(t_cmd *cmd, t_sh *sh)
 {
@@ -19,11 +19,10 @@ int	ft_pwd(t_cmd *cmd, t_sh *sh)
 
 	(void)sh;
 	buff_size = 1000;
-// mettrer PWD=''
+// mettre PWD=''
 	if (!(cwd = ft_calloc(1, buff_size)))
 		return (0);
 	getcwd(cwd, buff_size);
-	// ft_putendl_fd(cwd, 0);
 	ft_printf("%s\n", cwd);
 	free(cwd);
 	ft_free_split(cmd->av);

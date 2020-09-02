@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/08 16:46:29 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 11:25:27 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:05:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 int			ft_isindquotes(char *line, int pos)
 {

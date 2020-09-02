@@ -6,11 +6,22 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 10:13:50 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 14:10:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:30:03 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
+
+static void		ft_iterate_dol(char *str, int *i)
+{
+	if (!ft_isdigit(str[*i]))
+	{
+		while (ft_isalnum(str[*i]))
+			(*i)++;
+	}
+	else if (ft_isdigit(str[*i]))
+		(*i)++;
+}
 
 static size_t	ft_strlen_dol(char *str)
 {
@@ -32,15 +43,7 @@ static size_t	ft_strlen_dol(char *str)
 			i++;
 			if (str[i] && ft_isalnum(str[i]) && !ft_isinsquotes(str, i)
 				&& !ft_is_escaped(str, i - 1))
-			{
-				if (!ft_isdigit(str[i]))
-				{
-					while (ft_isalnum(str[i]))
-						i++;
-				}
-				else if (ft_isdigit(str[i]))
-					i++;
-			}
+				ft_iterate_dol(str, &i);
 			i--;
 		}
 	}
@@ -60,33 +63,22 @@ static void		ft_strlcpy_dol(char *dst, char *src, int dstsize)
 			j++;
 		else if (src[i] == '$')
 		{
-			if (ft_is_escaped(src, i) || ft_isinsquotes(src, i)
+			if ((ft_is_escaped(src, i) || ft_isinsquotes(src, i)
 				|| !src[i + 1] || ft_isspace(src[i + 1]) || src[i + 1] == '\\'
 				|| (ft_isindquotes(src, i) && !ft_isalnum(src[i + 1])))
-			{
-				dst[j] = src[i];
-				// i++;
+				&& (dst[j] = src[i]))
 				j++;
-			}
 			i++;
 			if (src[i] && ft_isalnum(src[i]) && !ft_isinsquotes(src, i)
 				&& !ft_is_escaped(src, i - 1))
-			{
-				if (!ft_isdigit(src[i]))
-				{
-					while (ft_isalnum(src[i]))
-						i++;
-				}
-				else if (ft_isdigit(src[i]))
-					i++;
-			}
+				ft_iterate_dol(src, &i);
 			i--;
 		}
 	}
 	dst[j] = '\0';
 }
 
-char	*ft_strdup_clean_envvar(char *tmp_char)
+char			*ft_strdup_clean_envvar(char *tmp_char)
 {
 	char	*tab;
 
@@ -96,7 +88,7 @@ char	*ft_strdup_clean_envvar(char *tmp_char)
 	return (tab);
 }
 
-void	ft_clean_envvar(t_cmd *cmd)
+void			ft_clean_envvar(t_cmd *cmd)
 {
 	t_list	*tmp;
 	char	*tmp_char;

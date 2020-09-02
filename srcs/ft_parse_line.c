@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 16:31:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:50:33 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 void	ft_parse_redir(t_sh *sh, char *line, int *i)
 {
@@ -48,13 +48,13 @@ int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 {
 	if (sh->nbline)
 	{
-		ft_dprintf(2, "%s: line %d: syntax error near unexpected token `%s'\n", sh->file, sh->nbline, &inputs[i]);
+		ft_dprintf(2, "%s: line %d: syntax error near unexpected token `%s'\n",
+			sh->file, sh->nbline, &inputs[i]);
 		ft_dprintf(2, "%s: line %d: `%s'\n", sh->file, sh->nbline, inputs);
 	}
 	else
-	{
-		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n", &inputs[i]);
-	}
+		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
+			&inputs[i]);
 	return (1);
 }
 

@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 14:16:55 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 13:02:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static void	ft_strl_c_off(int sig)
 {

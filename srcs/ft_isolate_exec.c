@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_prompt.c                                  :+:      :+:    :+:   */
+/*   ft_isolate_exec.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/06/13 21:13:09 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/16 08:28:58 by alienard         ###   ########.fr       */
+/*   Created: 2020/05/12 17:16:11 by cdai              #+#    #+#             */
+/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
-char	*ft_parse_prompt(char *prompt, t_list **env)
+int	ft_isolate_exec(char *path, char **buff)
 {
-	char	*result;
+	int		path_len;
+	int		i;
 
-	(void)prompt;
-	(void)env;
-	result = NULL;
-	return (result);
+	path_len = ft_strlen(path);
+	i = path_len - 1;
+	while (i > -1 && path[i] != '/')
+		i--;
+	if (i > -1 && path[i] == '/')
+		if (!(*buff = ft_substr(path, i + 1, path_len - i)))
+			return (-1);
+	return (i);
 }

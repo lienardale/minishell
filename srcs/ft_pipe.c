@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 {

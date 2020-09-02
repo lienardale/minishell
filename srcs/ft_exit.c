@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_exit.c                                          :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 14:02:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:41:17 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static int	ft_is_double_minus(char *str)
 {
@@ -24,7 +24,7 @@ static int	ft_is_double_minus(char *str)
 	return (0);
 }
 
-void	ft_free_sub_cmd(t_cmd *cmd)
+void		ft_free_sub_cmd(t_cmd *cmd)
 {
 	if (cmd->pipe_next)
 		ft_free_sub_cmd(cmd->pipe_next);
@@ -44,10 +44,9 @@ void	ft_free_sub_cmd(t_cmd *cmd)
 		ft_lstclear(cmd->fd_out, free);
 	if (cmd)
 		free(cmd);
-	
 }
 
-void	ft_free_cmd(t_dlist *node)
+void		ft_free_cmd(t_dlist *node)
 {
 	t_cmd	*cmd;
 
@@ -72,13 +71,11 @@ void	ft_free_cmd(t_dlist *node)
 		free(node);
 }
 
-void	ft_free_minishell(t_sh *sh)
+void		ft_free_minishell(t_sh *sh)
 {
 	t_dlist	*tmp;
 	t_dlist	*tmp2;
 
-	// if (sh->file)
-	// 	free(sh->file);
 	if (sh->line)
 		free(sh->line);
 	if (sh->env)
@@ -96,7 +93,7 @@ void	ft_free_minishell(t_sh *sh)
 	}
 }
 
-int		ft_exit(t_cmd *cmd, t_sh *sh)
+int			ft_exit(t_cmd *cmd, t_sh *sh)
 {
 	int		i;
 	int		return_value;
@@ -114,17 +111,11 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 	{
 		return_value = sh->ret_cmd;
 		ft_lstclear(sh->env, ft_free_env_lst);
-		// ft_printf("exit\n");
 		ft_free_minishell(sh);
 		exit(return_value);
 	}
 	while (cmd->av[i])
 		i++;
-	// ft_printf("			-> %s passe bien par ici.\n", args[0]);
-// on devrait peut-etre faire une fontion free_minishell() ?
-
-//	ft_free_double_array(cmd->av);
-//	ft_lstclear(sh->env, ft_free_env_lst);
 	if (i > 2)
 	{
 		ft_dprintf(2, "minishell: exit: too many arguments\n");
@@ -136,7 +127,6 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 		if (ft_is_double_minus(cmd->av[1]))
 		{
 			return_value = sh->ret_cmd;
-//			ft_free_sh();
 			// ft_free_minishell(sh);
 			exit(return_value);
 		}
@@ -152,7 +142,6 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 		else
 		{
 			ft_dprintf(2, "minishell: exit: %s: numeric argument required\n", cmd->av[1]);
-//			ft_free_sh();
 			// ft_free_minishell(sh);
 			exit(255);
 		}
@@ -161,7 +150,6 @@ int		ft_exit(t_cmd *cmd, t_sh *sh)
 	{
 		return_value = sh->ret_cmd;
 		// ft_free_minishell(sh);
-//		ft_free_sh();
 		exit(return_value);
 	}
 	return (0);

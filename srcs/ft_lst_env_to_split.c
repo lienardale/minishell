@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/07 15:40:26 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/05 16:38:09 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 char	**ft_lst_env_to_split(t_list *lst_env)
 {

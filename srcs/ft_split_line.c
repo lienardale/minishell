@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 16:03:47 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:08:38 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 void	ft_handle_end(t_sh *sh, char *line, int *i)
 {
@@ -33,13 +33,8 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 
 	j = *i;
 	cmd = (t_cmd *)(sh->cmds->tail->data);
-	// ft_printf("line:|%s|\n", &line[j]);
 	while (line[j])
 	{
-		// if (line[j] == ';')
-		// {
-		// 	printf("line[j]:%d	quote:%d	esc:%d\n", line[j], ft_isinquotes(line, j), ft_is_escaped(line, j));
-		// }
 		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
 			&& !ft_is_escaped(line, j))
 			break ;
@@ -62,9 +57,8 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 		return ;
 	}
 	cmd->argv = ft_split_to_lst(cmd->av);
-	// ft_printf("avlst:|%s|\n",(char*)cmd->argv->content);
 	cmd->ac = ft_double_strlen(cmd->av);
-	cmd->cmd= ft_strdup(cmd->av[0]);
+	cmd->cmd = ft_strdup(cmd->av[0]);
 	*i = j;
 	ft_handle_end(sh, line, i);
 }
@@ -74,7 +68,7 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	t_cmd	*cmd;
 
 	if (!(cmd = ft_calloc(1, sizeof(t_cmd))))
-		return;
+		return ;
 	if (sh->cmds->tail && sh->cmds->tail->data)
 	{
 		cmd->pos = ((t_cmd*)(sh->cmds->tail->data))->pos + 1;
@@ -85,7 +79,6 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 	ft_dlst_addback(sh->cmds, cmd);
 	cmd->env = sh->env;
 	ft_init_args(sh, line, i);
-	// ft_print_double_array(cmd->av, "args in init cmd");
 }
 
 int		ft_line_to_lst(char *inputs, t_sh *sh)

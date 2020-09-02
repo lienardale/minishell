@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 18:19:23 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/30 11:48:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:05:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 t_env	*ft_separate_key_value(char *env_str)
 {
@@ -18,7 +18,6 @@ t_env	*ft_separate_key_value(char *env_str)
 	int		i;
 
 	i = 0;
-	// printf("env_str:%s\n", env_str);
 	while (env_str[i] && env_str[i] != '=')
 		i++;
 	if (!(result = ft_calloc(1, sizeof(*result))))
@@ -34,8 +33,8 @@ t_env	*ft_separate_key_value(char *env_str)
 	else if (!(result->key = ft_substr(env_str, 0, i)) ||
 	(!(result->value = ft_substr(env_str, i + 1, ft_strlen(env_str) - i - 1))))
 	{
-			ft_free_env_lst(result);
-			return (NULL);
+		ft_free_env_lst(result);
+		return (NULL);
 	}
 	return (result);
 }

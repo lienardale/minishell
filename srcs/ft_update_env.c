@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_update_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:20:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/03 11:42:57 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 18:10:23 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 t_list *ft_update_env(t_list *env, t_env *data)
 {
@@ -29,7 +29,7 @@ t_list *ft_update_env(t_list *env, t_env *data)
 // attention malloc
 		if (!(to_add = ft_lstnew(data)))
 			return (NULL);
-		ft_lstadd_back(&env, to_add);	
+		ft_lstadd_back(&env, to_add);
 	}
 	return (env);
 }

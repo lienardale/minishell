@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 08:49:05 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/30 09:40:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:05:42 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 t_list	*ft_search_env(t_list *env, char *arg)
 {
@@ -19,7 +19,6 @@ t_list	*ft_search_env(t_list *env, char *arg)
 	t_list	*temp_env;
 
 	temp_env = env;
-	// printf("temp:%s\n", arg);
 	if (!(result = ft_separate_key_value(arg)))
 		return (NULL);
 	while (temp_env)

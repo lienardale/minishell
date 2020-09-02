@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 18:39:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static int	ft_export_check_underscore(char *str)
 {
@@ -99,7 +99,7 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 		while (splited[++i])
 // il faut que je fasse attention a la variable d'env "_"
 			if (ft_strncmp(splited[i], "_=", 2))
-				ft_dprintf(2, "declare -x %s\n", splited[i]);
+				ft_dprintf(1, "declare -x %s\n", splited[i]);
 		ft_free_split(splited);
 	}
 // sinon je mets a jour ma variable d'environnement

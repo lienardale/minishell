@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_minishell.h                                     :+:      :+:    :+:   */
+/*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 11:08:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:23:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef V0_MINISHELL_H
-# define V0_MINISHELL_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
 # include <unistd.h>
 # include <sys/wait.h>

@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 11:28:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:09:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static t_list	*ft_check_shlvl(t_list *result)
 {
@@ -27,7 +27,7 @@ static t_list	*ft_check_shlvl(t_list *result)
 	return (result);
 }
 
-static char	*ft_increment_shlvl(char *env_shlvl)
+static char		*ft_increment_shlvl(char *env_shlvl)
 {
 	int		shlvl;
 	char	*temp;
@@ -73,8 +73,6 @@ t_list		*ft_start_minishell(char **env)
 			}
 			free(old_value);
 		}
-//printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
-//printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);
 		temp = temp->next;
 	}
 	if (!ft_check_shlvl(result))

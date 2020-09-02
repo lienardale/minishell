@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_echo.c                                          :+:      :+:    :+:   */
+/*   ft_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 18:24:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:31:21 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 int		ft_echo(t_cmd *cmd, t_sh *sh)
 {
@@ -24,19 +24,16 @@ int		ft_echo(t_cmd *cmd, t_sh *sh)
 	i = 1;
 	quotes = 0;
 	line = NULL;
-	while (cmd->av[i] && !ft_strncmp(cmd->av[i], "-n", 2))
-	{
-		i++;
+	while (cmd->av[i] && !ft_strncmp(cmd->av[i], "-n", 2) && (i++))
 		n = 1;
-	}
 // Pour echo, il faudra faire attention au quote, double quote, espace a l'interieur/l'exterieur etc. le parsing doit etre different.
-		while (cmd->av[i])
-		{
-			ft_printf("%s", cmd->av[i]);
-			i++;
-			if (cmd->av[i])
-				ft_printf(" ");
-		}
+	while (cmd->av[i])
+	{
+		ft_printf("%s", cmd->av[i]);
+		i++;
+		if (cmd->av[i])
+			ft_printf(" ");
+	}
 	if (!n)
 		ft_printf("\n");
 	ft_free_double_array(cmd->av);

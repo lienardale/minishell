@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_parse_path.c                                    :+:      :+:    :+:   */
+/*   ft_parse_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 09:31:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/05/13 17:26:31 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 17:50:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static t_list	*ft_relative_to_abs_path(t_list *lstdest, t_list *lstsrc)
 {

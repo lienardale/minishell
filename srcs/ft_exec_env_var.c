@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 11:49:31 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:40:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 char		*ft_strdup_env_var(int len, char *av, char *key)
 {
@@ -29,7 +29,7 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 	i[1] = i[0];
 	while (av[i[0] + i[2]] && (av[i[0] + i[2]] != '$'
 		|| ft_is_escaped(av, i[0] + i[2]) || ft_isinsquotes(av, i[0] + i[2]))
-		&& (ft_isalnum(av[i[0] + i[2]]) /*|| av[i[0] + i[2]] == '?'*/))
+		&& (ft_isalnum(av[i[0] + i[2]])))
 		i[2]++;
 	i[2] = av[i[0] + i[2]] == '?' ? i[2] + 1 : i[2];
 	while (key && key[i[3]])
@@ -43,31 +43,32 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 
 void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 {
-	int		j;
-	int		k;
-	int		len;
+	int		i[3];
 	char	*temp;
 	char	**temp_strs;
 	t_list	*temp_lst;
 	t_list	*next;
 
-	j = 0;
-	k = 0;
-	len = 0;
+	i[0] = 0;
+	i[1] = 0;
+	i[2] = 0;
 	temp = (char*)lst->content;
-	while (temp[j] && (temp[j] != '$' || ft_isinsquotes(temp, j)
-		|| ft_is_escaped(temp, j)))
-		j++;
+	while (temp[i[0]] && (temp[i[0]] != '$' || ft_isinsquotes(temp, i[0])
+		|| ft_is_escaped(temp, i[0])))
+		i[0]++;
 	if (key)
-		len = ft_strlen(key);
-	k = (temp[j] == '$') ? k + 1 : k;
-	while (temp[j + k] && (temp[j + k] != '$' || ft_is_escaped(temp, j + k)
-		|| ft_isinsquotes(temp, j + k)) && (!ft_isalnum(temp[j + k])))
-		k++;
-	while (temp[j + k])
-		j++;
-	len += j;
-	lst->content = ft_strdup_env_var(len, temp, key);
+		i[2] = ft_strlen(key);
+	i[1] = (temp[i[0]] == '$') ? i[1] + 1 : i[1];
+	while (temp[i[0] + i[1]] && (temp[i[0] + i[1]] != '$'
+		|| ft_is_escaped(temp, i[0] + i[1])
+		|| ft_isinsquotes(temp, i[0] + i[1]))
+		&& (!ft_isalnum(temp[i[0] + i[1]])))
+		i[1]++;
+	while (temp[i[0] + i[1]])
+		i[0]++;
+	i[2] += i[0];
+	// cut here
+	lst->content = ft_strdup_env_var(i[2], temp, key);
 	temp = lst->content;
 	temp_strs = ft_split_quote(temp, ' ');
 	temp_lst = ft_split_to_lst(temp_strs);
@@ -80,28 +81,6 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	ft_lstdel_between(&cmd->argv, lst->content, free);
 }
 
-void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int i)
-{
-	int		j;
-	int		k;
-	int		len;
-
-	j = 0;
-	k = 0;
-	len = 0;
-	while (av[j] && (av[j] != '$' || ft_isinsquotes(av, j)
-		|| ft_is_escaped(av, j)))
-		j++;
-	len = ft_strlen(key);
-	while (av[j + k] && (av[j + k] != '$' || ft_is_escaped(av, j + k)
-		|| ft_isinsquotes(av, j + k)) && (!ft_isalnum(av[j + k])))
-		k++;
-	while (av[j + k])
-		j++;
-	len += j;
-	cmd->av[i] = ft_strdup_env_var(len, av, key);
-}
-
 char		*ft_is_in_env(char *str, t_sh *sh)
 {
 	char	*tmp;
@@ -111,7 +90,7 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	i = 1;
 	env = *(sh->env);
 	while (str[i] && (str[i] != '$' || ft_is_escaped(str, i)
-		|| ft_isinsquotes(str, i)) && (ft_isalnum(str[i])/* || str[i] == '?'*/))
+		|| ft_isinsquotes(str, i)) && (ft_isalnum(str[i])))
 		i++;
 	i = str[i] == '?' ? i + 1 : i;
 	tmp = ft_substr(str, 1, i - 1);
@@ -121,7 +100,8 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	{
 		if (!ft_strncmp("?", tmp, 1))
 			return (ft_itoa(sh->ret_cmd));
-		else if (ft_strncmp(((t_env*)(env->content))->key, tmp, ft_strlen(tmp)) == 0)
+		else if (ft_strncmp(((t_env*)(env->content))->key,
+			tmp, ft_strlen(tmp)) == 0)
 			return (((t_env*)(env->content))->value);
 		env = env->next;
 	}
@@ -149,15 +129,16 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 				key_val = ft_is_in_env(temp_char + j, sh);
 				if (key_val)
 				{
+					// cut btw here
 					ft_replace_env_var_lst(temp, key_val, cmd);
 					temp = cmd->argv;
 					temp_char = (char*)temp->content;
 					j = -1;
+					// and here
 				}
 			}
 			j++;
 		}
 		temp = temp->next;
 	}
-	// cmd->av = ft_lst_to_split(cmd->argv);
 }

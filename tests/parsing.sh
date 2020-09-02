@@ -35,6 +35,12 @@ echo $\""RIP"
 echo $3
 echo $324
 echo $RIP
+$3
+$324
+$RIP
+$LS
+$R1I2P3
+$1R2I3P
 echo $ 
 echo
 echo "--bkslh--"

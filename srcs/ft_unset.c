@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 09:51:54 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 14:03:48 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:10:07 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 static int	ft_unset_check_arg(char *arg)
 {
@@ -21,7 +21,8 @@ static int	ft_unset_check_arg(char *arg)
 	{
 		if (i == 0 && !ft_isalpha(arg[i]))
 			return (1);
-		else if (!ft_isalnum(arg[i]) && !ft_is_escaped(arg, i) && !ft_isinquotes(arg, i))
+		else if (!ft_isalnum(arg[i]) && !ft_is_escaped(arg, i)
+			&& !ft_isinquotes(arg, i))
 			return (1);
 		i++;
 	}
@@ -60,5 +61,4 @@ int			ft_unset(t_cmd *cmd, t_sh *sh)
 	}
 	ft_free_split(cmd->av);
 	return (ret);
-//	return (1);
 }

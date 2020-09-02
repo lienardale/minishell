@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_new_env_var.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:09:58 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/03 09:16:12 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 t_env	*ft_new_env_var(char *key, char *value)
 {

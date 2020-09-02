@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_prompt.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 12:12:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 18:04:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 char	*ft_input_join(t_list *inputs)
 {
@@ -56,7 +56,7 @@ void	ft_check_line(char **line, int *quote, int *bkslh)
 			nbquote++;
 			*quote = '\'';
 		}
-		if ((*line)[pos] == '\"'&& (*quote == '\"' || *quote == 0)
+		if ((*line)[pos] == '\"' && (*quote == '\"' || *quote == 0)
 			&& *bkslh == 0)
 		{
 			nbquote++;
@@ -88,17 +88,16 @@ void	ft_infile(t_sh *sh)
 	bkslh = 0;
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-//printf("ici\n");
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
 			ft_exit(NULL, sh);
 		comment = 0;
 		sh->nbline++;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
-		if (sh->line[comment] != '#') // so that we can comment lines
+		if (sh->line[comment] != '#')
 		{
 			input = ft_lstnew(sh->line);
-			ft_lstadd_back(&begin, input);;
+			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
@@ -117,9 +116,6 @@ void	ft_infile(t_sh *sh)
 			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
-		// ft_free_ptr(sh.line);
-		// if (!sh->ret_sh)
-		// 	break ;
 	}
 }
 
@@ -146,7 +142,6 @@ void	ft_prompt(t_sh *sh)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
 			ft_exit(NULL, sh);
-			//	write(1, "exit\n", 5);
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
@@ -156,15 +151,13 @@ void	ft_prompt(t_sh *sh)
 			ft_lstadd_back(&begin, input);
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			prompt = (quote == 0) ? PROMPT : QPROMPT;
-			// printf("|%s|\n", &sh->line[ft_strlen(sh->line) - 1]);
 			if (quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
 				prompt = QPROMPT;
-			// sh->line = NULL;
-			if (!quote && sh->ret_sh && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
+			if (!quote && sh->ret_sh
+				&& !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
 					return (ft_prompt(sh));
-				// ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
@@ -183,15 +176,8 @@ void	ft_prompt(t_sh *sh)
 		}
 		ft_signal(SIGQUIT, ON);
 		ft_signal(SIGINT, ON);
-		/*
-		if (sh->ret_cmd == 0 || !sh->ret_sh)
-			break ;
-		 * */
-
 		// pb : no prompt while in quotes -> needs fixing
 		if (sh->fd == 0 && sh->ret_sh > 0 && (!begin/* || quote*/))
 			write(2, prompt, ft_strlen(prompt));
-		
-		// ft_free_ptr(sh.line);
 	}
 }

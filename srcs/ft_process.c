@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   v0_process.c                                       :+:      :+:    :+:   */
+/*   ft_process.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/29 18:18:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:57:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 char	*ft_get_onlypaths(char **env)
 {
@@ -65,7 +65,8 @@ char	*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 	if (!(tmp = ft_get_onlypaths(env)))
 	{
 		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n", sh->file, sh->nbline, exec);
+			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
+				sh->file, sh->nbline, exec);
 		else
 			ft_dprintf(2, "minishell: %s: No such file or directory\n", exec);
 		exit(EXIT_FAILURE);
@@ -103,9 +104,9 @@ int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 	else if (!args[0])
 	{
 		args[0] = temp;
-		// printf("ARGS0:|%s|\n", args[0]);
 		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: %s: command not found\n", sh->file, sh->nbline, args[0]);
+			ft_dprintf(2, "%s: line %d: %s: command not found\n",
+				sh->file, sh->nbline, args[0]);
 		else
 			ft_dprintf(2, "minishell: %s: command not found\n", args[0]);
 		exit(127);
@@ -115,9 +116,11 @@ int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 		free(args[0]);
 		args[0] = temp;
 		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n", sh->file, sh->nbline, args[0]);
+			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
+				sh->file, sh->nbline, args[0]);
 		else
-			ft_dprintf(2, "minishell: %s: No such file or directory\n", args[0]);
+			ft_dprintf(2, "minishell: %s: No such file or directory\n",
+				args[0]);
 		exit(EXIT_FAILURE);
 	}
 	free(args[0]);
@@ -136,7 +139,7 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 	pid = fork();
 	if (pid == 0)
 	{
-		// Child process
+		// put in ft_process_child
 		if (cmd->pipe_prev || cmd->pipe_next)
 			cmd->ret_dup = ft_exec_pipe_child(sh, cmd);
 		if (cmd->redir)
@@ -145,20 +148,20 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		status = ft_search_n_execute(cmd->av, split_env, sh);
 		ft_free_split(split_env);
 		if (cmd->redir)
-			(close(cmd->fdout) < 0 ) ? ft_dprintf(2, "Close of fd_out not ok\n") : 0;
+			(close(cmd->fdout) < 0) ? ft_dprintf(2,
+				"Close of fd_out not ok\n") : 0;
 		return (status);
 	}
 	else if (pid < 0 && ft_dprintf(2, "Error forking\n"))
 		return (0);
 	else
 	{
-		// Parent process
+		// put in ft_process_parent
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
 		if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_parent(sh, cmd);
-		// return (1);
 //int temp1 = WIFEXITED(status);
 //int temp2 = WIFSIGNALED(status);
 //int temp3 = status;
@@ -170,8 +173,6 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 //			ft_dprintf(2, "Terminated: %d\n", status);
 			return (status + 128);
 		}
-		// freeing allocated memory
-		// ft_free_double_array(args);
 	}
 	return (1);
 }

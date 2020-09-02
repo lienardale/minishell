@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:31:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 14:03:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 17:31:53 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "v0_minishell.h"
+#include "minishell.h"
 
 int	ft_env(t_cmd *cmd, t_sh *sh)
 {
@@ -22,7 +22,6 @@ int	ft_env(t_cmd *cmd, t_sh *sh)
 	{
 		ft_dprintf(2, "env: '%s': No such file or directory\n", cmd->av[1]);
 		ft_free_split(cmd->av);
-// return (1);
 		return (1);
 	}
 	while (temp)
@@ -37,6 +36,5 @@ int	ft_env(t_cmd *cmd, t_sh *sh)
 		temp = temp->next;
 	}
 	ft_free_split(cmd->av);
-// return (0);
 	return (0);
 }
