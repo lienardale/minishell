@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:50:33 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/03 11:31:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,20 @@ void	ft_exec_redir(t_sh *sh, t_cmd *cmd)
 
 int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 {
+	char	token[3];
+
+	ft_strlcpy(token, &inputs[i], 3);
+	if (ft_isspace(token[1]))
+		token[1] = '\0';
 	if (sh->nbline)
 	{
 		ft_dprintf(2, "%s: line %d: syntax error near unexpected token `%s'\n",
-			sh->file, sh->nbline, &inputs[i]);
+			sh->file, sh->nbline, token);
 		ft_dprintf(2, "%s: line %d: `%s'\n", sh->file, sh->nbline, inputs);
 	}
 	else
 		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
-			&inputs[i]);
+			token);
 	return (1);
 }
 

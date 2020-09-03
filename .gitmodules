@@ -1,0 +1,3 @@
+[submodule "alientest_minishell"]
+	path = alientest_minishell
+	url = https://github.com/lienardale/alientest_minishell
