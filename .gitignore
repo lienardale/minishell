@@ -26,4 +26,3 @@ minishell
 minishell-tester/
 */*.md
 */*.txt
-*/.gitignore
