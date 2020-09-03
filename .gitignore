@@ -24,3 +24,6 @@ minishell
 *.gch
 *.txt
 minishell-tester/
+*/*.md
+*/*.txt
+*/.gitignore
