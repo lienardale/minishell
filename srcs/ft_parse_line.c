@@ -6,14 +6,17 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/03 11:31:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/04 16:01:26 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_parse_redir(t_sh *sh, char *line, int *i)
+int		ft_parse_redir(t_sh *sh, char *line, int *i)
 {
+	int	ret;
+
+	ret = 1;
 	if (line[*i] == '>')
 	{
 		*i += 1;
@@ -29,12 +32,15 @@ void	ft_parse_redir(t_sh *sh, char *line, int *i)
 		*i += 1;
 		((t_cmd*)(sh->cmds->tail->data))->redir = '<';
 	}
-	((t_cmd*)(sh->cmds->tail->data))->redir == '<' ?
-	ft_parse_redir_in(sh, line, i) : 0;
-	((t_cmd*)(sh->cmds->tail->data))->redir == '>' ?
-	ft_parse_redir_out(sh, line, i) : 0;
-	((t_cmd*)(sh->cmds->tail->data))->redir == '2' ?
-	ft_parse_append(sh, line, i) : 0;
+	ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '<' ?
+	ft_parse_redir_in(sh, line, i) : ret;
+	if (ret)
+		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '>' ?
+		ft_parse_redir_out(sh, line, i) : ret;
+	if (ret)
+		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '2' ?
+		ft_parse_append(sh, line, i) : ret;
+	return (ret);
 }
 
 void	ft_exec_redir(t_sh *sh, t_cmd *cmd)
@@ -46,11 +52,13 @@ void	ft_exec_redir(t_sh *sh, t_cmd *cmd)
 
 int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 {
-	char	token[3];
+	char	token[8];
 
 	ft_strlcpy(token, &inputs[i], 3);
 	if (ft_isspace(token[1]))
 		token[1] = '\0';
+	if (ft_ischarset(REDIR, inputs[i]))
+		ft_strlcpy(token, "newline", 8);
 	if (sh->nbline)
 	{
 		ft_dprintf(2, "%s: line %d: syntax error near unexpected token `%s'\n",
@@ -60,7 +68,7 @@ int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 	else
 		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
 			token);
-	return (1);
+	return (0);
 }
 
 int		ft_check_args(char *inputs, t_sh *sh)
@@ -74,8 +82,8 @@ int		ft_check_args(char *inputs, t_sh *sh)
 			i++;
 		if (inputs[i] && !ft_isalnum(inputs[i])
 			&& !ft_ischarset(META, inputs[i]) && !ft_is_escaped(inputs, i)
-			&& !ft_isinquotes(inputs, i) && ft_unexpected_token(inputs, sh, i))
-			return (0);
+			&& !ft_isinquotes(inputs, i))
+			return (ft_unexpected_token(inputs, sh, i));
 		while (inputs[i] && (!ft_ischarset(END_CMD, inputs[i])
 			|| ft_isinquotes(inputs, i) || ft_is_escaped(inputs, i)))
 			i++;
@@ -84,6 +92,11 @@ int		ft_check_args(char *inputs, t_sh *sh)
 		if (inputs[i] && inputs[i - 1] == '>' && inputs[i] == '>')
 			i++;
 	}
+	i--;
+	while (i > 0 && ft_isspace(inputs[i]))
+		i--;
+	if (ft_ischarset(REDIR, inputs[i]))
+		return (ft_unexpected_token(inputs, sh, i));
 	return (1);
 }
 

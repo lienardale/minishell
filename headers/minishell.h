@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:23:06 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/04 11:39:07 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # endif
 
 # ifndef META
-#  define META "-\"\'\\$./"
+#  define META "-\"\'\\$./><"
 # endif
 
 # ifndef QUOTE
@@ -168,10 +168,10 @@ char		*ft_strtrim_space(char *str);
 
 /* parse redir */
 
-void		ft_parse_redir(t_sh *sh, char *line, int *i);
-void		ft_parse_redir_in(t_sh *sh, char *line, int *i);
-void		ft_parse_redir_out(t_sh *sh, char *line, int *i);
-void		ft_parse_append(t_sh *sh, char *line, int *i);
+int			ft_parse_redir(t_sh *sh, char *line, int *i);
+int			ft_parse_redir_in(t_sh *sh, char *line, int *i);
+int			ft_parse_redir_out(t_sh *sh, char *line, int *i);
+int			ft_parse_append(t_sh *sh, char *line, int *i);
 
 /* exec redir */
 
