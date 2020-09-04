@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/04 14:48:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/04 17:01:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 	{
 		if (!ft_parse_redir(sh, line, i))
 		{
+			while (line[*i])
+				(*i)++;
 			((t_cmd *)(sh->cmds->tail->data))->argv = NULL;
 			return ;
 		}
@@ -41,10 +43,10 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	j = *i;
 	cmd = (t_cmd *)(sh->cmds->tail->data);
 	while (ft_isspace(line[j]) && !ft_isinquotes(line, j)
-			&& !ft_is_escaped(line, j))
+		&& !ft_is_escaped(line, j))
 		j++;
 	if (ft_ischarset(REDIR, line[j]) && !ft_isinquotes(line, j)
-			&& !ft_is_escaped(line, j))
+		&& !ft_is_escaped(line, j))
 	{
 		*i = j;
 		ft_handle_end(sh, line, i);

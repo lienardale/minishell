@@ -22,7 +22,12 @@ int		ft_parse_redir_in(t_sh *sh, char *line, int *i)
 		(*i)++;
 	j = *i;
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
 		j++;
+	}
 	tmp = ft_substr(line, *i, j - *i);
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_RDONLY)) == -1)
@@ -33,7 +38,12 @@ int		ft_parse_redir_in(t_sh *sh, char *line, int *i)
 			"minishell: %s: No such file or directory\n", tmp);
 	close(fd);
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
 		j++;
+	}
 	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
 	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
@@ -53,7 +63,12 @@ int		ft_parse_redir_out(t_sh *sh, char *line, int *i)
 		(*i)++;
 	j = *i;
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
 		j++;
+	}
 	tmp = ft_substr(line, *i, j - *i);
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
@@ -80,7 +95,12 @@ int		ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	}
 	close(fd);
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
 		j++;
+	}
 	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
 	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
@@ -100,7 +120,12 @@ int		ft_parse_append(t_sh *sh, char *line, int *i)
 		(*i)++;
 	j = *i;
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
 		j++;
+	}
 	tmp = ft_substr(line, *i, j - *i);
 	tmp = ft_strdup_clean(tmp);
 	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0777)) == -1)
@@ -127,7 +152,12 @@ int		ft_parse_append(t_sh *sh, char *line, int *i)
 	}
 	close(fd);
 	while (line[j] && (!ft_isspace(line[j]) || ft_is_escaped(line, j)))
+	{
+		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
+			&& !ft_is_escaped(line, j))
+			break ;
 		j++;
+	}
 	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
 	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
