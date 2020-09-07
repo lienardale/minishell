@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/04 11:39:07 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/07 17:12:47 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct	s_cmd
 
 	char			*file_redir;
 	int				redir;
+	int				nb_redir;
 	t_list			**fd_in;
 	t_list			**fd_out;
 	int				fdout;
@@ -165,6 +166,8 @@ void		ft_parse_escape(int *j, char *line, t_cmd *cmd);
 void		ft_parse_pipe(t_sh *sh, char *line, int *i);
 int			ft_check_args(char *inputs, t_sh *sh);
 char		*ft_strtrim_space(char *str);
+int			ft_iterate_in_line(char *line, int *j, char *set);
+int			ft_iterate_in_line_redir(char *line, int *j, char *set);
 
 /* parse redir */
 
@@ -172,6 +175,7 @@ int			ft_parse_redir(t_sh *sh, char *line, int *i);
 int			ft_parse_redir_in(t_sh *sh, char *line, int *i);
 int			ft_parse_redir_out(t_sh *sh, char *line, int *i);
 int			ft_parse_append(t_sh *sh, char *line, int *i);
+int			ft_parse_redir_nb(t_sh *sh, char *line, int *i);
 
 /* exec redir */
 

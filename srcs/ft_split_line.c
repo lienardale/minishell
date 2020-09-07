@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/04 17:01:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/07 18:02:43 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 	{
 		if (!ft_parse_redir(sh, line, i))
 		{
-			while (line[*i])
-				(*i)++;
+			// if bash execs after, stays commented, if not, uncomment
+			// while (line[*i])
+				// (*i)++;
 			((t_cmd *)(sh->cmds->tail->data))->argv = NULL;
 			return ;
 		}
@@ -30,7 +31,6 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 		((t_cmd*)(sh->cmds->tail->data))->after = ';';
 	else
 		((t_cmd*)(sh->cmds->tail->data))->after = '\0';
-	// printf("linepost:|%s|\n", &line[*i]);
 }
 
 void	ft_init_args(t_sh *sh, char *line, int *i)
@@ -52,14 +52,17 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 		ft_handle_end(sh, line, i);
 		return ;
 	}
-	while (line[j])
+	ft_iterate_in_line(line, &j, END_CMD);
+	if (ft_ischarset(REDIR, line[j]))
 	{
-		if (ft_ischarset(END_CMD, line[j]) && !ft_isinquotes(line, j)
-			&& !ft_is_escaped(line, j))
-			break ;
-		j++;
+		j--;
+		while (j >= 0 && ft_isdigit(line[j]))
+			j--;
+		tmp = ft_substr(line, *i, (j - *i));
+		ft_iterate_in_line(line, &j, REDIR);
 	}
-	tmp = ft_substr(line, *i, (j - *i));
+	else
+		tmp = ft_substr(line, *i, (j - *i));
 	if (!tmp)
 	{
 		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
@@ -94,6 +97,7 @@ void	ft_init_cmd(t_sh *sh, char *line, int *i)
 		cmd->before = ((t_cmd*)(sh->cmds->tail->data))->after;
 		cmd->fdout = -1;
 		cmd->ret_dup = -1;
+		cmd->nb_redir = -1;
 	}
 	ft_dlst_addback(sh->cmds, cmd);
 	cmd->env = sh->env;

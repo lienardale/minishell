@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:24:06 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/07 18:40:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,8 @@ int	main(int ac, char **av, char **env)
 	}
 	else
 		ft_prompt(&sh);
-	// temp = env_lst;
-	// while (temp)
-	// {
-	// 	printf("%s=%s\n", ((t_env*)temp->content)->key, ((t_env*)temp->content)->value);
-	// 	temp = temp->next;
-	// }
-	// ft_free_split(env);
-	// ft_lstclear(&env_lst, ft_free_env_lst);
-	if (fd != STDIN_FILENO && close(fd) < 0)
-	{
-		ft_dprintf(2, "Close of fd in main not ok\n");
+	if (fd != STDIN_FILENO && close(fd) < 0
+		&& ft_dprintf(2, "Close of fd in main not ok\n"))
 		return (1);
-	}
 	return (sh.ret_sh);
 }

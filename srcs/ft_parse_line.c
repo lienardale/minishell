@@ -6,17 +6,41 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/04 16:01:26 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/07 18:54:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
+{
+	int		j;
+	char	*tmp;
+
+	j = *i;
+	j--;
+	while (j >= 0 && ft_isdigit(line[j]))
+		j--;
+	if (line[j - 1] && line[j - 1] == '-')
+		j--;
+	if (!(tmp = ft_substr(line, j, *i - j)))
+		return (0);
+	printf("tmp:%s\n", tmp);
+	if (!ft_is_escaped(line, j) && tmp[0] != '-' && ft_isdigit(tmp[0]))
+		((t_cmd*)(sh->cmds->tail->data))->nb_redir = ft_atoi(tmp);
+	else
+		((t_cmd*)(sh->cmds->tail->data))->nb_redir = -1;
+	// printf("in_parse:%d\n",((t_cmd*)(sh->cmds->tail->data))->nb_redir);
+	free (tmp);
+	return (1);
+}
+
 int		ft_parse_redir(t_sh *sh, char *line, int *i)
 {
-	int	ret;
+	int		ret;
 
 	ret = 1;
+	ft_parse_redir_nb(sh, line, i);
 	if (line[*i] == '>')
 	{
 		*i += 1;
@@ -32,6 +56,7 @@ int		ft_parse_redir(t_sh *sh, char *line, int *i)
 		*i += 1;
 		((t_cmd*)(sh->cmds->tail->data))->redir = '<';
 	}
+	// printf("redir:%d\n", ((t_cmd*)(sh->cmds->tail->data))->redir);
 	ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '<' ?
 	ft_parse_redir_in(sh, line, i) : ret;
 	if (ret)
@@ -113,4 +138,30 @@ char	*ft_strtrim_space(char *str)
 		i++;
 	}
 	return (str);
+}
+
+int		ft_iterate_in_line(char *line, int *j, char *set)
+{
+	while (line[*j])
+	{
+		if (ft_ischarset(set, line[*j]) && !ft_isinquotes(line, *j)
+			&& !ft_is_escaped(line, *j))
+			break ;
+		(*j)++;
+		// printf("j1:%d\n", *j);
+	}
+	return (1);
+}
+
+int		ft_iterate_in_line_redir(char *line, int *j, char *set)
+{
+	while (line[*j] && (!ft_isspace(line[*j]) || ft_is_escaped(line, *j)))
+	{
+		if (ft_ischarset(set, line[*j]) && !ft_isinquotes(line, *j)
+			&& !ft_is_escaped(line, *j))
+			break ;
+		(*j)++;
+		// printf("j2:%d\n", *j);
+	}
+	return (1);
 }
