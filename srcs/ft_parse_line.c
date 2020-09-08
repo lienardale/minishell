@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/07 18:54:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:46:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,23 @@ int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
 		j--;
 	if (line[j - 1] && line[j - 1] == '-')
 		j--;
-	if (!(tmp = ft_substr(line, j, *i - j)))
+	if (!(tmp = ft_substr(line, j + 1, *i - j - 1)))
 		return (0);
-	printf("tmp:%s\n", tmp);
+	// printf("tmp:|%c|\n", tmp[0]);
+	// printf("tmp:|%s|\n", tmp);
 	if (!ft_is_escaped(line, j) && tmp[0] != '-' && ft_isdigit(tmp[0]))
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = ft_atoi(tmp);
 	else
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = -1;
+	if (OPEN_MAX <= ((t_cmd*)(sh->cmds->tail->data))->nb_redir)
+	{
+		sh->nbline ? ft_dprintf(2,
+			"%s: line %d: %s: Bad file descriptor\n",
+			sh->file, sh->nbline, tmp)
+			: ft_dprintf(2,
+			"minishell: %s: Bad file descriptor\n", tmp);
+		return (0);
+	}
 	// printf("in_parse:%d\n",((t_cmd*)(sh->cmds->tail->data))->nb_redir);
 	free (tmp);
 	return (1);
@@ -40,7 +50,8 @@ int		ft_parse_redir(t_sh *sh, char *line, int *i)
 	int		ret;
 
 	ret = 1;
-	ft_parse_redir_nb(sh, line, i);
+	if (!(ft_parse_redir_nb(sh, line, i)))
+		ret = 0;
 	if (line[*i] == '>')
 	{
 		*i += 1;
@@ -57,7 +68,8 @@ int		ft_parse_redir(t_sh *sh, char *line, int *i)
 		((t_cmd*)(sh->cmds->tail->data))->redir = '<';
 	}
 	// printf("redir:%d\n", ((t_cmd*)(sh->cmds->tail->data))->redir);
-	ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '<' ?
+	if (ret)
+		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '<' ?
 	ft_parse_redir_in(sh, line, i) : ret;
 	if (ret)
 		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '>' ?

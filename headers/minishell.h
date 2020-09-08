@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/07 17:12:47 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:38:49 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/errno.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "libft.h"
 # include "libftprintf.h"
 # include "libftdprintf.h"

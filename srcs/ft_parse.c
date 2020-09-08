@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/07 18:52:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 14:30:24 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ int		ft_exec_redir_out(t_sh *sh, t_cmd *cmd)
 	int	fd;
 
 	fd = cmd->nb_redir != -1 ? cmd->nb_redir : STDOUT_FILENO;
-	printf("nb:%d\n", cmd->nb_redir);
-	printf("fd:%d\n", fd);
+	// printf("nb:%d\n", cmd->nb_redir);
+	// printf("fd:%d\n", fd);
 	if ((cmd->fdout = open(cmd->file_redir, O_WRONLY | O_CREAT
 		| O_TRUNC, 0777)) == -1)
 		return (0);
