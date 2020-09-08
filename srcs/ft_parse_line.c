@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 14:46:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:51:38 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
 		j--;
 	if (!(tmp = ft_substr(line, j + 1, *i - j - 1)))
 		return (0);
-	// printf("tmp:|%c|\n", tmp[0]);
-	// printf("tmp:|%s|\n", tmp);
 	if (!ft_is_escaped(line, j) && tmp[0] != '-' && ft_isdigit(tmp[0]))
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = ft_atoi(tmp);
 	else
@@ -40,7 +38,6 @@ int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
 			"minishell: %s: Bad file descriptor\n", tmp);
 		return (0);
 	}
-	// printf("in_parse:%d\n",((t_cmd*)(sh->cmds->tail->data))->nb_redir);
 	free (tmp);
 	return (1);
 }
@@ -67,16 +64,12 @@ int		ft_parse_redir(t_sh *sh, char *line, int *i)
 		*i += 1;
 		((t_cmd*)(sh->cmds->tail->data))->redir = '<';
 	}
-	// printf("redir:%d\n", ((t_cmd*)(sh->cmds->tail->data))->redir);
-	if (ret)
-		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '<' ?
-	ft_parse_redir_in(sh, line, i) : ret;
-	if (ret)
-		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '>' ?
-		ft_parse_redir_out(sh, line, i) : ret;
-	if (ret)
-		ret = ((t_cmd*)(sh->cmds->tail->data))->redir == '2' ?
-		ft_parse_append(sh, line, i) : ret;
+	if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '<' )
+		return (ft_parse_redir_in(sh, line, i));
+	else if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '>')
+		return (ft_parse_redir_out(sh, line, i));
+	else if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '2')
+		return (ft_parse_append(sh, line, i));
 	return (ret);
 }
 
@@ -132,7 +125,7 @@ int		ft_check_args(char *inputs, t_sh *sh)
 	i--;
 	while (i > 0 && ft_isspace(inputs[i]))
 		i--;
-	if (ft_ischarset(REDIR, inputs[i]))
+	if (inputs[i] && ft_ischarset(REDIR, inputs[i]))
 		return (ft_unexpected_token(inputs, sh, i));
 	return (1);
 }
@@ -160,7 +153,6 @@ int		ft_iterate_in_line(char *line, int *j, char *set)
 			&& !ft_is_escaped(line, *j))
 			break ;
 		(*j)++;
-		// printf("j1:%d\n", *j);
 	}
 	return (1);
 }
@@ -173,7 +165,6 @@ int		ft_iterate_in_line_redir(char *line, int *j, char *set)
 			&& !ft_is_escaped(line, *j))
 			break ;
 		(*j)++;
-		// printf("j2:%d\n", *j);
 	}
 	return (1);
 }

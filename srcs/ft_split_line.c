@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/07 18:02:43 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 17:56:46 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_handle_end(t_sh *sh, char *line, int *i)
 {
+	// printf("2line|%s|\n", &line[*i]);
 	if (ft_ischarset(REDIR, line[*i]))
 	{
 		if (!ft_parse_redir(sh, line, i))
@@ -45,6 +46,9 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	while (ft_isspace(line[j]) && !ft_isinquotes(line, j)
 		&& !ft_is_escaped(line, j))
 		j++;
+	while (ft_isdigit(line[j]) && !ft_isinquotes(line, j)
+		&& !ft_is_escaped(line, j))
+		j++;
 	if (ft_ischarset(REDIR, line[j]) && !ft_isinquotes(line, j)
 		&& !ft_is_escaped(line, j))
 	{
@@ -56,9 +60,16 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	if (ft_ischarset(REDIR, line[j]))
 	{
 		j--;
-		while (j >= 0 && ft_isdigit(line[j]))
+		while (j >= 0 && ft_isdigit(line[j]) && !ft_is_escaped(line, j))
 			j--;
+		if (ft_is_escaped(line, j))
+		{
+			ft_iterate_in_line(line, &j, REDIR);
+			line[j++] = ' ';
+			ft_iterate_in_line(line, &j, END_CMD);
+		}
 		tmp = ft_substr(line, *i, (j - *i));
+		// printf("tmp :|%s|\n",tmp);
 		ft_iterate_in_line(line, &j, REDIR);
 	}
 	else

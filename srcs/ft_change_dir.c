@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/04 10:25:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:06:33 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 // change pwd et oldpwd dans env
 	if (chdir_value)
 	{
-		ft_dprintf(2, "No such file or directory: %s\n", cmd->av[1]);
+		if (sh->nbline)
+			ft_dprintf(2, "%s: line %d: cd: %s: No such file or directory\n", sh->file, sh->nbline, cmd->av[1]);
+		else
+			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd->av[1]);
 		ft_free_split(cmd->av);
 		return (1);
 	}

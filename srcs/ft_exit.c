@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:41:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:04:13 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,11 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 		i++;
 	if (i > 2)
 	{
-		ft_dprintf(2, "minishell: exit: too many arguments\n");
+		sh->nbline ? ft_dprintf(2,
+			"%s: line %d: exit: too many arguments\n",
+			sh->file, sh->nbline)
+			: ft_dprintf(2,
+			"minishell: exit: too many arguments\n");
 		// ft_free_minishell(sh);
 		exit(1);
 	}

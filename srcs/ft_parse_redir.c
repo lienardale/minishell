@@ -47,6 +47,8 @@ int		ft_parse_redir_in(t_sh *sh, char *line, int *i)
 	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
 	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
+	while (line[j] && ft_isspace(line[j]) && !ft_is_escaped(line, j))
+		j++;
 	*i = j;
 	ft_init_args(sh, line, i);
 	return (1);
@@ -104,6 +106,8 @@ int		ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
 	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
+	while (line[j] && ft_isspace(line[j]) && !ft_is_escaped(line, j))
+		j++;
 	*i = j;
 	ft_init_args(sh, line, i);
 	return (1);
@@ -161,6 +165,8 @@ int		ft_parse_append(t_sh *sh, char *line, int *i)
 	if (((t_cmd*)(sh->cmds->tail->data))->file_redir)
 		free(((t_cmd*)(sh->cmds->tail->data))->file_redir);
 	((t_cmd*)(sh->cmds->tail->data))->file_redir = tmp;
+	while (line[j] && ft_isspace(line[j]) && !ft_is_escaped(line, j))
+		j++;
 	*i = j;
 	ft_init_args(sh, line, i);
 	return (1);
