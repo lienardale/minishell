@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 12:12:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 14:10:54 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_input_join(t_list *inputs)
 		{
 			tmp_2 = tmp;
 			tmp = ft_strjoin(tmp, inputs->content);
-			ft_free_ptr(tmp_2);
+//			ft_free_ptr(tmp_2);
 			inputs = inputs->next;
 		}
 	}
@@ -86,7 +86,7 @@ void	ft_infile(t_sh *sh)
 	begin = NULL;
 	quote = 0;
 	bkslh = 0;
-	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
+	while ((sh->ret_sh = get_next_line(sh->fd, &sh->line)) >= 0)
 	{
 //printf("ici\n");
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
@@ -104,7 +104,7 @@ void	ft_infile(t_sh *sh)
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
 					break ;
-				ft_lstclear(&begin, &free);
+//				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
@@ -112,7 +112,7 @@ void	ft_infile(t_sh *sh)
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
-				ft_dlst_del(sh->cmds);
+//				ft_dlst_del(sh->cmds);
 			}
 			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
@@ -142,10 +142,13 @@ void	ft_prompt(t_sh *sh)
 	if (sh->fd == 0)
 			write(2,prompt,ft_strlen(prompt));
 	while (//sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end && 
-		(sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
+		(sh->ret_sh = get_next_line(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
+		{
+			free(sh->line);
 			ft_exit(NULL, sh);
+		}
 			//	write(1, "exit\n", 5);
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
@@ -163,7 +166,10 @@ void	ft_prompt(t_sh *sh)
 			if (!quote && sh->ret_sh && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
+{
+					ft_reset_sh(sh);
 					return (ft_prompt(sh));
+}
 				// ft_line_to_lst(ft_input_join(begin), sh);
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
@@ -175,8 +181,10 @@ void	ft_prompt(t_sh *sh)
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
-				ft_dlst_del(sh->cmds);
+//				free(sh->cmds->head->data->cmd);
+//				ft_dlst_del(sh->cmds);
 				begin = NULL;
+				ft_reset_sh(sh);
 			}
 			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';

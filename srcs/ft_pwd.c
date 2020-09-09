@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/11 14:25:12 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 14:53:40 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_pwd(t_cmd *cmd, t_sh *sh)
 	int		buff_size;
 
 	(void)sh;
+	(void)cmd;
 	buff_size = 1000;
 // mettrer PWD=''
 	if (!(cwd = ft_calloc(1, buff_size)))
@@ -26,6 +27,6 @@ int	ft_pwd(t_cmd *cmd, t_sh *sh)
 	// ft_putendl_fd(cwd, 0);
 	ft_printf("%s\n", cwd);
 	free(cwd);
-	ft_free_split(cmd->av);
+//	ft_free_split(cmd->av);
 	return (0);
 }

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/05 17:51:21 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 13:11:41 by cdai             ###   ########.fr       */
+/*   Created: 2019/11/11 14:33:49 by cdai              #+#    #+#             */
+/*   Updated: 2020/09/02 12:33:55 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
-char	**ft_free_split(char **data)
-{
-	int	i;
+# include <unistd.h>
+# include <stdlib.h>
 
-	i = 0;
-	if (data)
-		while (data[i])
-		{
-			free(data[i]);
-			data[i] = 0;
-			i++;
-		}
-	free(data);
-	return (NULL);
-}
+int				get_next_line(int fd, char **line);
+int				ft_init(char **line, char **temp);
+
+#endif

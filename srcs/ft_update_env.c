@@ -6,7 +6,7 @@
 /*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:20:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/03 11:42:57 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 16:20:01 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list *ft_update_env(t_list *env, t_env *data)
 	temp_env = ft_search_env(env, data->key);
 	if (temp_env)
 	{
+		free(((t_env*)temp_env->content)->value);
 		((t_env*)temp_env->content)->value = data->value;
 		free(data->key);
 		free(data);

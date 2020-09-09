@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/31 17:33:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/02 14:00:00 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char		*ft_strdup_env_var(int len, char *av, char *key)
 	while (av[i[0] + i[2]] && (i[0] + i[2]) < len)
 		tab[i[1]++] = av[i[0]++ + i[2]];
 	tab[i[1]] = '\0';
-	free(av);
+//	free(av);
 	return (tab);
 }
 
@@ -159,5 +159,11 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 		}
 		temp = temp->next;
 	}
+	ft_free_split(cmd->av);
 	cmd->av = ft_lst_to_split(cmd->argv);
+	cmd->ac = ft_double_strlen(cmd->av);
+/*
+	free(cmd->cmd);
+	cmd->cmd = ft_strdup(cmd->av[0]);
+*/
 }

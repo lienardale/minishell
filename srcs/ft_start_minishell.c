@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/01 11:28:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/01 14:00:54 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ static char	*ft_increment_shlvl(char *env_shlvl)
 {
 	int		shlvl;
 	char	*temp;
+/*
 	char	*result;
 	int		result_len;
+*/
 
 	shlvl = ft_atoi(env_shlvl);
 	if (!(temp = ft_itoa(++shlvl)))
 		return (NULL);
+/*
 	result_len = 1 + ft_strlen(temp);
 	if (!(result = ft_calloc(result_len, sizeof(char))))
 	{
@@ -48,6 +51,8 @@ static char	*ft_increment_shlvl(char *env_shlvl)
 	free(temp);
 	result = ft_itoa(shlvl);
 	return (result);
+*/
+	return (temp);
 }
 
 t_list		*ft_start_minishell(char **env)
@@ -72,6 +77,7 @@ t_list		*ft_start_minishell(char **env)
 				return (NULL);
 			}
 			free(old_value);
+			old_value = NULL;
 		}
 //printf("start_minishell/env->content->key:\t%s\n", ((t_env*)temp->content)->key);
 //printf("start_minishell/env->content->value:\t%s\n", ((t_env*)temp->content)->value);

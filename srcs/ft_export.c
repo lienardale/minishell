@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/08/11 16:57:03 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/02 14:44:48 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 // handle malloc error
 		if (!(splited = ft_lst_env_to_split_export(*(sh->env))))
 		{
-			ft_free_split(cmd->av);
+//			ft_free_split(cmd->av);
 // return (1); // ret = 1;
 			return (1);
 		}
@@ -120,14 +120,14 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 //				
 				if (!(ft_export_update_env(*(sh->env), cmd->av[i])))
 				{
-					ft_free_split(cmd->av);
+//					ft_free_split(cmd->av);
 // return (1); // ret = 1;
 					return (1);
 				}
 			}
 		}
 	}
-	ft_free_split(cmd->av);
+//	ft_free_split(cmd->av);
 // a mettre a jour
 	return (ret);
 //	return (1);
