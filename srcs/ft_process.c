@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 11:15:06 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 15:44:58 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,14 @@ char	*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 	{
 		if ((result = ft_findexec(paths[i], exec)))
 		{
-			ft_free_split(paths);
+			if (paths)
+				ft_free_split(paths);
 			return (result);
 		}
 		i++;
 	}
-	ft_free_split(paths);
+	if (paths)
+		ft_free_split(paths);
 	return (result);
 }
 
@@ -113,7 +115,8 @@ int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 	}
 	if ((ret_cmd = execve(args[0], args, env)) == -1)
 	{
-		free(args[0]);
+		// if (args[0])
+		// 	free(args[0]);
 		args[0] = temp;
 		if (sh->nbline)
 			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
@@ -124,7 +127,8 @@ int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 		exit(EXIT_FAILURE);
 	}
 	// printf("", r);
-	free(args[0]);
+	if (args[0])
+		free(args[0]);
 	args[0] = temp;
 	return (ret_cmd);
 }
@@ -147,7 +151,8 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 			ft_exec_redir(sh, cmd);
 		split_env = ft_lst_env_to_split_launch(*(sh->env));
 		status = ft_search_n_execute(cmd->av, split_env, sh);
-		ft_free_split(split_env);
+		if (split_env)
+			ft_free_split(split_env);
 		if (cmd->redir)
 			(close(cmd->fdout) < 0) ? ft_dprintf(2,
 				"Close of fd_out not ok\n") : 0;

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 18:04:39 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 15:32:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,10 @@ void	ft_prompt(t_sh *sh)
 	while (//sh->ret_cmd /*&& (write(1,prompt,ft_strlen(prompt)))*/ // /!\ pb, when several lines are ctrl -v into stdin, prompt writes itself several times at the end && 
 		(sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
+		// pb : no prompt while in quotes -> needs fixing
+		// if (sh->fd == 0 && sh->ret_sh > 0 && (!begin/* || quote*/) && !sh->line)
+		// 	write(2, prompt, ft_strlen(prompt));
+			
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
 			ft_exit(NULL, sh);
 		comment = 0;
@@ -176,7 +180,8 @@ void	ft_prompt(t_sh *sh)
 		}
 		ft_signal(SIGQUIT, ON);
 		ft_signal(SIGINT, ON);
-		// pb : no prompt while in quotes -> needs fixing
+		
+		// pb : no prompt while in quotes && writes itself when ./minishell < script.sh -> needs fixing
 		if (sh->fd == 0 && sh->ret_sh > 0 && (!begin/* || quote*/))
 			write(2, prompt, ft_strlen(prompt));
 	}
