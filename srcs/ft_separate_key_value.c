@@ -6,20 +6,22 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/04 18:19:23 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 18:05:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 10:31:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_env	*ft_separate_key_value(char *env_str)
+t_env	*ft_separate_key_value(char *env_str, bool *add)
 {
 	t_env	*result;
 	int		i;
 
 	i = 0;
-	while (env_str[i] && env_str[i] != '=')
+	while (env_str[i] && env_str[i] != '=' && env_str[i] != '+')
 		i++;
+	if (env_str[i] == '+' && env_str[i + 1] && env_str[i + 1] == '=' && (i++))
+		(*add) = true;
 	if (!(result = ft_calloc(1, sizeof(*result))))
 		return (NULL);
 	if (!env_str[i])

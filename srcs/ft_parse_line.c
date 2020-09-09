@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 18:51:38 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 11:02:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 	else
 		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
 			token);
+	sh->ret_cmd = 2;
 	return (0);
 }
 

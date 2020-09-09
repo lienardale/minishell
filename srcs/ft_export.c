@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 10:42:39 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	ft_export_check_arg(char *arg)
 // le premier character ne peut pas etre '=' ni un autre chose qu'une lettre
 		if (i == 0 && !ft_isalpha(arg[i]) && arg[i] != '_')
 			return (1);
+		else if (arg[i] == '+' && arg[i + 1] && arg[i + 1] != '=')
+			return (1);
 // si je trouve un character '=' apres le premier charactere, je sors de la fonction => valide
 		else if (arg[i] == '=')
 			return (0);
@@ -48,14 +50,16 @@ static int	ft_export_check_arg(char *arg)
 static t_list	*ft_export_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
+	bool	add;
 //	t_env	*env_content;
 //	t_list	*temp_env;
 
+	add = false;
 // temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
 	if (ft_export_check_underscore(arg))
 		return (env);
 //	temp_env = ft_search_env(env, arg);
-	result = ft_separate_key_value(arg);
+	result = ft_separate_key_value(arg, &add);
 	/*
 	if (temp_env)
 	{
@@ -73,7 +77,7 @@ static t_list	*ft_export_update_env(t_list *env, char *arg)
 	else
 		ft_lstadd_back(&env, ft_lstnew(result));
 */
-return (ft_update_env(env, result));
+	return (ft_update_env(env, result, add));
 }
 
 int				ft_export(t_cmd *cmd, t_sh *sh)
@@ -83,6 +87,7 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 	int		ret;
 
 	ret = 0;
+	// ft_print_double_array(cmd->av, "av");
 // je cherche a savoir si des arguments ou pas
 	if (!cmd->av[1])
 	{
@@ -112,7 +117,11 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 			if (ft_export_check_arg(cmd->av[i]))
 			{
 				ret = 1;
-				ft_dprintf(2, "minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
+				if (sh->nbline)
+					ft_dprintf(2, "%s: line %d: export: `%s': not a valid identifier\n",
+					sh->file, sh->nbline, cmd->av[i]);
+				else
+					ft_dprintf(2, "minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
 			}
 			else
 			{

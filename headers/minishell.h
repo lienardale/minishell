@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 14:38:49 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 10:27:17 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ t_list		*ft_start_minishell(char **env);
 t_list		*ft_split_to_lst_env(char **env);
 void		ft_free_env_lst(void *env_lst);
 void		ft_sort_env_lst(t_list *env_lst);
-t_env		*ft_separate_key_value(char *env_str);
+t_env		*ft_separate_key_value(char *env_str, bool *add);
 char		**ft_lst_env_to_split(t_list *lst_env);
 char		**ft_lst_env_to_split_launch(t_list *lst_env);
 char		**ft_lst_env_to_split_export(t_list *lst_env);
@@ -224,7 +224,7 @@ t_list		*ft_search_env(t_list *env, char *arg);
 // int			ft_unset(char **args, t_list **env);
 char		*ft_parse_env_var(char *line, t_sh *sh);
 t_env		*ft_new_env_var(char *key, char *value);
-t_list		*ft_update_env(t_list *env, t_env *data);
+t_list		*ft_update_env(t_list *env, t_env *data, bool add);
 char		*ft_getcwd(void);
 
 /* replacing $ by env var before exec */

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 18:04:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 11:15:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 				args[0]);
 		exit(EXIT_FAILURE);
 	}
+	// printf("", r);
 	free(args[0]);
 	args[0] = temp;
 	return (ret_cmd);
@@ -165,12 +166,12 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 //int temp1 = WIFEXITED(status);
 //int temp2 = WIFSIGNALED(status);
 //int temp3 = status;
-//printf("%d, %d, %d\n", temp1, temp2, status);
+// printf("%d, %d, %d\n", temp1, temp2, status);
 		if (WIFEXITED(status))
 			return (status / 256);
 		else if (WIFSIGNALED(status))
 		{
-//			ft_dprintf(2, "Terminated: %d\n", status);
+			// ft_dprintf(2, "Terminated: %d\n", status);
 			return (status + 128);
 		}
 	}
