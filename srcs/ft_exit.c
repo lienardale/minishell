@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 18:04:13 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/09 16:56:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,26 +93,53 @@ void		ft_free_minishell(t_sh *sh)
 	}
 }
 
+int			ft_search_piped_exit_cmd(t_sh *sh)
+{
+	t_dlist	*cmd;
+	t_cmd	*pipe;
+	// int		ret;
+
+	cmd = (t_dlist *)(sh->cmds->head);
+	while (cmd)
+	{
+		pipe = (t_cmd*)(cmd->data);
+		if (ft_strcmp(pipe->cmd, "exit") == 0 && !(pipe->pipe_next))
+			return (1);
+		while (pipe)
+		{
+			if (ft_strcmp(pipe->cmd, "exit") == 0)
+				return (0);
+			pipe = pipe->pipe_next;
+		}
+		cmd = cmd->next;
+	}
+	return (1);
+}
+
 int			ft_exit(t_cmd *cmd, t_sh *sh)
 {
 	int		i;
 	int		return_value;
+	int		ret;
 
 	i = 0;
+	ret = ft_search_piped_exit_cmd(sh);
 	if (!cmd && !sh->file)
 	{
 		return_value = sh->ret_cmd;
 		ft_lstclear(sh->env, ft_free_env_lst);
 		ft_free_minishell(sh);
 		ft_dprintf(2, "exit\n");
-		exit(return_value);
+		if (ret)
+			exit(return_value);
 	}
 	if (!cmd && sh->file)
 	{
 		return_value = sh->ret_cmd;
 		ft_lstclear(sh->env, ft_free_env_lst);
 		ft_free_minishell(sh);
-		exit(return_value);
+		if (ret)
+			exit(return_value);
 	}
 	while (cmd->av[i])
 		i++;
@@ -124,7 +151,8 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 			: ft_dprintf(2,
 			"minishell: exit: too many arguments\n");
 		// ft_free_minishell(sh);
-		exit(1);
+		if (ret)
+			exit(1);
 	}
 	else if (i == 2)
 	{
@@ -132,7 +160,8 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 		{
 			return_value = sh->ret_cmd;
 			// ft_free_minishell(sh);
-			exit(return_value);
+			if (ret)
+				exit(return_value);
 		}
 		if (ft_str_isdigit(cmd->av[1]) && ft_is_in_min_max_atoi_long(cmd->av[1]))
 		{
@@ -141,20 +170,26 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 			return_value = ft_atoi_long(cmd->av[1]) % 256;
 			return_value = (return_value < 0) ? return_value + 256 : return_value;
 			// ft_free_minishell(sh);
-			exit(return_value);
+			if (ret)
+				exit(return_value);
 		}
 		else
 		{
-			ft_dprintf(2, "minishell: exit: %s: numeric argument required\n", cmd->av[1]);
-			// ft_free_minishell(sh);
-			exit(255);
+			sh->nbline ? ft_dprintf(2,
+			"%s: line %d: exit: %s: numeric argument required\n",
+			sh->file, sh->nbline, cmd->av[1])
+			: ft_dprintf(2,
+			"minishell: exit: %s: numeric argument required\n", cmd->av[1]);
+			if (ret)
+				exit(255);
 		}
 	}
 	else
 	{
 		return_value = sh->ret_cmd;
 		// ft_free_minishell(sh);
-		exit(return_value);
+		if (ret)
+			exit(return_value);
 	}
 	return (0);
 }
