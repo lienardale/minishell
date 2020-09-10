@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:11:22 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/05 15:14:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 14:49:57 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,13 @@ int		ft_ifnl(char **line, t_gnl *current, size_t i, char *tmp)
 	current->rest[j] == '\n' ? j++ : 0;
 	if (len < j)
 		j = len;
+	if ((len - j) == 0)
+	{
+		free(current->rest);
+		current->rest = NULL;
+		*line = tmp;
+		return (1);
+	}
 	if (!(tmprest = (char *)malloc(sizeof(char) * (len - j + 1))))
 		return (-1);
 	i = 0;
