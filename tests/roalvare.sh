@@ -85,7 +85,7 @@ cat run.sh | grep
 # exit | echo test
 cat run.sh | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
 
- 
+
 echo ;;;;
 echo test | | wc; echo lol
 echo lol; echo test | | wc

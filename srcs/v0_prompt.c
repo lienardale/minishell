@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 14:10:54 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/10 12:23:59 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,9 +88,19 @@ void	ft_infile(t_sh *sh)
 	bkslh = 0;
 	while ((sh->ret_sh = get_next_line(sh->fd, &sh->line)) >= 0)
 	{
+//	printf("%d\n", sh->ret_sh);
+//	printf("%zu\n", ft_strlen(sh->line));
+//	printf("%s\n", sh->line);
+//	printf("%zu\n", (unsigned long)begin);
 //printf("ici\n");
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
+		{
+//printf("ici\n");
+			
+			free(sh->line);
+//			break ;
 			ft_exit(NULL, sh);
+		}
 		comment = 0;
 		sh->nbline++;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
@@ -101,10 +111,15 @@ void	ft_infile(t_sh *sh)
 			ft_lstadd_back(&begin, input);;
 			ft_check_line((char**)&input->content, &quote, &bkslh);
 			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
+//			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line)))
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
+				{
+					ft_reset_sh(sh);
 					break ;
-//				ft_lstclear(&begin, &free);
+//					return (ft_prompt(sh));
+				}
+				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
 				while (current)
@@ -112,14 +127,16 @@ void	ft_infile(t_sh *sh)
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
+				begin = NULL;
+				ft_reset_sh(sh);
 //				ft_dlst_del(sh->cmds);
 			}
 			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
-		// ft_free_ptr(sh.line);
-		// if (!sh->ret_sh)
-		// 	break ;
+		else
+			free(sh->line);
+//
 	}
 }
 
@@ -189,6 +206,8 @@ void	ft_prompt(t_sh *sh)
 			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
+		else
+			free(sh->line);
 		ft_signal(SIGQUIT, ON);
 		ft_signal(SIGINT, ON);
 		/*
