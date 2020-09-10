@@ -6,7 +6,7 @@
 /*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 10:13:50 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 15:57:03 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/10 18:50:24 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ void			ft_clean_envvar(t_cmd *cmd)
 	if (cmd->av)
 		ft_free_double_array(cmd->av);
 	cmd->av = ft_lst_to_split(cmd->argv);
+	// ft_lstclear_env(&cmd->argv);
+	// ft_lstclear(&cmd->argv, ft_free_env_lst);
 }

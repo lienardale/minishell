@@ -6,7 +6,7 @@
 /*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 13:27:07 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/10 18:48:46 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -243,5 +243,7 @@ int			ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd);
 /* signal*/
 
 void		ft_signal(int sig, int is_on);
+
+void		ft_lstclear_env(t_list **env);
 
 # endif

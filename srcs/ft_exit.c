@@ -6,7 +6,7 @@
 /*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 16:41:53 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/10 18:51:44 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,29 @@ void		ft_free_cmd(t_dlist *node)
 		free(node);
 }
 
+void		ft_lstclear_env(t_list **env)
+{
+	t_list	*cur;
+	t_list	*tmp;
+
+	cur = *env;
+	while (cur)
+	{
+		tmp = cur->next;
+		ft_free_env_lst(cur->content);
+		free(cur);
+		cur = tmp;
+	}
+	free (env);
+}
+
 void		ft_free_minishell(t_sh *sh)
 {
 	t_dlist	*tmp;
 	t_dlist	*tmp2;
 
+	// if (sh->env)
+	// 	ft_lstclear_env(sh->env);
 	if (sh->env)
 		ft_lstclear(sh->env, ft_free_env_lst);
 	if (sh->cmds)
@@ -91,17 +109,13 @@ void		ft_free_minishell(t_sh *sh)
 			tmp = tmp2;
 		}
 		free(sh->cmds);
-		// ft_dlst_del(sh->cmds);
 	}
-	// if (sh->line)
-		// free(sh->line);
 }
 
 int			ft_search_piped_exit_cmd(t_sh *sh)
 {
 	t_dlist	*cmd;
 	t_cmd	*pipe;
-	// int		ret;
 
 	cmd = (t_dlist *)(sh->cmds->head);
 	while (cmd)
@@ -131,19 +145,23 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 	if (!cmd && !sh->file)
 	{
 		return_value = sh->ret_cmd;
-		ft_lstclear(sh->env, ft_free_env_lst);
-		ft_free_minishell(sh);
+		// ft_lstclear(sh->env, ft_free_env_lst);
 		ft_dprintf(2, "exit\n");
 		if (ret)
+		{
+			ft_free_minishell(sh);
 			exit(return_value);
+		}
 	}
 	if (!cmd && sh->file)
 	{
 		return_value = sh->ret_cmd;
-		ft_lstclear(sh->env, ft_free_env_lst);
-		ft_free_minishell(sh);
+		// ft_lstclear(sh->env, ft_free_env_lst);
 		if (ret)
+		{
+			ft_free_minishell(sh);
 			exit(return_value);
+		}
 	}
 	while (cmd->av[i])
 		i++;
