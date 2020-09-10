@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 16:08:15 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 12:20:13 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = ft_atoi(tmp);
 	else
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = -1;
-	if (OPEN_MAX <= ((t_cmd*)(sh->cmds->tail->data))->nb_redir)
+/*	if (OPEN_MAX <= ((t_cmd*)(sh->cmds->tail->data))->nb_redir)
 	{
 		sh->nbline ? ft_dprintf(2,
 			"%s: line %d: %s: Bad file descriptor\n",
@@ -38,7 +38,7 @@ int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
 			"minishell: %s: Bad file descriptor\n", tmp);
 		return (0);
 	}
-	free (tmp);
+*/	free (tmp);
 	return (1);
 }
 

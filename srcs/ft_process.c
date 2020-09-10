@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_process.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 15:44:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 14:09:13 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ char	*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 	i = 0;
 	if (!(tmp = ft_get_onlypaths(env)))
 	{
+		// if (ft_isolate_exec(exec, &tmp))
+		// 	exec = tmp;
 		if (sh->nbline)
 			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
 				sh->file, sh->nbline, exec);
@@ -118,6 +120,8 @@ int		ft_search_n_execute(char **args, char **env, t_sh *sh)
 		// if (args[0])
 		// 	free(args[0]);
 		args[0] = temp;
+		// if (ft_isolate_exec(args[0], &temp))
+		// 	args[0] = temp;
 		if (sh->nbline)
 			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
 				sh->file, sh->nbline, args[0]);

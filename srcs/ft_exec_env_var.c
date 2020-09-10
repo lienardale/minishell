@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_env_var.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:40:01 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 13:57:41 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	{
 		if (!ft_strncmp("?", tmp, 1))
 			return (ft_itoa(sh->ret_cmd));
-		else if (ft_strncmp(((t_env*)(env->content))->key,
-			tmp, ft_strlen(tmp)) == 0)
+		else if (ft_strcmp(((t_env*)(env->content))->key,
+			tmp) == 0)
 			return (((t_env*)(env->content))->value);
 		env = env->next;
 	}
