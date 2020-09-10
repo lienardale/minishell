@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 15:23:12 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/04 15:23:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/08 18:40:52 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 
 	tmp = ((t_cmd *)(cur->data));
 	tmp->pipe_prev = ((t_cmd *)(next->data));
+//	ft_free_data(data);
 	((t_cmd *)(next->data))->pipe_next = tmp;
 	next->prev = cur->prev;
 	if (cur->prev)
@@ -30,13 +31,20 @@ int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 int		ft_create_pipe(t_sh *sh)
 {
 	t_dlist	*cur;
+	t_dlist	*temp;
 
 	cur = sh->cmds->head;
 	while (cur)
 	{
 		if (((t_cmd *)(cur->data))->after == '|')
+		{
 			ft_add_pipe(cur, cur->next, sh);
-		cur = cur->next;
+			temp = cur->next;
+			free(cur);
+			cur = temp;
+		}
+		else
+			cur = cur->next;
 	}
 	return (0);
 }

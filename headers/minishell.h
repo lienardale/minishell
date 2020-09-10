@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 10:27:17 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 09:55:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "libftprintf.h"
 # include "libftdprintf.h"
 # include "libftfprintf.h"
-# include "get_next_line_bonus.h"
+# include "get_next_line.h"
 # include "list.h"
 
 # ifndef SPACE
@@ -226,6 +226,7 @@ char		*ft_parse_env_var(char *line, t_sh *sh);
 t_env		*ft_new_env_var(char *key, char *value);
 t_list		*ft_update_env(t_list *env, t_env *data, bool add);
 char		*ft_getcwd(void);
+void		ft_reset_sh(t_sh *sh);
 
 /* replacing $ by env var before exec */
 

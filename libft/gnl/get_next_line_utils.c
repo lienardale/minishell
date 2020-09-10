@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_split.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: cdai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/05 17:51:21 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 13:11:41 by cdai             ###   ########.fr       */
+/*   Created: 2019/11/14 10:09:16 by cdai              #+#    #+#             */
+/*   Updated: 2019/11/19 10:33:15 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-char	**ft_free_split(char **data)
+int	ft_init(char **line, char **temp)
 {
-	int	i;
-
-	i = 0;
-	if (data)
-		while (data[i])
-		{
-			free(data[i]);
-			data[i] = 0;
-			i++;
-		}
-	free(data);
-	return (NULL);
+	if (!(*line = malloc(sizeof(**line))) ||
+		!(*temp = malloc(sizeof(**temp))))
+		return (0);
+	**line = 0;
+	**temp = 0;
+	return (1);
 }

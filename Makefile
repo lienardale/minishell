@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/02 18:07:36 by alienard         ###   ########.fr        #
+#    Updated: 2020/09/10 09:55:29 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ _SRCS		= ft_minishell.c \
 				ft_new_env_var.c \
 				ft_update_env.c \
 				ft_getcwd.c \
-				ft_signal.c
+				ft_signal.c \
+				ft_reset_sh.c
 
 SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
 OBJS			= $(SRCS:.c=.o)
@@ -167,6 +168,6 @@ ifeq (search,$(firstword $(MAKECMDGOALS)))
 endif
 
 search:
-	grep $(RUN_ARGS) srcs/*.c libft/*/*.c
+	grep -n $(RUN_ARGS) srcs/*.c libft/*/*.c
 
 .PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak search

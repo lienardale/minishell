@@ -6,7 +6,11 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2020/09/02 11:27:36 by alienard         ###   ########.fr        #
+=======
+#    Updated: 2020/09/01 23:14:12 by cdai             ###   ########.fr        #
+>>>>>>> origin/cdai3
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,8 +65,7 @@ _FPRINTF		= ft_conv_2_fprintf.c \
 					ft_preci_fprintf.c \
 					ft_putnbr_base_fprintf.c
 _GNL			= get_next_line.c \
-					get_next_line_bonus.c \
-					get_next_line_utils_bonus.c
+					get_next_line_utils.c
 _IS				= ft_isalnum.c \
 					ft_isalpha.c \
 					ft_isascii.c \

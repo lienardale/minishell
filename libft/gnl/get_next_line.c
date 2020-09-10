@@ -3,98 +3,126 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cdai <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/19 20:19:38 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/29 16:48:52 by alienard         ###   ########.fr       */
+/*   Created: 2019/11/15 11:52:19 by cdai              #+#    #+#             */
+/*   Updated: 2020/09/02 12:54:55 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-static size_t	ft_strlen_gnl(char *str)
-{
-	size_t i;
-
-	i = 0;
-	if (!str)
-		return (-1);
-	while (str[i])
-		i++;
-	return (i);
-}
-
-static char	*ft_strjoin_free(char *s1, char *s2)
+static int	ft_strcut(char **buffer)
 {
 	int		i;
 	int		j;
-	char	*tab;
-	size_t	len;
 
-	if (s2 == NULL)
-		return (NULL);
-	if (s1 == NULL && (tab = ft_strdup(s2)))
-		return (tab);
-	len = ft_strlen_gnl(s1) + ft_strlen_gnl(s2);
-	if (!(tab = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
 	i = -1;
-	while (s1[++i])
-		tab[i] = s1[i];
 	j = -1;
-	while (s2[++j])
-		tab[i + j] = s2[j];
-	tab[i + j] = '\0';
-	free(s1);
-	s1 = NULL;
-	return (tab);
-}
-
-static char	*ft_gnlsubstr(char const *s, unsigned int start, size_t len)
-{
-	char	*tab;
-	char	*us;
-	size_t	i;
-
-	if (!s || s[0] == '\0' || len == 0)
-		return (NULL);
-	us = (char *)s;
-	i = 0;
-	if (!(tab = (char *)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < len && us[i] && start <= ft_strlen(us))
-		tab[i++] = us[start++];
-	tab[i] = '\0';
-	return (tab);
-}
-
-int		get_next_line(int fd, char **line)
-{
-	char		buffer[301];
-	static char	*rest = NULL;
-	int		retread;
-	char		*n;
-	int			i;
-
-	if (!line || fd <= -1)
-		return (-1);
-	while ((retread = read(fd, buffer, 300)) > 0)
+	while ((*buffer)[++i])
 	{
-		if (!retread)
-			break ;
-		buffer[retread] = '\0';
-		rest = ft_strjoin_free(rest, buffer);
-		if ((n = ft_strchr(rest, '\n')))
+		if ((*buffer)[i] == '\n')
 		{
-			n[0] = '\0';
-			i = ft_strlen(rest);
-			*line = rest;
-			rest = ft_gnlsubstr(rest, i + 1, ft_strlen(rest + i + 1));
+			i++;
+			if (!(*buffer)[i])
+			{
+				free(*buffer);
+				*buffer = 0;
+				return (1);
+			}
+			while ((*buffer)[i + (++j)])
+				(*buffer)[j] = (*buffer)[i + j];
+			(*buffer)[j] = 0;
 			return (1);
 		}
 	}
-	if (retread == -1)
-		return(-1);
-	// ft_free_ptr(rest);
-	return (retread);
+	free(*buffer);
+	*buffer = 0;
+	return (2);
+}
+
+static char	*ft_strjoin_mix(char *buffer, char **line)
+{
+	int		i;
+	int		j;
+	char	*temp;
+
+	i = 0;
+	j = 0;
+	while ((*line)[i])
+		i++;
+	while (buffer[j] && buffer[j] != '\n')
+		j++;
+	if (!(temp = malloc(sizeof(*temp) * (i + j + 1))))
+		return (0);
+	j = -1;
+	while ((*line)[++j])
+		temp[j] = (*line)[j];
+	j = 0;
+	while (buffer[j] && buffer[j] != '\n')
+	{
+		temp[i + j] = buffer[j];
+		j++;
+	}
+	temp[i + j] = 0;
+	free(*line);
+	return (temp);
+}
+
+static int	ft_error_free(char **buffer, char **temp)
+{
+	free(*buffer);
+	free(*temp);
+	return (-1);
+}
+
+static int	ft_create_temp(int fd, char **temp, char **buffer)
+{
+	int			size;
+
+	if (fd < 0 || !(*buffer = malloc(sizeof(**buffer) * (BUFFER_SIZE + 1)))
+		|| (size = read(fd, *buffer, BUFFER_SIZE)) < 0)
+	{
+		free(*temp);
+		return (-1);
+	}
+	(*buffer)[size] = 0;
+	if (size != BUFFER_SIZE)
+	{
+		if (!(*temp = ft_strjoin_mix(*buffer, temp)))
+			return (ft_error_free(buffer, temp));
+		size = ft_strcut(buffer);
+		if (size == 2)
+			return (0);
+		else
+			return (1);
+	}
+	return (2);
+}
+
+int			get_next_line(int fd, char **line)
+{
+	static char	*buffer;
+	char		*temp;
+	int			line_finished;
+
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
+		return (-1);
+	if (!ft_init(line, &temp))
+		return (-1);
+	line_finished = 2;
+	while (line_finished == 2)
+	{
+		if (!buffer)
+			line_finished = ft_create_temp(fd, &temp, &buffer);
+		if (line_finished == 2)
+		{
+			if (!(temp = ft_strjoin_mix(buffer, &temp)))
+				return (ft_error_free(&buffer, &temp));
+			line_finished = ft_strcut(&buffer);
+		}
+	}
+	free(*line);
+	*line = temp;
+	return (line_finished);
 }
