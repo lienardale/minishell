@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_start_minishell.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 18:09:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 15:26:15 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static char		*ft_increment_shlvl(char *env_shlvl)
 	ft_strlcat(result, "", result_len);
 	ft_strlcat(result, temp, result_len);
 	free(temp);
+	free(result);
 	result = ft_itoa(shlvl);
 	return (result);
 }

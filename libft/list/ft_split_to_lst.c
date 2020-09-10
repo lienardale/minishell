@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_to_lst.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:13:09 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/16 14:57:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 16:02:18 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 t_list	*ft_split_to_lst(char **strs)
 {
@@ -18,7 +19,7 @@ t_list	*ft_split_to_lst(char **strs)
 	int		i;
 
 	i = 0;
-	result = 0;
+	result = NULL;
 	while (strs[i])
 	{
 		if (!result)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_clean_envvar.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 10:13:50 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:30:03 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 15:57:03 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,7 @@ void			ft_clean_envvar(t_cmd *cmd)
 		tmp = tmp->next;
 	}
 	ft_lstdelif_false(&cmd->argv, ft_strlen);
+	if (cmd->av)
+		ft_free_double_array(cmd->av);
 	cmd->av = ft_lst_to_split(cmd->argv);
 }

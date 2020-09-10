@@ -6,7 +6,7 @@
 /*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 14:54:26 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/10 16:41:53 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void		ft_free_sub_cmd(t_cmd *cmd)
 		ft_lstclear(&cmd->argv, free);
 	if (cmd->av)
 		ft_free_double_array(cmd->av);
-	if (cmd)
-		ft_free_ptr(cmd->av);
+	if (cmd->cmd)
+		ft_free_ptr(cmd->cmd);
 	if (cmd->file_redir)
 		ft_free_ptr(cmd->file_redir);
 	if (cmd->fd_in)
@@ -57,8 +57,8 @@ void		ft_free_cmd(t_dlist *node)
 		ft_lstclear(&cmd->argv, free);
 	if (cmd->av)
 		ft_free_double_array(cmd->av);
-	if (cmd)
-		ft_free_ptr(cmd->av);
+	if (cmd->cmd)
+		ft_free_ptr(cmd->cmd);
 	if (cmd->file_redir)
 		ft_free_ptr(cmd->file_redir);
 	if (cmd->fd_in)
@@ -67,6 +67,8 @@ void		ft_free_cmd(t_dlist *node)
 		ft_lstclear(cmd->fd_out, free);
 	if (cmd->pipe_next)
 		ft_free_sub_cmd(cmd->pipe_next);
+	if (cmd)
+		free(cmd);
 	if (node)
 		free(node);
 }
@@ -88,7 +90,11 @@ void		ft_free_minishell(t_sh *sh)
 			ft_free_cmd(tmp);
 			tmp = tmp2;
 		}
+		free(sh->cmds);
+		// ft_dlst_del(sh->cmds);
 	}
+	// if (sh->line)
+		// free(sh->line);
 }
 
 int			ft_search_piped_exit_cmd(t_sh *sh)

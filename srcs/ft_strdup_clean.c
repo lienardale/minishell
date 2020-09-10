@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup_clean.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/10 10:32:33 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 15:27:57 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ char			*ft_strdup_clean(const char *s1)
 	if (!(tab = (char *)malloc(sizeof(char) * (ft_strlen_clean(us1) + 1))))
 		return (NULL);
 	ft_strlcpy_clean(tab, us1, ft_strlen_clean(us1) + 1);
+	free(us1);
 	return (tab);
 }

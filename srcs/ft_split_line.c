@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 17:56:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/10 16:33:28 by alienard@st      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 			// if bash execs after, stays commented, if not, uncomment
 			// while (line[*i])
 				// (*i)++;
+			// ft_lstclear(&((t_cmd *)(sh->cmds->tail->data))->argv, free);
 			((t_cmd *)(sh->cmds->tail->data))->argv = NULL;
 			return ;
 		}
@@ -89,9 +90,15 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 		*i = j + 1;
 		return ;
 	}
+	// if (cmd->argv)
+	// 	free(cmd->argv);
 	cmd->argv = ft_split_to_lst(cmd->av);
 	cmd->ac = ft_double_strlen(cmd->av);
+	// if (cmd->cmd)
+	// 	free(cmd->cmd);
 	cmd->cmd = ft_strdup(cmd->av[0]);
+	// ft_free_double_array(cmd->av);
+	// cmd->av = NULL;
 	*i = j;
 	ft_handle_end(sh, line, i);
 }
