@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:11:38 by alienard          #+#    #+#             */
-/*   Updated: 2020/07/23 13:02:38 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 16:44:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ typedef struct	s_buff
 }				t_buff;
 
 int				get_next_line_multi(int fd, char **line);
-int				ft_check_ln(char **line, t_gnl *current,
-				char *buffer, t_gnl **begin);
+// int				ft_check_ln(char **line, t_gnl *current,
+// 				char *buffer, t_gnl **begin);
+int				ft_check_ln(char **line, t_gnl *current, char *buffer);
 int				ft_ifnl(char **line, t_gnl *current, size_t i, char *tmp);
 char			*ft_strdup_buff(char *buffer, int ret);
-void			ft_free_fd(t_gnl *current, t_gnl **begin);
-void			ft_find_fd(int fd, t_gnl **begin, t_gnl **current);
+// void			ft_free_fd(t_gnl *current, t_gnl **begin);
+// void			ft_find_fd(int fd, t_gnl **begin, t_gnl **current);
 size_t			ft_strlen_gnl(const char *str);
 char			*ft_strdup_free_gnl(char *s1);
 char			*ft_strjoin_free_gnl(char *s1, char *s2);
