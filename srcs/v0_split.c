@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 19:40:43 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/11 16:03:56 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	int		j;
 	char	*tmp;
 	char	**tmp_av;
+	char	**tmp_av2;
 	t_cmd	*cmd;
 
 	j = *i;
@@ -54,16 +55,29 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	}
 	tmp_av = ft_split_quote(tmp, ' ');
 	free(tmp);
-	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
+	tmp_av2 = cmd->av;
+	if (cmd->av)
+	{
+		cmd->av = ft_dstrjoin(cmd->av, tmp_av);
+		ft_free_split(tmp_av);
+	}
+	else
+		cmd->av = tmp_av;
+	ft_free_split(tmp_av2);
+//	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
 	if (!(cmd->av) || !(cmd->av[0]))
 	{
 		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
 		*i = j + 1;
 		return ;
 	}
+	if (cmd->argv)
+		ft_lstclear(&cmd->argv, free);
 	cmd->argv = ft_split_to_lst(cmd->av);
 	// ft_printf("avlst:|%s|\n",(char*)cmd->argv->content);
 	cmd->ac = ft_double_strlen(cmd->av);
+	if (cmd->cmd)
+		free(cmd->cmd);
 	cmd->cmd= ft_strdup(cmd->av[0]);
 	*i = j;
 	ft_handle_end(sh, line, i);
