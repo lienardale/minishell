@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/11 16:01:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 16:58:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ void	ft_prompt(t_sh *sh)
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !begin)
+		{
 			ft_exit(NULL, sh);
+		}
 		comment = 0;
 		while (sh->line[comment] && ft_isspace(sh->line[comment]))
 			comment++;
