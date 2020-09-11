@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/09 15:08:26 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 14:04:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 		if (!(home = ft_search_env(*(sh->env), "HOME")))
 		{
 			ft_dprintf(2, "minishell: cd: HOME not set\n");
-			ft_free_split(cmd->av);
+			// ft_free_split(cmd->av);
 			return (1);
 		}
 // if (home)
@@ -99,7 +99,7 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 			ft_dprintf(2, "%s: line %d: cd: %s: No such file or directory\n", sh->file, sh->nbline, cmd->av[1]);
 		else
 			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd->av[1]);
-		ft_free_split(cmd->av);
+		// ft_free_split(cmd->av);
 		return (1);
 	}
 	if (oldpwd && !ft_change_dir_update(sh->env, oldpwd))
@@ -108,7 +108,7 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 			ft_dprintf(2, "%s: line %d: cd: %s: No such file or directory\n", sh->file, sh->nbline, cmd->av[1]);
 		else
 			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n", cmd->av[1]);
-		ft_free_split(cmd->av);
+		// ft_free_split(cmd->av);
 		return (1);
 	}
 	if (newpwd && !ft_change_dir_update(sh->env, newpwd))
@@ -117,6 +117,6 @@ int	ft_change_dir(t_cmd *cmd, t_sh *sh)
 		free(oldpwd);
 	if (newpwd)
 		free(newpwd);
-	ft_free_split(cmd->av);
+	// ft_free_split(cmd->av);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:11:22 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 14:49:57 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/11 12:36:13 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,9 @@ int		get_next_line_multi(int fd, char **line)
 	if (fd <= -1 || !line || BUFFER_SIZE == 0)
 		return (-1);
 	ft_find_fd(fd, &begin, &current);
+	// if (!begin)
+	// 	*begin = (t_gnl){fd, 0, NULL, NULL};
+	// current = begin
 	while ((current->ret = read(fd, buff.buffer, BUFFER_SIZE)) > 0)
 	{
 		if (!(buff.tmp = ft_strdup_buff(buff.buffer, current->ret)))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/10 13:29:38 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/11 15:42:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 // handle malloc error
 		if (!(splited = ft_lst_env_to_split_export(*(sh->env))))
 		{
-			ft_free_split(cmd->av);
+			// ft_free_split(cmd->av);
 // return (1); // ret = 1;
 			return (1);
 		}
@@ -129,14 +129,14 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 //				
 				if (!(ft_export_update_env(*(sh->env), cmd->av[i])))
 				{
-					ft_free_split(cmd->av);
+					// ft_free_split(cmd->av);
 // return (1); // ret = 1;
 					return (1);
 				}
 			}
 		}
 	}
-	ft_free_split(cmd->av);
+	// ft_free_split(cmd->av);
 // a mettre a jour
 	return (ret);
 //	return (1);

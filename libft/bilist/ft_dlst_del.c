@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 11:05:05 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/01 10:04:22 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 14:18:44 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,6 @@ void	ft_dlst_del(t_ref *dlst)
 		ft_dlst_delone(dlst, tmp);
 		tmp = tmp2;
 	}
+	// free(dlst);
+	// dlst = NULL;
 }

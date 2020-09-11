@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 16:20:23 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 16:01:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_infile(t_sh *sh)
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
 					break ;
+				sh->line = NULL;
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
@@ -112,9 +113,14 @@ void	ft_infile(t_sh *sh)
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
-				ft_dlst_del(sh->cmds);
+				ft_reset_sh(sh);
+				// ft_lstclear_cmds(sh->cmds);
+				// ft_dlst_del(sh->cmds);
+				// free(sh->cmds);
+				// sh->cmds = NULL;
+				begin = NULL;
 			}
-			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
+			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 	}
@@ -163,6 +169,7 @@ void	ft_prompt(t_sh *sh)
 			{
 				if (!ft_line_to_lst(ft_input_join(begin), sh))
 					return (ft_prompt(sh));
+				sh->line = NULL;
 				ft_lstclear(&begin, &free);
 				ft_create_pipe(sh);
 				current = sh->cmds->head;
@@ -173,10 +180,15 @@ void	ft_prompt(t_sh *sh)
 					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
 					current = current->next;
 				}
-				ft_dlst_del(sh->cmds);
+				ft_reset_sh(sh);
+				// ft_dlst_del(sh->cmds);
+				// ft_lstclear_cmds(sh->cmds);
+				// free(sh->cmds);
+				// sh->cmds = NULL;
+				// sh->cmds->head = NULL;
 				begin = NULL;
 			}
-			if (ft_is_escaped(sh->line, ft_strlen(sh->line)))
+			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
 		ft_signal(SIGQUIT, ON);
