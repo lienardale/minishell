@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 18:09:04 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 14:24:14 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ static char		*ft_increment_shlvl(char *env_shlvl)
 	ft_strlcat(result, "", result_len);
 	ft_strlcat(result, temp, result_len);
 	free(temp);
+	free(result);
 	result = ft_itoa(shlvl);
 	return (result);
 }
@@ -59,6 +60,7 @@ t_list		*ft_start_minishell(char **env)
 
 	if (!(result = ft_split_to_lst_env(env)))
 		return (NULL);
+	// ft_free_double_array(env);
 	temp = result;
 	while (temp)
 	{

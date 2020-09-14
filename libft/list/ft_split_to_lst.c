@@ -6,11 +6,12 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/30 16:13:09 by cdai              #+#    #+#             */
-/*   Updated: 2020/06/16 14:57:37 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 15:35:05 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 t_list	*ft_split_to_lst(char **strs)
 {
@@ -18,7 +19,7 @@ t_list	*ft_split_to_lst(char **strs)
 	int		i;
 
 	i = 0;
-	result = 0;
+	result = NULL;
 	while (strs[i])
 	{
 		if (!result)

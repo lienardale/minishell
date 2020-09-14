@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 14:30:24 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 16:19:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 		cmd->av[i] = ft_strdup_clean(cmd->av[i]);
 	if (cmd->av[0] == NULL)
 		return (1);
+	if (cmd->cmd)
+		free(cmd->cmd);
 	cmd->cmd = ft_strdup(cmd->av[0]);
 	i = -1;
 	if (ft_strcmp(cmd->cmd, "exit") == 0)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_process.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 14:09:13 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/11 15:45:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,8 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 		wpid = waitpid(pid, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(pid, &status, WUNTRACED);
+		// if (split_env)
+		// 	ft_free_split(split_env);
 		if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_parent(sh, cmd);
 //int temp1 = WIFEXITED(status);

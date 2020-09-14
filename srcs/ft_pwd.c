@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 18:44:40 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/09 14:12:33 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 14:07:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	ft_pwd(t_cmd *cmd, t_sh *sh)
 	t_list	*env;
 
 	// (void)sh;
+	(void)cmd;
 	env = *sh->env;
 	buff_size = 1000;
 // mettre PWD=''
@@ -32,6 +33,6 @@ int	ft_pwd(t_cmd *cmd, t_sh *sh)
 	}
 	ft_printf("%s\n", cwd);
 	free(cwd);
-	ft_free_split(cmd->av);
+	// ft_free_split(cmd->av);
 	return (0);
 }

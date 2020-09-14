@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/09 16:56:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 17:21:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void		ft_free_sub_cmd(t_cmd *cmd)
 {
 	if (cmd->pipe_next)
 		ft_free_sub_cmd(cmd->pipe_next);
-	if (cmd->env)
-		ft_lstclear(cmd->env, ft_free_env_lst);
+	// if (cmd->env)
+	// 	ft_lstclear(cmd->env, ft_free_env_lst);
 	if (cmd->argv)
 		ft_lstclear(&cmd->argv, free);
 	if (cmd->av)
 		ft_free_double_array(cmd->av);
-	if (cmd)
-		ft_free_ptr(cmd->av);
+	if (cmd->cmd)
+		ft_free_ptr(cmd->cmd);
 	if (cmd->file_redir)
 		ft_free_ptr(cmd->file_redir);
 	if (cmd->fd_in)
@@ -50,15 +50,20 @@ void		ft_free_cmd(t_dlist *node)
 {
 	t_cmd	*cmd;
 
+	if (!node || !node->data)
+		return ;
 	cmd = (t_cmd*)node->data;
-	if (cmd->env)
-		ft_lstclear(cmd->env, ft_free_env_lst);
+	if (!cmd)
+		return ;
+	// if (cmd->env)
+	// 	ft_lstclear(cmd->env, ft_free_env_lst);
 	if (cmd->argv)
 		ft_lstclear(&cmd->argv, free);
 	if (cmd->av)
 		ft_free_double_array(cmd->av);
-	if (cmd)
-		ft_free_ptr(cmd->av);
+	if (cmd->cmd)
+		ft_free_ptr(cmd->cmd);
+		// free(cmd->cmd);
 	if (cmd->file_redir)
 		ft_free_ptr(cmd->file_redir);
 	if (cmd->fd_in)
@@ -67,38 +72,77 @@ void		ft_free_cmd(t_dlist *node)
 		ft_lstclear(cmd->fd_out, free);
 	if (cmd->pipe_next)
 		ft_free_sub_cmd(cmd->pipe_next);
-	if (node)
-		free(node);
+	
+	// if (cmd)
+		// free(cmd);
+	// if (node)
+		// free(node);
 }
 
-void		ft_free_minishell(t_sh *sh)
+void		ft_lstclear_env(t_list **env)
+{
+	t_list	*cur;
+	t_list	*tmp;
+
+	if (!env || !(*env))
+		return ;
+	cur = *env;
+	while (cur)
+	{
+		tmp = cur->next;
+		ft_free_env_lst(cur->content);
+		if (cur)
+			free(cur);
+		cur = tmp;
+	}
+	// free(*env);
+}
+
+void		ft_lstclear_cmds(t_ref *cmds)
 {
 	t_dlist	*tmp;
 	t_dlist	*tmp2;
 
+	if (cmds == NULL || cmds->head == NULL)
+		return ;
+	tmp = cmds->head;
+	tmp2 = cmds->head;
+	while (tmp)
+	{
+		tmp2 = tmp2->next;
+		ft_free_cmd(tmp);
+		tmp = tmp2;
+	}
+	// free(cmds);
+
+}
+
+void		ft_free_minishell(t_sh *sh)
+{
 	if (sh->line)
 		free(sh->line);
+	// if (sh->fd != STDIN_FILENO && close(sh->fd) < )
+		// ft_dprintf(2, "close in exit not ok\n");
 	if (sh->env)
-		ft_lstclear(sh->env, ft_free_env_lst);
+		ft_lstclear_env(sh->env);
+	// if (sh->env)
+		// ft_lstclear(sh->env, ft_free_env_lst);
 	if (sh->cmds)
-	{
-		tmp = sh->cmds->head;
-		tmp2 = sh->cmds->head;
-		while (tmp)
-		{
-			tmp2 = tmp2->next;
-			ft_free_cmd(tmp);
-			tmp = tmp2;
-		}
-	}
+		ft_lstclear_cmds(sh->cmds);
+	if (sh->cmds)
+		ft_dlst_del(sh->cmds);
+	if (sh->cmds)
+		free(sh->cmds);
+
 }
 
 int			ft_search_piped_exit_cmd(t_sh *sh)
 {
 	t_dlist	*cmd;
 	t_cmd	*pipe;
-	// int		ret;
 
+	if (!sh->cmds)
+		return (1);
 	cmd = (t_dlist *)(sh->cmds->head);
 	while (cmd)
 	{
@@ -127,19 +171,23 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 	if (!cmd && !sh->file)
 	{
 		return_value = sh->ret_cmd;
-		ft_lstclear(sh->env, ft_free_env_lst);
-		ft_free_minishell(sh);
+		// ft_lstclear(sh->env, ft_free_env_lst);
 		ft_dprintf(2, "exit\n");
 		if (ret)
+		{
+			ft_free_minishell(sh);
 			exit(return_value);
+		}
 	}
 	if (!cmd && sh->file)
 	{
 		return_value = sh->ret_cmd;
-		ft_lstclear(sh->env, ft_free_env_lst);
-		ft_free_minishell(sh);
+		// ft_lstclear(sh->env, ft_free_env_lst);
 		if (ret)
+		{
+			ft_free_minishell(sh);
 			exit(return_value);
+		}
 	}
 	while (cmd->av[i])
 		i++;
@@ -150,18 +198,22 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 			sh->file, sh->nbline)
 			: ft_dprintf(2,
 			"minishell: exit: too many arguments\n");
-		// ft_free_minishell(sh);
 		if (ret)
+		{
+			ft_free_minishell(sh);
 			exit(1);
+		}
 	}
 	else if (i == 2)
 	{
 		if (ft_is_double_minus(cmd->av[1]))
 		{
 			return_value = sh->ret_cmd;
-			// ft_free_minishell(sh);
 			if (ret)
+			{
+				ft_free_minishell(sh);
 				exit(return_value);
+			}
 		}
 		if (ft_str_isdigit(cmd->av[1]) && ft_is_in_min_max_atoi_long(cmd->av[1]))
 		{
@@ -169,9 +221,11 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 //			ft_free_sh();
 			return_value = ft_atoi_long(cmd->av[1]) % 256;
 			return_value = (return_value < 0) ? return_value + 256 : return_value;
-			// ft_free_minishell(sh);
 			if (ret)
+			{
+				ft_free_minishell(sh);
 				exit(return_value);
+			}
 		}
 		else
 		{
@@ -181,15 +235,20 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 			: ft_dprintf(2,
 			"minishell: exit: %s: numeric argument required\n", cmd->av[1]);
 			if (ret)
+			{
+				ft_free_minishell(sh);
 				exit(255);
+			}
 		}
 	}
 	else
 	{
 		return_value = sh->ret_cmd;
-		// ft_free_minishell(sh);
 		if (ret)
+		{
+			ft_free_minishell(sh);
 			exit(return_value);
+		}
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 10:13:50 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 17:30:03 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/11 15:23:13 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ char			*ft_strdup_clean_envvar(char *tmp_char)
 	if (!(tab = (char *)malloc(sizeof(char) * (ft_strlen_dol(tmp_char) + 1))))
 		return (NULL);
 	ft_strlcpy_dol(tab, tmp_char, ft_strlen_dol(tmp_char) + 1);
+	free(tmp_char);
 	return (tab);
 }
 
@@ -101,5 +102,9 @@ void			ft_clean_envvar(t_cmd *cmd)
 		tmp = tmp->next;
 	}
 	ft_lstdelif_false(&cmd->argv, ft_strlen);
+	if (cmd->av)
+		ft_free_double_array(cmd->av);
 	cmd->av = ft_lst_to_split(cmd->argv);
+	// ft_lstclear_env(&cmd->argv);
+	// ft_lstclear(&cmd->argv, ft_free_env_lst);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/08 17:56:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 17:55:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 			// if bash execs after, stays commented, if not, uncomment
 			// while (line[*i])
 				// (*i)++;
+			// ft_lstclear(&((t_cmd *)(sh->cmds->tail->data))->argv, free);
 			((t_cmd *)(sh->cmds->tail->data))->argv = NULL;
 			return ;
 		}
@@ -39,6 +40,8 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	int		j;
 	char	*tmp;
 	char	**tmp_av;
+	char	**tmp_av2;
+	// t_list	*tmp_argv;
 	t_cmd	*cmd;
 
 	j = *i;
@@ -82,16 +85,32 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	}
 	tmp_av = ft_split_quote(tmp, ' ');
 	free(tmp);
-	cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
+	tmp_av2 = cmd->av;
+	// cmd->av = cmd->av ? ft_dstrjoin(cmd->av, tmp_av) : tmp_av;
+	cmd->av = ft_dstrjoin(cmd->av, tmp_av);
+	if (tmp_av2)
+		ft_free_double_array(tmp_av2);
+	if (tmp_av)
+		ft_free_double_array(tmp_av);
 	if (!(cmd->av) || !(cmd->av[0]))
 	{
 		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
 		*i = j + 1;
 		return ;
 	}
+	if (cmd->argv)
+		ft_lstclear(&cmd->argv, free);
+	// tmp_argv = cmd->argv;
 	cmd->argv = ft_split_to_lst(cmd->av);
+	// if (tmp_argv)
+		// ft_lstclear(&tmp_argv, free);
 	cmd->ac = ft_double_strlen(cmd->av);
+	if (cmd->cmd)
+		free(cmd->cmd);
 	cmd->cmd = ft_strdup(cmd->av[0]);
+	// if (cmd->av)
+	// 	ft_free_double_array(cmd->av);
+	// cmd->av = NULL;
 	*i = j;
 	ft_handle_end(sh, line, i);
 }
@@ -126,6 +145,8 @@ int		ft_line_to_lst(char *inputs, t_sh *sh)
 	inputs = ft_strtrim_space(inputs);
 	while (inputs[i])
 		ft_init_cmd(sh, inputs, &i);
-	ft_free_ptr(inputs);
+	// ft_free_ptr(inputs);
+	free(inputs);
+	inputs = NULL;
 	return (1);
 }
