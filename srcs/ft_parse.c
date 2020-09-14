@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 15:56:42 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 16:19:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 {
 	char	**builtins;
 	int		i;
-	// char	*temp;
 
 	if (cmd->pipe_next && (ft_init_pipe(sh, cmd)))
 		ft_parse_cmds(cmd->pipe_next, sh);
@@ -100,11 +99,7 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	ft_clean_envvar(cmd);
 	i = -1;
 	while (cmd->av[++i])
-	{
-		// temp = cmd->av[i];
 		cmd->av[i] = ft_strdup_clean(cmd->av[i]);
-		// free(temp);
-	}
 	if (cmd->av[0] == NULL)
 		return (1);
 	if (cmd->cmd)
