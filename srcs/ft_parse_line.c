@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 12:20:13 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/14 17:55:44 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 		ft_dprintf(2, "minishell: syntax error near unexpected token `%s'\n",
 			token);
 	sh->ret_cmd = 2;
+	free(inputs);
+	inputs = NULL;
 	return (0);
 }
 
