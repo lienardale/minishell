@@ -4,7 +4,7 @@ make
 read -p 'Which test ?: ' test
 
 if [ "$test" = "all" ] ; then
-	valgrind --leak-check=full --show-leak-kinds=all ./minishell alientest_minishell/cat.sh 2> leak.log ; echo \nCAT\n > leaks.log ; tail leak.log >> leaks.log
+	valgrind --leak-check=full --show-leak-kinds=all ./minishell alientest_minishell/cat.sh 2> leak.log ; echo ; echo CAT ; echo > leaks.log ; tail leak.log >> leaks.log
 
 	valgrind --leak-check=full --show-leak-kinds=all ./minishell alientest_minishell/ls.sh 2>> leak.log ; echo \nLS\n > leaks.log ; tail leak.log >> leaks.log
 	echo\n----- -----\n >> leaks.log
