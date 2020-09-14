@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 16:12:09 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 17:21:15 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,5 +201,7 @@ void	ft_prompt(t_sh *sh)
 		if (sh->fd == 0 && sh->ret_sh > 0 && !begin)
 			write(2, prompt, ft_strlen(prompt));
 	}
+	// if (sh->line)
+	// 	free(sh->line);
 	ft_exit(NULL, sh);
 }

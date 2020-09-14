@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 16:05:45 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 17:21:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ void		ft_lstclear_cmds(t_ref *cmds)
 
 void		ft_free_minishell(t_sh *sh)
 {
+	if (sh->line)
+		free(sh->line);
 	// if (sh->fd != STDIN_FILENO && close(sh->fd) < )
 		// ft_dprintf(2, "close in exit not ok\n");
 	if (sh->env)
