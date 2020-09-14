@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/11 16:58:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/14 16:12:09 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,10 @@ void	ft_infile(t_sh *sh)
 			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
 		}
+		// if (sh->ret_sh == 0 /*&& ft_strlen(sh->line) == 0 */&& !begin)
+		// 	ft_exit(NULL, sh);
 	}
+	ft_exit(NULL, sh);
 }
 
 /*
@@ -198,4 +201,5 @@ void	ft_prompt(t_sh *sh)
 		if (sh->fd == 0 && sh->ret_sh > 0 && !begin)
 			write(2, prompt, ft_strlen(prompt));
 	}
+	ft_exit(NULL, sh);
 }
