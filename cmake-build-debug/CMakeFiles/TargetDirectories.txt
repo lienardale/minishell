@@ -1,4 +1,0 @@
-/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/minishell.dir
-/Users/alienard/Documents/42_cursus/minishell/cmake-build-debug/CMakeFiles/LIBFT.dir

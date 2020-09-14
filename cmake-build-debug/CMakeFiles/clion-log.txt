@@ -1,4 +1,0 @@
-"/Users/alienard/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/201.7846.88/CLion.app/Contents/bin/cmake/mac/bin/cmake" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/alienard/Documents/42_cursus/minishell
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/alienard/Documents/42_cursus/minishell/cmake-build-debug
