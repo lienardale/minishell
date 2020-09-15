@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/11 15:42:11 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/15 17:30:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int	ft_export_check_underscore(char *str)
 	return (0);
 }
 
-// return 1 if error, return 0 if good
 static int	ft_export_check_arg(char *arg)
 {
 	int	i;
@@ -50,34 +49,22 @@ static int	ft_export_check_arg(char *arg)
 static t_list	*ft_export_update_env(t_list *env, char *arg)
 {
 	t_env	*result;
+	t_list	*tmp;
 	bool	add;
-//	t_env	*env_content;
-//	t_list	*temp_env;
 
 	add = false;
-// temp_env est une copie de l'adresse du bon maillon donc pas besoin de liberer de la memoire
+	result = NULL;
 	if (ft_export_check_underscore(arg))
-		return (env);
-//	temp_env = ft_search_env(env, arg);
-	result = ft_separate_key_value(arg, &add);
-	/*
-	if (temp_env)
 	{
-		env_content = (t_env*)temp_env->content;
-// je libere la memoire de la valeur 
-		free(env_content->value);
-// je mets a jour la valeur
-//		env_content->value = result->value;
-		// printf("env_content:%s\n", env_content->value);
-// je libere la memoire de la variable temporaire sans liberer la memoire de la valeur puisque c'est ce que je voulais garder
-//		free(result->key);
-//		free(result);
-//	}
-// sinon je l'ajoute a la variable d'environnement donc je n'ai pas de memoire a liberer
-	else
-		ft_lstadd_back(&env, ft_lstnew(result));
-*/
-	return (ft_update_env(env, result, add));
+		// free(arg);
+		return (env);
+	}
+	result = ft_separate_key_value(arg, &add);
+	tmp = ft_update_env(env, result, add);
+	// if (result)
+	// 	ft_free_env_lst(result);
+	// free(arg);
+	return (tmp);
 }
 
 int				ft_export(t_cmd *cmd, t_sh *sh)
@@ -97,7 +84,6 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 		if (!(splited = ft_lst_env_to_split_export(*(sh->env))))
 		{
 			// ft_free_split(cmd->av);
-// return (1); // ret = 1;
 			return (1);
 		}
 		ft_strs_sort(splited, ft_lstsize(*(sh->env)));
@@ -118,10 +104,13 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 			{
 				ret = 1;
 				if (sh->nbline)
-					ft_dprintf(2, "%s: line %d: export: `%s': not a valid identifier\n",
+					ft_dprintf(2,
+					"%s: line %d: export: `%s': not a valid identifier\n",
 					sh->file, sh->nbline, cmd->av[i]);
 				else
-					ft_dprintf(2, "minishell: export: `%s': not a valid identifier\n", cmd->av[i]);
+					ft_dprintf(2,
+					"minishell: export: `%s': not a valid identifier\n",
+					cmd->av[i]);
 			}
 			else
 			{
@@ -130,14 +119,10 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 				if (!(ft_export_update_env(*(sh->env), cmd->av[i])))
 				{
 					// ft_free_split(cmd->av);
-// return (1); // ret = 1;
 					return (1);
 				}
 			}
 		}
 	}
-	// ft_free_split(cmd->av);
-// a mettre a jour
 	return (ret);
-//	return (1);
 }

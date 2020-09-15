@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:20:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/15 14:53:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/15 17:32:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,32 @@ t_list *ft_update_env(t_list *env, t_env *data, bool add)
 		if (((t_env*)temp_env->content)->value && add == false)
 			free(((t_env*)temp_env->content)->value);
 		if (add == false)
-			((t_env*)temp_env->content)->value = data->value;
+			((t_env*)temp_env->content)->value = ft_strdup(data->value);
 		else
 			((t_env*)temp_env->content)->value = ft_strjoin(((t_env*)temp_env->content)->value, data->value);
-		free(data->key);
-		free(data);
 	}
 	else if (!temp_env)
 	{
 // attention malloc
 		if (!(to_add = ft_lstnew(data)))
+		{
+			free(data->value);
+			free(data->key);
+			free(data);
+			data = NULL;
 			return (NULL);
+		}
 		ft_lstadd_back(&env, to_add);
+	}
+	if (temp_env && data)
+	{
+		if (data->value)
+			free(data->value);
+		if (data->key)
+			free(data->key);
+		if (data)
+			free(data);
+		data = NULL;
 	}
 	return (env);
 }

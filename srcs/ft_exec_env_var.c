@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exec_env_var.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alienard@student.42.fr <alienard>          +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/10 17:55:16 by alienard@st      ###   ########.fr       */
+/*   Updated: 2020/09/15 15:38:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	temp = lst->content;
 	temp_strs = ft_split_quote(temp, ' ');
 	temp_lst = ft_split_to_lst(temp_strs);
+	ft_free_double_array(temp_strs);
 	while (temp_lst)
 	{
 		next = temp_lst->next;
@@ -99,12 +100,19 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	while (env)
 	{
 		if (!ft_strncmp("?", tmp, 1))
+		{
+			free(tmp);
 			return (ft_itoa(sh->ret_cmd));
+		}
 		else if (ft_strcmp(((t_env*)(env->content))->key,
 			tmp) == 0)
+		{
+			free(tmp);
 			return (((t_env*)(env->content))->value);
+		}
 		env = env->next;
 	}
+	free(tmp);
 	return (NULL);
 }
 
