@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:20:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/09 11:29:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/15 14:53:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ t_list *ft_update_env(t_list *env, t_env *data, bool add)
 	// printf("key:%s\nvalue:%s\n", data->key, data->value);
 	if (temp_env && data->value)
 	{
+		if (((t_env*)temp_env->content)->value && add == false)
+			free(((t_env*)temp_env->content)->value);
 		if (add == false)
 			((t_env*)temp_env->content)->value = data->value;
 		else
