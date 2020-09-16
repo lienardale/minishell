@@ -6,25 +6,25 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/17 14:04:38 by alienard          #+#    #+#             */
-/*   Updated: 2020/08/03 20:42:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:18:26 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 
-typedef struct		s_dlist
+typedef struct	s_dlist
 {
 	void			*data;
 	struct s_dlist	*prev;
 	struct s_dlist	*next;
-}					t_dlist;
+}				t_dlist;
 
 typedef struct	s_ref
 {
-	t_dlist		*head;
-	t_dlist		*tail;
-	size_t		size;
+	t_dlist			*head;
+	t_dlist			*tail;
+	size_t			size;
 }				t_ref;
 
 void			ft_print_dlst(t_dlist *dlst, char *str);
@@ -40,4 +40,4 @@ void			ft_dlst_del(t_ref *dlst);
 void			ft_dlst_reverse(t_dlist **begin);
 void			ft_init_dlst(t_ref **dlst);
 
-# endif
+#endif

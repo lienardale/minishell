@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/12 20:23:17 by alienard          #+#    #+#             */
-/*   Updated: 2020/05/15 15:03:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:45:40 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static size_t	ft_count(char const *s, char c)
 {
-	size_t count;
-	size_t i;
+	size_t		count;
+	size_t		i;
 
 	count = 0;
 	i = 0;
@@ -59,7 +59,7 @@ static size_t	ft_next(const char *s, size_t x, char c)
 	return (x);
 }
 
-static char	**ret_nul(void)
+static char		**ret_nul(void)
 {
 	char **tab;
 
@@ -69,7 +69,7 @@ static char	**ret_nul(void)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**tab;
 	size_t	x;

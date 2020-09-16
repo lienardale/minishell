@@ -6,13 +6,12 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 18:12:07 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 12:30:56 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:40:58 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-//	ft_lstadd_before(alst, new, NULL) == ft_lstadd_back(alst, new);
 void	ft_lstadd_before(t_list **alst, t_list *new, t_list *next)
 {
 	t_list	*temp;

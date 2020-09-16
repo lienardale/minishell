@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/19 10:50:02 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/19 11:29:00 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:13:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	ft_dlst_addafter(t_ref *dlst, t_dlist *prev, void *data)
 		new->next->prev = new;
 	else
 		dlst->tail = new;
-	
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 16:26:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:17:46 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# ifndef EXT_ALPHA
-#  define EXT_ALPHA "ÄÅÇÉÑÖÜáàâäãåçéèêëíìîïñóòôöõúùûüÆçæøâêôûƒéàèùÃÕŒœÿŸﬁﬂÂÊÁËÈÍÎÏÌÓÔÒÚÛÙ"
+# ifndef EXT_ALPHA_MAJ
+#  define EXT_ALPHA_MAJ "ÄÅÇÉÑÖÜÆƒÃÕŒŸÂÊÁËÈÍÎÏÌÓÔÒÚÛÙ"
+# endif
+
+# ifndef EXT_ALPHA_MIN
+#  define EXT_ALPHA_MIN "áàâäãåçéèêëíìîïñóòôöõúùûüçæøâêôûéàèùœÿﬁﬂ"
 # endif
 
 typedef struct	s_list
@@ -107,7 +111,8 @@ char			**ft_splitcpy(char **src);
 int				get_next_line(int fd, char **line);
 void			ft_strsort(char **strs);
 t_list			*ft_split_to_lst(char **strs);
-void			ft_lstdel_between(t_list **alst, void *content, void (*del)(void*));
+void			ft_lstdel_between(t_list **alst, void *content,
+		void (*del)(void*));
 void			ft_lstadd_before(t_list **alst, t_list *new, t_list *next);
 char			**ft_lst_to_split(t_list *lst);
 void			ft_print_lst(t_list *lst, char *str);

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 15:43:32 by alienard          #+#    #+#             */
-/*   Updated: 2020/06/04 14:28:54 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/16 17:43:53 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_swap_double(double *a, double *b)
 void	ft_swap_addr(void **a, void **b)
 {
 	void	*c;
-	
+
 	c = *a;
 	*a = *b;
 	*b = c;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_is_in_min_max_atoi_long.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cdai <cdai@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/28 14:50:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/07/28 15:23:54 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/16 17:22:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,29 @@
 
 int	ft_is_in_min_max_atoi_long(const char *str)
 {
-	int		i;
-	long	neg;
-	long	ret;
-	long	temp;
+	long	i[4];
 
-	i = 0;
-	neg = 1;
-	ret = 0;
-	temp = 0;
+	i[0] = 0;
+	i[1] = 1;
+	i[2] = 0;
+	i[3] = 0;
 	if (!ft_strcmp(str, "-9223372036854775808"))
 		return (1);
-	while (((9 <= str[i] && str[i] <= 13) || str[i] == 32) && str[i])
-		i++;
-	if ((str[i] == '-' || str[i] == '+') && str[i])
+	while (((9 <= str[i[0]] && str[i[0]] <= 13) || str[i[0]] == 32)
+		&& str[i[0]])
+		i[0]++;
+	if ((str[i[0]] == '-' || str[i[0]] == '+') && str[i[0]])
 	{
-		(str[i] == '-') ? neg = -neg : 0;
-		i++;
+		(str[i[0]] == '-') ? i[1] = -i[1] : 0;
+		i[0]++;
 	}
-	while (('0' <= str[i] && str[i] <= '9') && str[i])
+	while (('0' <= str[i[0]] && str[i[0]] <= '9') && str[i[0]])
 	{
-		ret = ret * 10 + (str[i] - '0');
-		if (ret < temp)
+		i[2] = i[2] * 10 + (str[i[0]] - '0');
+		if (i[2] < i[3])
 			return (0);
-		temp = ret;
-		i++;
+		i[3] = i[2];
+		i[0]++;
 	}
 	return (1);
 }
