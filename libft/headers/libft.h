@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/02 11:47:06 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 16:26:21 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char			*ft_strdup_free(const char *s1);
 char			**ft_dstrdup(char **s1);
 char			**ft_dstrdup_free(char **s1);
 void			*ft_free_ptr(void *ptr);
+void			ft_safe_free(void **ptr);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			**ft_dstrjoin(char **s1, char **s2);
