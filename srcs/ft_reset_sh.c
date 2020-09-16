@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 12:58:35 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 12:08:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:05:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	ft_reset_cmd(t_dlist *node)
 		ft_reset_sub_cmd(cmd->pipe_next);
 		cmd->pipe_next = NULL;
 	}
-//	free(cmd);
 }
 
 void	ft_reset_sh(t_sh *sh)
@@ -66,9 +65,6 @@ void	ft_reset_sh(t_sh *sh)
 	t_dlist	*tmp;
 	t_dlist	*tmp2;
 
-//	on stack (see v0_minishell line 32)
-	// if (sh->file)
-	// 	free(sh->file);
 	if (sh->cmds)
 	{
 		tmp = sh->cmds->head;
@@ -77,7 +73,6 @@ void	ft_reset_sh(t_sh *sh)
 		{
 			tmp2 = tmp2->next;
 			ft_reset_cmd(tmp);
-//			free(tmp);
 			tmp = tmp2;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 12:55:20 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:05:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,6 @@ void	ft_prompt(t_sh *sh)
 					ft_lstclear(&sh->begin_input, &free);
 				ft_reset_sh(sh);
 				sh->begin_input = NULL;
-					// return (ft_prompt(sh));
 			}
 			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';

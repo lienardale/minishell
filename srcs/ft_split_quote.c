@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/14 16:23:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:06:46 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ static char	*ft_split_quote_concat(char *result, char *str, int start, int i)
 	char	*temp2;
 
 	if (!result)
-	{
 		result = ft_substr(str, start, i - start);
-		// free(str);
-	}
 	else
 	{
 		temp2 = ft_substr(str, start, i - start);

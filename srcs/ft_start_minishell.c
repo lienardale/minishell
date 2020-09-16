@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/11 14:24:14 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:07:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_list		*ft_start_minishell(char **env)
 
 	if (!(result = ft_split_to_lst_env(env)))
 		return (NULL);
-	// ft_free_double_array(env);
 	temp = result;
 	while (temp)
 	{

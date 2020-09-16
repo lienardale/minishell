@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/10 09:51:54 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/11 14:06:45 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:07:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int			ft_unset(t_cmd *cmd, t_sh *sh)
 	i = 1;
 	while (cmd->av[i])
 	{
-// return value should be 1 invalid / 0 valid
 		if (ft_unset_check_arg(cmd->av[i]))
 		{
 			ret = 1;
@@ -48,17 +47,11 @@ int			ft_unset(t_cmd *cmd, t_sh *sh)
 		}
 		else
 		{
-// ToDo check_valid_char (isalnum)
 			to_erase = ft_search_env(*(sh->env), cmd->av[i]);
-// probleme de env, ce n'est pas l'adresse qui contient env donc il faut t_list **env.
 			if (to_erase)
 				ft_lstdel_between(sh->env, to_erase->content, ft_free_env_lst);
-//			else
-//				ret = 1;
-// en cas d'erreur de malloc, je passe.
 		}
 		i++;
 	}
-	// ft_free_split(cmd->av);
 	return (ret);
 }

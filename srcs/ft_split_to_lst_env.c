@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/29 20:45:51 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/11 15:39:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:07:08 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_list			*ft_split_to_lst_env(char **env)
 		if (!result)
 			result = ft_lstnew(ft_separate_key_value(env[i], false));
 		else
-			ft_lstadd_back(&result, ft_lstnew(ft_separate_key_value(env[i], false)));
+			ft_lstadd_back(&result,
+				ft_lstnew(ft_separate_key_value(env[i], false)));
 		i++;
 	}
 	return (result);

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 14:16:34 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 17:46:11 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:01:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static int	ft_get_env_var_length(char *line, int *i, t_sh *sh)
 	t_list	*temp_env;
 
 	res = 0;
-// juste passer le premier charactere qui doit etre un $
 	(*i)++;
 	j = *i;
 	if (line[*i] == '?')
@@ -55,7 +54,6 @@ static int	ft_parse_env_var_count(char *line, t_sh *sh)
 	{
 		if (line[i] == '$' && !ft_isinsquotes(line, i)
 			&& !ft_is_escaped(line, i))
-// attention au erreur de malloc
 			result += ft_get_env_var_length(line, &i, sh);
 		else
 		{
@@ -63,10 +61,6 @@ static int	ft_parse_env_var_count(char *line, t_sh *sh)
 			result++;
 		}
 	}
-// je ne suis pas sur pour ca
-//	if (!is_in_simple_quote)
-//		return (result);
-//	return (0);
 	return (result);
 }
 
@@ -76,13 +70,11 @@ static int	ft_fullfill_env_var(char *line, char *result, int len, int *i, t_sh *
 	char	*temp;
 	t_list	*temp_env;
 
-// juste passer le premier charactere qui doit etre un $
 	(*i)++;
 	j = *i;
 	if (line[*i] == '?')
 	{
 		(*i)++;
-// attention malloc error
 		temp = ft_itoa(sh->ret_cmd);
 		ft_strlcat(result, temp, len);
 		free(temp);
@@ -118,10 +110,8 @@ char		*ft_parse_env_var(char *line, t_sh *sh)
 	j = 0;
 	len = ft_parse_env_var_count(line, sh);
 	result = ft_calloc(1, len + 1);
-// attention aux erreurs de malloc
 	while (line[i])
 	{
-// attention aux erreurs de malloc
 		if (line[i] == '$' && !ft_isinsquotes(line, i)
 			&& !ft_is_escaped(line, i))
 			j += ft_fullfill_env_var(line, result, len + 1, &i, sh);

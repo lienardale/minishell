@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/11 14:04:57 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:56:12 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		ft_echo(t_cmd *cmd, t_sh *sh)
 	line = NULL;
 	while (cmd->av[i] && !ft_strncmp(cmd->av[i], "-n", 2) && (i++))
 		n = 1;
-// Pour echo, il faudra faire attention au quote, double quote, espace a l'interieur/l'exterieur etc. le parsing doit etre different.
 	while (cmd->av[i])
 	{
 		ft_printf("%s", cmd->av[i]);
@@ -36,6 +35,5 @@ int		ft_echo(t_cmd *cmd, t_sh *sh)
 	}
 	if (!n)
 		ft_printf("\n");
-	// ft_free_double_array(cmd->av);
 	return (0);
 }

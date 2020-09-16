@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 12:29:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:02:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int		ft_exec_redir_out(t_sh *sh, t_cmd *cmd)
 	int	fd;
 
 	fd = cmd->nb_redir != -1 ? cmd->nb_redir : STDOUT_FILENO;
-	// printf("nb:%d\n", cmd->nb_redir);
-	// printf("fd:%d\n", fd);
 	if ((cmd->fdout = open(cmd->file_redir, O_WRONLY | O_CREAT
 		| O_TRUNC, 0777)) == -1)
 		return (0);
@@ -65,18 +63,15 @@ int		ft_blt_process(t_sh *sh, t_cmd *cmd,
 		return (0);
 	else if (child > 0)
 	{
-		// put in ft_blt_process_parent
 		if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_parent(sh, cmd);
 		wpid = waitpid(child, &status, WUNTRACED);
 		while (!WIFEXITED(status) && !WIFSIGNALED(status))
 			wpid = waitpid(child, &status, WUNTRACED);
-// la valeur de retour de la fonction est sur le 2eme octet, donc il faut tout diviser par 256
 		return (status / 256);
 	}
 	else
 	{
-		// put in ft_blt_process_child
 		if (cmd->pipe_prev || cmd->pipe_next)
 			ft_exec_pipe_child(sh, cmd);
 		if (cmd->redir)

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:20:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 10:34:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:08:04 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_list *ft_update_env(t_list *env, t_env *data, bool add)
 	char	*old_value;
 
 	temp_env = ft_search_env(env, data->key);
-	// printf("key:%s\nvalue:%s\n", data->key, data->value);
 	if (temp_env && data->value)
 	{
 		old_value = ((t_env*)temp_env->content)->value;
@@ -35,7 +34,6 @@ t_list *ft_update_env(t_list *env, t_env *data, bool add)
 	}
 	else if (!temp_env)
 	{
-// attention malloc
 		if (!(to_add = ft_lstnew(data)))
 		{
 			free(data->value);

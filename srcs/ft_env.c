@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:31:08 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/11 14:05:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:56:22 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	ft_env(t_cmd *cmd, t_sh *sh)
 	if (cmd->av[1])
 	{
 		ft_dprintf(2, "env: '%s': No such file or directory\n", cmd->av[1]);
-		// ft_free_split(cmd->av);
 		return (1);
 	}
 	while (temp)
@@ -35,6 +34,5 @@ int	ft_env(t_cmd *cmd, t_sh *sh)
 		}
 		temp = temp->next;
 	}
-	// ft_free_split(cmd->av);
 	return (0);
 }

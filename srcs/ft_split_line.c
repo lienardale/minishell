@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 15:04:16 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:06:36 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 void	ft_handle_end(t_sh *sh, char *line, int *i)
 {
-	// printf("2line|%s|\n", &line[*i]);
 	if (ft_ischarset(REDIR, line[*i]))
 	{
 		if (!ft_parse_redir(sh, line, i))
 		{
-			// if bash execs after, stays commented, if not, uncomment
-			// while (line[*i])
-				// (*i)++;
 			ft_lstclear(&((t_cmd *)(sh->cmds->tail->data))->argv, free);
 			((t_cmd *)(sh->cmds->tail->data))->argv = NULL;
 			return ;
@@ -92,7 +88,6 @@ void	ft_init_args(t_sh *sh, char *line, int *i)
 	if (!(cmd->av) || !(cmd->av[0]))
 	{
 		ft_free_cmd(sh->cmds->tail);
-		// ft_reset_cmd(sh->cmds->tail);
 		ft_dlst_delone(sh->cmds, ((t_dlist *)(sh->cmds->tail)));
 		*i = j + 1;
 		return ;
@@ -143,7 +138,6 @@ int		ft_line_to_lst(char *inputs, t_sh *sh)
 	inputs = ft_strtrim_space(inputs);
 	while (inputs[i])
 		ft_init_cmd(sh, inputs, &i);
-	// ft_free_ptr(inputs);
 	free(inputs);
 	inputs = NULL;
 	return (1);

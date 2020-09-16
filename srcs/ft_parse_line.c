@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 17:55:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:01:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,7 @@ int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = ft_atoi(tmp);
 	else
 		((t_cmd*)(sh->cmds->tail->data))->nb_redir = -1;
-/*	if (OPEN_MAX <= ((t_cmd*)(sh->cmds->tail->data))->nb_redir)
-	{
-		sh->nbline ? ft_dprintf(2,
-			"%s: line %d: %s: Bad file descriptor\n",
-			sh->file, sh->nbline, tmp)
-			: ft_dprintf(2,
-			"minishell: %s: Bad file descriptor\n", tmp);
-		return (0);
-	}
-*/	free (tmp);
+	free(tmp);
 	return (1);
 }
 
@@ -64,7 +55,7 @@ int		ft_parse_redir(t_sh *sh, char *line, int *i)
 		*i += 1;
 		((t_cmd*)(sh->cmds->tail->data))->redir = '<';
 	}
-	if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '<' )
+	if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '<')
 		return (ft_parse_redir_in(sh, line, i));
 	else if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '>')
 		return (ft_parse_redir_out(sh, line, i));
@@ -128,8 +119,6 @@ int		ft_check_args(char *inputs, t_sh *sh)
 	i--;
 	while (i > 0 && ft_isspace(inputs[i]))
 		i--;
-	// if (inputs[i] && inputs[i] == '|')
-		// return (0);
 	if (inputs[i] && ft_ischarset(REDIR, inputs[i]))
 		return (ft_unexpected_token(inputs, sh, i));
 	return (1);

@@ -18,7 +18,6 @@ int		ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh)
 
 	tmp = ((t_cmd *)(cur->data));
 	tmp->pipe_prev = ((t_cmd *)(next->data));
-//	ft_free_data(data);
 	((t_cmd *)(next->data))->pipe_next = tmp;
 	next->prev = cur->prev;
 	if (cur->prev)
@@ -78,8 +77,6 @@ int		ft_exec_pipe_child(t_sh *sh, t_cmd *cmd)
 		close(cmd->pipe_prev->pipedfd[1]);
 
 		close(cmd->pipedfd[1]);
-		// if ((cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO)) < 0)
-		// 	write(2, "dup2 B failed\n", ft_strlen("dup2 B failed\n"));
 		cmd->ret_dup = dup2(cmd->pipedfd[0], STDIN_FILENO);
 		close(cmd->pipedfd[0]);
 	}

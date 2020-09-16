@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 15:12:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:57:05 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void		ft_replace_env_var_lst(t_list *lst, char *key, t_cmd *cmd)
 	while (temp[i[0] + i[1]])
 		i[0]++;
 	i[2] += i[0];
-	// cut here
 	lst->content = ft_strdup_env_var(i[2], temp, key);
 	temp = lst->content;
 	temp_strs = ft_split_quote(temp, ' ');
@@ -142,12 +141,10 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 				key_val = ft_is_in_env(temp_char + j, sh);
 				if (key_val)
 				{
-					// cut btw here
 					ft_replace_env_var_lst(temp, key_val, cmd);
 					temp = cmd->argv;
 					temp_char = (char*)temp->content;
 					j = -1;
-					// and here
 				}
 				if (sh->ret_str)
 				{
