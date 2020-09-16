@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/15 15:38:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 10:48:31 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,11 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 	i = str[i] == '?' ? i + 1 : i;
 	tmp = ft_substr(str, 1, i - 1);
 	if (!tmp || ft_strlen(tmp) == 0)
+	{
+		if (tmp)
+			free(tmp);
 		return (NULL);
+	}
 	while (env)
 	{
 		if (!ft_strncmp("?", tmp, 1))

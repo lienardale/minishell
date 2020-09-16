@@ -93,6 +93,8 @@ int		ft_parse_redir_out(t_sh *sh, char *line, int *i)
 			j++;
 		}
 		*i = j + 1;
+		if (dir)
+			free(dir);
 		return (0);
 	}
 	close(fd);
