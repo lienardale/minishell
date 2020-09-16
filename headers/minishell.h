@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/11 16:00:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:51:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,12 @@ typedef struct	s_sh
 	int		nbline;
 	char	*line;
 	int		ret_cmd;
+	char	*ret_str;
 	int		ret_sh;
 	int		(**blt_fct)(t_cmd *, struct s_sh *);
 	t_ref	*cmds;
 	t_list	**env;
+	t_list	*begin_input;
 }				t_sh;
 
 char		**ft_split_line(char **inputs);
@@ -249,5 +251,6 @@ void		ft_lstclear_cmds(t_ref *cmds);
 void		ft_free_cmd(t_dlist *node);
 
 void		ft_reset_sh(t_sh *sh);
+void		ft_reset_cmd(t_dlist *node);
 
 # endif

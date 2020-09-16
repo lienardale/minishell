@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 12:14:46 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 10:48:31 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:54:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,8 @@ char		*ft_is_in_env(char *str, t_sh *sh)
 		if (!ft_strncmp("?", tmp, 1))
 		{
 			free(tmp);
-			return (ft_itoa(sh->ret_cmd));
+			sh->ret_str = ft_itoa(sh->ret_cmd);
+			return (sh->ret_str);
 		}
 		else if (ft_strcmp(((t_env*)(env->content))->key,
 			tmp) == 0)
@@ -147,6 +148,11 @@ void		ft_check_env_var(t_cmd *cmd, t_sh *sh)
 					temp_char = (char*)temp->content;
 					j = -1;
 					// and here
+				}
+				if (sh->ret_str)
+				{
+					free(sh->ret_str);
+					sh->ret_str = NULL;
 				}
 			}
 			j++;

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 17:55:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:26:16 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_handle_end(t_sh *sh, char *line, int *i)
 			// if bash execs after, stays commented, if not, uncomment
 			// while (line[*i])
 				// (*i)++;
-			// ft_lstclear(&((t_cmd *)(sh->cmds->tail->data))->argv, free);
+			ft_lstclear(&((t_cmd *)(sh->cmds->tail->data))->argv, free);
 			((t_cmd *)(sh->cmds->tail->data))->argv = NULL;
 			return ;
 		}

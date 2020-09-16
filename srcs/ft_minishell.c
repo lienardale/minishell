@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 16:03:29 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:52:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(int ac, char **av, char **env)
 		return (EXIT_FAILURE);
 	sh = (t_sh) {
 			.fd = fd, .nbline = 0, .file = NULL, .line = NULL, .ret_cmd = 0,
-			.ret_sh = 1, .blt_fct = builtin_fct,
-			.cmds = NULL, .env = &env_lst};
+			.ret_str = NULL, .ret_sh = 1, .blt_fct = builtin_fct,
+			.cmds = NULL, .env = &env_lst, .begin_input = NULL};
 	if (ac != 1)
 	{
 		sh.file = av[1];
