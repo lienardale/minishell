@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 10:13:50 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 12:27:22 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:26:26 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char			*ft_strdup_clean_envvar(char *tmp_char)
 
 	if (!(tab = (char *)malloc(sizeof(char) * (ft_strlen_dol(tmp_char) + 1))))
 		return (NULL);
+	// printf("str:%s\nlen:%zu\n", tmp_char, ft_strlen_dol(tmp_char));
 	ft_strlcpy_dol(tab, tmp_char, ft_strlen_dol(tmp_char) + 1);
 	free(tmp_char);
 	return (tab);

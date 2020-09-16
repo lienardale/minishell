@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 11:28:01 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 12:27:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 15:46:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,23 @@ void		ft_lstdelif_false(t_list **alst, size_t (fct)(const char *))
 	while (tmp)
 	{
 		next = tmp->next;
-		if (tmp && !fct(tmp->content) && prev && (prev->next = next))
+		if (tmp && !fct(tmp->content) && prev)
 		{
 			ft_lstdelone(tmp, free);
 			tmp = prev;
+			prev->next = next;
 		}
 		else if (tmp && !fct(tmp->content) && !prev)
 		{
 			ft_lstdelone(tmp, free);
 			*alst = next;
+			prev = NULL;
+			tmp = next;
 		}
-		prev = tmp;
-		tmp = tmp->next;
+		else
+		{
+			prev = tmp;
+			tmp = tmp->next;
+		}
 	}
 }
