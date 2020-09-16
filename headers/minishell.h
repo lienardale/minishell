@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 11:51:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 17:52:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,14 +83,6 @@
 #  define OFF 0
 # endif
 
-/*
-typedef struct	s_env
-{
-	int	fd;
-	int	check;
-}				t_env;
-*/
-
 typedef struct	s_env
 {
 	char *key;
@@ -146,7 +138,9 @@ char		**ft_split_line(char **inputs);
 char		**ft_split_quote(char *str, char c);
 char		**ft_split_arg(char *str);
 
-/* fcts using gnl in stdin / .sh in arg */
+/*
+**	fcts using gnl in stdin / .sh in arg
+*/
 
 void		ft_prompt(t_sh *sh);
 void		ft_infile(t_sh *sh);
@@ -172,7 +166,9 @@ char		*ft_strtrim_space(char *str);
 int			ft_iterate_in_line(char *line, int *j, char *set);
 int			ft_iterate_in_line_redir(char *line, int *j, char *set);
 
-/* parse redir */
+/*
+**	parse redir
+*/
 
 int			ft_parse_redir(t_sh *sh, char *line, int *i);
 int			ft_parse_redir_in(t_sh *sh, char *line, int *i);
@@ -180,13 +176,14 @@ int			ft_parse_redir_out(t_sh *sh, char *line, int *i);
 int			ft_parse_append(t_sh *sh, char *line, int *i);
 int			ft_parse_redir_nb(t_sh *sh, char *line, int *i);
 
-/* exec redir */
+/*
+**	exec redir
+*/
 
 void		ft_exec_redir(t_sh *sh, t_cmd *cmd);
 int			ft_exec_redir_out(t_sh *sh, t_cmd *cmd);
 int			ft_exec_append(t_sh *sh, t_cmd *cmd);
 int			ft_exec_redir_in(t_sh *sh, t_cmd *cmd);
-
 
 int			ft_parse_cmds(t_cmd *cmd, t_sh *sh);
 char		*ft_lststrjoin(t_list *lst, char *inter);
@@ -194,7 +191,9 @@ char		*ft_parse_path(char *path);
 char		*ft_lststrjoin(t_list *lst, char *inter);
 int			ft_isolate_exec(char *path, char **buff);
 
-/* Buitltin functions */
+/*
+**	Buitltin functions
+*/
 
 int			ft_echo(t_cmd *cmd, t_sh *sh);
 int			ft_pwd(t_cmd *cmd, t_sh *sh);
@@ -204,8 +203,9 @@ int			ft_export(t_cmd *cmd, t_sh *sh);
 int			ft_unset(t_cmd *cmd, t_sh *sh);
 int			ft_exit(t_cmd *cmd, t_sh *sh);
 
-
-/* execve functions */
+/*
+**	execve functions
+*/
 
 int			ft_search_n_execute(char **args, char **env, t_sh *sh);
 char		*ft_get_abspath_filename(char *exec, char **env, t_sh *sh);
@@ -223,26 +223,33 @@ char		**ft_lst_env_to_split(t_list *lst_env);
 char		**ft_lst_env_to_split_launch(t_list *lst_env);
 char		**ft_lst_env_to_split_export(t_list *lst_env);
 t_list		*ft_search_env(t_list *env, char *arg);
-// int			ft_unset(char **args, t_list **env);
 char		*ft_parse_env_var(char *line, t_sh *sh);
 t_env		*ft_new_env_var(char *key, char *value);
 t_list		*ft_update_env(t_list *env, t_env *data, bool add);
 char		*ft_getcwd(void);
 
-/* replacing $ by env var before exec */
+/*
+**	replacing $ by env var before exec
+*/
 
 void		ft_check_env_var(t_cmd *cmd, t_sh *sh);
 char		*ft_is_in_env(char *str, t_sh *sh);
 void		ft_replace_env_var(char *av, char *key, t_cmd *cmd, int	i);
 char		*ft_strdup_env_var(int len, char *av, char *key);
 
-/* create & exec pipes */
+/*
+**	create & exec pipes
+*/
+
 int			ft_create_pipe(t_sh *sh);
 int			ft_add_pipe(t_dlist *cur, t_dlist *next, t_sh *sh);
 int			ft_init_pipe(t_sh *sh, t_cmd *cmd);
 int			ft_exec_pipe_child(t_sh *sh, t_cmd *cmd);
 int			ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd);
-/* signal*/
+
+/*
+**	signal
+*/
 
 void		ft_signal(int sig, int is_on);
 
@@ -253,4 +260,4 @@ void		ft_free_cmd(t_dlist *node);
 void		ft_reset_sh(t_sh *sh);
 void		ft_reset_cmd(t_dlist *node);
 
-# endif
+#endif
