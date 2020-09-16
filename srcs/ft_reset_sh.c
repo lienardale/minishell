@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 12:58:35 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/11 16:02:13 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 12:08:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,15 @@ void	ft_reset_cmd(t_dlist *node)
 {
 	t_cmd	*cmd;
 
+	if (!node || !node->data)
+		return ;
 	cmd = (t_cmd*)node->data;
 	if (cmd->argv)
 		ft_lstclear(&cmd->argv, free);
 	if (cmd->av)
 		ft_free_double_array(cmd->av);
-	free(cmd->cmd);
+	if (cmd->cmd)
+		free(cmd->cmd);
 	if (cmd->file_redir)
 		ft_free_ptr(cmd->file_redir);
 	if (cmd->fd_in)

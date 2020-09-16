@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 11:39:24 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 12:55:20 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ void	ft_infile(t_sh *sh)
 	int			comment;
 	int			quote;
 	int			bkslh;
+	int			error;
 	t_list		*input;
 	t_dlist		*current;
 
@@ -106,19 +107,22 @@ void	ft_infile(t_sh *sh)
 			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line))
 				&& sh->line[ft_strlen(sh->line) - 1] != '|')
 			{
-				if (!ft_line_to_lst(ft_input_join(sh->begin_input), sh))
-					break ;
+				if ((error = ft_line_to_lst(ft_input_join(sh->begin_input), sh)))
+				{
+					ft_create_pipe(sh);
+					current = sh->cmds->head;
+					while (current)
+					{
+						sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
+						current = current->next;
+					}
+				}
 				sh->line = NULL;
 				ft_lstclear(&sh->begin_input, &free);
-				ft_create_pipe(sh);
-				current = sh->cmds->head;
-				while (current)
-				{
-					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
-					current = current->next;
-				}
 				ft_reset_sh(sh);
 				sh->begin_input = NULL;
+				if (!error)
+					break ;
 			}
 			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';
@@ -161,7 +165,7 @@ void	ft_prompt(t_sh *sh)
 			free(sh->line);
 			sh->line = NULL;
 		}
-		if (sh-> line && sh->line[comment] != '#')
+		if (sh->line && sh->line[comment] != '#')
 		{
 			input = ft_lstnew(sh->line);
 			ft_lstadd_back(&sh->begin_input, input);
@@ -173,22 +177,24 @@ void	ft_prompt(t_sh *sh)
 				&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
 				&& sh->line[ft_strlen(sh->line) - 1] != '|')
 			{
-				if (!ft_line_to_lst(ft_input_join(sh->begin_input), sh))
-					return (ft_prompt(sh));
+				if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
+				{
+					ft_create_pipe(sh);
+					current = sh->cmds->head;
+					while (current)
+					{
+						ft_signal(SIGINT, OFF);
+						ft_signal(SIGQUIT, OFF);
+						sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
+						current = current->next;
+					}
+				}
 				sh->line = NULL;
 				if (sh->begin_input)
 					ft_lstclear(&sh->begin_input, &free);
-				ft_create_pipe(sh);
-				current = sh->cmds->head;
-				while (current)
-				{
-					ft_signal(SIGINT, OFF);
-					ft_signal(SIGQUIT, OFF);
-					sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
-					current = current->next;
-				}
 				ft_reset_sh(sh);
 				sh->begin_input = NULL;
+					// return (ft_prompt(sh));
 			}
 			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 				sh->line[ft_strlen(sh->line) - 1] = ' ';

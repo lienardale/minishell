@@ -75,7 +75,7 @@ int		ft_parse_redir_out(t_sh *sh, char *line, int *i)
 	}
 	tmp = ft_substr(line, *i, j - *i);
 	tmp = ft_strdup_clean(tmp);
-	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0777)) == -1)
+	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_TRUNC, 0664)) == -1)
 	{
 		if ((dir = opendir(tmp)) && sh->nbline)
 			ft_dprintf(2, "%s: line %d: %s: Is a directory\n",
@@ -140,7 +140,7 @@ int		ft_parse_append(t_sh *sh, char *line, int *i)
 	}
 	tmp = ft_substr(line, *i, j - *i);
 	tmp = ft_strdup_clean(tmp);
-	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0777)) == -1)
+	if ((fd = open(tmp, O_WRONLY | O_CREAT | O_APPEND, 0664)) == -1)
 	{
 		if ((dir = opendir(tmp)) && sh->nbline)
 			ft_dprintf(2, "%s: line %d: %s: Is a directory\n",
