@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 17:52:54 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 18:56:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,5 +259,7 @@ void		ft_free_cmd(t_dlist *node);
 
 void		ft_reset_sh(t_sh *sh);
 void		ft_reset_cmd(t_dlist *node);
+
+int			ft_strerror(t_cmd *cmd, t_sh *sh, char *str);
 
 #endif

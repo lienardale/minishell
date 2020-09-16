@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 17:55:32 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/16 19:04:28 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,25 @@ static t_list	*ft_change_dir_update(t_list **env, char *oldpwd)
 	return (*env);
 }
 
-int			ft_change_dir(t_cmd *cmd, t_sh *sh)
+static void		ft_nogetcwd(t_list **env, char **newpwd, t_cmd *cmd)
+{
+	*env = ft_search_env(*env, "PWD");
+	if (*env && (*env)->content && ((t_env*)((*env)->content))->key)
+	{
+		if (ft_strcmp(cmd->av[1], ".") == 0)
+			*newpwd = ft_strjoin(((t_env*)((*env)->content))->value, "/.");
+		else
+			*newpwd = ft_strdup(((t_env*)((*env)->content))->value);
+	}
+	if (ft_strcmp(cmd->av[1], "..") != 0 && ft_strcmp(cmd->av[1], "~") != 0)
+	{
+		ft_dprintf(2, "cd: error retrieving current directory:");
+		ft_dprintf(2, " getcwd: cannot access parent directories:");
+		ft_dprintf(2, " No such file or directory\n");
+	}
+}
+
+int				ft_change_dir(t_cmd *cmd, t_sh *sh)
 {
 	int		chdir_value;
 	t_list	*home;
@@ -48,58 +66,23 @@ int			ft_change_dir(t_cmd *cmd, t_sh *sh)
 	newpwd = NULL;
 	env = (t_list*)(*sh->env);
 	if (!(oldpwd = ft_getcwd()) && cmd->av[1])
-	{
-		env = ft_search_env(env, "PWD");
-		if (env && env->content && ((t_env*)(env->content))->key)
-		{
-			if (ft_strcmp(cmd->av[1], ".") == 0)
-				newpwd = ft_strjoin(((t_env*)(env->content))->value, "/.");
-			else
-				newpwd = ft_strdup(((t_env*)(env->content))->value);
-		}
-		if (ft_strcmp(cmd->av[1], "..") != 0 && ft_strcmp(cmd->av[1], "~") != 0)
-		{
-			ft_dprintf(2, "cd: error retrieving current directory:");
-			ft_dprintf(2, " getcwd: cannot access parent directories:");
-			ft_dprintf(2, " No such file or directory\n");
-		}
-	}
+		ft_nogetcwd(&env, &newpwd, cmd);
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
 	{
-		if (!(home = ft_search_env(*(sh->env), "HOME")))
-		{
-			ft_dprintf(2, "minishell: cd: HOME not set\n");
+		if (!(home = ft_search_env(*(sh->env), "HOME"))
+			&& (ft_dprintf(2, "minishell: cd: HOME not set\n")))
 			return (1);
-		}
 		chdir_value = chdir(((t_env*)home->content)->value);
 	}
 	else
 		chdir_value = chdir(cmd->av[1]);
 	if (chdir_value && oldpwd)
-	{
-		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: cd: %s: No such file or directory\n",
-			sh->file, sh->nbline, cmd->av[1]);
-		else
-			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
-			cmd->av[1]);
-		return (1);
-	}
+		return (ft_strerror(cmd, sh, "No such file or directory"));
 	if (oldpwd && !ft_change_dir_update(sh->env, oldpwd))
-	{
-		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: cd: %s: No such file or directory\n",
-			sh->file, sh->nbline, cmd->av[1]);
-		else
-			ft_dprintf(2, "minishell: cd: %s: No such file or directory\n",
-			cmd->av[1]);
-		return (1);
-	}
+		return (ft_strerror(cmd, sh, "No such file or directory"));
 	if (newpwd && !ft_change_dir_update(sh->env, newpwd))
 		return (1);
-	if (oldpwd)
-		free(oldpwd);
-	if (newpwd)
-		free(newpwd);
+	ft_safe_free((void**)&oldpwd);
+	ft_safe_free((void**)&newpwd);
 	return (0);
 }
