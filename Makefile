@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/16 18:52:17 by alienard         ###   ########.fr        #
+#    Updated: 2020/09/17 16:25:38 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,8 @@ _SRCS		= ft_minishell.c \
 				ft_split_quote.c \
 				ft_parse.c \
 				ft_process.c \
+				ft_blt_process.c \
+				ft_exec_redir.c \
 				ft_echo.c \
 				ft_exit.c \
 				ft_parse_path.c \
@@ -47,13 +49,16 @@ _SRCS		= ft_minishell.c \
 				ft_strdup_clean.c \
 				ft_clean_envvar.c \
 				ft_exec_env_var.c \
+				ft_isin_env.c \
 				ft_parse_env_var.c \
 				ft_new_env_var.c \
 				ft_update_env.c \
 				ft_getcwd.c \
 				ft_signal.c \
 				ft_reset_sh.c \
-				ft_error.c
+				ft_error.c \
+				ft_free_minishell.c \
+				ft_free_cmds.c
 
 SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
 OBJS			= $(SRCS:.c=.o)

@@ -6,13 +6,21 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/29 10:46:03 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 17:43:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/17 15:59:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**ft_lst_env_to_split_export(t_list *lst_env)
+static void	ft_concat_value(char ***result, int *i, int len, t_env *content)
+{
+	ft_strlcat((*result)[*i], "=", len);
+	ft_strlcat((*result)[*i], "\"", len);
+	ft_strlcat((*result)[*i], content->value, len);
+	ft_strlcat((*result)[*i], "\"", len);
+}
+
+char		**ft_lst_env_to_split_export(t_list *lst_env)
 {
 	t_list	*lst;
 	t_env	*content;
@@ -29,19 +37,12 @@ char	**ft_lst_env_to_split_export(t_list *lst_env)
 		content = (t_env*)lst->content;
 		len = ft_strlen(content->key) + 1;
 		len += (content->value) ? ft_strlen(content->value) + 3 : 0;
-		if (!(result[i] = ft_calloc(len, sizeof(**result))))
-		{
-			ft_free_split(result);
+		if (!(result[i] = ft_calloc(len, sizeof(**result)))
+			&& !(ft_free_split(result)))
 			return (NULL);
-		}
 		ft_strlcat(result[i], content->key, len);
 		if (content->value)
-		{
-			ft_strlcat(result[i], "=", len);
-			ft_strlcat(result[i], "\"", len);
-			ft_strlcat(result[i], content->value, len);
-			ft_strlcat(result[i], "\"", len);
-		}
+			ft_concat_value(&result, &i, len, content);
 		i++;
 		lst = lst->next;
 	}

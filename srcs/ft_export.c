@@ -6,20 +6,20 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 07:54:41 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 17:59:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/17 14:52:52 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	ft_export_check_underscore(char *str)
+static int		ft_export_check_underscore(char *str)
 {
 	if (!ft_strncmp(str, "_=", 2) || !ft_strncmp(str, "_", 2))
 		return (1);
 	return (0);
 }
 
-static int	ft_export_check_arg(char *arg)
+static int		ft_export_check_arg(char *arg)
 {
 	int	i;
 
@@ -61,9 +61,9 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 	int		ret;
 
 	ret = 0;
+	i = (cmd->av[1]) ? 0 : -1;
 	if (!cmd->av[1])
 	{
-		i = -1;
 		if (!(splited = ft_lst_env_to_split_export(*(sh->env))))
 			return (1);
 		ft_strs_sort(splited, ft_lstsize(*(sh->env)));
@@ -71,30 +71,14 @@ int				ft_export(t_cmd *cmd, t_sh *sh)
 			if (ft_strncmp(splited[i], "_=", 2))
 				ft_dprintf(1, "declare -x %s\n", splited[i]);
 		ft_free_split(splited);
+		return (ret);
 	}
-	else
+	while (cmd->av[++i])
 	{
-		i = 0;
-		while (cmd->av[++i])
-		{
-			if (ft_export_check_arg(cmd->av[i]))
-			{
-				ret = 1;
-				if (sh->nbline)
-					ft_dprintf(2,
-					"%s: line %d: export: `%s': not a valid identifier\n",
-					sh->file, sh->nbline, cmd->av[i]);
-				else
-					ft_dprintf(2,
-					"minishell: export: `%s': not a valid identifier\n",
-					cmd->av[i]);
-			}
-			else
-			{
-				if (!(ft_export_update_env(*(sh->env), cmd->av[i])))
-					return (1);
-			}
-		}
+		if (ft_export_check_arg(cmd->av[i]) && (ret = 1))
+			ft_exporterror(cmd, sh, "not a valid identifier", i);
+		else if (!(ft_export_update_env(*(sh->env), cmd->av[i])))
+			return (1);
 	}
 	return (ret);
 }

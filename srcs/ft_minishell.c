@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:27 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 11:52:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/17 16:20:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int	main(int ac, char **av, char **env)
 {
 	t_list			*env_lst;
-	static int		(*builtin_fct[])(t_cmd *, t_sh *) = {BUILTINS};
+	static int		(*builtin_fct[])(t_cmd *, t_sh *) = {
+									&ft_echo, &ft_pwd, &ft_env, &ft_export};
 	int				fd;
 	t_sh			sh;
 
@@ -27,9 +28,8 @@ int	main(int ac, char **av, char **env)
 			.fd = fd, .nbline = 0, .file = NULL, .line = NULL, .ret_cmd = 0,
 			.ret_str = NULL, .ret_sh = 1, .blt_fct = builtin_fct,
 			.cmds = NULL, .env = &env_lst, .begin_input = NULL};
-	if (ac != 1)
+	if (ac != 1 && (sh.file = av[1]))
 	{
-		sh.file = av[1];
 		sh.fd = open(av[1], O_RDONLY);
 		ft_infile(&sh);
 	}

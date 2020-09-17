@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 19:04:28 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/17 13:52:07 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,15 @@ static void		ft_nogetcwd(t_list **env, char **newpwd, t_cmd *cmd)
 	}
 }
 
+static int		ft_chdir(int chdir_value, char *oldpwd, t_cmd *cmd, t_sh *sh)
+{
+	if (chdir_value && oldpwd)
+		return (ft_strerror(cmd, sh, "No such file or directory"));
+	if (oldpwd && !ft_change_dir_update(sh->env, oldpwd))
+		return (ft_strerror(cmd, sh, "No such file or directory"));
+	return (0);
+}
+
 int				ft_change_dir(t_cmd *cmd, t_sh *sh)
 {
 	int		chdir_value;
@@ -69,18 +78,14 @@ int				ft_change_dir(t_cmd *cmd, t_sh *sh)
 		ft_nogetcwd(&env, &newpwd, cmd);
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
 	{
-		if (!(home = ft_search_env(*(sh->env), "HOME"))
-			&& (ft_dprintf(2, "minishell: cd: HOME not set\n")))
-			return (1);
+		if (!(home = ft_search_env(*(sh->env), "HOME")))
+			return (ft_strerror(cmd, sh, "HOME not set"));
 		chdir_value = chdir(((t_env*)home->content)->value);
 	}
 	else
 		chdir_value = chdir(cmd->av[1]);
-	if (chdir_value && oldpwd)
-		return (ft_strerror(cmd, sh, "No such file or directory"));
-	if (oldpwd && !ft_change_dir_update(sh->env, oldpwd))
-		return (ft_strerror(cmd, sh, "No such file or directory"));
-	if (newpwd && !ft_change_dir_update(sh->env, newpwd))
+	if (ft_chdir(chdir_value, oldpwd, cmd, sh)
+		|| (newpwd && !ft_change_dir_update(sh->env, newpwd)))
 		return (1);
 	ft_safe_free((void**)&oldpwd);
 	ft_safe_free((void**)&newpwd);

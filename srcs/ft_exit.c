@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 17:58:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/17 15:40:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static int	ft_is_double_minus(char *str)
+int			ft_is_double_minus(char *str)
 {
 	int	i;
 
@@ -22,117 +22,6 @@ static int	ft_is_double_minus(char *str)
 	if (i == 2 && str[i] == 0)
 		return (1);
 	return (0);
-}
-
-void		ft_free_sub_cmd(t_cmd *cmd)
-{
-	if (cmd->pipe_next)
-		ft_free_sub_cmd(cmd->pipe_next);
-	if (cmd->argv)
-		ft_lstclear(&cmd->argv, free);
-	if (cmd->av)
-		ft_free_double_array(cmd->av);
-	if (cmd->cmd)
-		ft_free_ptr(cmd->cmd);
-	if (cmd->file_redir)
-		ft_free_ptr(cmd->file_redir);
-	if (cmd->fd_in)
-		ft_lstclear(cmd->fd_in, free);
-	if (cmd->fd_out)
-		ft_lstclear(cmd->fd_out, free);
-	if (cmd)
-		free(cmd);
-}
-
-void		ft_free_cmd(t_dlist *node)
-{
-	t_cmd	*cmd;
-
-	if (!node || !node->data)
-		return ;
-	cmd = (t_cmd*)node->data;
-	if (!cmd)
-		return ;
-	if (cmd->argv)
-		ft_lstclear(&cmd->argv, free);
-	if (cmd->av)
-		ft_free_double_array(cmd->av);
-	if (cmd->cmd)
-		ft_free_ptr(cmd->cmd);
-	if (cmd->file_redir)
-		ft_free_ptr(cmd->file_redir);
-	if (cmd->fd_in)
-		ft_lstclear(cmd->fd_in, free);
-	if (cmd->fd_out)
-		ft_lstclear(cmd->fd_out, free);
-	if (cmd->pipe_next)
-		ft_free_sub_cmd(cmd->pipe_next);
-}
-
-void		ft_lstclear_env(t_list **env)
-{
-	t_list	*cur;
-	t_list	*tmp;
-
-	if (!env || !(*env))
-		return ;
-	cur = *env;
-	while (cur)
-	{
-		tmp = cur->next;
-		ft_free_env_lst(cur->content);
-		if (cur)
-			free(cur);
-		cur = tmp;
-	}
-}
-
-void		ft_lstclear_cmds(t_ref *cmds)
-{
-	t_dlist	*tmp;
-	t_dlist	*tmp2;
-
-	if (cmds == NULL || cmds->head == NULL)
-		return ;
-	tmp = cmds->head;
-	tmp2 = cmds->head;
-	while (tmp)
-	{
-		tmp2 = tmp2->next;
-		ft_free_cmd(tmp);
-		tmp = tmp2;
-	}
-}
-
-void		ft_free_gnl(t_sh *sh)
-{
-	int	ret;
-
-	while ((ret = get_next_line_multi(sh->fd, &sh->line)) >= 0)
-	{
-		if (sh->line)
-			free(sh->line);
-		if (ret <= 0)
-			break ;
-	}
-}
-
-void		ft_free_minishell(t_sh *sh)
-{
-	if (sh->line)
-		free(sh->line);
-	if (sh->fd != STDIN_FILENO)
-		ft_free_gnl(sh);
-	if (sh->begin_input)
-		ft_lstclear(&sh->begin_input, &free);
-	if (sh->env)
-		ft_lstclear_env(sh->env);
-	if (sh->cmds)
-		ft_lstclear_cmds(sh->cmds);
-	if (sh->cmds)
-		ft_dlst_del(sh->cmds);
-	if (sh->cmds)
-		free(sh->cmds);
 }
 
 int			ft_search_piped_exit_cmd(t_sh *sh)
@@ -159,93 +48,58 @@ int			ft_search_piped_exit_cmd(t_sh *sh)
 	return (1);
 }
 
+void		ft_exit_toomanyargs(t_sh *sh, int ret)
+{
+	sh->nbline ? ft_dprintf(2,
+			"%s: line %d: exit: too many arguments\n",
+			sh->file, sh->nbline)
+			: ft_dprintf(2,
+			"minishell: exit: too many arguments\n");
+	ret ? ft_free_minishell(sh, 1) : 0;
+}
+
+void		ft_exit_twoargs(t_sh *sh, t_cmd *cmd, int ret)
+{
+	int		return_value;
+
+	if (ft_is_double_minus(cmd->av[1]))
+		ret ? ft_free_minishell(sh, sh->ret_cmd) : 0;
+	if (ft_str_isdigit(cmd->av[1])
+		&& ft_is_in_min_max_atoi_long(cmd->av[1]))
+	{
+		return_value = ft_atoi_long(cmd->av[1]) % 256;
+		return_value = (return_value < 0) ? return_value + 256
+			: return_value;
+		ret ? ft_free_minishell(sh, return_value) : 0;
+	}
+	else
+	{
+		ft_strerror(cmd, sh, "numeric argument required");
+		ret ? ft_free_minishell(sh, 255) : 0;
+	}
+}
+
 int			ft_exit(t_cmd *cmd, t_sh *sh)
 {
 	int		i;
-	int		return_value;
 	int		ret;
 
 	i = 0;
 	ret = ft_search_piped_exit_cmd(sh);
 	if (!cmd && !sh->file)
 	{
-		return_value = sh->ret_cmd;
 		ft_dprintf(2, "exit\n");
-		if (ret)
-		{
-			ft_free_minishell(sh);
-			exit(return_value);
-		}
+		ret ? ft_free_minishell(sh, sh->ret_cmd) : 0;
 	}
 	if (!cmd && sh->file)
-	{
-		return_value = sh->ret_cmd;
-		if (ret)
-		{
-			ft_free_minishell(sh);
-			exit(return_value);
-		}
-	}
+		ret ? ft_free_minishell(sh, sh->ret_cmd) : 0;
 	while (cmd->av[i])
 		i++;
 	if (i > 2)
-	{
-		sh->nbline ? ft_dprintf(2,
-			"%s: line %d: exit: too many arguments\n",
-			sh->file, sh->nbline)
-			: ft_dprintf(2,
-			"minishell: exit: too many arguments\n");
-		if (ret)
-		{
-			ft_free_minishell(sh);
-			exit(1);
-		}
-	}
+		ft_exit_toomanyargs(sh, ret);
 	else if (i == 2)
-	{
-		if (ft_is_double_minus(cmd->av[1]))
-		{
-			return_value = sh->ret_cmd;
-			if (ret)
-			{
-				ft_free_minishell(sh);
-				exit(return_value);
-			}
-		}
-		if (ft_str_isdigit(cmd->av[1])
-			&& ft_is_in_min_max_atoi_long(cmd->av[1]))
-		{
-			return_value = ft_atoi_long(cmd->av[1]) % 256;
-			return_value = (return_value < 0) ? return_value + 256
-				: return_value;
-			if (ret)
-			{
-				ft_free_minishell(sh);
-				exit(return_value);
-			}
-		}
-		else
-		{
-			sh->nbline ? ft_dprintf(2,
-			"%s: line %d: exit: %s: numeric argument required\n",
-			sh->file, sh->nbline, cmd->av[1])
-			: ft_dprintf(2,
-			"minishell: exit: %s: numeric argument required\n", cmd->av[1]);
-			if (ret)
-			{
-				ft_free_minishell(sh);
-				exit(255);
-			}
-		}
-	}
-	else
-	{
-		return_value = sh->ret_cmd;
-		if (ret)
-		{
-			ft_free_minishell(sh);
-			exit(return_value);
-		}
-	}
+		ft_exit_twoargs(sh, cmd, ret);
+	else if (ret)
+		ft_free_minishell(sh, sh->ret_cmd);
 	return (0);
 }
