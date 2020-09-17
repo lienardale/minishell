@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:12:21 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/17 16:30:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:55:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	ft_pre_exec(t_cmd *cmd, t_sh *sh)
 	return (0);
 }
 
-int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
+int			ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 {
 	char	**builtins;
 	int		i;
@@ -51,12 +51,9 @@ int		ft_parse_cmds(t_cmd *cmd, t_sh *sh)
 	builtins = ft_split("echo,pwd,env,export", ',');
 	while (builtins[++i])
 	{
-		if (ft_strcmp(cmd->cmd, builtins[i]) == 0)
-		{
-			sh->ret_cmd = ft_blt_process(sh, cmd, sh->blt_fct[i]);
-			ft_free_double_array(builtins);
-			return (sh->ret_cmd);
-		}
+		if (ft_strcmp(cmd->cmd, builtins[i]) == 0
+			&& !(ft_free_split(builtins)))
+			return (ft_blt_process(sh, cmd, sh->blt_fct[i]));
 	}
 	ft_free_double_array(builtins);
 	return (ft_process(cmd, sh));
