@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/18 13:15:51 by alienard         ###   ########.fr        #
+#    Updated: 2020/09/18 14:03:09 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ _SRCS		= ft_minishell.c \
 				ft_init_args.c \
 				ft_parse_redir.c \
 				ft_split_quote.c \
+				ft_split_handle_quote.c \
 				ft_iterate_in_line.c \
 				ft_preprocess.c \
 				ft_process.c \

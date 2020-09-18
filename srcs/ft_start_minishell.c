@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/17 19:43:17 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 18:07:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 14:26:13 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,24 @@ static char		*ft_increment_shlvl(char *env_shlvl)
 	return (result);
 }
 
-t_list		*ft_start_minishell(char **env)
+static int		ft_isshlvl(char **old_value, char **key,
+						t_list **temp, t_list **result)
+{
+	if (!ft_strcmp(*key, "SHLVL"))
+	{
+		*old_value = ((t_env*)(*temp)->content)->value;
+		if (!(((t_env*)(*temp)->content)->value =
+						ft_increment_shlvl(*old_value)))
+		{
+			ft_lstclear(result, ft_free_env_lst);
+			return (0);
+		}
+		free(*old_value);
+	}
+	return (1);
+}
+
+t_list			*ft_start_minishell(char **env)
 {
 	char	*key;
 	char	*old_value;
@@ -64,16 +81,8 @@ t_list		*ft_start_minishell(char **env)
 	while (temp)
 	{
 		key = ((t_env*)temp->content)->key;
-		if (!ft_strcmp(key, "SHLVL"))
-		{
-			old_value = ((t_env*)temp->content)->value;
-			if (!(((t_env*)temp->content)->value = ft_increment_shlvl(old_value)))
-			{
-				ft_lstclear(&result, ft_free_env_lst);
-				return (NULL);
-			}
-			free(old_value);
-		}
+		if (!ft_isshlvl(&old_value, &key, &temp, &result))
+			return (NULL);
 		temp = temp->next;
 	}
 	if (!ft_check_shlvl(result))

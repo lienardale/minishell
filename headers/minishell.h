@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 12:43:59 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 14:27:08 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,9 @@ typedef struct	s_sh
 
 char			**ft_split_line(char **inputs);
 char			**ft_split_quote(char *str, char c);
+char			*ft_split_handle_quote(char *str, char c, int start, int *i);
+char			*ft_split_quote_concat(char *result, char *str,
+					int start, int i);
 char			**ft_split_arg(char *str);
 
 /*

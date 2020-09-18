@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/13 12:46:53 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/16 18:06:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 14:09:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	**ret_nul(void)
 	return (tab);
 }
 
-static char	*ft_split_quote_concat(char *result, char *str, int start, int i)
+char		*ft_split_quote_concat(char *result, char *str, int start, int i)
 {
 	char	*temp;
 	char	*temp2;
@@ -36,43 +36,6 @@ static char	*ft_split_quote_concat(char *result, char *str, int start, int i)
 		free(result);
 		result = temp;
 	}
-	return (result);
-}
-
-static char	*ft_handle_quote(char *str, char c, int start, int *i)
-{
-	char	*result;
-	char	quote;
-
-	result = NULL;
-	quote = (str[start] == '\'' || str[start] == '\"') ? str[start] : 0;
-	*i = (quote) ? *i + 1 : *i;
-	while (str[*i] && ((!quote && str[*i] != c) || (quote)))
-	{
-		if (str[*i] == quote && (!ft_is_escaped(str, *i) || quote == ' '))
-		{
-			result = ft_split_quote_concat(result, str, start, *i);
-			quote = 0;
-			start = *i;
-		}
-		(*i)++;
-		if ((!quote && (str[*i] == '\'' || str[*i] == '\"'))
-			|| ft_is_escaped(str, *i))
-		{
-			result = ft_split_quote_concat(result, str, start, *i);
-			quote = str[*i];
-			if (ft_is_escaped(str, *i) && str[*i] != c)
-				quote = 0;
-			if (ft_is_escaped(str, *i) && str[*i] == c)
-				quote = ' ';
-			start = *i;
-			if ((quote == '\'' || quote == '\"') && str[*i + 1]
-				&& ft_isinquotes(str, *i + 1))
-				*i = *i + 1;
-		}
-	}
-	result = (!(str[*i] == '\'' || str[*i] == '\"')) ?
-		ft_split_quote_concat(result, str, start, *i) : result;
 	return (result);
 }
 
@@ -92,7 +55,7 @@ static int	ft_count_word_quote(char *str, char c)
 		start = i;
 		if (str[i])
 		{
-			to_free = ft_handle_quote(str, c, start, &i);
+			to_free = ft_split_handle_quote(str, c, start, &i);
 			free(to_free);
 			nb_word++;
 		}
@@ -121,7 +84,7 @@ char		**ft_split_quote(char *str, char c)
 		start = i;
 		if (str[i])
 		{
-			result[nb_word] = ft_handle_quote(str, c, start, &i);
+			result[nb_word] = ft_split_handle_quote(str, c, start, &i);
 			nb_word++;
 		}
 	}
