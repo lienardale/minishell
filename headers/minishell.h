@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 11:09:27 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 11:52:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,17 @@ typedef struct	s_env
 	char *key;
 	char *value;
 }				t_env;
+
+typedef struct	s_parse
+{
+	t_dlist			*current;
+	t_list			*input;
+	int				quote;
+	int				comment;
+	int				bkslh;
+	int				error;
+	char			*prompt;
+}				t_parse;
 
 typedef struct	s_cmd
 {

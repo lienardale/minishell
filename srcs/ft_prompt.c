@@ -6,13 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 11:11:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 12:30:38 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_input_join(t_list *inputs)
+char		*ft_input_join(t_list *inputs)
 {
 	char	*tmp;
 	char	*tmp_2;
@@ -39,7 +39,7 @@ char	*ft_input_join(t_list *inputs)
 	return (tmp);
 }
 
-void	ft_check_line(char **line, int *quote, int *bkslh)
+void		ft_check_line(char **line, int *quote, int *bkslh)
 {
 	int		pos;
 	int		nbquote;
@@ -52,19 +52,12 @@ void	ft_check_line(char **line, int *quote, int *bkslh)
 		if (((*line)[pos] == '\\' && *quote != '\'') || *bkslh == 1)
 			(*bkslh)++;
 		if ((*line)[pos] == '\'' && (*quote == '\'' || *quote == 0)
-			&& *bkslh == 0)
-		{
+			&& *bkslh == 0 && (*quote = '\''))
 			nbquote++;
-			*quote = '\'';
-		}
 		if ((*line)[pos] == '\"' && (*quote == '\"' || *quote == 0)
-			&& *bkslh == 0)
-		{
+			&& *bkslh == 0 && (*quote = '\"'))
 			nbquote++;
-			*quote = '\"';
-		}
-		if (nbquote % 2 == 0)
-			*quote = 0;
+		*quote = (nbquote % 2 == 0) ? 0 : *quote;
 		*bkslh = (*bkslh == 2) ? 0 : *bkslh;
 	}
 	if (*quote != 0)
@@ -75,133 +68,71 @@ void	ft_check_line(char **line, int *quote, int *bkslh)
 	}
 }
 
-void	ft_infile(t_sh *sh)
-{
-	int			comment;
-	int			quote;
-	int			bkslh;
-	int			error;
-	t_list		*input;
-	t_dlist		*current;
-
-	quote = 0;
-	bkslh = 0;
-	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
-	{
-		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !sh->begin_input)
-			ft_exit(NULL, sh);
-		comment = 0;
-		sh->nbline++;
-		while (sh->line[comment] && ft_isspace(sh->line[comment]))
-			comment++;
-		if (sh->line[comment] == '#')
-		{
-			free(sh->line);
-			sh->line = NULL;
-		}
-		if (sh->line && sh->line[comment] != '#')
-		{
-			input = ft_lstnew(sh->line);
-			ft_lstadd_back(&sh->begin_input, input);
-			ft_check_line((char**)&input->content, &quote, &bkslh);
-			if (!quote && !ft_is_escaped(sh->line, ft_strlen(sh->line))
-				&& sh->line[ft_strlen(sh->line) - 1] != '|')
-			{
-				if ((error = ft_line_to_lst(ft_input_join(sh->begin_input), sh)))
-				{
-					ft_create_pipe(sh);
-					current = sh->cmds->head;
-					while (current)
-					{
-						sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
-						current = current->next;
-					}
-				}
-				sh->line = NULL;
-				ft_lstclear(&sh->begin_input, &free);
-				ft_reset_sh(sh);
-				sh->begin_input = NULL;
-				if (!error)
-					break ;
-			}
-			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
-				sh->line[ft_strlen(sh->line) - 1] = ' ';
-		}
-	}
-	ft_exit(NULL, sh);
-}
-
 /*
 ** pb : no prompt while in quotes && writes itself when ./minishell < script.sh
 */
 
-void	ft_prompt(t_sh *sh)
+static void	ft_launch_process(t_sh *sh, t_parse *prompt)
 {
-	char		*prompt;
-	int			quote;
-	int			comment;
-	t_list		*input;
-	t_dlist		*current;
-	int			bkslh;
+	ft_create_pipe(sh);
+	prompt->current = sh->cmds->head;
+	while (prompt->current)
+	{
+		ft_signal(SIGINT, OFF);
+		ft_signal(SIGQUIT, OFF);
+		sh->ret_cmd = ft_parse_cmds((t_cmd *)prompt->current->data, sh);
+		prompt->current = prompt->current->next;
+	}
+}
 
-	quote = 0;
-	bkslh = 0;
-	prompt = PROMPT;
+static void	ft_parse_process(t_sh *sh, t_parse *prompt)
+{
+	prompt->input = ft_lstnew(sh->line);
+	ft_lstadd_back(&sh->begin_input, prompt->input);
+	ft_check_line((char**)&prompt->input->content,
+						&prompt->quote, &prompt->bkslh);
+	prompt->prompt = (prompt->quote == 0) ? PROMPT : QPROMPT;
+	if (prompt->quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
+		prompt->prompt = QPROMPT;
+	if (!prompt->quote && sh->ret_sh
+		&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
+		&& sh->line[ft_strlen(sh->line) - 1] != '|')
+	{
+		if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
+			ft_launch_process(sh, prompt);
+		sh->line = NULL;
+		(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
+		ft_reset_sh(sh);
+		sh->begin_input = NULL;
+	}
+	if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
+		sh->line[ft_strlen(sh->line) - 1] = ' ';
+}
+
+void		ft_prompt(t_sh *sh)
+{
+	t_parse		prompt;
+
+	prompt.quote = 0;
+	prompt.bkslh = 0;
+	prompt.prompt = PROMPT;
 	ft_signal(SIGQUIT, ON);
 	ft_signal(SIGINT, ON);
-	if (sh->fd == 0)
-		write(2, prompt, ft_strlen(prompt));
+	(sh->fd == 0) ? write(2, prompt.prompt, ft_strlen(prompt.prompt)) : 0;
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !sh->begin_input)
-		{
 			ft_exit(NULL, sh);
-		}
-		comment = 0;
-		while (sh->line[comment] && ft_isspace(sh->line[comment]))
-			comment++;
-		if (sh->line[comment] == '#')
-		{
-			free(sh->line);
-			sh->line = NULL;
-		}
-		if (sh->line && sh->line[comment] != '#')
-		{
-			input = ft_lstnew(sh->line);
-			ft_lstadd_back(&sh->begin_input, input);
-			ft_check_line((char**)&input->content, &quote, &bkslh);
-			prompt = (quote == 0) ? PROMPT : QPROMPT;
-			if (quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
-				prompt = QPROMPT;
-			if (!quote && sh->ret_sh
-				&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
-				&& sh->line[ft_strlen(sh->line) - 1] != '|')
-			{
-				if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
-				{
-					ft_create_pipe(sh);
-					current = sh->cmds->head;
-					while (current)
-					{
-						ft_signal(SIGINT, OFF);
-						ft_signal(SIGQUIT, OFF);
-						sh->ret_cmd = ft_parse_cmds((t_cmd *)current->data, sh);
-						current = current->next;
-					}
-				}
-				sh->line = NULL;
-				if (sh->begin_input)
-					ft_lstclear(&sh->begin_input, &free);
-				ft_reset_sh(sh);
-				sh->begin_input = NULL;
-			}
-			if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
-				sh->line[ft_strlen(sh->line) - 1] = ' ';
-		}
+		prompt.comment = 0;
+		while (sh->line[prompt.comment] && ft_isspace(sh->line[prompt.comment]))
+			prompt.comment++;
+		(sh->line[prompt.comment] == '#') ? ft_safe_free((void**)&sh->line) : 0;
+		if (sh->line && sh->line[prompt.comment] != '#')
+			ft_parse_process(sh, &prompt);
 		ft_signal(SIGQUIT, ON);
 		ft_signal(SIGINT, ON);
 		if (sh->fd == 0 && sh->ret_sh > 0 && !sh->begin_input)
-			write(2, prompt, ft_strlen(prompt));
+			write(2, prompt.prompt, ft_strlen(prompt.prompt));
 	}
 	ft_exit(NULL, sh);
 }
