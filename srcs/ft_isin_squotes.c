@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quote.c                                         :+:      :+:    :+:   */
+/*   ft_isin_squotes.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/08 16:46:29 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 13:01:25 by alienard         ###   ########.fr       */
+/*   Created: 2020/09/18 12:40:24 by alienard          #+#    #+#             */
+/*   Updated: 2020/09/18 12:58:51 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static int	ft_ifquote(t_quote *is, char *line, int pos)
 	while (line[++is->j] && is->nbquote != 0)
 	{
 		if (line[is->j] == '\'' && is->quote == '\'')
-			is->nbquote++;
-		if (line[is->j] == '\"' && is->quote == '\"'
-			&& !ft_is_escaped(line, is->j))
 			is->nbquote++;
 		if (is->nbquote % 2 == 0 && is->j > pos)
 			return (1);
@@ -35,7 +32,7 @@ static int	ft_ifquote(t_quote *is, char *line, int pos)
 	return (0);
 }
 
-int			ft_isinquotes(char *line, int pos)
+int			ft_isinsquotes(char *line, int pos)
 {
 	t_quote	is;
 
@@ -47,9 +44,6 @@ int			ft_isinquotes(char *line, int pos)
 	{
 		if (line[is.i] == '\'' && (is.quote == '\'' || is.quote == 0)
 			&& !ft_is_escaped(line, is.i) && (is.quote = '\''))
-			is.nbquote++;
-		if (line[is.i] == '\"' && (is.quote == '\"' || is.quote == 0)
-			&& !ft_is_escaped(line, is.i) && (is.quote = '\"'))
 			is.nbquote++;
 		is.quote = (is.nbquote % 2 == 0) ? 0 : is.quote;
 		if (is.quote != 0 && is.i < pos)

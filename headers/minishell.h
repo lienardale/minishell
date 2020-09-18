@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 11:52:11 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 12:43:59 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,14 @@
 # ifndef OFF
 #  define OFF 0
 # endif
+
+typedef struct	s_quote
+{
+	int	nbquote;
+	int	quote;
+	int	i;
+	int	j;
+}				t_quote;
 
 typedef struct	s_env
 {
