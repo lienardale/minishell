@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 18:04:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 11:11:29 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,7 @@ char		*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 	i = 0;
 	if (!(tmp = ft_get_onlypaths(env)))
 	{
-		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
-				sh->file, sh->nbline, exec);
-		else
-			ft_dprintf(2, "minishell: %s: No such file or directory\n", exec);
+		ft_redirerror(sh, exec, "No such file or directory");
 		exit(EXIT_FAILURE);
 	}
 	else if (!(paths = ft_split(tmp, ':')))
@@ -77,57 +73,42 @@ char		*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 	{
 		if ((result = ft_findexec(paths[i], exec)))
 		{
-			if (paths)
-				ft_free_split(paths);
+			(paths) ? ft_free_split(paths) : 0;
 			return (result);
 		}
 		i++;
 	}
-	if (paths)
-		ft_free_split(paths);
+	(paths) ? ft_free_split(paths) : 0;
 	return (result);
 }
 
 int			ft_search_n_execute(char **args, char **env, t_sh *sh)
 {
-	int		exec_start;
 	char	*exec;
 	char	*temp;
-	int		ret_cmd;
+	int		ret;
 
 	exec = NULL;
 	temp = args[0];
-	if ((exec_start = ft_isolate_exec(args[0], &exec)) != -1)
+	if (ft_isolate_exec(args[0], &exec) != -1)
 		args[0] = ft_parse_path(args[0]);
 	else
-		args[0] = (ft_get_abspath_filename(args[0], env, sh));
+		args[0] = ft_get_abspath_filename(args[0], env, sh);
 	if (exec)
-		free(exec);
-	else if (!args[0])
+		ft_safe_free((void**)&exec);
+	else if (!args[0] && (args[0] = temp))
 	{
-		args[0] = temp;
-		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: %s: command not found\n",
-				sh->file, sh->nbline, args[0]);
-		else
-			ft_dprintf(2, "minishell: %s: command not found\n", args[0]);
+		ft_redirerror(sh, args[0], "command not found");
 		exit(127);
 	}
-	if ((ret_cmd = execve(args[0], args, env)) == -1)
+	if ((ret = execve(args[0], args, env)) == -1)
 	{
-		args[0] = temp;
-		if (sh->nbline)
-			ft_dprintf(2, "%s: line %d: %s: No such file or directory\n",
-				sh->file, sh->nbline, args[0]);
-		else
-			ft_dprintf(2, "minishell: %s: No such file or directory\n",
-				args[0]);
+		ft_redirerror(sh, (args[0] = temp), "No such file or directory");
 		exit(EXIT_FAILURE);
 	}
-	if (args[0])
-		free(args[0]);
+	ft_safe_free((void**)&args[0]);
 	args[0] = temp;
-	return (ret_cmd);
+	return (ret);
 }
 
 int			ft_process(t_cmd *cmd, t_sh *sh)
@@ -140,20 +121,7 @@ int			ft_process(t_cmd *cmd, t_sh *sh)
 	split_env = NULL;
 	pid = fork();
 	if (pid == 0)
-	{
-		if (cmd->pipe_prev || cmd->pipe_next)
-			cmd->ret_dup = ft_exec_pipe_child(sh, cmd);
-		if (cmd->redir)
-			ft_exec_redir(sh, cmd);
-		split_env = ft_lst_env_to_split_launch(*(sh->env));
-		status = ft_search_n_execute(cmd->av, split_env, sh);
-		if (split_env)
-			ft_free_split(split_env);
-		if (cmd->redir)
-			(close(cmd->fdout) < 0) ? ft_dprintf(2,
-				"Close of fd_out not ok\n") : 0;
-		return (status);
-	}
+		return (ft_process_child(cmd, sh));
 	else if (pid < 0 && ft_dprintf(2, "Error forking\n"))
 		return (0);
 	else

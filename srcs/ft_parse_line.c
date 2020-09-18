@@ -6,70 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 18:01:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 10:38:15 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-int		ft_parse_redir_nb(t_sh *sh, char *line, int *i)
-{
-	int		j;
-	char	*tmp;
-
-	j = *i;
-	j--;
-	while (j >= 0 && ft_isdigit(line[j]))
-		j--;
-	if (line[j - 1] && line[j - 1] == '-')
-		j--;
-	if (!(tmp = ft_substr(line, j + 1, *i - j - 1)))
-		return (0);
-	if (!ft_is_escaped(line, j) && tmp[0] != '-' && ft_isdigit(tmp[0]))
-		((t_cmd*)(sh->cmds->tail->data))->nb_redir = ft_atoi(tmp);
-	else
-		((t_cmd*)(sh->cmds->tail->data))->nb_redir = -1;
-	free(tmp);
-	return (1);
-}
-
-int		ft_parse_redir(t_sh *sh, char *line, int *i)
-{
-	int		ret;
-
-	ret = 1;
-	if (!(ft_parse_redir_nb(sh, line, i)))
-		ret = 0;
-	if (line[*i] == '>')
-	{
-		*i += 1;
-		((t_cmd*)(sh->cmds->tail->data))->redir = '>';
-		if (line[*i] == '>')
-		{
-			*i += 1;
-			((t_cmd*)(sh->cmds->tail->data))->redir = '2';
-		}
-	}
-	else if (line[*i] == '<')
-	{
-		*i += 1;
-		((t_cmd*)(sh->cmds->tail->data))->redir = '<';
-	}
-	if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '<')
-		return (ft_parse_redir_in(sh, line, i));
-	else if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '>')
-		return (ft_parse_redir_out(sh, line, i));
-	else if (ret && ((t_cmd*)(sh->cmds->tail->data))->redir == '2')
-		return (ft_parse_append(sh, line, i));
-	return (ret);
-}
-
-void	ft_exec_redir(t_sh *sh, t_cmd *cmd)
-{
-	cmd->redir == '<' ? ft_exec_redir_in(sh, cmd) : 0;
-	cmd->redir == '>' ? ft_exec_redir_out(sh, cmd) : 0;
-	cmd->redir == '2' ? ft_exec_append(sh, cmd) : 0;
-}
 
 int		ft_unexpected_token(char *inputs, t_sh *sh, int i)
 {
@@ -137,28 +78,4 @@ char	*ft_strtrim_space(char *str)
 		i++;
 	}
 	return (str);
-}
-
-int		ft_iterate_in_line(char *line, int *j, char *set)
-{
-	while (line[*j])
-	{
-		if (ft_ischarset(set, line[*j]) && !ft_isinquotes(line, *j)
-			&& !ft_is_escaped(line, *j))
-			break ;
-		(*j)++;
-	}
-	return (1);
-}
-
-int		ft_iterate_in_line_redir(char *line, int *j, char *set)
-{
-	while (line[*j] && (!ft_isspace(line[*j]) || ft_is_escaped(line, *j)))
-	{
-		if (ft_ischarset(set, line[*j]) && !ft_isinquotes(line, *j)
-			&& !ft_is_escaped(line, *j))
-			break ;
-		(*j)++;
-	}
-	return (1);
 }

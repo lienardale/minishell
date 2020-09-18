@@ -6,11 +6,18 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 16:24:45 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/17 16:25:10 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 10:06:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ft_exec_redir(t_sh *sh, t_cmd *cmd)
+{
+	cmd->redir == '<' ? ft_exec_redir_in(sh, cmd) : 0;
+	cmd->redir == '>' ? ft_exec_redir_out(sh, cmd) : 0;
+	cmd->redir == '2' ? ft_exec_append(sh, cmd) : 0;
+}
 
 int		ft_exec_redir_out(t_sh *sh, t_cmd *cmd)
 {

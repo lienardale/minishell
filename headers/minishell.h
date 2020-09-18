@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/17 16:21:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/18 11:09:27 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ int				ft_check_args(char *inputs, t_sh *sh);
 char			*ft_strtrim_space(char *str);
 int				ft_iterate_in_line(char *line, int *j, char *set);
 int				ft_iterate_in_line_redir(char *line, int *j, char *set);
+int				ft_iterate_in_line_space(char *line, int *i);
+int				ft_iterate_in_line_space_esc(char *line, int *j);
 
 /*
 **	parse redir
@@ -211,6 +213,7 @@ char			*ft_get_abspath_filename(char *exec, char **env, t_sh *sh);
 char			*ft_findexec(char *path, char *exec);
 char			*ft_get_onlypaths(char **env);
 int				ft_process(t_cmd *cmd, t_sh *sh);
+int				ft_process_child(t_cmd *cmd, t_sh *sh);
 
 t_list			*ft_start_minishell(char **env);
 
@@ -274,5 +277,7 @@ void			ft_reset_cmd(t_dlist *node);
 
 int				ft_strerror(t_cmd *cmd, t_sh *sh, char *str);
 void			ft_exporterror(t_cmd *cmd, t_sh *sh, char *str, int i);
+void			ft_redirerror(t_sh *sh, char *tmp, char *str);
+void			ft_redir_indir_error(t_sh *sh, char *tmp, DIR **dir);
 
 #endif
