@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 14:27:08 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/21 11:17:03 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,10 @@ typedef struct	s_sh
 	t_ref	*cmds;
 	t_list	**env;
 	t_list	*begin_input;
+	bool	sig;
 }				t_sh;
+
+extern t_sh		g_sh;
 
 char			**ft_split_line(char **inputs);
 char			**ft_split_quote(char *str, char c);
