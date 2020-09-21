@@ -74,6 +74,8 @@ int				ft_change_dir(t_cmd *cmd, t_sh *sh)
 	chdir_value = -1;
 	newpwd = NULL;
 	env = (t_list*)(*sh->env);
+	if (oldpwd)
+		free(oldpwd);
 	if (!(oldpwd = ft_getcwd()) && cmd->av[1])
 		ft_nogetcwd(&env, &newpwd, cmd);
 	if (!cmd->av[1] || (!ft_strcmp(cmd->av[1], "~") && !cmd->av[2]))
