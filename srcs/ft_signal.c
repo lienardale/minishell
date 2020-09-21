@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 14:16:55 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/21 11:41:29 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	ft_ctrl_c_on(int sig)
 {
 	(void)sig;
 	write(2, "\nminishell$ ", 12);
+	g_sh.sig = false;
 }
 
 static void	ft_ctrl_backslash_off(int sig)

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/23 11:03:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 17:43:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/21 12:18:34 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	ft_free_double_array(char **str)
 
 	i = -1;
 	while (str[++i])
-		(str[i]) ? ft_free_ptr(str[i]) : 0;
-	(str) ? ft_free_ptr(str) : 0;
+		(str[i]) ? free(str[i]) : 0;
+	(str) ? free(str) : 0;
 }

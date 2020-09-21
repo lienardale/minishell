@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:10:39 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/17 13:52:07 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/21 12:08:24 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ static int		ft_chdir(int chdir_value, char *oldpwd, t_cmd *cmd, t_sh *sh)
 	return (0);
 }
 
+static int		ft_freetmppwd(char **oldpwd, char **newpwd)
+{
+	*oldpwd ? free(*oldpwd) : 0;
+	*newpwd ? free(*newpwd) : 0;
+	return (1);
+}
+
 int				ft_change_dir(t_cmd *cmd, t_sh *sh)
 {
 	int		chdir_value;
@@ -86,8 +93,8 @@ int				ft_change_dir(t_cmd *cmd, t_sh *sh)
 		chdir_value = chdir(cmd->av[1]);
 	if (ft_chdir(chdir_value, oldpwd, cmd, sh)
 		|| (newpwd && !ft_change_dir_update(sh->env, newpwd)))
-		return (1);
-	ft_safe_free((void**)&oldpwd);
-	ft_safe_free((void**)&newpwd);
+		return (ft_freetmppwd(&oldpwd, &newpwd));
+	oldpwd ? free(oldpwd) : 0;
+	newpwd ? free(newpwd) : 0;
 	return (0);
 }

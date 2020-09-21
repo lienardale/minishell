@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 14:58:01 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/17 15:48:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/21 11:38:24 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ void		ft_lstclear_env(t_list **env)
 	{
 		tmp = cur->next;
 		ft_free_env_lst(cur->content);
-		if (cur)
-			free(cur);
+		free(cur);
 		cur = tmp;
 	}
 }
@@ -36,8 +35,7 @@ void		ft_free_gnl(t_sh *sh)
 
 	while ((ret = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
-		if (sh->line)
-			free(sh->line);
+		ft_safe_free((void**)&sh->line);
 		if (ret <= 0)
 			break ;
 	}

@@ -1,5 +1,7 @@
 #bin/bash
 
+cd ..
+
 make
 read -p 'Which test ?: ' test
 
