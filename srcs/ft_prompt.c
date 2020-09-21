@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/21 12:05:52 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/21 14:44:27 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char		*ft_input_join(t_list *inputs)
 	if (!tmp)
 	{
 		ft_dprintf(2, "minishell: allocation error\n");
+//		ft_free_minishell ?
 		exit(EXIT_FAILURE);
 	}
 	return (tmp);
@@ -100,9 +101,10 @@ static void	ft_parse_process(t_sh *sh, t_parse *prompt)
 	{
 		if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
 			ft_launch_process(sh, prompt);
-		sh->line = NULL;
 		(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
 		ft_reset_sh(sh);
+		free(sh->line);
+		sh->line = NULL;
 		sh->begin_input = NULL;
 	}
 	if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
@@ -122,13 +124,24 @@ void		ft_prompt(t_sh *sh)
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !sh->begin_input)
+		{
+			free(sh->line);
 			ft_exit(NULL, sh);
+		}
 		prompt.comment = 0;
 		while (sh->line[prompt.comment] && ft_isspace(sh->line[prompt.comment]))
 			prompt.comment++;
 		(sh->line[prompt.comment] == '#') ? ft_safe_free((void**)&sh->line) : 0;
 		if (sh->line && sh->line[prompt.comment] != '#' && sh->sig)
 			ft_parse_process(sh, &prompt);
+		if (!sh->sig)
+		{
+			(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
+			ft_reset_sh(sh);
+			free(sh->line);
+			sh->line = NULL;
+			sh->begin_input = NULL;
+		}
 		ft_signal(SIGQUIT, ON);
 		ft_signal(SIGINT, ON);
 		if (sh->fd == 0 && sh->ret_sh > 0 && !sh->begin_input)
