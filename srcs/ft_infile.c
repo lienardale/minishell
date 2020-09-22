@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 11:45:16 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 14:51:03 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 16:35:01 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static int	ft_parse_process(t_sh *sh, t_parse *file)
 	if (!file->quote && !ft_is_escaped(sh->line, ft_strlen(sh->line))
 		&& sh->line[ft_strlen(sh->line) - 1] != '|')
 	{
-		if ((file->error =
-			ft_line_to_lst(ft_input_join(sh->begin_input), sh)))
+		if ((file->error = ft_line_to_lst(ft_input_join(
+			sh->begin_input), sh)) != 2 && file->error)
 		{
 			ft_create_pipe(sh);
 			file->current = sh->cmds->head;

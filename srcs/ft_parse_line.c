@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 15:15:58 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 16:02:45 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int		ft_strisspace(char *str)
 	int	i;
 
 	i = 0;
-	while (ft_isspace(str[i]))
+	while (str && str[i] && ft_isspace(str[i]))
 		i++;
-	if (str[i])
+	if (!str || str[i])
 		return (0);
 	return (1);
 }

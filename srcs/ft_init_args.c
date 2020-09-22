@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 13:15:18 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 14:53:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 15:41:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static int	ft_join_args(t_sh *sh, t_cmd *cmd, char **tmp)
 void		ft_finish_init_args(t_cmd *cmd)
 {
 	cmd->argv = ft_split_to_lst(cmd->av);
-	cmd->ac = ft_double_strlen(cmd->av);
+	cmd->ac = (cmd->av) ? ft_double_strlen(cmd->av) : 0;
 	(cmd->cmd) ? ft_safe_free((void**)&cmd->cmd) : 0;
 	cmd->cmd = ft_strdup(cmd->av[0]);
 }

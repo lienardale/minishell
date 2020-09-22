@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 15:23:12 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 15:11:09 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 15:38:55 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_create_pipe(t_sh *sh)
 	cur = sh->cmds->head;
 	while (cur)
 	{
-		if (((t_cmd *)(cur->data))->after == '|')
+		if (cur->data && ((t_cmd *)(cur->data))->after == '|')
 		{
 			ft_add_pipe(cur, cur->next, sh);
 			temp = cur->next;
