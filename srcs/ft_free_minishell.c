@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 14:58:01 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/21 13:57:52 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/22 08:51:48 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void		ft_free_gnl(t_sh *sh)
 
 void		ft_free_minishell(t_sh *sh, int ret)
 {
-//	if (sh->line)
-//		free(sh->line);
 	if (sh->fd != STDIN_FILENO)
 		ft_free_gnl(sh);
 	if (sh->begin_input)

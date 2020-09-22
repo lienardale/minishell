@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 08:42:12 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/22 09:48:27 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ static void	ft_launch_process(t_sh *sh, t_parse *prompt)
 	prompt->current = sh->cmds->head;
 	while (prompt->current)
 	{
-		ft_signal(SIGINT, OFF);
-		ft_signal(SIGQUIT, OFF);
+		ft_signal(OFF);
 		sh->ret_cmd = ft_parse_cmds((t_cmd *)prompt->current->data, sh);
 		prompt->current = prompt->current->next;
 	}
@@ -95,21 +94,6 @@ static void	ft_parse_process(t_sh *sh, t_parse *prompt)
 	prompt->prompt = (prompt->quote == 0) ? PROMPT : QPROMPT;
 	if (prompt->quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
 		prompt->prompt = QPROMPT;
-	/*
-	if (!prompt->quote && sh->ret_sh
-		&& !ft_strlen(sh->line)
-		&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
-	{
-		if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
-			ft_launch_process(sh, prompt);
-		(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
-		ft_reset_sh(sh);
-//		free(sh->line);
-		sh->line = NULL;
-		sh->begin_input = NULL;
-	}
-*/
-//else if (!prompt->quote && sh->ret_sh
 	if (!prompt->quote && sh->ret_sh
 		&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
 		&& (!ft_strlen(sh->line) || sh->line[ft_strlen(sh->line) - 1] != '|'))
@@ -118,23 +102,21 @@ static void	ft_parse_process(t_sh *sh, t_parse *prompt)
 			ft_launch_process(sh, prompt);
 		(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
 		ft_reset_sh(sh);
-//		free(sh->line);
 		sh->line = NULL;
 		sh->begin_input = NULL;
 	}
 	if (sh->line && ft_is_escaped(sh->line, ft_strlen(sh->line)))
 		sh->line[ft_strlen(sh->line) - 1] = ' ';
+	ft_signal(ON);
 }
 
 void		ft_prompt(t_sh *sh)
 {
 	t_parse		prompt;
 
-	prompt.quote = 0;
-	prompt.bkslh = 0;
+	ft_bzero(&prompt, sizeof(prompt));
 	prompt.prompt = PROMPT;
-	ft_signal(SIGQUIT, ON);
-	ft_signal(SIGINT, ON);
+	ft_signal(ON);
 	(sh->fd == 0) ? write(2, prompt.prompt, ft_strlen(prompt.prompt)) : 0;
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
@@ -149,16 +131,7 @@ void		ft_prompt(t_sh *sh)
 		(sh->line[prompt.comment] == '#') ? ft_safe_free((void**)&sh->line) : 0;
 		if (sh->line && sh->line[prompt.comment] != '#' && sh->sig)
 			ft_parse_process(sh, &prompt);
-		if (!sh->sig)
-		{
-//			(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
-//			ft_reset_sh(sh);
-			free(sh->line);
-//			sh->line = NULL;
-//			sh->begin_input = NULL;
-		}
-ft_signal(SIGQUIT, ON);
-		ft_signal(SIGINT, ON);
+		(!sh->sig) ? free(sh->line) : 0;
 		if (sh->fd == 0 && sh->ret_sh > 0 && !sh->begin_input)
 			write(2, prompt.prompt, ft_strlen(prompt.prompt));
 		sh->sig = true;

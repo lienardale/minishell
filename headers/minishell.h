@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/21 11:17:03 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 09:13:29 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,7 @@ int				ft_exec_pipe_parent(t_sh *sh, t_cmd *cmd);
 **	signal
 */
 
-void			ft_signal(int sig, int is_on);
+void			ft_signal(int is_on);
 
 /*
 **	free functions

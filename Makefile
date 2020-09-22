@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/18 14:03:09 by alienard         ###   ########.fr        #
+#    Updated: 2020/09/22 09:10:51 by cdai             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -181,6 +181,6 @@ ifeq (search,$(firstword $(MAKECMDGOALS)))
 endif
 
 search:
-	grep $(RUN_ARGS) srcs/*.c libft/*/*.c
+	grep -n $(RUN_ARGS) srcs/*.c headers/*.h libft/*/*.c libft/*/*.h
 
 .PHONY:		re all clean fclean libft_test test build run exec kill config_cdai config_alienard leak search
