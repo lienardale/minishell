@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 10:38:15 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 08:47:43 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int		ft_check_args(char *inputs, t_sh *sh)
 		if (inputs[i] && inputs[i - 1] == '>' && inputs[i] == '>')
 			i++;
 	}
-	i--;
+	if (i > 0)
+		i--;
 	while (i > 0 && ft_isspace(inputs[i]))
 		i--;
 	if (inputs[i] && ft_ischarset(REDIR, inputs[i]))

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/21 14:44:27 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/22 08:42:12 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,30 @@ static void	ft_parse_process(t_sh *sh, t_parse *prompt)
 	prompt->prompt = (prompt->quote == 0) ? PROMPT : QPROMPT;
 	if (prompt->quote == 1 || (ft_is_escaped(sh->line, ft_strlen(sh->line))))
 		prompt->prompt = QPROMPT;
+	/*
 	if (!prompt->quote && sh->ret_sh
+		&& !ft_strlen(sh->line)
 		&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
-		&& sh->line[ft_strlen(sh->line) - 1] != '|')
 	{
 		if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
 			ft_launch_process(sh, prompt);
 		(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
 		ft_reset_sh(sh);
-		free(sh->line);
+//		free(sh->line);
+		sh->line = NULL;
+		sh->begin_input = NULL;
+	}
+*/
+//else if (!prompt->quote && sh->ret_sh
+	if (!prompt->quote && sh->ret_sh
+		&& !ft_is_escaped(sh->line, ft_strlen(sh->line))
+		&& (!ft_strlen(sh->line) || sh->line[ft_strlen(sh->line) - 1] != '|'))
+	{
+		if (ft_line_to_lst(ft_input_join(sh->begin_input), sh))
+			ft_launch_process(sh, prompt);
+		(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
+		ft_reset_sh(sh);
+//		free(sh->line);
 		sh->line = NULL;
 		sh->begin_input = NULL;
 	}
@@ -136,13 +151,13 @@ void		ft_prompt(t_sh *sh)
 			ft_parse_process(sh, &prompt);
 		if (!sh->sig)
 		{
-			(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
-			ft_reset_sh(sh);
+//			(sh->begin_input) ? ft_lstclear(&sh->begin_input, &free) : 0;
+//			ft_reset_sh(sh);
 			free(sh->line);
-			sh->line = NULL;
-			sh->begin_input = NULL;
+//			sh->line = NULL;
+//			sh->begin_input = NULL;
 		}
-		ft_signal(SIGQUIT, ON);
+ft_signal(SIGQUIT, ON);
 		ft_signal(SIGINT, ON);
 		if (sh->fd == 0 && sh->ret_sh > 0 && !sh->begin_input)
 			write(2, prompt.prompt, ft_strlen(prompt.prompt));
