@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 09:03:24 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/22 15:15:58 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,18 @@ int		ft_check_args(char *inputs, t_sh *sh)
 		i--;
 	if (inputs[i] && ft_ischarset(REDIR, inputs[i]))
 		return (ft_unexpected_token(inputs, sh, i));
+	return (1);
+}
+
+int		ft_strisspace(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i])
+		return (0);
 	return (1);
 }
 

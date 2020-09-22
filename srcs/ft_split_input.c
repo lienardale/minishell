@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/18 13:16:34 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 15:28:48 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		ft_line_to_lst(char *inputs, t_sh *sh)
 	int		i;
 
 	i = 0;
-	if (!ft_check_args(inputs, sh))
+	if (/*ft_strisspace(inputs) || */!ft_check_args(inputs, sh))
 		return (0);
 	if (sh->cmds)
 		ft_lstclear_cmds(sh->cmds);

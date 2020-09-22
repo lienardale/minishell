@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 11:45:16 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/21 11:50:53 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 14:51:03 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,15 @@ void		ft_infile(t_sh *sh)
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !sh->begin_input)
+		{
+			free(sh->line);
 			ft_exit(NULL, sh);
+		}
 		file.comment = 0;
 		sh->nbline++;
 		while (sh->line[file.comment] && ft_isspace(sh->line[file.comment]))
 			file.comment++;
-		if (sh->line[file.comment] == '#')
-			ft_safe_free((void**)&sh->line);
+		sh->line[file.comment] == '#' ? ft_safe_free((void**)&sh->line) : 0;
 		if (sh->line && sh->line[file.comment] != '#')
 		{
 			if (ft_parse_process(sh, &file))

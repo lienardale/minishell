@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 10:20:33 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/22 15:19:10 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char		*ft_input_join(t_list *inputs)
 	if (!tmp)
 	{
 		ft_dprintf(2, "minishell: allocation error\n");
-//		ft_free_minishell ?
+		ft_free_minishell(&g_sh, 1);
 		exit(EXIT_FAILURE);
 	}
 	return (tmp);
