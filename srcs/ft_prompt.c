@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 09:48:27 by cdai             ###   ########.fr       */
+/*   Updated: 2020/09/22 10:20:33 by cdai             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void		ft_prompt(t_sh *sh)
 	ft_bzero(&prompt, sizeof(prompt));
 	prompt.prompt = PROMPT;
 	ft_signal(ON);
-	(sh->fd == 0) ? write(2, prompt.prompt, ft_strlen(prompt.prompt)) : 0;
+	write(2, prompt.prompt, ft_strlen(prompt.prompt));
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !sh->begin_input)
@@ -132,8 +132,7 @@ void		ft_prompt(t_sh *sh)
 		if (sh->line && sh->line[prompt.comment] != '#' && sh->sig)
 			ft_parse_process(sh, &prompt);
 		(!sh->sig) ? free(sh->line) : 0;
-		if (sh->fd == 0 && sh->ret_sh > 0 && !sh->begin_input)
-			write(2, prompt.prompt, ft_strlen(prompt.prompt));
+		write(2, prompt.prompt, ft_strlen(prompt.prompt));
 		sh->sig = true;
 	}
 	ft_exit(NULL, sh);
