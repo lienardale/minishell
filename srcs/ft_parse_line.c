@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/22 16:38:31 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 16:02:45 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 11:17:02 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		ft_check_args(char *inputs, t_sh *sh)
 	(i > 0) ? i-- : 0;
 	while (i > 0 && ft_isspace(inputs[i]))
 		i--;
-	if (inputs[i] && ft_ischarset(REDIR, inputs[i]))
+	if (inputs[i] && (ft_ischarset(REDIR, inputs[i]) || inputs[i] == '|'))
 		return (ft_unexpected_token(inputs, sh, i));
 	return (1);
 }
