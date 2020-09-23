@@ -6,11 +6,13 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:11:22 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 17:30:19 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 10:37:56 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "minishell.h"
+
+t_gnl		g_gnl;
 
 static int	ft_free_rest(char **line, t_gnl *current, char *tmp, char *new)
 {
@@ -68,7 +70,7 @@ int			ft_check_ln(char **line, t_gnl *current, char *buffer)
 	if (current->ret == 0)
 	{
 		*line = ft_strdup_free_gnl(current->rest);
-		*current = (t_gnl) {0, 0, NULL, NULL};
+		*current = (t_gnl) {0, 0, "\0", NULL, NULL, NULL};
 		return (0);
 	}
 	return (2);
@@ -76,28 +78,27 @@ int			ft_check_ln(char **line, t_gnl *current, char *buffer)
 
 int			get_next_line_multi(int fd, char **line)
 {
-	static t_gnl	current;
-	t_buff			buff;
 	int				ret;
 
 	if (fd <= -1 || !line || BUFFER_SIZE == 0)
 		return (-1);
-	current.currfd = fd;
-	while ((current.ret = read(fd, buff.buffer, BUFFER_SIZE)) > 0)
+	g_gnl.currfd = fd;
+	while ((g_gnl.ret = read(fd, g_gnl.buffer, BUFFER_SIZE)) > 0)
 	{
-		if (!(buff.tmp = ft_strdup_buff(buff.buffer, current.ret)))
+		if (!(g_gnl.tmp = ft_strdup_buff(g_gnl.buffer, g_gnl.ret)))
 			return (ft_error(line));
-		if ((ret = ft_check_ln(line, &current, buff.tmp)) == 1)
+		if ((ret = ft_check_ln(line, &g_gnl, g_gnl.tmp)) == 1)
 			return (1);
 		if (ret != 2)
 			return (ret == -1 ? ft_error(line) : 0);
+		g_sh.sig = true;
 	}
-	if (current.ret == -1)
+	if (g_gnl.ret == -1)
 		return (-1);
-	if (!(buff.tmp = (char*)malloc(sizeof(char) * 1)))
+	if (!(g_gnl.tmp = (char*)malloc(sizeof(char) * 1)))
 		return (ft_error(line));
-	buff.tmp[0] = '\0';
-	if ((ret = ft_check_ln(line, &current, buff.tmp)) == 1)
+	g_gnl.tmp[0] = '\0';
+	if ((ret = ft_check_ln(line, &g_gnl, g_gnl.tmp)) == 1)
 		return (1);
 	return (ret == -1 ? ft_error(line) : 0);
 }

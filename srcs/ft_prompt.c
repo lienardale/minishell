@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 16:39:18 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 10:32:24 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void		ft_prompt(t_sh *sh)
 		while (sh->line[prompt.comment] && ft_isspace(sh->line[prompt.comment]))
 			prompt.comment++;
 		(sh->line[prompt.comment] == '#') ? ft_safe_free((void**)&sh->line) : 0;
-		if (sh->line && sh->line[prompt.comment] != '#' && sh->sig)
+		if (sh->line && sh->line[prompt.comment] != '#')
 			ft_parse_process(sh, &prompt);
 		(!sh->sig) ? free(sh->line) : 0;
 		write(2, prompt.prompt, ft_strlen(prompt.prompt));

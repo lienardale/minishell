@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/16 17:30:49 by alienard         ###   ########.fr        #
+#    Updated: 2020/09/22 18:47:22 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ BILIST_DIR		= bilist
 CONVERT_DIR		= convert
 DPRINTF_DIR		= dprintf
 FPRINTF_DIR		= fprintf
-GNL_DIR			= gnl
 IS_DIR			= is
 LIST_DIR		= list
 MEM_DIR			= mem
@@ -60,8 +59,6 @@ _FPRINTF		= ft_conv_2_fprintf.c \
 					ft_padding_fprintf.c \
 					ft_preci_fprintf.c \
 					ft_putnbr_base_fprintf.c
-_GNL			= get_next_line_bonus.c \
-					get_next_line_utils_bonus.c
 _IS				= ft_isalnum.c \
 					ft_isalpha.c \
 					ft_isascii.c \

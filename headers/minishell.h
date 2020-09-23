@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 16:32:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 10:21:11 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 # include "libftprintf.h"
 # include "libftdprintf.h"
 # include "libftfprintf.h"
-# include "get_next_line_bonus.h"
 # include "list.h"
 
 # ifndef SPACE
@@ -77,6 +76,17 @@
 
 # ifndef OFF
 #  define OFF 0
+# endif
+
+# ifdef BUFFER_SIZE
+#  if BUFFER_SIZE < 0
+#   undef BUFFER_SIZE
+#   define BUFFER_SIZE 0
+#  endif
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 200
 # endif
 
 typedef struct	s_quote
@@ -150,7 +160,33 @@ typedef struct	s_sh
 	bool	sig;
 }				t_sh;
 
+typedef struct	s_buff
+{
+	char			buffer[BUFFER_SIZE];
+	char			*tmp;
+}				t_buff;
+
+typedef struct	s_gnl
+{
+	int				currfd;
+	int				ret;
+	char			buffer[BUFFER_SIZE];
+	char			*tmp;
+	char			*rest;
+	struct s_gnl	*next;
+}				t_gnl;
+
 extern t_sh		g_sh;
+extern t_gnl	g_gnl;
+
+int				get_next_line_multi(int fd, char **line);
+int				ft_check_ln(char **line, t_gnl *current, char *buffer);
+int				ft_ifnl(char **line, t_gnl *current, size_t i, char *tmp);
+char			*ft_strdup_buff(char *buffer, int ret);
+size_t			ft_strlen_gnl(const char *str);
+char			*ft_strdup_free_gnl(char *s1);
+char			*ft_strjoin_free_gnl(char *s1, char *s2);
+int				ft_error(char **line);
 
 char			**ft_split_line(char **inputs);
 char			**ft_split_quote(char *str, char c);

@@ -6,11 +6,11 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:04:54 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/14 17:18:40 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/22 18:49:37 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "minishell.h"
 
 size_t	ft_strlen_gnl(const char *str)
 {
