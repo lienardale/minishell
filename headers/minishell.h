@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/23 16:41:12 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 16:55:57 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,7 +248,7 @@ int				ft_exec_redir_in(t_sh *sh, t_cmd *cmd);
 
 int				ft_parse_cmds(t_cmd *cmd, t_sh *sh);
 char			*ft_lststrjoin(t_list *lst, char *inter);
-char			*ft_parse_path(char *path);
+char			*ft_parse_path(char **path);
 char			*ft_lststrjoin(t_list *lst, char *inter);
 int				ft_isolate_exec(char *path, char **buff);
 

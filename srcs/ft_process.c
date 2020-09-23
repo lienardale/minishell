@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:11:25 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/23 16:29:05 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 17:17:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ char		*ft_get_abspath_filename(char *exec, char **env, t_sh *sh)
 	int		i;
 
 	i = 0;
-	// ft_isolate_exec(exec, &exec);
 	if (!(tmp = ft_get_onlypaths(env)))
 	{
 		ft_redirerror(sh, exec, "No such file or directory");
@@ -92,7 +91,7 @@ int			ft_search_n_execute(char **args, char **env, t_sh *sh)
 	exec = NULL;
 	temp = args[0];
 	if (ft_isolate_exec(args[0], &exec) != -1)
-		temp = ft_parse_path(args[0]);
+		temp = ft_parse_path(&args[0]);
 	else
 		temp = ft_get_abspath_filename(temp, env, sh);
 	if (exec)
@@ -102,12 +101,10 @@ int			ft_search_n_execute(char **args, char **env, t_sh *sh)
 		ft_redirerror(sh, args[0], "command not found");
 		exit(127);
 	}
-	// ft_isolate_exec(args[0], &args[0]);
-	// temp = ft_get_abspath_filename(temp, env, sh);
 	if ((ret = execve(temp, args, env)) == -1)
 	{
-		ft_redirerror(sh, args[0], "No such file or directory");
-		exit(EXIT_FAILURE);
+		ft_redirerror(sh, temp, "No such file or directory");
+		exit(127);
 	}
 	ft_safe_free((void**)&temp);
 	return (ret);
