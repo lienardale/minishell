@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 17:16:11 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 17:21:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 15:26:15 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	ft_isolate_exec(char *path, char **buff)
 	while (i > -1 && path[i] != '/')
 		i--;
 	if (i > -1 && path[i] == '/')
+	{
 		if (!(*buff = ft_substr(path, i + 1, path_len - i)))
 			return (-1);
+	}
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 14:16:55 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/23 10:34:45 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 15:16:25 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void	ft_ctrl_c_on(int sig)
 	(g_sh.begin_input) ? ft_lstclear(&g_sh.begin_input, &free) : 0;
 	ft_reset_sh(&g_sh);
 	g_sh.begin_input = NULL;
+	g_sh.ret_cmd = 130;
 }
 
 static void	ft_ctrl_backslash_off(int sig)

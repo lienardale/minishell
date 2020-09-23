@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/10 09:31:04 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/02 17:50:55 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/23 16:36:19 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static t_list	*ft_relative_to_abs_path(t_list *lstdest, t_list *lstsrc)
 
 	while (lstsrc)
 	{
+		// if (!lstdest)
+		// 	return (ft_lstnew("\\"));
 		if (ft_strcmp("..", (char*)lstsrc->content) == 0)
 			ft_lstdel_last(lstdest);
 		else if (ft_strcmp(".", (char*)lstsrc->content) != 0)
@@ -59,16 +61,18 @@ char			*ft_parse_path(char *path)
 
 	exec = NULL;
 	start = ft_isolate_exec(path, &exec);
-	path = ft_substr(path, 0, start);
+	if (!(path = ft_substr(path, 0, start)))
+		return (NULL);
 	result = ft_get_cwd_lstsplited(path);
-	free(path);
+	path ? free(path) : 0;
 	temp = result;
 	result = ft_strjoin(result, "/");
-	free(temp);
+	temp ? free(temp) : 0;
 	temp = result;
 	result = ft_strjoin(result, exec);
-	free(temp);
+	temp ? free(temp) : 0;
 	if (exec)
 		free(exec);
+	// printf("result:|%s|\n",result);
 	return (result);
 }
