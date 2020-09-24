@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 14:16:55 by cdai              #+#    #+#             */
-/*   Updated: 2020/09/23 15:16:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/24 09:44:54 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	ft_strl_c_off(int sig)
 {
 	(void)sig;
+	write(2, "\n", 1);
 }
 
 static void	ft_ctrl_c_on(int sig)
@@ -35,6 +36,8 @@ static void	ft_ctrl_c_on(int sig)
 static void	ft_ctrl_backslash_off(int sig)
 {
 	(void)sig;
+	write(2, "Quit (core dumped)\n",
+		ft_strlen("Quit (core dumped)\n"));
 }
 
 static void	ft_ctrl_backslash_on(int sig)

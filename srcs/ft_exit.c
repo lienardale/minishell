@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/05 14:40:49 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/17 15:40:25 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/24 10:11:13 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,22 @@ int			ft_search_piped_exit_cmd(t_sh *sh)
 	return (1);
 }
 
-void		ft_exit_toomanyargs(t_sh *sh, int ret)
+void		ft_exit_toomanyargs(t_sh *sh, t_cmd *cmd, int ret)
 {
-	sh->nbline ? ft_dprintf(2,
+	(void)ret;
+	if (!sh->file && ret)
+		ft_dprintf(2, "exit\n");
+	if (ft_isdigit(cmd->av[1][0]))
+		sh->nbline ? ft_dprintf(2,
 			"%s: line %d: exit: too many arguments\n",
 			sh->file, sh->nbline)
 			: ft_dprintf(2,
 			"minishell: exit: too many arguments\n");
-	ret ? ft_free_minishell(sh, 1) : 0;
+	else
+	{
+		ft_strerror(cmd, sh, "numeric argument required");
+		ret ? ft_free_minishell(sh, 2) : 0;
+	}
 }
 
 void		ft_exit_twoargs(t_sh *sh, t_cmd *cmd, int ret)
@@ -74,8 +82,10 @@ void		ft_exit_twoargs(t_sh *sh, t_cmd *cmd, int ret)
 	}
 	else
 	{
+		if (!sh->file && ret)
+			ft_dprintf(2, "exit\n");
 		ft_strerror(cmd, sh, "numeric argument required");
-		ret ? ft_free_minishell(sh, 255) : 0;
+		ret ? ft_free_minishell(sh, 2) : 0;
 	}
 }
 
@@ -96,10 +106,14 @@ int			ft_exit(t_cmd *cmd, t_sh *sh)
 	while (cmd->av[i])
 		i++;
 	if (i > 2)
-		ft_exit_toomanyargs(sh, ret);
+		ft_exit_toomanyargs(sh, cmd, ret);
 	else if (i == 2)
 		ft_exit_twoargs(sh, cmd, ret);
 	else if (ret)
+	{
+		if (!sh->file && ret)
+			ft_dprintf(2, "exit\n");
 		ft_free_minishell(sh, sh->ret_cmd);
+	}
 	return (0);
 }

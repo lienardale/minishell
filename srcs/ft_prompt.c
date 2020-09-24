@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/23 14:30:21 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/24 10:32:38 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,19 @@ void		ft_check_line(char **line, int *quote, int *bkslh)
 	}
 }
 
-/*
-** pb : no prompt while in quotes && writes itself when ./minishell < script.sh
-*/
-
 static void	ft_launch_process(t_sh *sh, t_parse *prompt)
 {
+	char **args;
+
 	ft_create_pipe(sh);
 	prompt->current = sh->cmds->head;
 	while (prompt->current)
 	{
-		ft_signal(OFF);
+		args = ((t_cmd *)(prompt->current->data))->av;
+		if (!ft_strcmp(args[0], "./minishell") || !ft_strcmp(args[0], "man"))
+			ft_minishell_sigoff();
+		else
+			ft_signal(OFF);
 		sh->ret_cmd = ft_parse_cmds((t_cmd *)prompt->current->data, sh);
 		prompt->current = prompt->current->next;
 	}
