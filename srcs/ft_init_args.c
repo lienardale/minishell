@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 13:15:18 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 15:41:02 by alienard         ###   ########.fr       */
+/*   Updated: 2020/09/24 16:36:41 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*ft_isredir(int *i, int *j, char *line)
 		line[(*j)++] = ' ';
 		ft_iterate_in_line(line, j, END_CMD);
 	}
-	tmp = ft_substr(line, *i, (*j - *i));
+	tmp = ft_substr(line, *i, (*j - *i + 1));
 	ft_iterate_in_line(line, j, REDIR);
 	return (tmp);
 }
