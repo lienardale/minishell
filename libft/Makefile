@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/22 18:47:22 by alienard         ###   ########.fr        #
+#    Updated: 2020/10/28 14:28:56 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,8 @@ _IS				= ft_isalnum.c \
 					ft_isprint.c \
 					ft_isspace.c \
 					ft_ischarset.c \
-					ft_str_isdigit.c
+					ft_str_isdigit.c \
+					ft_isatty.c 
 _LIST			= ft_lstadd_back_bonus.c \
 					ft_lstclear_bonus.c \
 					ft_lstdel_last.c \

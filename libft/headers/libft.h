@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 18:12:43 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/16 17:17:46 by alienard         ###   ########.fr       */
+/*   Updated: 2020/10/28 14:27:06 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int				ft_isspace(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 int				ft_isnum(char *c);
+int 			ft_isatty(int fd);
 int				ft_str_isdigit(char *str);
 int				ft_ischarset(char *set, char c);
 void			*ft_calloc(size_t count, size_t size);

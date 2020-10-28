@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:14:14 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/24 10:32:38 by alienard         ###   ########.fr       */
+/*   Updated: 2020/10/28 17:29:51 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ static void	ft_launch_process(t_sh *sh, t_parse *prompt)
 			ft_minishell_sigoff();
 		else
 			ft_signal(OFF);
-		sh->ret_cmd = ft_parse_cmds((t_cmd *)prompt->current->data, sh);
+		if (args)
+			sh->ret_cmd = ft_parse_cmds((t_cmd *)prompt->current->data, sh);
 		prompt->current = prompt->current->next;
 	}
 }
@@ -121,7 +122,7 @@ void		ft_prompt(t_sh *sh)
 	ft_bzero(&prompt, sizeof(prompt));
 	prompt.prompt = PROMPT;
 	ft_signal(ON);
-	write(2, prompt.prompt, ft_strlen(prompt.prompt));
+	ft_isatty(0) ? write(2, prompt.prompt, ft_strlen(prompt.prompt)) : 0;
 	while ((sh->ret_sh = get_next_line_multi(sh->fd, &sh->line)) >= 0)
 	{
 		if (sh->ret_sh == 0 && ft_strlen(sh->line) == 0 && !sh->begin_input)
@@ -136,8 +137,8 @@ void		ft_prompt(t_sh *sh)
 		if (sh->line && sh->line[prompt.comment] != '#')
 			ft_parse_process(sh, &prompt);
 		(!sh->sig) ? free(sh->line) : 0;
-		if (!sh->begin_input)
-			write(2, prompt.prompt, ft_strlen(prompt.prompt));
+		if (!sh->begin_input && ft_isatty(0))
+			write(0, prompt.prompt, ft_strlen(prompt.prompt));
 		sh->sig = true;
 	}
 	ft_exit(NULL, sh);

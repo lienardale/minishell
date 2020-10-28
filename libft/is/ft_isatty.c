@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_echo.c                                          :+:      :+:    :+:   */
+/*   ft_isatty.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/04 15:05:06 by alienard          #+#    #+#             */
-/*   Updated: 2020/10/28 17:55:31 by alienard         ###   ########.fr       */
+/*   Created: 2020/10/28 14:16:23 by alienard          #+#    #+#             */
+/*   Updated: 2020/10/28 14:30:30 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
+#include <termios.h>
 
-int		ft_echo(t_cmd *cmd, t_sh *sh)
+int ft_isatty(int fd)
 {
-	int		i;
-	int		n;
-	char	*line;
+    struct termios  term;
 
-	(void)sh;
-	n = 0;
-	i = 1;
-	line = NULL;
-	while (cmd->av[i] && !ft_strncmp(cmd->av[i], "-n", 2) && (i++))
-		n = 1;
-	while (cmd->av[i])
-	{
-		ft_printf("%s", cmd->av[i]);
-		i++;
-		if (cmd->av[i])
-			ft_printf(" ");
-	}
-	if (!n)
-		ft_printf("\n");
-	return (0);
+    return ((tcgetattr(fd, &term) == 0));
 }

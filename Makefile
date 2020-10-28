@@ -6,7 +6,7 @@
 #    By: alienard <alienard@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/09 18:51:33 by alienard          #+#    #+#              #
-#    Updated: 2020/09/23 19:03:07 by alienard         ###   ########.fr        #
+#    Updated: 2020/10/28 15:09:20 by alienard         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,8 @@ _SRCS		= ft_minishell.c \
 				ft_free_cmds.c \
 				get_next_line_bonus.c \
 				get_next_line_utils_bonus.c \
-				ft_minishell_sigoff.c
+				ft_minishell_sigoff.c \
+				ft_debug.c
 
 SRCS			= $(addprefix $(SRCS_DIR)/, $(_SRCS))
 OBJS			= $(SRCS:.c=.o)

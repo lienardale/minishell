@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/20 13:06:36 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/23 19:02:51 by alienard         ###   ########.fr       */
+/*   Updated: 2020/10/28 15:28:09 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -342,5 +342,13 @@ int				ft_strerror(t_cmd *cmd, t_sh *sh, char *str);
 void			ft_exporterror(t_cmd *cmd, t_sh *sh, char *str, int i);
 void			ft_redirerror(t_sh *sh, char *tmp, char *str);
 void			ft_redir_indir_error(t_sh *sh, char *tmp, DIR **dir);
+
+/*
+**	debug functions
+*/
+
+void   			 ft_print_cmds(t_sh *sh);
+void   			 ft_print_sh(t_sh *sh);
+void   			 ft_print_all(t_sh *sh);
 
 #endif

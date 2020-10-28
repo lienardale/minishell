@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/02 08:13:24 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/22 16:23:44 by alienard         ###   ########.fr       */
+/*   Updated: 2020/10/28 17:18:49 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ int		ft_line_to_lst(char *inputs, t_sh *sh)
 	inputs = ft_strtrim_space(inputs);
 	while (inputs[i])
 		ft_init_cmd(sh, inputs, &i);
-	free(inputs);
+	if (inputs)
+		free(inputs);
 	inputs = NULL;
 	return (1);
 }

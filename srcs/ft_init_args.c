@@ -6,7 +6,7 @@
 /*   By: alienard <alienard@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/18 13:15:18 by alienard          #+#    #+#             */
-/*   Updated: 2020/09/24 16:36:41 by alienard         ###   ########.fr       */
+/*   Updated: 2020/10/28 17:24:07 by alienard         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		ft_init_args(t_sh *sh, char *line, int *i)
 
 	j = *i;
 	cmd = (t_cmd *)(sh->cmds->tail->data);
-	if (ft_search_redir(i, &j, line, sh))
+	if (ft_search_redir(i, &j, line, sh) == 1)
 		return ;
 	ft_iterate_in_line(line, &j, END_CMD);
 	tmp = (ft_ischarset(REDIR, line[j])) ? ft_isredir(i, &j, line) :
