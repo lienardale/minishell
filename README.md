@@ -1,8 +1,8 @@
-42 Paris project - minishell
+# minishell
 
-Recoding a shell in C    
+**Recoding a shell in C**    
 
-First non-solo project of the cursus, realised with [Clement Dai](https://github.com/DaiClement)
+### First non-solo project of the 42 Paris cursus, realised with [Clement Dai](https://github.com/DaiClement)
 
 <a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cl4cq9w7c004409k3asnbj82v/project/1890417" alt="alienard's 42 minishell Score" /></a>
 
@@ -10,8 +10,17 @@ First non-solo project of the cursus, realised with [Clement Dai](https://github
 	<img src="./assets/demo_minishell.gif" >
 </p>
 
+## Code stats
+- Total : 6061 lines
+	- C : 4504 lines (74,3%)
+	- Shell : 1557 lines (25.7%)
+- Git :
+	- 2 repositories (project + tests)
+	- 357 commits
+	- 22 branches
 
-Goals :
+
+## Goals :
 
 - introduce us to the processes through fork, wait, kill
 - gain a deeper understanding of file descriptors
@@ -21,12 +30,12 @@ Goals :
 	- tokeniser
 	- abstract syntax tree 
 
-Since it was a very demanding project in terms of edge-cases, I implemented [my own tester](https://github.com/lienardale/alientest_minishell), which helped us :
+Since it was a very demanding project in terms of edge-cases, I implemented **[my own tester](https://github.com/lienardale/alientest_minishell)**, which helped us :
 - advance in our work without breaking what was previously working
 - compile future tests for future work
 - get a glimpse of Test Driven Development
 
-Features : 
+## Features : 
 
 - Writes a prompt waiting for a new command
 - Searches and launches the right executable (based on the PATH environment variable, or using a relative or absolute path)
